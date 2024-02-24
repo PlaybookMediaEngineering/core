@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: backend-api-gateway
+    working-directory: ./backend-api-gateway
 
 permissions:
   contents: write # needed to write releases
