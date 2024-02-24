@@ -1,6 +1,6 @@
 name: Run Gateway Service Tests
 
-on: [pull_request]
+on: [pull_request, push]
 
 permissions:
   contents: write # needed to write releases
