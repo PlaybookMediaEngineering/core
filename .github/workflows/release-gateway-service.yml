@@ -25,12 +25,6 @@ jobs:
         platform: [linux/amd64, linux/arm64]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Get Github Branch Name
-        run: |
-          # Short name for current branch. For PRs, use target branch (base ref)
-          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
-          echo GIT_BRANCH: ${GIT_BRANCH}
-          echo "GIT_BRANCH=${GIT_BRANCH}" >> $GITHUB_ENV
       - uses: actions/checkout@v3
       - uses: sigstore/cosign-installer@main
       - uses: fluxcd/flux2/action@main
