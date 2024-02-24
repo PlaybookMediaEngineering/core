@@ -23,6 +23,9 @@ jobs:
           - os: ubuntu-latest
             release_suffix: ubuntu
         platform: [linux/amd64, linux/arm64]
+    defaults:
+      run:
+        working-directory: ./backend-api-gateway
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
