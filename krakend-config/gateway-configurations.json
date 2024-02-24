@@ -61,7 +61,7 @@
         "X-Forwarded-Proto": "https"
       },
       "host_proxy_headers": ["X-Forwarded-Hosts"],
-      "ssl_redirect": true,
+      "ssl_redirect": false,
       "ssl_host": "ssl.host.domain",
       "sts_seconds": 300,
       "sts_include_subdomains": true,
