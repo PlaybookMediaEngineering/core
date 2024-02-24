@@ -105,15 +105,13 @@ jobs:
     needs: [publish-artifacts]
     runs-on: ubuntu-latest
     env:
-      working-directory: .
-      cluster: 8f6d9b0a-c838-442b-b6ef-bf710718930e
+      working-directory: ./backend-api-gateway
+      cluster: 20ae8cfd-b131-403a-9f12-01e9b68eb0ee
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Update SHA
-        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/sha/_meta
       - name: Install doctl
         uses: digitalocean/action-doctl@v2
         with:
