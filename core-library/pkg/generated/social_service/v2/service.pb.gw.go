@@ -6243,7 +6243,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/BlockUserProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/block/{target_user_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/BlockUserProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/block/target/{target_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6268,7 +6268,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/FollowProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/follow/{target_user_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/FollowProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/follow/target/{target_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6443,7 +6443,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/FollowCommunityProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/follow/community-profiles/{target_community_profile_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/FollowCommunityProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/follow/community-profiles/{target_community_profile_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6693,7 +6693,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/SharePost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{parent_post_type}/share"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/SharePost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/share/{parent_post_id}/type/{parent_post_type}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6718,7 +6718,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6743,7 +6743,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/RemovePostFromThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread/target/{participant_post_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/RemovePostFromThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}/target/{participant_post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -6768,7 +6768,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/GetPostThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{post_id}/thread"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/GetPostThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7593,7 +7593,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublication", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublication", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7618,7 +7618,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7643,7 +7643,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7668,7 +7668,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToPublication", runtime.WithHTTPPathPattern("/api/v1/users/{editor_user_id}/publication/{publication_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToPublication", runtime.WithHTTPPathPattern("/api/v1/users/editor/{editor_user_id}/publication/{publication_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7693,7 +7693,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePostFromPublication", runtime.WithHTTPPathPattern("/api/v1/users/{editor_user_id}/publication/{publication_id}/post/{post_id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePostFromPublication", runtime.WithHTTPPathPattern("/api/v1/users/editor/{editor_user_id}/publication/{publication_id}/post/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -7718,7 +7718,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/BookmarkPost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{post_id}/bookmark"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/BookmarkPost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/bookmark/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8014,7 +8014,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/BlockUserProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/block/{target_user_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/BlockUserProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/block/target/{target_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8036,7 +8036,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/FollowProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/follow/{target_user_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/FollowProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/follow/target/{target_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8190,7 +8190,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/FollowCommunityProfile", runtime.WithHTTPPathPattern("/api/v1/users/{source_user_id}/follow/community-profiles/{target_community_profile_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/FollowCommunityProfile", runtime.WithHTTPPathPattern("/api/v1/users/source/{source_user_id}/follow/community-profiles/{target_community_profile_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8410,7 +8410,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/SharePost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{parent_post_type}/share"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/SharePost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/share/{parent_post_id}/type/{parent_post_type}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8432,7 +8432,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8454,7 +8454,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/RemovePostFromThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread/target/{participant_post_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/RemovePostFromThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}/target/{participant_post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -8476,7 +8476,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/GetPostThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{post_id}/thread"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/GetPostThread", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/thread/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9202,7 +9202,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublication", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublication", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9224,7 +9224,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9246,7 +9246,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePublicationEditor", runtime.WithHTTPPathPattern("/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9268,7 +9268,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToPublication", runtime.WithHTTPPathPattern("/api/v1/users/{editor_user_id}/publication/{publication_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/AddPostToPublication", runtime.WithHTTPPathPattern("/api/v1/users/editor/{editor_user_id}/publication/{publication_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9290,7 +9290,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePostFromPublication", runtime.WithHTTPPathPattern("/api/v1/users/{editor_user_id}/publication/{publication_id}/post/{post_id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/DeletePostFromPublication", runtime.WithHTTPPathPattern("/api/v1/users/editor/{editor_user_id}/publication/{publication_id}/post/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9312,7 +9312,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/BookmarkPost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/{post_id}/bookmark"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/BookmarkPost", runtime.WithHTTPPathPattern("/api/v1/users/{user_id}/post/bookmark/{post_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9432,9 +9432,9 @@ var (
 
 	pattern_SocialService_DeleteUserProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "users", "user_id"}, ""))
 
-	pattern_SocialService_BlockUserProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "users", "source_user_id", "block", "target_user_id"}, ""))
+	pattern_SocialService_BlockUserProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "source", "source_user_id", "block", "target", "target_user_id"}, ""))
 
-	pattern_SocialService_FollowProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "users", "source_user_id", "follow", "target_user_id"}, ""))
+	pattern_SocialService_FollowProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "source", "source_user_id", "follow", "target", "target_user_id"}, ""))
 
 	pattern_SocialService_AcceptFollowProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "follow-requests", "follow_record_id", "accept"}, ""))
 
@@ -9448,7 +9448,7 @@ var (
 
 	pattern_SocialService_GetCommunitiesUserFollows_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "users", "user_id", "communities-followed"}, ""))
 
-	pattern_SocialService_FollowCommunityProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "users", "source_user_id", "follow", "community-profiles", "target_community_profile_id"}, ""))
+	pattern_SocialService_FollowCommunityProfile_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "source", "source_user_id", "follow", "community-profiles", "target_community_profile_id"}, ""))
 
 	pattern_SocialService_GetCommunityProfiles_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "community-profiles", "page-size", "page_size", "page-number", "page_number"}, ""))
 
@@ -9468,13 +9468,13 @@ var (
 
 	pattern_SocialService_ReportPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "v1", "users", "user_id", "post", "post_id", "type", "post_type", "report"}, ""))
 
-	pattern_SocialService_SharePost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "v1", "users", "user_id", "post", "parent_post_id", "type", "parent_post_type", "share"}, ""))
+	pattern_SocialService_SharePost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "users", "user_id", "post", "share", "parent_post_id", "type", "parent_post_type"}, ""))
 
-	pattern_SocialService_AddPostToThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8}, []string{"api", "v1", "users", "user_id", "post", "parent_post_id", "type", "post_type", "thread"}, ""))
+	pattern_SocialService_AddPostToThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "users", "user_id", "post", "thread", "parent_post_id", "type", "post_type"}, ""))
 
-	pattern_SocialService_RemovePostFromThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7, 2, 8, 2, 9, 1, 0, 4, 1, 5, 10}, []string{"api", "v1", "users", "user_id", "post", "parent_post_id", "type", "post_type", "thread", "target", "participant_post_id"}, ""))
+	pattern_SocialService_RemovePostFromThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8, 2, 9, 1, 0, 4, 1, 5, 10}, []string{"api", "v1", "users", "user_id", "post", "thread", "parent_post_id", "type", "post_type", "target", "participant_post_id"}, ""))
 
-	pattern_SocialService_GetPostThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "users", "user_id", "post", "post_id", "thread"}, ""))
+	pattern_SocialService_GetPostThread_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "users", "user_id", "post", "thread", "post_id"}, ""))
 
 	pattern_SocialService_AddPostQualityScore_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "users", "user_id", "post", "post_id", "quality"}, ""))
 
@@ -9540,17 +9540,17 @@ var (
 
 	pattern_SocialService_GetPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "users", "user_id", "publication", "publication_id"}, ""))
 
-	pattern_SocialService_DeletePublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "users", "admin_user_id", "publication", "publication_id"}, ""))
+	pattern_SocialService_DeletePublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "users", "admin", "admin_user_id", "publication", "publication_id"}, ""))
 
-	pattern_SocialService_AddPublicationEditor_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "admin_user_id", "publication", "publication_id", "editor", "editor_user_id"}, ""))
+	pattern_SocialService_AddPublicationEditor_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "users", "admin", "admin_user_id", "publication", "publication_id", "editor", "editor_user_id"}, ""))
 
-	pattern_SocialService_DeletePublicationEditor_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "admin_user_id", "publication", "publication_id", "editor", "editor_user_id"}, ""))
+	pattern_SocialService_DeletePublicationEditor_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "users", "admin", "admin_user_id", "publication", "publication_id", "editor", "editor_user_id"}, ""))
 
-	pattern_SocialService_AddPostToPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "users", "editor_user_id", "publication", "publication_id"}, ""))
+	pattern_SocialService_AddPostToPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "users", "editor", "editor_user_id", "publication", "publication_id"}, ""))
 
-	pattern_SocialService_DeletePostFromPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6, 1, 0, 4, 1, 5, 7}, []string{"api", "v1", "users", "editor_user_id", "publication", "publication_id", "post", "post_id"}, ""))
+	pattern_SocialService_DeletePostFromPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "users", "editor", "editor_user_id", "publication", "publication_id", "post", "post_id"}, ""))
 
-	pattern_SocialService_BookmarkPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "users", "user_id", "post", "post_id", "bookmark"}, ""))
+	pattern_SocialService_BookmarkPost_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "users", "user_id", "post", "bookmark", "post_id"}, ""))
 
 	pattern_SocialService_BookmarkPublication_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "users", "user_id", "publication", "publication_id", "bookmark"}, ""))
 

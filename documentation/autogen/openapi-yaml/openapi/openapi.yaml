@@ -771,110 +771,7 @@ paths:
       summary: creates a user profile
       tags:
       - user profile
-  /api/v1/users/bookmarks/{userId}:
-    get:
-      description: This endpoint enables a client to get all bookmarked posts of a
-        given user
-      operationId: GetBookmarkedPosts
-      parameters:
-      - explode: false
-        in: path
-        name: userId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetBookmarkedPostsResponse'
-          description: A successful response.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationErrorMessageResponse'
-          description: Request failed due to invalid input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
-          description: Request failed due to incorrect path.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalErrorMessageResponse'
-          description: Request failed due to internal server error.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: An unexpected error response.
-      summary: Get Bookmarked Posts
-      tags:
-      - bookmarks
-  /api/v1/users/page-size/{pageSize}/page-number/{pageNumber}:
-    get:
-      description: This endpoint enables a client to get a number of user profiles
-        in a paginated manner
-      operationId: GetUserProfiles
-      parameters:
-      - explode: false
-        in: path
-        name: pageSize
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      - explode: false
-        in: path
-        name: pageNumber
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetUserProfilesResponse'
-          description: A successful response.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationErrorMessageResponse'
-          description: Request failed due to invalid input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
-          description: Request failed due to incorrect path.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalErrorMessageResponse'
-          description: Request failed due to internal server error.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: An unexpected error response.
-      summary: Gets a set of user profiles
-      tags:
-      - user profile
-  /api/v1/users/{adminUserId}/publication/{publicationId}:
+  /api/v1/users/admin/{adminUserId}/publication/{publicationId}:
     delete:
       description: This endpoint enables a client to delete a publication
       operationId: DeletePublication
@@ -928,7 +825,7 @@ paths:
       summary: Deletes a publication
       tags:
       - publication
-  /api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId}:
+  /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}:
     delete:
       description: This endpoint enables a client to add an editor to a publication
       operationId: DeletePublicationEditor
@@ -1049,7 +946,54 @@ paths:
       summary: Adds an editor to a publication
       tags:
       - publication
-  /api/v1/users/{editorUserId}/publication/{publicationId}:
+  /api/v1/users/bookmarks/{userId}:
+    get:
+      description: This endpoint enables a client to get all bookmarked posts of a
+        given user
+      operationId: GetBookmarkedPosts
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetBookmarkedPostsResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get Bookmarked Posts
+      tags:
+      - bookmarks
+  /api/v1/users/editor/{editorUserId}/publication/{publicationId}:
     post:
       description: This endpoint enables a client to add a post to a publication
       operationId: AddPostToPublication
@@ -1105,7 +1049,7 @@ paths:
       summary: Add a post to a publication
       tags:
       - publication
-  /api/v1/users/{editorUserId}/publication/{publicationId}/post/{postId}:
+  /api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}:
     delete:
       description: This endpoint enables a client to delete a post from a publication
       operationId: DeletePostFromPublication
@@ -1184,7 +1128,63 @@ paths:
       summary: Deletes a post from a publication
       tags:
       - publication
-  /api/v1/users/{sourceUserId}/block/{targetUserId}:
+  /api/v1/users/page-size/{pageSize}/page-number/{pageNumber}:
+    get:
+      description: This endpoint enables a client to get a number of user profiles
+        in a paginated manner
+      operationId: GetUserProfiles
+      parameters:
+      - explode: false
+        in: path
+        name: pageSize
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      - explode: false
+        in: path
+        name: pageNumber
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserProfilesResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Gets a set of user profiles
+      tags:
+      - user profile
+  /api/v1/users/source/{sourceUserId}/block/target/{targetUserId}:
     post:
       description: This endpoint enables a client to block a user profile
       operationId: BlockUserProfile
@@ -1245,7 +1245,7 @@ paths:
       summary: blocks a user profile
       tags:
       - block-profile
-  /api/v1/users/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}:
+  /api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}:
     post:
       description: This endpoint enables a client to follow a community profile
       operationId: FollowCommunityProfile
@@ -1304,7 +1304,7 @@ paths:
       summary: Follows A Community Profile
       tags:
       - follow-community-profile
-  /api/v1/users/{sourceUserId}/follow/{targetUserId}:
+  /api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}:
     post:
       description: This endpoint enables a client to follow a user profile
       operationId: FollowProfile
@@ -2267,7 +2267,60 @@ paths:
       summary: Create a post
       tags:
       - post
-  /api/v1/users/{userId}/post/{parentPostId}/type/{parentPostType}/share:
+  /api/v1/users/{userId}/post/bookmark/{postId}:
+    post:
+      description: This endpoint enables a client to bookmark a post
+      operationId: BookmarkPost
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: postId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookmarkPostResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Bookmarks a post
+      tags:
+      - bookmark
+  /api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}:
     post:
       description: This endpoint enables a client to share a post
       operationId: SharePost
@@ -2345,7 +2398,7 @@ paths:
       summary: Share a post
       tags:
       - feed
-  /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread:
+  /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}:
     post:
       description: This endpoint enables a client to add a post to a thread
       operationId: AddPostToThread
@@ -2417,7 +2470,7 @@ paths:
       summary: Adds A Post To A Thread
       tags:
       - thread
-  /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread/target/{participantPostId}:
+  /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}:
     delete:
       description: This endpoint enables a client to delete a post from a thread
       operationId: RemovePostFromThread
@@ -2492,6 +2545,77 @@ paths:
                 $ref: '#/components/schemas/Status'
           description: An unexpected error response.
       summary: Deletes A Post From A Thread
+      tags:
+      - thread
+  /api/v1/users/{userId}/post/thread/{postId}:
+    get:
+      description: This endpoint enables a client to query a post's thread
+      operationId: GetPostThread
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: postId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: postType
+        required: true
+        schema:
+          default: POST_TYPE_UNSPECIFIED
+          enum:
+          - POST_TYPE_UNSPECIFIED
+          - POST_TYPE_POST
+          - POST_TYPE_REPOST
+          - POST_TYPE_QUESTION
+          - POST_TYPE_ACHIEVEMENT
+          - POST_TYPE_ANNOUNCEMENT
+          - POST_TYPE_POLL
+          - POST_TYPE_ARTICLE
+          - POST_TYPE_SHORT_STORY
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPostThreadResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Gets A Post's Thread
       tags:
       - thread
   /api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}:
@@ -2661,58 +2785,6 @@ paths:
                 $ref: '#/components/schemas/Status'
           description: An unexpected error response.
       summary: Deletes A Bookmarked Post
-      tags:
-      - bookmark
-    post:
-      description: This endpoint enables a client to bookmark a post
-      operationId: BookmarkPost
-      parameters:
-      - explode: false
-        in: path
-        name: userId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: postId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BookmarkPostResponse'
-          description: A successful response.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationErrorMessageResponse'
-          description: Request failed due to invalid input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
-          description: Request failed due to incorrect path.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalErrorMessageResponse'
-          description: Request failed due to internal server error.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: An unexpected error response.
-      summary: Bookmarks a post
       tags:
       - bookmark
   /api/v1/users/{userId}/post/{postId}/comment:
@@ -3855,77 +3927,6 @@ paths:
       summary: Adds a quality score to a post
       tags:
       - post
-  /api/v1/users/{userId}/post/{postId}/thread:
-    get:
-      description: This endpoint enables a client to query a post's thread
-      operationId: GetPostThread
-      parameters:
-      - explode: false
-        in: path
-        name: userId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: postId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - explode: true
-        in: query
-        name: postType
-        required: true
-        schema:
-          default: POST_TYPE_UNSPECIFIED
-          enum:
-          - POST_TYPE_UNSPECIFIED
-          - POST_TYPE_POST
-          - POST_TYPE_REPOST
-          - POST_TYPE_QUESTION
-          - POST_TYPE_ACHIEVEMENT
-          - POST_TYPE_ANNOUNCEMENT
-          - POST_TYPE_POLL
-          - POST_TYPE_ARTICLE
-          - POST_TYPE_SHORT_STORY
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GetPostThreadResponse'
-          description: A successful response.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ValidationErrorMessageResponse'
-          description: Request failed due to invalid input.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
-          description: Request failed due to incorrect path.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InternalErrorMessageResponse'
-          description: Request failed due to internal server error.
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: An unexpected error response.
-      summary: Gets A Post's Thread
-      tags:
-      - thread
   /api/v1/users/{userId}/post/{postId}/type/{postType}:
     delete:
       description: This endpoint enables a client to delete a post

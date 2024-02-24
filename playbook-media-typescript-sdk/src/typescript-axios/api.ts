@@ -3381,7 +3381,7 @@ export const BlockProfileApiAxiosParamCreator = function (configuration?: Config
             assertParamExists('blockUserProfile', 'sourceUserId', sourceUserId)
             // verify required parameter 'targetUserId' is not null or undefined
             assertParamExists('blockUserProfile', 'targetUserId', targetUserId)
-            const localVarPath = `/api/v1/users/{sourceUserId}/block/{targetUserId}`
+            const localVarPath = `/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}`
                 .replace(`{${"sourceUserId"}}`, encodeURIComponent(String(sourceUserId)))
                 .replace(`{${"targetUserId"}}`, encodeURIComponent(String(targetUserId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3496,7 +3496,7 @@ export const BookmarkApiAxiosParamCreator = function (configuration?: Configurat
             assertParamExists('bookmarkPost', 'userId', userId)
             // verify required parameter 'postId' is not null or undefined
             assertParamExists('bookmarkPost', 'postId', postId)
-            const localVarPath = `/api/v1/users/{userId}/post/{postId}/bookmark`
+            const localVarPath = `/api/v1/users/{userId}/post/bookmark/{postId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5647,7 +5647,7 @@ export const FeedApiAxiosParamCreator = function (configuration?: Configuration)
             assertParamExists('sharePost', 'parentPostType', parentPostType)
             // verify required parameter 'body' is not null or undefined
             assertParamExists('sharePost', 'body', body)
-            const localVarPath = `/api/v1/users/{userId}/post/{parentPostId}/type/{parentPostType}/share`
+            const localVarPath = `/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"parentPostId"}}`, encodeURIComponent(String(parentPostId)))
                 .replace(`{${"parentPostType"}}`, encodeURIComponent(String(parentPostType)));
@@ -6209,7 +6209,7 @@ export const FollowCommunityProfileApiAxiosParamCreator = function (configuratio
             assertParamExists('followCommunityProfile', 'sourceUserId', sourceUserId)
             // verify required parameter 'targetCommunityProfileId' is not null or undefined
             assertParamExists('followCommunityProfile', 'targetCommunityProfileId', targetCommunityProfileId)
-            const localVarPath = `/api/v1/users/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}`
+            const localVarPath = `/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}`
                 .replace(`{${"sourceUserId"}}`, encodeURIComponent(String(sourceUserId)))
                 .replace(`{${"targetCommunityProfileId"}}`, encodeURIComponent(String(targetCommunityProfileId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -6358,7 +6358,7 @@ export const FollowProfileApiAxiosParamCreator = function (configuration?: Confi
             assertParamExists('followProfile', 'sourceUserId', sourceUserId)
             // verify required parameter 'targetUserId' is not null or undefined
             assertParamExists('followProfile', 'targetUserId', targetUserId)
-            const localVarPath = `/api/v1/users/{sourceUserId}/follow/{targetUserId}`
+            const localVarPath = `/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}`
                 .replace(`{${"sourceUserId"}}`, encodeURIComponent(String(sourceUserId)))
                 .replace(`{${"targetUserId"}}`, encodeURIComponent(String(targetUserId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8170,7 +8170,7 @@ export const PublicationApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('addPostToPublication', 'publicationId', publicationId)
             // verify required parameter 'post' is not null or undefined
             assertParamExists('addPostToPublication', 'post', post)
-            const localVarPath = `/api/v1/users/{editorUserId}/publication/{publicationId}`
+            const localVarPath = `/api/v1/users/editor/{editorUserId}/publication/{publicationId}`
                 .replace(`{${"editorUserId"}}`, encodeURIComponent(String(editorUserId)))
                 .replace(`{${"publicationId"}}`, encodeURIComponent(String(publicationId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8214,7 +8214,7 @@ export const PublicationApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('addPublicationEditor', 'publicationId', publicationId)
             // verify required parameter 'editorUserId' is not null or undefined
             assertParamExists('addPublicationEditor', 'editorUserId', editorUserId)
-            const localVarPath = `/api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId}`
+            const localVarPath = `/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}`
                 .replace(`{${"adminUserId"}}`, encodeURIComponent(String(adminUserId)))
                 .replace(`{${"publicationId"}}`, encodeURIComponent(String(publicationId)))
                 .replace(`{${"editorUserId"}}`, encodeURIComponent(String(editorUserId)));
@@ -8299,7 +8299,7 @@ export const PublicationApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('deletePostFromPublication', 'postId', postId)
             // verify required parameter 'postType' is not null or undefined
             assertParamExists('deletePostFromPublication', 'postType', postType)
-            const localVarPath = `/api/v1/users/{editorUserId}/publication/{publicationId}/post/{postId}`
+            const localVarPath = `/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}`
                 .replace(`{${"editorUserId"}}`, encodeURIComponent(String(editorUserId)))
                 .replace(`{${"publicationId"}}`, encodeURIComponent(String(publicationId)))
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
@@ -8342,7 +8342,7 @@ export const PublicationApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('deletePublication', 'adminUserId', adminUserId)
             // verify required parameter 'publicationId' is not null or undefined
             assertParamExists('deletePublication', 'publicationId', publicationId)
-            const localVarPath = `/api/v1/users/{adminUserId}/publication/{publicationId}`
+            const localVarPath = `/api/v1/users/admin/{adminUserId}/publication/{publicationId}`
                 .replace(`{${"adminUserId"}}`, encodeURIComponent(String(adminUserId)))
                 .replace(`{${"publicationId"}}`, encodeURIComponent(String(publicationId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -8383,7 +8383,7 @@ export const PublicationApiAxiosParamCreator = function (configuration?: Configu
             assertParamExists('deletePublicationEditor', 'publicationId', publicationId)
             // verify required parameter 'editorUserId' is not null or undefined
             assertParamExists('deletePublicationEditor', 'editorUserId', editorUserId)
-            const localVarPath = `/api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId}`
+            const localVarPath = `/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}`
                 .replace(`{${"adminUserId"}}`, encodeURIComponent(String(adminUserId)))
                 .replace(`{${"publicationId"}}`, encodeURIComponent(String(publicationId)))
                 .replace(`{${"editorUserId"}}`, encodeURIComponent(String(editorUserId)));
@@ -9477,7 +9477,7 @@ export const ThreadApiAxiosParamCreator = function (configuration?: Configuratio
             assertParamExists('addPostToThread', 'postType', postType)
             // verify required parameter 'post' is not null or undefined
             assertParamExists('addPostToThread', 'post', post)
-            const localVarPath = `/api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread`
+            const localVarPath = `/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"parentPostId"}}`, encodeURIComponent(String(parentPostId)))
                 .replace(`{${"postType"}}`, encodeURIComponent(String(postType)));
@@ -9522,7 +9522,7 @@ export const ThreadApiAxiosParamCreator = function (configuration?: Configuratio
             assertParamExists('getPostThread', 'postId', postId)
             // verify required parameter 'postType' is not null or undefined
             assertParamExists('getPostThread', 'postType', postType)
-            const localVarPath = `/api/v1/users/{userId}/post/{postId}/thread`
+            const localVarPath = `/api/v1/users/{userId}/post/thread/{postId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"postId"}}`, encodeURIComponent(String(postId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -9570,7 +9570,7 @@ export const ThreadApiAxiosParamCreator = function (configuration?: Configuratio
             assertParamExists('removePostFromThread', 'postType', postType)
             // verify required parameter 'participantPostId' is not null or undefined
             assertParamExists('removePostFromThread', 'participantPostId', participantPostId)
-            const localVarPath = `/api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread/target/{participantPostId}`
+            const localVarPath = `/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}`
                 .replace(`{${"userId"}}`, encodeURIComponent(String(userId)))
                 .replace(`{${"parentPostId"}}`, encodeURIComponent(String(parentPostId)))
                 .replace(`{${"postType"}}`, encodeURIComponent(String(postType)))

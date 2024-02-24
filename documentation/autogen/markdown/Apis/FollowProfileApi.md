@@ -5,7 +5,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**acceptFollowProfile**](FollowProfileApi.md#acceptFollowProfile) | **POST** /api/v1/follow-requests/{followRecordId}/accept | Accepts a user&#39;s follow request |
-| [**followProfile**](FollowProfileApi.md#followProfile) | **POST** /api/v1/users/{sourceUserId}/follow/{targetUserId} | follow a user profile |
+| [**followProfile**](FollowProfileApi.md#followProfile) | **POST** /api/v1/users/source/{sourceUserId}/follow/target/{targetUserId} | follow a user profile |
 
 
 <a name="acceptFollowProfile"></a>

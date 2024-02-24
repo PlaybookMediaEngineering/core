@@ -7,8 +7,8 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Class | Method | HTTP request | Description |
 |------------ | ------------- | ------------- | -------------|
-| *BlockProfileApi* | [**blockUserProfile**](Apis/BlockProfileApi.md#blockuserprofile) | **POST** /api/v1/users/{sourceUserId}/block/{targetUserId} | blocks a user profile |
-| *BookmarkApi* | [**bookmarkPost**](Apis/BookmarkApi.md#bookmarkpost) | **POST** /api/v1/users/{userId}/post/{postId}/bookmark | Bookmarks a post |
+| *BlockProfileApi* | [**blockUserProfile**](Apis/BlockProfileApi.md#blockuserprofile) | **POST** /api/v1/users/source/{sourceUserId}/block/target/{targetUserId} | blocks a user profile |
+| *BookmarkApi* | [**bookmarkPost**](Apis/BookmarkApi.md#bookmarkpost) | **POST** /api/v1/users/{userId}/post/bookmark/{postId} | Bookmarks a post |
 *BookmarkApi* | [**bookmarkPublication**](Apis/BookmarkApi.md#bookmarkpublication) | **POST** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Bookmarks a publication |
 *BookmarkApi* | [**removeBookmarkedPost**](Apis/BookmarkApi.md#removebookmarkedpost) | **DELETE** /api/v1/users/{userId}/post/{postId}/bookmark | Deletes A Bookmarked Post |
 *BookmarkApi* | [**removeBookmarkedPublication**](Apis/BookmarkApi.md#removebookmarkedpublication) | **DELETE** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Deletes A Bookmarked Publication |
@@ -30,13 +30,13 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *CommunityProfileApi* | [**getCommunityProfiles**](Apis/CommunityProfileApi.md#getcommunityprofiles) | **GET** /api/v1/community-profiles/page-size/{pageSize}/page-number/{pageNumber} | Get Community Profiles |
 | *FeedApi* | [**getCommunityFeed**](Apis/FeedApi.md#getcommunityfeed) | **GET** /api/v1/community-profiles/{communityProfileId}/timeline | Gets A Community Feed |
 *FeedApi* | [**getUserFeed**](Apis/FeedApi.md#getuserfeed) | **GET** /api/v1/users/{userId}/timeline | Gets A Userfeed |
-*FeedApi* | [**sharePost**](Apis/FeedApi.md#sharepost) | **POST** /api/v1/users/{userId}/post/{parentPostId}/type/{parentPostType}/share | Share a post |
+*FeedApi* | [**sharePost**](Apis/FeedApi.md#sharepost) | **POST** /api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType} | Share a post |
 | *FollowApi* | [**getAccountsFollowing**](Apis/FollowApi.md#getaccountsfollowing) | **GET** /api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following | Get Communities and users you are following |
 *FollowApi* | [**getFollowers**](Apis/FollowApi.md#getfollowers) | **GET** /api/v1/users/{userId}/profile/{profileId}/followers | Get Users Following you |
 *FollowApi* | [**getPendingFollows**](Apis/FollowApi.md#getpendingfollows) | **GET** /api/v1/users/{userId}/follow/pending-requests | Get Pending Follow Requests |
-| *FollowCommunityProfileApi* | [**followCommunityProfile**](Apis/FollowCommunityProfileApi.md#followcommunityprofile) | **POST** /api/v1/users/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId} | Follows A Community Profile |
+| *FollowCommunityProfileApi* | [**followCommunityProfile**](Apis/FollowCommunityProfileApi.md#followcommunityprofile) | **POST** /api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId} | Follows A Community Profile |
 | *FollowProfileApi* | [**acceptFollowProfile**](Apis/FollowProfileApi.md#acceptfollowprofile) | **POST** /api/v1/follow-requests/{followRecordId}/accept | Accepts a user's follow request |
-*FollowProfileApi* | [**followProfile**](Apis/FollowProfileApi.md#followprofile) | **POST** /api/v1/users/{sourceUserId}/follow/{targetUserId} | follow a user profile |
+*FollowProfileApi* | [**followProfile**](Apis/FollowProfileApi.md#followprofile) | **POST** /api/v1/users/source/{sourceUserId}/follow/target/{targetUserId} | follow a user profile |
 | *NoteApi* | [**createNote**](Apis/NoteApi.md#createnote) | **POST** /api/v1/users/{userId}/post/{postId}/note | Creates and associates a note to a given post |
 *NoteApi* | [**deleteNote**](Apis/NoteApi.md#deletenote) | **DELETE** /api/v1/users/{userId}/post/{postId}/note/{noteId} | Delete a note |
 *NoteApi* | [**editNote**](Apis/NoteApi.md#editnote) | **PUT** /api/v1/users/{userId}/post/{postId}/note/{noteId} | Update a note |
@@ -54,21 +54,21 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *PostApi* | [**getPost**](Apis/PostApi.md#getpost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
 *PostApi* | [**getPostsByTopic**](Apis/PostApi.md#getpostsbytopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
 *PostApi* | [**reportPost**](Apis/PostApi.md#reportpost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
-| *PublicationApi* | [**addPostToPublication**](Apis/PublicationApi.md#addposttopublication) | **POST** /api/v1/users/{editorUserId}/publication/{publicationId} | Add a post to a publication |
-*PublicationApi* | [**addPublicationEditor**](Apis/PublicationApi.md#addpublicationeditor) | **PUT** /api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
+| *PublicationApi* | [**addPostToPublication**](Apis/PublicationApi.md#addposttopublication) | **POST** /api/v1/users/editor/{editorUserId}/publication/{publicationId} | Add a post to a publication |
+*PublicationApi* | [**addPublicationEditor**](Apis/PublicationApi.md#addpublicationeditor) | **PUT** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
 *PublicationApi* | [**createPublication**](Apis/PublicationApi.md#createpublication) | **POST** /api/v1/users/{userId}/publication | Creates a publication |
-*PublicationApi* | [**deletePostFromPublication**](Apis/PublicationApi.md#deletepostfrompublication) | **DELETE** /api/v1/users/{editorUserId}/publication/{publicationId}/post/{postId} | Deletes a post from a publication |
-*PublicationApi* | [**deletePublication**](Apis/PublicationApi.md#deletepublication) | **DELETE** /api/v1/users/{adminUserId}/publication/{publicationId} | Deletes a publication |
-*PublicationApi* | [**deletePublicationEditor**](Apis/PublicationApi.md#deletepublicationeditor) | **DELETE** /api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Deletes an editor to a publication |
+*PublicationApi* | [**deletePostFromPublication**](Apis/PublicationApi.md#deletepostfrompublication) | **DELETE** /api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId} | Deletes a post from a publication |
+*PublicationApi* | [**deletePublication**](Apis/PublicationApi.md#deletepublication) | **DELETE** /api/v1/users/admin/{adminUserId}/publication/{publicationId} | Deletes a publication |
+*PublicationApi* | [**deletePublicationEditor**](Apis/PublicationApi.md#deletepublicationeditor) | **DELETE** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Deletes an editor to a publication |
 *PublicationApi* | [**getPublication**](Apis/PublicationApi.md#getpublication) | **GET** /api/v1/users/{userId}/publication/{publicationId} | Gets a publication |
 | *ReactionApi* | [**reactToComment**](Apis/ReactionApi.md#reacttocomment) | **POST** /api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction} | Reacts to a comment |
 *ReactionApi* | [**reactToCommentReply**](Apis/ReactionApi.md#reacttocommentreply) | **POST** /api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction} | Reacts to a comment reply |
 *ReactionApi* | [**reactToPost**](Apis/ReactionApi.md#reacttopost) | **POST** /api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction} | Reacts to a post |
 | *ServiceHealthApi* | [**healthCheck**](Apis/ServiceHealthApi.md#healthcheck) | **GET** /api/v1/health | health check |
 | *ServiceReadynessApi* | [**readynessCheck**](Apis/ServiceReadynessApi.md#readynesscheck) | **GET** /api/v1/ready | readyness check |
-| *ThreadApi* | [**addPostToThread**](Apis/ThreadApi.md#addposttothread) | **POST** /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread | Adds A Post To A Thread |
-*ThreadApi* | [**getPostThread**](Apis/ThreadApi.md#getpostthread) | **GET** /api/v1/users/{userId}/post/{postId}/thread | Gets A Post's Thread |
-*ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread/target/{participantPostId} | Deletes A Post From A Thread |
+| *ThreadApi* | [**addPostToThread**](Apis/ThreadApi.md#addposttothread) | **POST** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType} | Adds A Post To A Thread |
+*ThreadApi* | [**getPostThread**](Apis/ThreadApi.md#getpostthread) | **GET** /api/v1/users/{userId}/post/thread/{postId} | Gets A Post's Thread |
+*ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
 | *TopicApi* | [**createTopic**](Apis/TopicApi.md#createtopic) | **POST** /api/v1/users/{userId}/community/{communityProfileId}/topic | Create A Topic |
 *TopicApi* | [**getTopicsOfCommunitiesUserFollows**](Apis/TopicApi.md#gettopicsofcommunitiesuserfollows) | **GET** /api/v1/users/{userId}/topics | Get Topics Of Communities User Follows |
 | *UserApi* | [**editUserProfile**](Apis/UserApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |

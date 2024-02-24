@@ -4,9 +4,9 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addPostToThread**](ThreadApi.md#addPostToThread) | **POST** /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread | Adds A Post To A Thread |
-| [**getPostThread**](ThreadApi.md#getPostThread) | **GET** /api/v1/users/{userId}/post/{postId}/thread | Gets A Post&#39;s Thread |
-| [**removePostFromThread**](ThreadApi.md#removePostFromThread) | **DELETE** /api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread/target/{participantPostId} | Deletes A Post From A Thread |
+| [**addPostToThread**](ThreadApi.md#addPostToThread) | **POST** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType} | Adds A Post To A Thread |
+| [**getPostThread**](ThreadApi.md#getPostThread) | **GET** /api/v1/users/{userId}/post/thread/{postId} | Gets A Post&#39;s Thread |
+| [**removePostFromThread**](ThreadApi.md#removePostFromThread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
 
 
 <a name="addPostToThread"></a>

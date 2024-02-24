@@ -47,7 +47,7 @@ merge-configs:
 
 validate:
 	krakend check --config ./krakend-config/final-krakend.json -ddd
-	krakend check -lc ./krakend-config/final-krakend.json
+	krakend check -tlc ./krakend-config/final-krakend.json
 
 copy-configs-to-gateway:
 	cp ./krakend-config/final-krakend.json ./backend-api-gateway/krakend.json

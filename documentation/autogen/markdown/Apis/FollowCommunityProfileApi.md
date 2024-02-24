@@ -4,7 +4,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**followCommunityProfile**](FollowCommunityProfileApi.md#followCommunityProfile) | **POST** /api/v1/users/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId} | Follows A Community Profile |
+| [**followCommunityProfile**](FollowCommunityProfileApi.md#followCommunityProfile) | **POST** /api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId} | Follows A Community Profile |
 
 
 <a name="followCommunityProfile"></a>

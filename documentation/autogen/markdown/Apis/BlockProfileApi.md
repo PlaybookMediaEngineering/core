@@ -4,7 +4,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**blockUserProfile**](BlockProfileApi.md#blockUserProfile) | **POST** /api/v1/users/{sourceUserId}/block/{targetUserId} | blocks a user profile |
+| [**blockUserProfile**](BlockProfileApi.md#blockUserProfile) | **POST** /api/v1/users/source/{sourceUserId}/block/target/{targetUserId} | blocks a user profile |
 
 
 <a name="blockUserProfile"></a>

@@ -149,7 +149,7 @@ service SocialService {
   // as well as the profile being blocked. Additionally, a block record cannot already exist
   // between both accounts
   rpc BlockUserProfile(BlockUserProfileRequest) returns (BlockUserProfileResponse) {
-    option (google.api.http) = {post: "/api/v1/users/{source_user_id}/block/{target_user_id}"};
+    option (google.api.http) = {post: "/api/v1/users/source/{source_user_id}/block/target/{target_user_id}"};
 
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "blocks a user profile"
@@ -177,7 +177,7 @@ service SocialService {
   // put in "standby" mode meaning a follow request is sent to the target profile
   // for approval
   rpc FollowProfile(FollowProfileRequest) returns (FollowProfileResponse) {
-    option (google.api.http) = {post: "/api/v1/users/{source_user_id}/follow/{target_user_id}"};
+    option (google.api.http) = {post: "/api/v1/users/source/{source_user_id}/follow/target/{target_user_id}"};
 
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "follow a user profile"
@@ -322,7 +322,7 @@ service SocialService {
   }
 
   rpc FollowCommunityProfile(FollowCommunityProfileRequest) returns (FollowCommunityProfileResponse) {
-    option (google.api.http) = {post: "/api/v1/users/{source_user_id}/follow/community-profiles/{target_community_profile_id}"};
+    option (google.api.http) = {post: "/api/v1/users/source/{source_user_id}/follow/community-profiles/{target_community_profile_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Follows A Community Profile"
       tags: ["follow-community-profile"]
@@ -522,7 +522,7 @@ service SocialService {
 
   rpc SharePost(SharePostRequest) returns (SharePostResponse) {
     option (google.api.http) = {
-      post: "/api/v1/users/{user_id}/post/{parent_post_id}/type/{parent_post_type}/share"
+      post: "/api/v1/users/{user_id}/post/share/{parent_post_id}/type/{parent_post_type}"
       body: "content"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -544,7 +544,7 @@ service SocialService {
 
   rpc AddPostToThread(AddPostToThreadRequest) returns (AddPostToThreadResponse) {
     option (google.api.http) = {
-      post: "/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread"
+      post: "/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}"
       body: "post"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -565,7 +565,7 @@ service SocialService {
   }
 
   rpc RemovePostFromThread(RemovePostFromThreadRequest) returns (RemovePostFromThreadResponse) {
-    option (google.api.http) = {delete: "/api/v1/users/{user_id}/post/{parent_post_id}/type/{post_type}/thread/target/{participant_post_id}"};
+    option (google.api.http) = {delete: "/api/v1/users/{user_id}/post/thread/{parent_post_id}/type/{post_type}/target/{participant_post_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Deletes A Post From A Thread"
       tags: ["thread"]
@@ -584,7 +584,7 @@ service SocialService {
   }
 
   rpc GetPostThread(GetPostThreadRequest) returns (GetPostThreadResponse) {
-    option (google.api.http) = {get: "/api/v1/users/{user_id}/post/{post_id}/thread"};
+    option (google.api.http) = {get: "/api/v1/users/{user_id}/post/thread/{post_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Gets A Post's Thread"
       tags: ["thread"]
@@ -1251,7 +1251,7 @@ service SocialService {
   }
 
   rpc DeletePublication(DeletePublicationRequest) returns (DeletePublicationResponse) {
-    option (google.api.http) = {delete: "/api/v1/users/{admin_user_id}/publication/{publication_id}"};
+    option (google.api.http) = {delete: "/api/v1/users/admin/{admin_user_id}/publication/{publication_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Deletes a publication"
       tags: ["publication"]
@@ -1270,7 +1270,7 @@ service SocialService {
   }
 
   rpc AddPublicationEditor(AddPublicationEditorRequest) returns (AddPublicationEditorResponse) {
-    option (google.api.http) = {put: "/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"};
+    option (google.api.http) = {put: "/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Adds an editor to a publication"
       tags: ["publication"]
@@ -1289,7 +1289,7 @@ service SocialService {
   }
 
   rpc DeletePublicationEditor(DeletePublicationEditorRequest) returns (DeletePublicationEditorResponse) {
-    option (google.api.http) = {delete: "/api/v1/users/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"};
+    option (google.api.http) = {delete: "/api/v1/users/admin/{admin_user_id}/publication/{publication_id}/editor/{editor_user_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Deletes an editor to a publication"
       tags: ["publication"]
@@ -1309,7 +1309,7 @@ service SocialService {
 
   rpc AddPostToPublication(AddPostToPublicationRequest) returns (AddPostToPublicationResponse) {
     option (google.api.http) = {
-      post: "/api/v1/users/{editor_user_id}/publication/{publication_id}"
+      post: "/api/v1/users/editor/{editor_user_id}/publication/{publication_id}"
       body: "post"
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
@@ -1330,7 +1330,7 @@ service SocialService {
   }
 
   rpc DeletePostFromPublication(DeletePostFromPublicationRequest) returns (DeletePostFromPublicationResponse) {
-    option (google.api.http) = {delete: "/api/v1/users/{editor_user_id}/publication/{publication_id}/post/{post_id}"};
+    option (google.api.http) = {delete: "/api/v1/users/editor/{editor_user_id}/publication/{publication_id}/post/{post_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Deletes a post from a publication"
       tags: ["publication"]
@@ -1349,7 +1349,7 @@ service SocialService {
   }
 
   rpc BookmarkPost(BookmarkPostRequest) returns (BookmarkPostResponse) {
-    option (google.api.http) = {post: "/api/v1/users/{user_id}/post/{post_id}/bookmark"};
+    option (google.api.http) = {post: "/api/v1/users/{user_id}/post/bookmark/{post_id}"};
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "Bookmarks a post"
       tags: ["bookmark"]

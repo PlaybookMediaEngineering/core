@@ -6,7 +6,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 |------------- | ------------- | -------------|
 | [**getCommunityFeed**](FeedApi.md#getCommunityFeed) | **GET** /api/v1/community-profiles/{communityProfileId}/timeline | Gets A Community Feed |
 | [**getUserFeed**](FeedApi.md#getUserFeed) | **GET** /api/v1/users/{userId}/timeline | Gets A Userfeed |
-| [**sharePost**](FeedApi.md#sharePost) | **POST** /api/v1/users/{userId}/post/{parentPostId}/type/{parentPostType}/share | Share a post |
+| [**sharePost**](FeedApi.md#sharePost) | **POST** /api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType} | Share a post |
 
 
 <a name="getCommunityFeed"></a>

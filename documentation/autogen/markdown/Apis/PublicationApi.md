@@ -4,12 +4,12 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**addPostToPublication**](PublicationApi.md#addPostToPublication) | **POST** /api/v1/users/{editorUserId}/publication/{publicationId} | Add a post to a publication |
-| [**addPublicationEditor**](PublicationApi.md#addPublicationEditor) | **PUT** /api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
+| [**addPostToPublication**](PublicationApi.md#addPostToPublication) | **POST** /api/v1/users/editor/{editorUserId}/publication/{publicationId} | Add a post to a publication |
+| [**addPublicationEditor**](PublicationApi.md#addPublicationEditor) | **PUT** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
 | [**createPublication**](PublicationApi.md#createPublication) | **POST** /api/v1/users/{userId}/publication | Creates a publication |
-| [**deletePostFromPublication**](PublicationApi.md#deletePostFromPublication) | **DELETE** /api/v1/users/{editorUserId}/publication/{publicationId}/post/{postId} | Deletes a post from a publication |
-| [**deletePublication**](PublicationApi.md#deletePublication) | **DELETE** /api/v1/users/{adminUserId}/publication/{publicationId} | Deletes a publication |
-| [**deletePublicationEditor**](PublicationApi.md#deletePublicationEditor) | **DELETE** /api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Deletes an editor to a publication |
+| [**deletePostFromPublication**](PublicationApi.md#deletePostFromPublication) | **DELETE** /api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId} | Deletes a post from a publication |
+| [**deletePublication**](PublicationApi.md#deletePublication) | **DELETE** /api/v1/users/admin/{adminUserId}/publication/{publicationId} | Deletes a publication |
+| [**deletePublicationEditor**](PublicationApi.md#deletePublicationEditor) | **DELETE** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Deletes an editor to a publication |
 | [**getPublication**](PublicationApi.md#getPublication) | **GET** /api/v1/users/{userId}/publication/{publicationId} | Gets a publication |
 
 

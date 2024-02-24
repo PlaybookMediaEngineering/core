@@ -1113,161 +1113,7 @@
                 ]
             }
         },
-        "/api/v1/users/bookmarks/{userId}": {
-            "get": {
-                "summary": "Get Bookmarked Posts",
-                "description": "This endpoint enables a client to get all bookmarked posts of a given user",
-                "operationId": "GetBookmarkedPosts",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GetBookmarkedPostsResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Request failed due to invalid input.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Request failed due to incorrect path.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Request failed due to internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unexpected error response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Status"
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "userId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "tags": [
-                    "bookmarks"
-                ]
-            }
-        },
-        "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}": {
-            "get": {
-                "summary": "Gets a set of user profiles",
-                "description": "This endpoint enables a client to get a number of user profiles in a paginated manner",
-                "operationId": "GetUserProfiles",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GetUserProfilesResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Request failed due to invalid input.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Request failed due to incorrect path.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Request failed due to internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unexpected error response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Status"
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "pageSize",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    },
-                    {
-                        "name": "pageNumber",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        }
-                    }
-                ],
-                "tags": [
-                    "user profile"
-                ]
-            }
-        },
-        "/api/v1/users/{adminUserId}/publication/{publicationId}": {
+        "/api/v1/users/admin/{adminUserId}/publication/{publicationId}": {
             "delete": {
                 "summary": "Deletes a publication",
                 "description": "This endpoint enables a client to delete a publication",
@@ -1348,7 +1194,7 @@
                 ]
             }
         },
-        "/api/v1/users/{adminUserId}/publication/{publicationId}/editor/{editorUserId}": {
+        "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}": {
             "delete": {
                 "summary": "Deletes an editor to a publication",
                 "description": "This endpoint enables a client to add an editor to a publication",
@@ -1524,7 +1370,79 @@
                 ]
             }
         },
-        "/api/v1/users/{editorUserId}/publication/{publicationId}": {
+        "/api/v1/users/bookmarks/{userId}": {
+            "get": {
+                "summary": "Get Bookmarked Posts",
+                "description": "This endpoint enables a client to get all bookmarked posts of a given user",
+                "operationId": "GetBookmarkedPosts",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetBookmarkedPostsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "bookmarks"
+                ]
+            }
+        },
+        "/api/v1/users/editor/{editorUserId}/publication/{publicationId}": {
             "post": {
                 "summary": "Add a post to a publication",
                 "description": "This endpoint enables a client to add a post to a publication",
@@ -1608,7 +1526,7 @@
                 ]
             }
         },
-        "/api/v1/users/{editorUserId}/publication/{publicationId}/post/{postId}": {
+        "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}": {
             "delete": {
                 "summary": "Deletes a post from a publication",
                 "description": "This endpoint enables a client to delete a post from a publication",
@@ -1717,7 +1635,89 @@
                 ]
             }
         },
-        "/api/v1/users/{sourceUserId}/block/{targetUserId}": {
+        "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}": {
+            "get": {
+                "summary": "Gets a set of user profiles",
+                "description": "This endpoint enables a client to get a number of user profiles in a paginated manner",
+                "operationId": "GetUserProfiles",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetUserProfilesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "pageSize",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNumber",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "tags": [
+                    "user profile"
+                ]
+            }
+        },
+        "/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}": {
             "post": {
                 "summary": "blocks a user profile",
                 "description": "This endpoint enables a client to block a user profile",
@@ -1799,7 +1799,7 @@
                 ]
             }
         },
-        "/api/v1/users/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}": {
+        "/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}": {
             "post": {
                 "summary": "Follows A Community Profile",
                 "description": "This endpoint enables a client to follow a community profile",
@@ -1882,7 +1882,7 @@
                 ]
             }
         },
-        "/api/v1/users/{sourceUserId}/follow/{targetUserId}": {
+        "/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}": {
             "post": {
                 "summary": "follow a user profile",
                 "description": "This endpoint enables a client to follow a user profile",
@@ -3229,7 +3229,87 @@
                 ]
             }
         },
-        "/api/v1/users/{userId}/post/{parentPostId}/type/{parentPostType}/share": {
+        "/api/v1/users/{userId}/post/bookmark/{postId}": {
+            "post": {
+                "summary": "Bookmarks a post",
+                "description": "This endpoint enables a client to bookmark a post",
+                "operationId": "BookmarkPost",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BookmarkPostResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "bookmark"
+                ]
+            }
+        },
+        "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}": {
             "post": {
                 "summary": "Share a post",
                 "description": "This endpoint enables a client to share a post",
@@ -3341,7 +3421,7 @@
                 ]
             }
         },
-        "/api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread": {
+        "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}": {
             "post": {
                 "summary": "Adds A Post To A Thread",
                 "description": "This endpoint enables a client to add a post to a thread",
@@ -3443,7 +3523,7 @@
                 ]
             }
         },
-        "/api/v1/users/{userId}/post/{parentPostId}/type/{postType}/thread/target/{participantPostId}": {
+        "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}": {
             "delete": {
                 "summary": "Deletes A Post From A Thread",
                 "description": "This endpoint enables a client to delete a post from a thread",
@@ -3542,6 +3622,106 @@
                         "required": true,
                         "schema": {
                             "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "thread"
+                ]
+            }
+        },
+        "/api/v1/users/{userId}/post/thread/{postId}": {
+            "get": {
+                "summary": "Gets A Post's Thread",
+                "description": "This endpoint enables a client to query a post's thread",
+                "operationId": "GetPostThread",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPostThreadResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "postId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "postType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "POST_TYPE_UNSPECIFIED",
+                                "POST_TYPE_POST",
+                                "POST_TYPE_REPOST",
+                                "POST_TYPE_QUESTION",
+                                "POST_TYPE_ACHIEVEMENT",
+                                "POST_TYPE_ANNOUNCEMENT",
+                                "POST_TYPE_POLL",
+                                "POST_TYPE_ARTICLE",
+                                "POST_TYPE_SHORT_STORY"
+                            ],
+                            "default": "POST_TYPE_UNSPECIFIED"
                         }
                     }
                 ],
@@ -3773,84 +3953,6 @@
                                 "POST_TYPE_SHORT_STORY"
                             ],
                             "default": "POST_TYPE_UNSPECIFIED"
-                        }
-                    }
-                ],
-                "tags": [
-                    "bookmark"
-                ]
-            },
-            "post": {
-                "summary": "Bookmarks a post",
-                "description": "This endpoint enables a client to bookmark a post",
-                "operationId": "BookmarkPost",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/BookmarkPostResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Request failed due to invalid input.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Request failed due to incorrect path.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Request failed due to internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unexpected error response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Status"
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "userId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "postId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
                         }
                     }
                 ],
@@ -5441,106 +5543,6 @@
                 },
                 "tags": [
                     "post"
-                ]
-            }
-        },
-        "/api/v1/users/{userId}/post/{postId}/thread": {
-            "get": {
-                "summary": "Gets A Post's Thread",
-                "description": "This endpoint enables a client to query a post's thread",
-                "operationId": "GetPostThread",
-                "responses": {
-                    "200": {
-                        "description": "A successful response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/GetPostThreadResponse"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Request failed due to invalid input.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "Request failed due to incorrect path.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Request failed due to internal server error.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
-                                }
-                            }
-                        }
-                    },
-                    "default": {
-                        "description": "An unexpected error response.",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/Status"
-                                }
-                            }
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "userId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "postId",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "postType",
-                        "in": "query",
-                        "required": true,
-                        "schema": {
-                            "type": "string",
-                            "enum": [
-                                "POST_TYPE_UNSPECIFIED",
-                                "POST_TYPE_POST",
-                                "POST_TYPE_REPOST",
-                                "POST_TYPE_QUESTION",
-                                "POST_TYPE_ACHIEVEMENT",
-                                "POST_TYPE_ANNOUNCEMENT",
-                                "POST_TYPE_POLL",
-                                "POST_TYPE_ARTICLE",
-                                "POST_TYPE_SHORT_STORY"
-                            ],
-                            "default": "POST_TYPE_UNSPECIFIED"
-                        }
-                    }
-                ],
-                "tags": [
-                    "thread"
                 ]
             }
         },

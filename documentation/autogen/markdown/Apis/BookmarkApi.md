@@ -4,7 +4,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**bookmarkPost**](BookmarkApi.md#bookmarkPost) | **POST** /api/v1/users/{userId}/post/{postId}/bookmark | Bookmarks a post |
+| [**bookmarkPost**](BookmarkApi.md#bookmarkPost) | **POST** /api/v1/users/{userId}/post/bookmark/{postId} | Bookmarks a post |
 | [**bookmarkPublication**](BookmarkApi.md#bookmarkPublication) | **POST** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Bookmarks a publication |
 | [**removeBookmarkedPost**](BookmarkApi.md#removeBookmarkedPost) | **DELETE** /api/v1/users/{userId}/post/{postId}/bookmark | Deletes A Bookmarked Post |
 | [**removeBookmarkedPublication**](BookmarkApi.md#removeBookmarkedPublication) | **DELETE** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Deletes A Bookmarked Publication |
