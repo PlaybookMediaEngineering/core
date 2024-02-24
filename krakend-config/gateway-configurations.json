@@ -42,8 +42,8 @@
       "hide_version_header": true
     },
     "telemetry/logging": {
-      "level": "ERROR",
-      "prefix": "[SOLOMON-AI API-GATEWAY]",
+      "level": "DEBUG",
+      "prefix": "[PLAYBOOK MEDIA API-GATEWAY]",
       "syslog": false,
       "stdout": true
     },
@@ -56,10 +56,7 @@
       "listen_address": ":8081"
     },
     "security/http": {
-      "allowed_hosts": [
-        "app-platform.solomon-ai.io",
-        "backend.playbookmedia-engineering.com"
-      ],
+      "allowed_hosts": ["playbookmedia-engineering.com"],
       "ssl_proxy_headers": {
         "X-Forwarded-Proto": "https"
       },

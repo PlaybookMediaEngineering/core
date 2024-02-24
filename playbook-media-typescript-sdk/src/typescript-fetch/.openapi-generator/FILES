@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 apis/BlockProfileApi.ts
 apis/BookmarkApi.ts
 apis/BookmarksApi.ts
