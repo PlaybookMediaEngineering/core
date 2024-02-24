@@ -83,14 +83,14 @@ jobs:
             type=raw,value=${{ steps.prep.outputs.VERSION }}
             type=raw,value=latest
       - name: Publish Multi-Arch Image Backend Api Gateway Service
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v5
         with:
           sbom: true
           provenance: true
           push: ${{ github.event_name != 'pull_request' }}
           builder: ${{ steps.buildx.outputs.name }}
           context: ./backend-api-gateway
-          file: Dockerfile.prod
+          file: ./backend-api-gateway/Dockerfile.prod
           platforms: ${{matrix.operating-system}}
           build-args: |
             REVISION=${{ steps.prep.outputs.REVISION }}
