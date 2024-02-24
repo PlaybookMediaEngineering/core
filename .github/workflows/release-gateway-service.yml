@@ -27,7 +27,7 @@ env:
   CHARTS_URL: "https://charts.melodiy.io"
   HELM_PUBLISH_BRANCH: "gh-pages"
   EKS_CLUSTER_NAME: playbookmedia-engineering
-  ECR_REPOSITORY: public.ecr.aws/w8q8y3p0/api-gateway
+  ECR_REPOSITORY: api-gateway
 
 jobs:
   publish-artifacts-to-aws:
@@ -96,19 +96,24 @@ jobs:
         with:
           images: ${{ env.DOCKER_IMAGE }}
           tags: type=raw,value=${{ steps.prep.outputs.VERSION }}
-      - name: Build and Push Docker Image
-        run: docker build --tag ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }} --tag ${{ env.ECR_REPOSITORY }}:latest .
-      - name: Push Image to ECR
-        id: ecr
-        uses: jwalton/gh-ecr-push@v1
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.commit.outputs.short }}
-        with:
-          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
-          image: ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }}
+      - name: Retrieve authentication token, build image, and authenticate docker client
+        run: |
+          aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin public.ecr.aws/w8q8y3p0
+          docker build --tag ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }} --tag ${{ env.ECR_REPOSITORY }}:latest .
+          docker push ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }}
+      # - name: Build and Push Docker Image
+      #   run: docker build --tag ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }} --tag ${{ env.ECR_REPOSITORY }}:latest .
+      # - name: Push Image to ECR
+      #   id: ecr
+      #   uses: jwalton/gh-ecr-push@v1
+      #   env:
+      #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+      #     IMAGE_TAG: ${{ steps.commit.outputs.short }}
+      #   with:
+      #     access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     region: ${{ secrets.AWS_REGION }}
+      #     image: ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }}
       - name: Debug Failure
         if: failure()
         run: kubectl logs -l app=api-gateway || true
