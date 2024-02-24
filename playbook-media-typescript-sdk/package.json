@@ -56,7 +56,6 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^6.0.0",
     "jest": "^27.5.1",
     "lint-staged": "^13.2.1",
     "prettier": "^2.2.1",
@@ -98,6 +97,7 @@
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/npm": "^11.0.2",
     "axios": "^1.6.7",
-    "conventional-changelog-conventionalcommits": "^5.0.0"
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "husky": "^6.0.0"
   }
 }
