@@ -61,8 +61,8 @@
         "X-Forwarded-Proto": "https"
       },
       "host_proxy_headers": ["X-Forwarded-Hosts"],
-      "ssl_redirect": false,
-      "ssl_host": "ssl.host.domain",
+      "ssl_redirect": true,
+      "ssl_host": "playbookmedia-engineering.com",
       "sts_seconds": 300,
       "sts_include_subdomains": true,
       "frame_deny": true,
