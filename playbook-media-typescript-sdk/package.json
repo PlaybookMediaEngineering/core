@@ -97,7 +97,6 @@
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/npm": "^11.0.2",
     "axios": "^1.6.7",
-    "conventional-changelog-conventionalcommits": "^5.0.0",
-    "husky": "^6.0.0"
+    "conventional-changelog-conventionalcommits": "^5.0.0"
   }
 }
