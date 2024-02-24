@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PlaybookMediaEngineering/playbook-media-typescript-sdk.git"
+    "url": "git+https://github.com/PlaybookMediaEngineering/core.git"
   },
   "license": "MIT",
   "author": {
@@ -42,9 +42,9 @@
     "codecov"
   ],
   "bugs": {
-    "url": "https://github.com/PlaybookMediaEngineering/playbook-media-typescript-sdk/issues"
+    "url": "https://github.com/PlaybookMediaEngineering/core/issues"
   },
-  "homepage": "https://github.com/PlaybookMediaEngineering/playbook-media-typescript-sdk#readme",
+  "homepage": "https://github.com/PlaybookMediaEngineering/core#readme",
   "devDependencies": {
     "@ryansonshine/commitizen": "^4.2.8",
     "@ryansonshine/cz-conventional-changelog": "^3.3.4",
@@ -92,31 +92,7 @@
           ]
         }
       ],
-      [
-        "@semantic-release/release-notes-generator",
-        {
-          "preset": "conventionalcommits",
-          "presetConfig": {
-            "types": [
-              {
-                "type": "feat",
-                "section": "Features"
-              },
-              {
-                "type": "fix",
-                "section": "Bug Fixes"
-              },
-              {
-                "type": "build",
-                "section": "Dependencies and Other Build Updates",
-                "hidden": false
-              }
-            ]
-          }
-        }
-      ],
-      "@semantic-release/npm",
-      "@semantic-release/github"
+      "@semantic-release/npm"
     ]
   },
   "dependencies": {
