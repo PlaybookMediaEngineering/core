@@ -67,11 +67,9 @@ jobs:
           echo "REVISION=${GITHUB_SHA}" >> $GITHUB_OUTPUT
           echo "HELM_VERSION=${HELM_VERSION}" >> $GITHUB_OUTPUT
       - name: Validate Service Helm Chart
-        id: validation
-        uses: elifesciences/helm-validator-action@master
-        with:
-          chartPath: "charts/api-gateway"
-          kubernetesVersion: "1.28.0"
+        run: |
+          helm lint ./charts/api-gateway
+          helm template api-gateway ./charts/api-gateway --values ./charts/api-gateway/values.production.yaml
       - name: Generate images meta
         id: meta
         uses: docker/metadata-action@v4
