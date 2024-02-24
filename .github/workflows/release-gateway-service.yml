@@ -89,7 +89,7 @@ jobs:
           provenance: true
           push: ${{ github.event_name != 'pull_request' }}
           builder: ${{ steps.buildx.outputs.name }}
-          context: .
+          context: ./backend-api-gateway
           file: Dockerfile.prod
           platforms: ${{matrix.operating-system}}
           build-args: |
