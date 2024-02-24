@@ -12,7 +12,7 @@ permissions:
 
 defaults:
   run:
-    working-directory: backend-api-gateway
+    working-directory: ./backend-api-gateway
 
 env:
   HELM_CHART_PATH: charts/api-gateway
@@ -39,13 +39,9 @@ jobs:
             release_suffix: ubuntu
         platform: [linux/amd64, linux/arm64, linux/arm64/v8]
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        working-directory: .
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: Set Release and Branch Info
         run: |
           echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
