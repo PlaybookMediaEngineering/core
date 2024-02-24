@@ -61,7 +61,7 @@
         "X-Forwarded-Proto": "https"
       },
       "host_proxy_headers": ["X-Forwarded-Hosts"],
-      "ssl_redirect": true,
+      "ssl_redirect": false,
       "ssl_host": "playbookmedia-engineering.com",
       "sts_seconds": 300,
       "sts_include_subdomains": true,
@@ -72,7 +72,7 @@
       "content_type_nosniff": true,
       "browser_xss_filter": true,
       "content_security_policy": "default-src 'self';",
-      "is_development": false
+      "is_development": true
     },
     "security/cors": {
       "allow_origins": ["*"],
