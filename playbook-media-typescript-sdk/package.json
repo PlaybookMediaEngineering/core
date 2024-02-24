@@ -52,7 +52,6 @@
     "@types/node": "^12.20.11",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "conventional-changelog-conventionalcommits": "^5.0.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
@@ -98,6 +97,7 @@
   "dependencies": {
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/npm": "^11.0.2",
-    "axios": "^1.6.7"
+    "axios": "^1.6.7",
+    "conventional-changelog-conventionalcommits": "^5.0.0"
   }
 }
