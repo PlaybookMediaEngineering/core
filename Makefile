@@ -16,7 +16,7 @@ convert-swagger-to-openapiv3:
 update-typescript-sdk:
 	openapi-generator generate \
     	-i ./swagger/backend-api.yaml \
-    	-g typescript-axios -o ./playbook-media-typescript-sdk/src/typescript-axios
+    	-g typescript-fetch -o ./playbook-media-typescript-sdk/src/typescript-fetch
 
 update-docs:
 	openapi-generator generate \

@@ -1,1 +1,1 @@
-export * from './typescript-axios/index';
+export * from './typescript-fetch/index';
