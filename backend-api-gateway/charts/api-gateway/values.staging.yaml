@@ -7,7 +7,7 @@ replicaCount: 1
 environment: staging
 
 image:
-  repository: 891377294027.dkr.ecr.us-east-1.amazonaws.com/api-gateway
+  repository: public.ecr.aws/w8q8y3p0/api-gateway
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: staging

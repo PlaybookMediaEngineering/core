@@ -10,6 +10,10 @@ permissions:
   id-token: write
   packages: write
 
+defaults:
+  run:
+    working-directory: backend-api-gateway
+
 env:
   HELM_CHART_PATH: charts/api-gateway
   DOCKER_IMAGE: docker.io/playbookmedia/api-gateway
@@ -26,7 +30,7 @@ env:
   ECR_REPOSITORY: api-gateway
 
 jobs:
-  publish-artifacts:
+  publish-artifacts-to-aws:
     strategy:
       matrix:
         os: [ubuntu-latest]
@@ -52,7 +56,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
       - name: Set short git commit SHA
         id: commit
-        uses: prompt/actions-commit-hash@v2
+        uses: prompt/actions-commit-hash@v1
       - name: Setup Go
         uses: actions/setup-go@v4
         with:
@@ -98,7 +102,7 @@ jobs:
           tags: type=raw,value=${{ steps.prep.outputs.VERSION }}
       - name: Build and Push Docker Image
         run: docker build --tag ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }} --tag ${{ env.ECR_REPOSITORY }}:latest .
-      - name: Push to ECR
+      - name: Push Image to ECR
         id: ecr
         uses: jwalton/gh-ecr-push@v1
         env:
@@ -112,50 +116,50 @@ jobs:
       - name: Debug Failure
         if: failure()
         run: kubectl logs -l app=api-gateway || true
-  deploy:
-    needs: [publish-artifacts]
-    runs-on: ubuntu-latest
-    env:
-      working-directory: .
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Update SHA
-        run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/sha/_meta
-      - name: Set short git commit SHA
-        id: commit
-        uses: prompt/actions-commit-hash@v2
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
+  # deploy:
+  #   needs: [publish-artifacts-to-aws]
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     working-directory: .
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+  #     - name: Update SHA
+  #       run: echo $GITHUB_SHA > $GITHUB_WORKSPACE/sha/_meta
+  #     - name: Set short git commit SHA
+  #       id: commit
+  #       uses: prompt/actions-commit-hash@v2
+  #     - name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Login to Amazon ECR
-        id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v1
-      - name: Update kube config
-        run: aws eks update-kubeconfig --name ${{env.EKS_CLUSTER_NAME}} --region ${{ secrets.AWS_REGION }}
-      - name: Deploy to EKS
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ steps.commit.outputs.short }}
-        run: |
-          helm upgrade --install api-gateway ./charts/api-gateway --values ./charts/api-gateway/values.production.yaml --set image.tag=${{ steps.commit.outputs.short }} -n platform
-  release-golang:
-    needs: [publish-artifacts, deploy]
-    name: Update Tags
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - uses: go-semantic-release/action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          changelog-file: CHANGELOG.md
-          update-file: pkg/version/version.go
-          force-bump-patch-version: true
-          changelog-generator-opt: "emojis=true"
+  #     - name: Login to Amazon ECR
+  #       id: login-ecr
+  #       uses: aws-actions/amazon-ecr-login@v1
+  #     - name: Update kube config
+  #       run: aws eks update-kubeconfig --name ${{env.EKS_CLUSTER_NAME}} --region ${{ secrets.AWS_REGION }}
+  #     - name: Deploy to EKS
+  #       env:
+  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+  #         IMAGE_TAG: ${{ steps.commit.outputs.short }}
+  #       run: |
+  #         helm upgrade --install api-gateway ./charts/api-gateway --values ./charts/api-gateway/values.production.yaml --set image.tag=${{ steps.commit.outputs.short }} -n platform
+  # release-golang:
+  #   needs: [publish-artifacts, deploy]
+  #   name: Update Tags
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #     - uses: go-semantic-release/action@v1
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         changelog-file: CHANGELOG.md
+  #         update-file: pkg/version/version.go
+  #         force-bump-patch-version: true
+  #         changelog-generator-opt: "emojis=true"
