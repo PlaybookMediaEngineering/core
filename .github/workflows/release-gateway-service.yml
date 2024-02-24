@@ -42,6 +42,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Set Release and Branch Info
         run: |
           echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
@@ -101,13 +102,11 @@ jobs:
       - name: Push Image to ECR
         id: ecr
         uses: jwalton/gh-ecr-push@v1
-        env:
-          ECR_REGISTRY: public.ecr.aws/w8q8y3p0
-          IMAGE_TAG: ${{ steps.commit.outputs.short }}
         with:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: ${{ secrets.AWS_REGION }}
+          region: us-east-1
+          local-image: ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }}
           image: ${{ env.ECR_REPOSITORY }}:${{ steps.commit.outputs.short }}
       - name: Debug Failure
         if: failure()
@@ -141,7 +140,7 @@ jobs:
   #       run: aws eks update-kubeconfig --name ${{env.EKS_CLUSTER_NAME}} --region ${{ secrets.AWS_REGION }}
   #     - name: Deploy to EKS
   #       env:
-  #         ECR_REGISTRY: public.ecr.aws/w8q8y3p0
+  #         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
   #         IMAGE_TAG: ${{ steps.commit.outputs.short }}
   #       run: |
   #         helm upgrade --install api-gateway ./charts/api-gateway --values ./charts/api-gateway/values.production.yaml --set image.tag=${{ steps.commit.outputs.short }} -n platform
