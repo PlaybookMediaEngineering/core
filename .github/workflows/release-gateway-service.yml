@@ -27,7 +27,7 @@ env:
   CHARTS_URL: "https://charts.melodiy.io"
   HELM_PUBLISH_BRANCH: "gh-pages"
   EKS_CLUSTER_NAME: playbookmedia-engineering
-  ECR_REPOSITORY: api-gateway
+  ECR_REPOSITORY: public.ecr.aws/w8q8y3p0/api-gateway
 
 jobs:
   publish-artifacts-to-aws:
