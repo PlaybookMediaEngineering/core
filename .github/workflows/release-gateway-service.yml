@@ -90,7 +90,7 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           builder: ${{ steps.buildx.outputs.name }}
           context: .
-          file: ./Dockerfile.prod
+          file: Dockerfile.prod
           platforms: ${{matrix.operating-system}}
           build-args: |
             REVISION=${{ steps.prep.outputs.REVISION }}
