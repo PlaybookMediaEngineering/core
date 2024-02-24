@@ -40,7 +40,7 @@ jobs:
       - run: go test -v ./...
   release-golang:
     needs: test
-    name: Build
+    name: release-golang
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
