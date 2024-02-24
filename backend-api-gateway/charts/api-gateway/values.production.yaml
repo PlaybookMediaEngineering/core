@@ -30,7 +30,7 @@ podAnnotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "8081"
   prometheus.io/path: "__stats"
-  service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+  service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
   service.beta.kubernetes.io/do-loadbalancer-healthcheck-port: "8080"
   service.beta.kubernetes.io/do-loadbalancer-healthcheck-protocol: "http"
   service.beta.kubernetes.io/do-loadbalancer-healthcheck-path: "/__health"
