@@ -73,6 +73,7 @@ const (
 	SocialService_DeletePoll_FullMethodName                        = "/social_service.v2.SocialService/DeletePoll"
 	SocialService_GetPoll_FullMethodName                           = "/social_service.v2.SocialService/GetPoll"
 	SocialService_GetPolls_FullMethodName                          = "/social_service.v2.SocialService/GetPolls"
+	SocialService_GetPosts_FullMethodName                          = "/social_service.v2.SocialService/GetPosts"
 	SocialService_RespondToPoll_FullMethodName                     = "/social_service.v2.SocialService/RespondToPoll"
 	SocialService_CreateNote_FullMethodName                        = "/social_service.v2.SocialService/CreateNote"
 	SocialService_DeleteNote_FullMethodName                        = "/social_service.v2.SocialService/DeleteNote"
@@ -175,6 +176,7 @@ type SocialServiceClient interface {
 	DeletePoll(ctx context.Context, in *DeletePollRequest, opts ...grpc.CallOption) (*DeletePollResponse, error)
 	GetPoll(ctx context.Context, in *GetPollRequest, opts ...grpc.CallOption) (*GetPollResponse, error)
 	GetPolls(ctx context.Context, in *GetPollsRequest, opts ...grpc.CallOption) (*GetPollsResponse, error)
+	GetPosts(ctx context.Context, in *GetPostsRequest, opts ...grpc.CallOption) (*GetPostsResponse, error)
 	RespondToPoll(ctx context.Context, in *RespondToPollRequest, opts ...grpc.CallOption) (*RespondToPollResponse, error)
 	CreateNote(ctx context.Context, in *CreateNoteRequest, opts ...grpc.CallOption) (*CreateNoteResponse, error)
 	DeleteNote(ctx context.Context, in *DeleteNoteRequest, opts ...grpc.CallOption) (*DeleteNoteResponse, error)
@@ -687,6 +689,15 @@ func (c *socialServiceClient) GetPolls(ctx context.Context, in *GetPollsRequest,
 	return out, nil
 }
 
+func (c *socialServiceClient) GetPosts(ctx context.Context, in *GetPostsRequest, opts ...grpc.CallOption) (*GetPostsResponse, error) {
+	out := new(GetPostsResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetPosts_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *socialServiceClient) RespondToPoll(ctx context.Context, in *RespondToPollRequest, opts ...grpc.CallOption) (*RespondToPollResponse, error) {
 	out := new(RespondToPollResponse)
 	err := c.cc.Invoke(ctx, SocialService_RespondToPoll_FullMethodName, in, out, opts...)
@@ -915,6 +926,7 @@ type SocialServiceServer interface {
 	DeletePoll(context.Context, *DeletePollRequest) (*DeletePollResponse, error)
 	GetPoll(context.Context, *GetPollRequest) (*GetPollResponse, error)
 	GetPolls(context.Context, *GetPollsRequest) (*GetPollsResponse, error)
+	GetPosts(context.Context, *GetPostsRequest) (*GetPostsResponse, error)
 	RespondToPoll(context.Context, *RespondToPollRequest) (*RespondToPollResponse, error)
 	CreateNote(context.Context, *CreateNoteRequest) (*CreateNoteResponse, error)
 	DeleteNote(context.Context, *DeleteNoteRequest) (*DeleteNoteResponse, error)
@@ -1099,6 +1111,9 @@ func (UnimplementedSocialServiceServer) GetPoll(context.Context, *GetPollRequest
 }
 func (UnimplementedSocialServiceServer) GetPolls(context.Context, *GetPollsRequest) (*GetPollsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPolls not implemented")
+}
+func (UnimplementedSocialServiceServer) GetPosts(context.Context, *GetPostsRequest) (*GetPostsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPosts not implemented")
 }
 func (UnimplementedSocialServiceServer) RespondToPoll(context.Context, *RespondToPollRequest) (*RespondToPollResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RespondToPoll not implemented")
@@ -2133,6 +2148,24 @@ func _SocialService_GetPolls_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_GetPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPostsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetPosts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetPosts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetPosts(ctx, req.(*GetPostsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _SocialService_RespondToPoll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RespondToPollRequest)
 	if err := dec(in); err != nil {
@@ -2643,6 +2676,10 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPolls",
 			Handler:    _SocialService_GetPolls_Handler,
+		},
+		{
+			MethodName: "GetPosts",
+			Handler:    _SocialService_GetPosts_Handler,
 		},
 		{
 			MethodName: "RespondToPoll",

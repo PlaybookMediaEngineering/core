@@ -4146,6 +4146,57 @@ paths:
       summary: Report a post
       tags:
       - post
+  /api/v1/users/{userId}/posts:
+    get:
+      description: This endpoint enables a client to query all posts tied to a given
+        user id
+      operationId: GetPosts
+      parameters:
+      - description: |-
+          the user ID trying to delete this user profile (NOTE: userID refers to the
+          ID from the vantage point of the user service. This ID is the single source
+          of truth for a given user across our suite of services) | type: uint64
+        explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPostsResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get all the posts of a given user
+      tags:
+      - posts
   /api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following:
     get:
       description: This endpoint enables a client to get all the accounts a given
@@ -27864,6 +27915,883 @@ components:
       title: |-
         GetPostsByTopicResponse: Represent the object returned as a
         response to the get posts by topic request
+      type: object
+    GetPostsResponse:
+      example:
+        posts:
+        - notes:
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          hashtags:
+          - hashtags
+          - hashtags
+          userIdToReportsMap:
+            key: userIdToReportsMap
+          media:
+            createdAt: createdAt
+            metadata:
+              imageWidth: imageWidth
+              resize: null
+              id: id
+              type: null
+              crop: null
+              imageHeight: imageHeight
+            link: link
+            id: id
+          aiGeneratedQuestionResponse: aiGeneratedQuestionResponse
+          title: title
+          content: content
+          createdAt: createdAt
+          readingTime: readingTime
+          extra:
+            key: extra
+          qualityScore: qualityScore
+          action: null
+          id: id
+          comments:
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          insights:
+            languageConfidence: 0.8008282
+            sentiment:
+              negative: 30
+              neutral: 50
+              positive: 89
+              compound: 93
+            wordCount: wordCount
+            entities:
+            - text: text
+              label: label
+            - text: text
+              label: label
+            sentenceCount: "10"
+            language: language
+          userIdToAffinityScoreMap:
+            key: userIdToAffinityScoreMap
+          threadParticipantType: null
+          authorUsername: authorUsername
+          thread:
+            createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            parentPostId: parentPostId
+            updatedAt: updatedAt
+          tags:
+          - tags
+          - tags
+          authorProfileImage: authorProfileImage
+          profileId: profileId
+          affinityScore: affinityScore
+          mentions:
+          - mentions
+          - mentions
+          userIdToReactionMap:
+            key: null
+          topicName: topicName
+          backendPlatformUserId: backendPlatformUserId
+          backgroundImageUrl: backgroundImageUrl
+          authorAccountType: null
+        - notes:
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          hashtags:
+          - hashtags
+          - hashtags
+          userIdToReportsMap:
+            key: userIdToReportsMap
+          media:
+            createdAt: createdAt
+            metadata:
+              imageWidth: imageWidth
+              resize: null
+              id: id
+              type: null
+              crop: null
+              imageHeight: imageHeight
+            link: link
+            id: id
+          aiGeneratedQuestionResponse: aiGeneratedQuestionResponse
+          title: title
+          content: content
+          createdAt: createdAt
+          readingTime: readingTime
+          extra:
+            key: extra
+          qualityScore: qualityScore
+          action: null
+          id: id
+          comments:
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          insights:
+            languageConfidence: 0.8008282
+            sentiment:
+              negative: 30
+              neutral: 50
+              positive: 89
+              compound: 93
+            wordCount: wordCount
+            entities:
+            - text: text
+              label: label
+            - text: text
+              label: label
+            sentenceCount: "10"
+            language: language
+          userIdToAffinityScoreMap:
+            key: userIdToAffinityScoreMap
+          threadParticipantType: null
+          authorUsername: authorUsername
+          thread:
+            createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            parentPostId: parentPostId
+            updatedAt: updatedAt
+          tags:
+          - tags
+          - tags
+          authorProfileImage: authorProfileImage
+          profileId: profileId
+          affinityScore: affinityScore
+          mentions:
+          - mentions
+          - mentions
+          userIdToReactionMap:
+            key: null
+          topicName: topicName
+          backendPlatformUserId: backendPlatformUserId
+          backgroundImageUrl: backgroundImageUrl
+          authorAccountType: null
+      properties:
+        posts:
+          items:
+            $ref: '#/components/schemas/Post'
+          type: array
       type: object
     GetPublicationResponse:
       example:

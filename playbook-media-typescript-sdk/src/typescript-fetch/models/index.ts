@@ -71,6 +71,7 @@ export * from './GetPollsResponse';
 export * from './GetPostResponse';
 export * from './GetPostThreadResponse';
 export * from './GetPostsByTopicResponse';
+export * from './GetPostsResponse';
 export * from './GetPublicationResponse';
 export * from './GetTopicsOfCommunitiesUserFollowsResponse';
 export * from './GetUserFeedResponse';

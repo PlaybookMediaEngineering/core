@@ -11,6 +11,7 @@ Apis/FollowProfileApi.md
 Apis/NoteApi.md
 Apis/PollApi.md
 Apis/PostApi.md
+Apis/PostsApi.md
 Apis/PublicationApi.md
 Apis/ReactionApi.md
 Apis/ServiceHealthApi.md
@@ -90,6 +91,7 @@ Models/GetPollsResponse.md
 Models/GetPostResponse.md
 Models/GetPostThreadResponse.md
 Models/GetPostsByTopicResponse.md
+Models/GetPostsResponse.md
 Models/GetPublicationResponse.md
 Models/GetTopicsOfCommunitiesUserFollowsResponse.md
 Models/GetUserFeedResponse.md

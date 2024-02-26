@@ -11,6 +11,7 @@ apis/FollowProfileApi.ts
 apis/NoteApi.ts
 apis/PollApi.ts
 apis/PostApi.ts
+apis/PostsApi.ts
 apis/PublicationApi.ts
 apis/ReactionApi.ts
 apis/ServiceHealthApi.ts
@@ -92,6 +93,7 @@ models/GetPollsResponse.ts
 models/GetPostResponse.ts
 models/GetPostThreadResponse.ts
 models/GetPostsByTopicResponse.ts
+models/GetPostsResponse.ts
 models/GetPublicationResponse.ts
 models/GetTopicsOfCommunitiesUserFollowsResponse.ts
 models/GetUserFeedResponse.ts

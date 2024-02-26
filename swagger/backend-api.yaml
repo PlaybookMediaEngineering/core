@@ -3892,6 +3892,57 @@ paths:
               - POST_TYPE_SHORT_STORY
       tags:
         - post
+  "/api/v1/users/{userId}/posts":
+    get:
+      summary: Get all the posts of a given user
+      description: This endpoint enables a client to query all posts tied to a given user id
+      operationId: GetPosts
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPostsResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: userId
+          description: >-
+            the user ID trying to delete this user profile (NOTE: userID refers
+            to the
+
+            ID from the vantage point of the user service. This ID is the single source
+
+            of truth for a given user across our suite of services) | type: uint64
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - posts
   "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following":
     get:
       summary: Get Communities and users you are following
@@ -5472,6 +5523,13 @@ components:
       title: |-
         GetPostsByTopicResponse: Represent the object returned as a
         response to the get posts by topic request
+    GetPostsResponse:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: "#/components/schemas/Post"
     GetPublicationResponse:
       type: object
       properties:

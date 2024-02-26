@@ -54,6 +54,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *PostApi* | [**getPost**](Apis/PostApi.md#getpost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
 *PostApi* | [**getPostsByTopic**](Apis/PostApi.md#getpostsbytopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
 *PostApi* | [**reportPost**](Apis/PostApi.md#reportpost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
+| *PostsApi* | [**getPosts**](Apis/PostsApi.md#getposts) | **GET** /api/v1/users/{userId}/posts | Get all the posts of a given user |
 | *PublicationApi* | [**addPostToPublication**](Apis/PublicationApi.md#addposttopublication) | **POST** /api/v1/users/editor/{editorUserId}/publication/{publicationId} | Add a post to a publication |
 *PublicationApi* | [**addPublicationEditor**](Apis/PublicationApi.md#addpublicationeditor) | **PUT** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
 *PublicationApi* | [**createPublication**](Apis/PublicationApi.md#createpublication) | **POST** /api/v1/users/{userId}/publication | Creates a publication |
@@ -153,6 +154,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetPostResponse](./Models/GetPostResponse.md)
  - [GetPostThreadResponse](./Models/GetPostThreadResponse.md)
  - [GetPostsByTopicResponse](./Models/GetPostsByTopicResponse.md)
+ - [GetPostsResponse](./Models/GetPostsResponse.md)
  - [GetPublicationResponse](./Models/GetPublicationResponse.md)
  - [GetTopicsOfCommunitiesUserFollowsResponse](./Models/GetTopicsOfCommunitiesUserFollowsResponse.md)
  - [GetUserFeedResponse](./Models/GetUserFeedResponse.md)

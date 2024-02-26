@@ -1725,6 +1725,62 @@
 	                    ]
 	        },
 	        {
+	            "name": "posts",
+	            "item": [
+	                        {
+    "name": "/api/v1/users/:userId/posts",
+                "description": "This endpoint enables a client to query all posts tied to a given user id",
+                 "item": [
+                            {
+                                "name": "Get all the posts of a given user",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/:userId/posts",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            ":userId",
+                                            "posts"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "userId",
+                                                "value": "",
+                                                "description": "the user ID trying to delete this user profile (NOTE: userID refers to the ID from the vantage point of the user service. This ID is the single source of truth for a given user across our suite of services) | type: uint64"
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint enables a client to query all posts tied to a given user id"
+                                }
+                            }
+                            ]
+                        }
+	                    ]
+	        },
+	        {
 	            "name": "bookmarks",
 	            "item": [
 	                        {

@@ -13,6 +13,7 @@ export * from './FollowProfileApi';
 export * from './NoteApi';
 export * from './PollApi';
 export * from './PostApi';
+export * from './PostsApi';
 export * from './PublicationApi';
 export * from './ReactionApi';
 export * from './ServiceHealthApi';

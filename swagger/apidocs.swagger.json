@@ -4327,6 +4327,57 @@
         ]
       }
     },
+    "/api/v1/users/{userId}/posts": {
+      "get": {
+        "summary": "Get all the posts of a given user",
+        "description": "This endpoint enables a client to query all posts tied to a given user id",
+        "operationId": "GetPosts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPostsResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "description": "the user ID trying to delete this user profile (NOTE: userID refers to the\nID from the vantage point of the user service. This ID is the single source\nof truth for a given user across our suite of services) | type: uint64",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "posts"
+        ]
+      }
+    },
     "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following": {
       "get": {
         "summary": "Get Communities and users you are following",
@@ -6071,6 +6122,18 @@
         }
       },
       "title": "GetPostsByTopicResponse: Represent the object returned as a\nresponse to the get posts by topic request"
+    },
+    "GetPostsResponse": {
+      "type": "object",
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Post"
+          }
+        }
+      }
     },
     "GetPublicationResponse": {
       "type": "object",

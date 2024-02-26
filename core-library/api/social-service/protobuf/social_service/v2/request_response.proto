@@ -982,6 +982,20 @@ message GetPollsResponse {
   repeated PollPost polls = 1;
 }
 
+message GetPostsRequest {
+  // the user ID trying to delete this user profile (NOTE: userID refers to the
+  // ID from the vantage point of the user service. This ID is the single source
+  // of truth for a given user across our suite of services) | type: uint64
+  string user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message GetPostsResponse {
+  repeated Post posts = 1;
+}
+
 message RespondToPollRequest {
   string user_id = 1 [
     (validate.rules).string.min_len = 1,

@@ -1124,6 +1124,25 @@ service SocialService {
     };
   }
 
+  rpc GetPosts(GetPostsRequest) returns (GetPostsResponse) {
+    option (google.api.http) = {get: "/api/v1/users/{user_id}/posts"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get all the posts of a given user"
+      tags: ["posts"]
+      operation_id: "GetPosts"
+      description: "This endpoint enables a client to query all posts tied to a given user id"
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response."
+          schema: {
+            json_schema: {ref: ".social_service.v2.GetPostsResponse"}
+          }
+        }
+      }
+    };
+  }
+
   rpc RespondToPoll(RespondToPollRequest) returns (RespondToPollResponse) {
     option (google.api.http) = {
       post: "/api/v1/users/{user_id}/poll/{poll_id}"
