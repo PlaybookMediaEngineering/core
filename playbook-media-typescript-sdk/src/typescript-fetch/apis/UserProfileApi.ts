@@ -78,7 +78,7 @@ export interface EditUserProfileRequest {
 
 export interface GetCannyUserSSOTokenRequest {
     userId: string;
-    accountType: GetCannyUserSSOTokenAccountTypeEnum;
+    email: string;
 }
 
 export interface GetUserProfileRequest {
@@ -248,8 +248,8 @@ export class UserProfileApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getCannyUserSSOToken.');
         }
 
-        if (requestParameters.accountType === null || requestParameters.accountType === undefined) {
-            throw new runtime.RequiredError('accountType','Required parameter requestParameters.accountType was null or undefined when calling getCannyUserSSOToken.');
+        if (requestParameters.email === null || requestParameters.email === undefined) {
+            throw new runtime.RequiredError('email','Required parameter requestParameters.email was null or undefined when calling getCannyUserSSOToken.');
         }
 
         const queryParameters: any = {};
@@ -257,7 +257,7 @@ export class UserProfileApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/api/v1/user/{userId}/canny/account-type/{accountType}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"accountType"}}`, encodeURIComponent(String(requestParameters.accountType))),
+            path: `/api/v1/user/{userId}/canny/email/{email}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"email"}}`, encodeURIComponent(String(requestParameters.email))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -353,15 +353,6 @@ export class UserProfileApi extends runtime.BaseAPI {
 
 }
 
-/**
- * @export
- */
-export const GetCannyUserSSOTokenAccountTypeEnum = {
-    Unspecified: 'ACCOUNT_TYPE_UNSPECIFIED',
-    User: 'ACCOUNT_TYPE_USER',
-    Community: 'ACCOUNT_TYPE_COMMUNITY'
-} as const;
-export type GetCannyUserSSOTokenAccountTypeEnum = typeof GetCannyUserSSOTokenAccountTypeEnum[keyof typeof GetCannyUserSSOTokenAccountTypeEnum];
 /**
  * @export
  */

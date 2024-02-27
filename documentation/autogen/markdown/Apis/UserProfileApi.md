@@ -8,7 +8,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | [**deleteUserProfile**](UserProfileApi.md#deleteUserProfile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 | [**discoverProfiles**](UserProfileApi.md#discoverProfiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
 | [**editUserProfile**](UserProfileApi.md#editUserProfile) | **PUT** /api/v1/users/{userId} | update a user profile |
-| [**getCannyUserSSOToken**](UserProfileApi.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
+| [**getCannyUserSSOToken**](UserProfileApi.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/email/{email} | Retrieves user sso token for canny |
 | [**getUserProfile**](UserProfileApi.md#getUserProfile) | **GET** /api/v1/users/{userId} | gets a user profile |
 | [**getUserProfiles**](UserProfileApi.md#getUserProfiles) | **GET** /api/v1/users/page-size/{pageSize}/page-number/{pageNumber} | Gets a set of user profiles |
 
@@ -125,7 +125,7 @@ No authorization required
 
 <a name="getCannyUserSSOToken"></a>
 # **getCannyUserSSOToken**
-> GetCannyUserSSOTokenResponse getCannyUserSSOToken(userId, accountType)
+> GetCannyUserSSOTokenResponse getCannyUserSSOToken(userId, email)
 
 Retrieves user sso token for canny
 
@@ -136,7 +136,7 @@ Retrieves user sso token for canny
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **userId** | **String**|  | [default to null] |
-| **accountType** | **String**| Indicates the profile type to be queried. For example: \&quot;username:testuser\&quot; | [default to null] [enum: ACCOUNT_TYPE_UNSPECIFIED, ACCOUNT_TYPE_USER, ACCOUNT_TYPE_COMMUNITY] |
+| **email** | **String**|  | [default to null] |
 
 ### Return type
 

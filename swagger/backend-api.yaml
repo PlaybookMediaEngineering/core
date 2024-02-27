@@ -691,7 +691,7 @@ paths:
               - ACCOUNT_TYPE_COMMUNITY
       tags:
         - community profile
-  "/api/v1/user/{userId}/canny/account-type/{accountType}":
+  "/api/v1/user/{userId}/canny/email/{email}":
     get:
       summary: Retrieves user sso token for canny
       description: Fetches a user sso token for canny
@@ -733,18 +733,11 @@ paths:
           required: true
           schema:
             type: string
-        - name: accountType
-          description: |-
-            Indicates the profile type to be queried.
-            For example: "username:testuser"
+        - name: email
           in: path
           required: true
           schema:
             type: string
-            enum:
-              - ACCOUNT_TYPE_UNSPECIFIED
-              - ACCOUNT_TYPE_USER
-              - ACCOUNT_TYPE_COMMUNITY
       tags:
         - user profile
   "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}":

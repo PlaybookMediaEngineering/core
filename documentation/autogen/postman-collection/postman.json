@@ -77,7 +77,7 @@
 	            "name": "user profile",
 	            "item": [
 	                        {
-    "name": "/api/v1/user/:userId/canny/account-type/:accountType",
+    "name": "/api/v1/user/:userId/canny/email/:email",
                 "description": "Fetches a user sso token for canny",
                  "item": [
                             {
@@ -101,7 +101,7 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/account-type/:accountType",
+                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/email/:email",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
@@ -111,8 +111,8 @@
                                             "user",
                                             ":userId",
                                             "canny",
-                                            "account-type",
-                                            ":accountType"
+                                            "email",
+                                            ":email"
                                         ],
                                         "variable": [
                                             {
@@ -121,9 +121,9 @@
                                                 "description": ""
                                             },
                                             {
-                                                "key": "accountType",
+                                                "key": "email",
                                                 "value": "",
-                                                "description": "Indicates the profile type to be queried. For example: \&quot;username:testuser\&quot;"
+                                                "description": ""
                                             }
                                         ],
                                         "query": [
