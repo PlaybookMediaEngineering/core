@@ -6279,7 +6279,6 @@ func request_SocialService_GetCannyUserSSOToken_0(ctx context.Context, marshaler
 
 	var (
 		val string
-		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -6294,18 +6293,6 @@ func request_SocialService_GetCannyUserSSOToken_0(ctx context.Context, marshaler
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
-
-	val, ok = pathParams["account_type"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account_type")
-	}
-
-	e, err = runtime.Enum(val, AccountType_value)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account_type", err)
-	}
-
-	protoReq.AccountType = AccountType(e)
 
 	msg, err := client.GetCannyUserSSOToken(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -6318,7 +6305,6 @@ func local_request_SocialService_GetCannyUserSSOToken_0(ctx context.Context, mar
 
 	var (
 		val string
-		e   int32
 		ok  bool
 		err error
 		_   = err
@@ -6333,18 +6319,6 @@ func local_request_SocialService_GetCannyUserSSOToken_0(ctx context.Context, mar
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "user_id", err)
 	}
-
-	val, ok = pathParams["account_type"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "account_type")
-	}
-
-	e, err = runtime.Enum(val, AccountType_value)
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "account_type", err)
-	}
-
-	protoReq.AccountType = AccountType(e)
 
 	msg, err := server.GetCannyUserSSOToken(ctx, &protoReq)
 	return msg, metadata, err
@@ -8165,7 +8139,7 @@ func RegisterSocialServiceHandlerServer(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/GetCannyUserSSOToken", runtime.WithHTTPPathPattern("/api/v1/user/{user_id}/canny/account-type/{account_type}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/social_service.v2.SocialService/GetCannyUserSSOToken", runtime.WithHTTPPathPattern("/api/v1/user/{user_id}/canny"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9813,7 +9787,7 @@ func RegisterSocialServiceHandlerClient(ctx context.Context, mux *runtime.ServeM
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/GetCannyUserSSOToken", runtime.WithHTTPPathPattern("/api/v1/user/{user_id}/canny/account-type/{account_type}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/social_service.v2.SocialService/GetCannyUserSSOToken", runtime.WithHTTPPathPattern("/api/v1/user/{user_id}/canny"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -9977,7 +9951,7 @@ var (
 
 	pattern_SocialService_GetPostsByCategory_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 4, 2, 5, 1, 0, 4, 1, 5, 6, 2, 7, 1, 0, 4, 1, 5, 7, 2, 8, 1, 0, 4, 1, 5, 8}, []string{"api", "v1", "user", "user_id", "category", "posts", "post_type", "limit", "offset"}, ""))
 
-	pattern_SocialService_GetCannyUserSSOToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5, 1, 0, 4, 1, 5, 6}, []string{"api", "v1", "user", "user_id", "canny", "account-type", "account_type"}, ""))
+	pattern_SocialService_GetCannyUserSSOToken_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "user", "user_id", "canny"}, ""))
 )
 
 var (

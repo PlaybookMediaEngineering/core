@@ -4,12 +4,12 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCannyUserSSOToken**](V2Api.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
+| [**getCannyUserSSOToken**](V2Api.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny | Retrieves user sso token for canny |
 
 
 <a name="getCannyUserSSOToken"></a>
 # **getCannyUserSSOToken**
-> GetCannyUserSSOTokenResponse getCannyUserSSOToken(userId, accountType)
+> GetCannyUserSSOTokenResponse getCannyUserSSOToken(userId)
 
 Retrieves user sso token for canny
 
@@ -20,7 +20,6 @@ Retrieves user sso token for canny
 |Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **userId** | **String**|  | [default to null] |
-| **accountType** | **String**| Indicates the profile type to be queried. For example: \&quot;username:testuser\&quot; | [default to null] [enum: ACCOUNT_TYPE_UNSPECIFIED, ACCOUNT_TYPE_USER, ACCOUNT_TYPE_COMMUNITY] |
 
 ### Return type
 

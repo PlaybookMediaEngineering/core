@@ -727,7 +727,7 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
-  /api/v1/user/{userId}/canny/account-type/{accountType}:
+  /api/v1/user/{userId}/canny:
     get:
       description: Fetches a user sso token for canny
       operationId: GetCannyUserSSOToken
@@ -737,20 +737,6 @@ paths:
         name: userId
         required: true
         schema:
-          type: string
-        style: simple
-      - description: |-
-          Indicates the profile type to be queried.
-          For example: "username:testuser"
-        explode: false
-        in: path
-        name: accountType
-        required: true
-        schema:
-          enum:
-          - ACCOUNT_TYPE_UNSPECIFIED
-          - ACCOUNT_TYPE_USER
-          - ACCOUNT_TYPE_COMMUNITY
           type: string
         style: simple
       responses:

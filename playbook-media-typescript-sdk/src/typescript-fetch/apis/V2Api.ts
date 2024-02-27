@@ -36,7 +36,6 @@ import {
 
 export interface GetCannyUserSSOTokenRequest {
     userId: string;
-    accountType: GetCannyUserSSOTokenAccountTypeEnum;
 }
 
 /**
@@ -53,16 +52,12 @@ export class V2Api extends runtime.BaseAPI {
             throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getCannyUserSSOToken.');
         }
 
-        if (requestParameters.accountType === null || requestParameters.accountType === undefined) {
-            throw new runtime.RequiredError('accountType','Required parameter requestParameters.accountType was null or undefined when calling getCannyUserSSOToken.');
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/api/v1/user/{userId}/canny/account-type/{accountType}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"accountType"}}`, encodeURIComponent(String(requestParameters.accountType))),
+            path: `/api/v1/user/{userId}/canny`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -81,13 +76,3 @@ export class V2Api extends runtime.BaseAPI {
     }
 
 }
-
-/**
- * @export
- */
-export const GetCannyUserSSOTokenAccountTypeEnum = {
-    Unspecified: 'ACCOUNT_TYPE_UNSPECIFIED',
-    User: 'ACCOUNT_TYPE_USER',
-    Community: 'ACCOUNT_TYPE_COMMUNITY'
-} as const;
-export type GetCannyUserSSOTokenAccountTypeEnum = typeof GetCannyUserSSOTokenAccountTypeEnum[keyof typeof GetCannyUserSSOTokenAccountTypeEnum];
