@@ -61,7 +61,7 @@ service SocialService {
     };
     option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
       summary: "update a user profile"
-      tags: ["user"]
+      tags: ["user profile"]
       operation_id: "EditUserProfile"
       description:
         "This endpoint performs an updates operation on a user profile based on the provided parameters"
@@ -1483,10 +1483,10 @@ service SocialService {
 
       // the following endpoints are for the canny integration. it returns the sso token for a given user
     rpc GetCannyUserSSOToken(GetCannyUserSSOTokenRequest) returns (GetCannyUserSSOTokenResponse) {
-        option (google.api.http) = {get: "/api/v1/user/{user_id}/canny"};
+        option (google.api.http) = {get: "/api/v1/user/{user_id}/canny/account-type/{account_type}"};
         option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
             summary: "Retrieves user sso token for canny",
-            tags: ["account", "v2"],
+            tags: ["user profile"],
             operation_id: "GetCannyUserSSOToken",
             description: "Fetches a user sso token for canny",
             responses: {

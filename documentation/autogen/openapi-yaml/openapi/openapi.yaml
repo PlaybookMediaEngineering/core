@@ -727,7 +727,7 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
-  /api/v1/user/{userId}/canny:
+  /api/v1/user/{userId}/canny/account-type/{accountType}:
     get:
       description: Fetches a user sso token for canny
       operationId: GetCannyUserSSOToken
@@ -737,6 +737,20 @@ paths:
         name: userId
         required: true
         schema:
+          type: string
+        style: simple
+      - description: |-
+          Indicates the profile type to be queried.
+          For example: "username:testuser"
+        explode: false
+        in: path
+        name: accountType
+        required: true
+        schema:
+          enum:
+          - ACCOUNT_TYPE_UNSPECIFIED
+          - ACCOUNT_TYPE_USER
+          - ACCOUNT_TYPE_COMMUNITY
           type: string
         style: simple
       responses:
@@ -772,8 +786,7 @@ paths:
           description: An unexpected error response.
       summary: Retrieves user sso token for canny
       tags:
-      - account
-      - v2
+      - user profile
   /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}:
     get:
       description: This endpoint enables a client to get all posts tied to a category
@@ -1690,7 +1703,7 @@ paths:
           description: An unexpected error response.
       summary: update a user profile
       tags:
-      - user
+      - user profile
   /api/v1/users/{userId}/communities-followed:
     get:
       description: This endpoint enables a client to get all the communities a user

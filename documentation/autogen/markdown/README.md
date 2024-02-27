@@ -7,7 +7,6 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Class | Method | HTTP request | Description |
 |------------ | ------------- | ------------- | -------------|
-| *AccountApi* | [**getCannyUserSSOToken**](Apis/AccountApi.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny | Retrieves user sso token for canny |
 | *BlockProfileApi* | [**blockUserProfile**](Apis/BlockProfileApi.md#blockuserprofile) | **POST** /api/v1/users/source/{sourceUserId}/block/target/{targetUserId} | blocks a user profile |
 | *BookmarkApi* | [**bookmarkPost**](Apis/BookmarkApi.md#bookmarkpost) | **POST** /api/v1/users/{userId}/post/bookmark/{postId} | Bookmarks a post |
 *BookmarkApi* | [**bookmarkPublication**](Apis/BookmarkApi.md#bookmarkpublication) | **POST** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Bookmarks a publication |
@@ -74,13 +73,13 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
 | *TopicApi* | [**createTopic**](Apis/TopicApi.md#createtopic) | **POST** /api/v1/users/{userId}/community/{communityProfileId}/topic | Create A Topic |
 *TopicApi* | [**getTopicsOfCommunitiesUserFollows**](Apis/TopicApi.md#gettopicsofcommunitiesuserfollows) | **GET** /api/v1/users/{userId}/topics | Get Topics Of Communities User Follows |
-| *UserApi* | [**editUserProfile**](Apis/UserApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |
 | *UserProfileApi* | [**createUserProfile**](Apis/UserProfileApi.md#createuserprofile) | **POST** /api/v1/users | creates a user profile |
 *UserProfileApi* | [**deleteUserProfile**](Apis/UserProfileApi.md#deleteuserprofile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 *UserProfileApi* | [**discoverProfiles**](Apis/UserProfileApi.md#discoverprofiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
+*UserProfileApi* | [**editUserProfile**](Apis/UserProfileApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |
+*UserProfileApi* | [**getCannyUserSSOToken**](Apis/UserProfileApi.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
 *UserProfileApi* | [**getUserProfile**](Apis/UserProfileApi.md#getuserprofile) | **GET** /api/v1/users/{userId} | gets a user profile |
 *UserProfileApi* | [**getUserProfiles**](Apis/UserProfileApi.md#getuserprofiles) | **GET** /api/v1/users/page-size/{pageSize}/page-number/{pageNumber} | Gets a set of user profiles |
-| *V2Api* | [**getCannyUserSSOToken**](Apis/V2Api.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny | Retrieves user sso token for canny |
 
 
 <a name="documentation-for-models"></a>

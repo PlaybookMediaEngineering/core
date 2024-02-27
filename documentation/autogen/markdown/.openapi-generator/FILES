@@ -1,4 +1,3 @@
-Apis/AccountApi.md
 Apis/BlockProfileApi.md
 Apis/BookmarkApi.md
 Apis/BookmarksApi.md
@@ -19,9 +18,7 @@ Apis/ServiceHealthApi.md
 Apis/ServiceReadynessApi.md
 Apis/ThreadApi.md
 Apis/TopicApi.md
-Apis/UserApi.md
 Apis/UserProfileApi.md
-Apis/V2Api.md
 Models/AcceptFollowProfileResponse.md
 Models/AccountType.md
 Models/Actor.md

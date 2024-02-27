@@ -1661,6 +1661,13 @@ message GetCannyUserSSOTokenRequest {
   string user_id = 1 [
     (validate.rules).string.min_len = 1,
     (google.api.field_behavior) = REQUIRED];
+    /**
+   * Indicates the profile type to be queried.
+   * For example: "username:testuser"
+   */
+   AccountType account_type = 2 [
+    (google.api.field_behavior) = REQUIRED   
+  ];
 }
 
 message GetCannyUserSSOTokenResponse { string token = 1; }

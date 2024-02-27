@@ -1,4 +1,3 @@
-apis/AccountApi.ts
 apis/BlockProfileApi.ts
 apis/BookmarkApi.ts
 apis/BookmarksApi.ts
@@ -19,9 +18,7 @@ apis/ServiceHealthApi.ts
 apis/ServiceReadynessApi.ts
 apis/ThreadApi.ts
 apis/TopicApi.ts
-apis/UserApi.ts
 apis/UserProfileApi.ts
-apis/V2Api.ts
 apis/index.ts
 index.ts
 models/AcceptFollowProfileResponse.ts

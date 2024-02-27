@@ -19,11 +19,14 @@ import type {
   CreateUserProfileResponse,
   DeleteUserProfileResponse,
   DiscoverProfilesResponse,
+  EditUserProfileResponse,
+  GetCannyUserSSOTokenResponse,
   GetUserProfileResponse,
   GetUserProfilesResponse,
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
   Status,
+  UserProfile,
   ValidationErrorMessageResponse,
 } from '../models/index';
 import {
@@ -35,6 +38,10 @@ import {
     DeleteUserProfileResponseToJSON,
     DiscoverProfilesResponseFromJSON,
     DiscoverProfilesResponseToJSON,
+    EditUserProfileResponseFromJSON,
+    EditUserProfileResponseToJSON,
+    GetCannyUserSSOTokenResponseFromJSON,
+    GetCannyUserSSOTokenResponseToJSON,
     GetUserProfileResponseFromJSON,
     GetUserProfileResponseToJSON,
     GetUserProfilesResponseFromJSON,
@@ -45,6 +52,8 @@ import {
     PathUnknownErrorMessageResponseToJSON,
     StatusFromJSON,
     StatusToJSON,
+    UserProfileFromJSON,
+    UserProfileToJSON,
     ValidationErrorMessageResponseFromJSON,
     ValidationErrorMessageResponseToJSON,
 } from '../models/index';
@@ -60,6 +69,16 @@ export interface DeleteUserProfileRequest {
 export interface DiscoverProfilesRequest {
     userId: string;
     limit: string;
+}
+
+export interface EditUserProfileRequest {
+    userId: string;
+    userProfile: UserProfile;
+}
+
+export interface GetCannyUserSSOTokenRequest {
+    userId: string;
+    accountType: GetCannyUserSSOTokenAccountTypeEnum;
 }
 
 export interface GetUserProfileRequest {
@@ -182,6 +201,81 @@ export class UserProfileApi extends runtime.BaseAPI {
     }
 
     /**
+     * This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state
+     * update a user profile
+     */
+    async editUserProfileRaw(requestParameters: EditUserProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditUserProfileResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling editUserProfile.');
+        }
+
+        if (requestParameters.userProfile === null || requestParameters.userProfile === undefined) {
+            throw new runtime.RequiredError('userProfile','Required parameter requestParameters.userProfile was null or undefined when calling editUserProfile.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/v1/users/{userId}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: UserProfileToJSON(requestParameters.userProfile),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EditUserProfileResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state
+     * update a user profile
+     */
+    async editUserProfile(requestParameters: EditUserProfileRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditUserProfileResponse> {
+        const response = await this.editUserProfileRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Fetches a user sso token for canny
+     * Retrieves user sso token for canny
+     */
+    async getCannyUserSSOTokenRaw(requestParameters: GetCannyUserSSOTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetCannyUserSSOTokenResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getCannyUserSSOToken.');
+        }
+
+        if (requestParameters.accountType === null || requestParameters.accountType === undefined) {
+            throw new runtime.RequiredError('accountType','Required parameter requestParameters.accountType was null or undefined when calling getCannyUserSSOToken.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/api/v1/user/{userId}/canny/account-type/{accountType}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"accountType"}}`, encodeURIComponent(String(requestParameters.accountType))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetCannyUserSSOTokenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * Fetches a user sso token for canny
+     * Retrieves user sso token for canny
+     */
+    async getCannyUserSSOToken(requestParameters: GetCannyUserSSOTokenRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetCannyUserSSOTokenResponse> {
+        const response = await this.getCannyUserSSOTokenRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * This endpoint performs a query against the social service to obtain a user profile
      * gets a user profile
      */
@@ -259,6 +353,15 @@ export class UserProfileApi extends runtime.BaseAPI {
 
 }
 
+/**
+ * @export
+ */
+export const GetCannyUserSSOTokenAccountTypeEnum = {
+    Unspecified: 'ACCOUNT_TYPE_UNSPECIFIED',
+    User: 'ACCOUNT_TYPE_USER',
+    Community: 'ACCOUNT_TYPE_COMMUNITY'
+} as const;
+export type GetCannyUserSSOTokenAccountTypeEnum = typeof GetCannyUserSSOTokenAccountTypeEnum[keyof typeof GetCannyUserSSOTokenAccountTypeEnum];
 /**
  * @export
  */
