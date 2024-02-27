@@ -777,6 +777,166 @@
         ]
       }
     },
+    "/api/v1/user/{userId}/canny/accounty-type/{accountType}": {
+      "get": {
+        "summary": "Retrieves user sso token for canny",
+        "description": "Fetches a user sso token for canny",
+        "operationId": "GetCannyUserSSOToken",
+        "responses": {
+          "200": {
+            "description": "Successful retrieval of user account sso token.",
+            "schema": {
+              "$ref": "#/definitions/GetCannyUserSSOTokenResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "accountType",
+            "description": "Indicates the profile type to be queried.\nFor example: \"username:testuser\"",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "ACCOUNT_TYPE_UNSPECIFIED",
+              "ACCOUNT_TYPE_USER",
+              "ACCOUNT_TYPE_COMMUNITY"
+            ]
+          }
+        ],
+        "tags": [
+          "account",
+          "v2"
+        ]
+      }
+    },
+    "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}": {
+      "get": {
+        "summary": "Get all posts associated with a category",
+        "description": "This endpoint enables a client to get all posts tied to a category",
+        "operationId": "GetPostsByCategory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetPostsByCategoryResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "CATEGORY_UNSPECIFIED",
+              "CATEGORY_WORLD",
+              "CATEGORY_BUSINESS",
+              "CATEGORY_ECONOMICS",
+              "CATEGORY_FOREIGN_POLICY",
+              "CATEGORY_POLITICS",
+              "CATEGORY_TECHNOLOGY",
+              "CATEGORY_OTHER"
+            ]
+          },
+          {
+            "name": "postType",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "POST_TYPE_UNSPECIFIED",
+              "POST_TYPE_POST",
+              "POST_TYPE_REPOST",
+              "POST_TYPE_QUESTION",
+              "POST_TYPE_ACHIEVEMENT",
+              "POST_TYPE_ANNOUNCEMENT",
+              "POST_TYPE_POLL",
+              "POST_TYPE_ARTICLE",
+              "POST_TYPE_SHORT_STORY"
+            ]
+          },
+          {
+            "name": "limit",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "offset",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "post"
+        ]
+      }
+    },
     "/api/v1/users": {
       "post": {
         "summary": "creates a user profile",
@@ -5052,6 +5212,20 @@
         }
       }
     },
+    "Category": {
+      "type": "string",
+      "enum": [
+        "CATEGORY_UNSPECIFIED",
+        "CATEGORY_WORLD",
+        "CATEGORY_BUSINESS",
+        "CATEGORY_ECONOMICS",
+        "CATEGORY_FOREIGN_POLICY",
+        "CATEGORY_POLITICS",
+        "CATEGORY_TECHNOLOGY",
+        "CATEGORY_OTHER"
+      ],
+      "default": "CATEGORY_UNSPECIFIED"
+    },
     "Comment": {
       "type": "object",
       "properties": {
@@ -5964,6 +6138,14 @@
         }
       }
     },
+    "GetCannyUserSSOTokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
     "GetCommentRepliesResponse": {
       "type": "object",
       "properties": {
@@ -6107,6 +6289,22 @@
             "type": "object",
             "$ref": "#/definitions/Post"
           }
+        }
+      }
+    },
+    "GetPostsByCategoryResponse": {
+      "type": "object",
+      "properties": {
+        "posts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/Post"
+          }
+        },
+        "nextOffset": {
+          "type": "string",
+          "format": "uint64"
         }
       }
     },
@@ -6676,6 +6874,10 @@
             "$ref": "#/definitions/Reaction"
           },
           "title": "a map of user ids to reactions left by users\n@gotag: bson:\"userIdToReactionMap\""
+        },
+        "category": {
+          "$ref": "#/definitions/Category",
+          "title": "the category of the post\n@gotag: bson:\"category\""
         }
       },
       "required": [
@@ -6858,6 +7060,10 @@
         "aiGeneratedQuestionResponse": {
           "type": "string",
           "title": "if the post is a question, this field will hold the response to the question by the ai\n@gotag: bson:\"aiGeneratedQuestionResponse\""
+        },
+        "category": {
+          "$ref": "#/definitions/Category",
+          "title": "the category of the post\n@gotag: bson:\"category\""
         }
       },
       "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
@@ -7281,6 +7487,10 @@
         "originalPostAction": {
           "$ref": "#/definitions/PostType",
           "title": "originalPostType defines the intent of the post\n@gotag: bson:\"originalPostAction\""
+        },
+        "category": {
+          "$ref": "#/definitions/Category",
+          "title": "the category of the post\n@gotag: bson:\"category\""
         }
       },
       "title": "SharedPost: Posts reshared by other profiles\nTODO: need to expose api endpoints to interact with shared posts",

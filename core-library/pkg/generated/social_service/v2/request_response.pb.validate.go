@@ -20313,3 +20313,527 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GetBookmarkedPostsResponseValidationError{}
+
+// Validate checks the field values on GetPostsByCategoryRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetPostsByCategoryRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetPostsByCategoryRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetPostsByCategoryRequestMultiError, or nil if none found.
+func (m *GetPostsByCategoryRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetPostsByCategoryRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := GetPostsByCategoryRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _GetPostsByCategoryRequest_Category_NotInLookup[m.GetCategory()]; ok {
+		err := GetPostsByCategoryRequestValidationError{
+			field:  "Category",
+			reason: "value must not be in list [CATEGORY_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetLimit() <= 0 {
+		err := GetPostsByCategoryRequestValidationError{
+			field:  "Limit",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetOffset() <= 0 {
+		err := GetPostsByCategoryRequestValidationError{
+			field:  "Offset",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _GetPostsByCategoryRequest_PostType_NotInLookup[m.GetPostType()]; ok {
+		err := GetPostsByCategoryRequestValidationError{
+			field:  "PostType",
+			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return GetPostsByCategoryRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetPostsByCategoryRequestMultiError is an error wrapping multiple validation
+// errors returned by GetPostsByCategoryRequest.ValidateAll() if the
+// designated constraints aren't met.
+type GetPostsByCategoryRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetPostsByCategoryRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetPostsByCategoryRequestMultiError) AllErrors() []error { return m }
+
+// GetPostsByCategoryRequestValidationError is the validation error returned by
+// GetPostsByCategoryRequest.Validate if the designated constraints aren't met.
+type GetPostsByCategoryRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetPostsByCategoryRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetPostsByCategoryRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetPostsByCategoryRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetPostsByCategoryRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetPostsByCategoryRequestValidationError) ErrorName() string {
+	return "GetPostsByCategoryRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetPostsByCategoryRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetPostsByCategoryRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetPostsByCategoryRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetPostsByCategoryRequestValidationError{}
+
+var _GetPostsByCategoryRequest_Category_NotInLookup = map[Category]struct{}{
+	0: {},
+}
+
+var _GetPostsByCategoryRequest_PostType_NotInLookup = map[PostType]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on GetPostsByCategoryResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetPostsByCategoryResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetPostsByCategoryResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetPostsByCategoryResponseMultiError, or nil if none found.
+func (m *GetPostsByCategoryResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetPostsByCategoryResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetPosts() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, GetPostsByCategoryResponseValidationError{
+						field:  fmt.Sprintf("Posts[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, GetPostsByCategoryResponseValidationError{
+						field:  fmt.Sprintf("Posts[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return GetPostsByCategoryResponseValidationError{
+					field:  fmt.Sprintf("Posts[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	// no validation rules for NextOffset
+
+	if len(errors) > 0 {
+		return GetPostsByCategoryResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetPostsByCategoryResponseMultiError is an error wrapping multiple
+// validation errors returned by GetPostsByCategoryResponse.ValidateAll() if
+// the designated constraints aren't met.
+type GetPostsByCategoryResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetPostsByCategoryResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetPostsByCategoryResponseMultiError) AllErrors() []error { return m }
+
+// GetPostsByCategoryResponseValidationError is the validation error returned
+// by GetPostsByCategoryResponse.Validate if the designated constraints aren't met.
+type GetPostsByCategoryResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetPostsByCategoryResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetPostsByCategoryResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetPostsByCategoryResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetPostsByCategoryResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetPostsByCategoryResponseValidationError) ErrorName() string {
+	return "GetPostsByCategoryResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetPostsByCategoryResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetPostsByCategoryResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetPostsByCategoryResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetPostsByCategoryResponseValidationError{}
+
+// Validate checks the field values on GetCannyUserSSOTokenRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetCannyUserSSOTokenRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetCannyUserSSOTokenRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetCannyUserSSOTokenRequestMultiError, or nil if none found.
+func (m *GetCannyUserSSOTokenRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetCannyUserSSOTokenRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := GetCannyUserSSOTokenRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	// no validation rules for AccountType
+
+	if len(errors) > 0 {
+		return GetCannyUserSSOTokenRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetCannyUserSSOTokenRequestMultiError is an error wrapping multiple
+// validation errors returned by GetCannyUserSSOTokenRequest.ValidateAll() if
+// the designated constraints aren't met.
+type GetCannyUserSSOTokenRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetCannyUserSSOTokenRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetCannyUserSSOTokenRequestMultiError) AllErrors() []error { return m }
+
+// GetCannyUserSSOTokenRequestValidationError is the validation error returned
+// by GetCannyUserSSOTokenRequest.Validate if the designated constraints
+// aren't met.
+type GetCannyUserSSOTokenRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetCannyUserSSOTokenRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetCannyUserSSOTokenRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetCannyUserSSOTokenRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetCannyUserSSOTokenRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetCannyUserSSOTokenRequestValidationError) ErrorName() string {
+	return "GetCannyUserSSOTokenRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetCannyUserSSOTokenRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetCannyUserSSOTokenRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetCannyUserSSOTokenRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetCannyUserSSOTokenRequestValidationError{}
+
+// Validate checks the field values on GetCannyUserSSOTokenResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetCannyUserSSOTokenResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetCannyUserSSOTokenResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetCannyUserSSOTokenResponseMultiError, or nil if none found.
+func (m *GetCannyUserSSOTokenResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetCannyUserSSOTokenResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Token
+
+	if len(errors) > 0 {
+		return GetCannyUserSSOTokenResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetCannyUserSSOTokenResponseMultiError is an error wrapping multiple
+// validation errors returned by GetCannyUserSSOTokenResponse.ValidateAll() if
+// the designated constraints aren't met.
+type GetCannyUserSSOTokenResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetCannyUserSSOTokenResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetCannyUserSSOTokenResponseMultiError) AllErrors() []error { return m }
+
+// GetCannyUserSSOTokenResponseValidationError is the validation error returned
+// by GetCannyUserSSOTokenResponse.Validate if the designated constraints
+// aren't met.
+type GetCannyUserSSOTokenResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetCannyUserSSOTokenResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetCannyUserSSOTokenResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetCannyUserSSOTokenResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetCannyUserSSOTokenResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetCannyUserSSOTokenResponseValidationError) ErrorName() string {
+	return "GetCannyUserSSOTokenResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetCannyUserSSOTokenResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetCannyUserSSOTokenResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetCannyUserSSOTokenResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetCannyUserSSOTokenResponseValidationError{}

@@ -1461,4 +1461,43 @@ service SocialService {
       }
     };
   }
+
+  rpc GetPostsByCategory(GetPostsByCategoryRequest) returns (GetPostsByCategoryResponse) {
+    option (google.api.http) = {get: "/api/v1/user/{user_id}/category/{category}/posts/{post_type}/limit/{limit}/offset/{offset}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get all posts associated with a category"
+      tags: ["post"]
+      operation_id: "GetPostsByCategory"
+      description: "This endpoint enables a client to get all posts tied to a category"
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response."
+          schema: {
+            json_schema: {ref: ".social_service.v2.GetPostsByCategoryResponse"}
+          }
+        }
+      }
+    };
+  }
+
+      // the following endpoints are for the canny integration. it returns the sso token for a given user
+    rpc GetCannyUserSSOToken(GetCannyUserSSOTokenRequest) returns (GetCannyUserSSOTokenResponse) {
+        option (google.api.http) = {get: "/api/v1/user/{user_id}/canny/accounty-type/{account_type}"};
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Retrieves user sso token for canny",
+            tags: ["account", "v2"],
+            operation_id: "GetCannyUserSSOToken",
+            description: "Fetches a user sso token for canny",
+            responses: {
+                key: "200",
+                value: {
+                    description: "Successful retrieval of user account sso token.",
+                    schema: {
+                        json_schema: {ref: ".social_service.v2.GetCannyUserSSOTokenResponse"}
+                    }
+                }
+            }
+        };
+    }
 }

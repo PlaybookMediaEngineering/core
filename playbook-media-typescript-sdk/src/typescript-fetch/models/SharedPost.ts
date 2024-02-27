@@ -19,6 +19,12 @@ import {
     AccountTypeFromJSONTyped,
     AccountTypeToJSON,
 } from './AccountType';
+import type { Category } from './Category';
+import {
+    CategoryFromJSON,
+    CategoryFromJSONTyped,
+    CategoryToJSON,
+} from './Category';
 import type { Comment } from './Comment';
 import {
     CommentFromJSON,
@@ -207,6 +213,12 @@ export interface SharedPost {
      * @memberof SharedPost
      */
     originalPostAction: PostType;
+    /**
+     * 
+     * @type {Category}
+     * @memberof SharedPost
+     */
+    category?: Category;
 }
 
 /**
@@ -257,6 +269,7 @@ export function SharedPostFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'originalPostUserProfileId': !exists(json, 'originalPostUserProfileId') ? undefined : json['originalPostUserProfileId'],
         'originalPostUserbackendPlaformId': !exists(json, 'originalPostUserbackendPlaformId') ? undefined : json['originalPostUserbackendPlaformId'],
         'originalPostAction': PostTypeFromJSON(json['originalPostAction']),
+        'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
     };
 }
 
@@ -294,6 +307,7 @@ export function SharedPostToJSON(value?: SharedPost | null): any {
         'originalPostUserProfileId': value.originalPostUserProfileId,
         'originalPostUserbackendPlaformId': value.originalPostUserbackendPlaformId,
         'originalPostAction': PostTypeToJSON(value.originalPostAction),
+        'category': CategoryToJSON(value.category),
     };
 }
 

@@ -19,6 +19,12 @@ import {
     AccountTypeFromJSONTyped,
     AccountTypeToJSON,
 } from './AccountType';
+import type { Category } from './Category';
+import {
+    CategoryFromJSON,
+    CategoryFromJSONTyped,
+    CategoryToJSON,
+} from './Category';
 import type { Comment } from './Comment';
 import {
     CommentFromJSON,
@@ -266,6 +272,12 @@ export interface PollPost {
      * @memberof PollPost
      */
     userIdToReactionMap?: { [key: string]: Reaction; };
+    /**
+     * 
+     * @type {Category}
+     * @memberof PollPost
+     */
+    category?: Category;
 }
 
 /**
@@ -321,6 +333,7 @@ export function PollPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'thread': !exists(json, 'thread') ? undefined : ThreadFromJSON(json['thread']),
         'threadParticipantType': !exists(json, 'threadParticipantType') ? undefined : ThreadParticipantTypeFromJSON(json['threadParticipantType']),
         'userIdToReactionMap': !exists(json, 'userIdToReactionMap') ? undefined : (mapValues(json['userIdToReactionMap'], ReactionFromJSON)),
+        'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
     };
 }
 
@@ -364,6 +377,7 @@ export function PollPostToJSON(value?: PollPost | null): any {
         'thread': ThreadToJSON(value.thread),
         'threadParticipantType': ThreadParticipantTypeToJSON(value.threadParticipantType),
         'userIdToReactionMap': value.userIdToReactionMap === undefined ? undefined : (mapValues(value.userIdToReactionMap, ReactionToJSON)),
+        'category': CategoryToJSON(value.category),
     };
 }
 

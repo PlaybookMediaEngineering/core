@@ -7,6 +7,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Class | Method | HTTP request | Description |
 |------------ | ------------- | ------------- | -------------|
+| *AccountApi* | [**getCannyUserSSOToken**](Apis/AccountApi.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny/accounty-type/{accountType} | Retrieves user sso token for canny |
 | *BlockProfileApi* | [**blockUserProfile**](Apis/BlockProfileApi.md#blockuserprofile) | **POST** /api/v1/users/source/{sourceUserId}/block/target/{targetUserId} | blocks a user profile |
 | *BookmarkApi* | [**bookmarkPost**](Apis/BookmarkApi.md#bookmarkpost) | **POST** /api/v1/users/{userId}/post/bookmark/{postId} | Bookmarks a post |
 *BookmarkApi* | [**bookmarkPublication**](Apis/BookmarkApi.md#bookmarkpublication) | **POST** /api/v1/users/{userId}/publication/{publicationId}/bookmark | Bookmarks a publication |
@@ -52,6 +53,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *PostApi* | [**getBlogPostsByTag**](Apis/PostApi.md#getblogpostsbytag) | **GET** /api/v1/posts/blog/tag/{tag} | Get blog posts by tag |
 *PostApi* | [**getCommunityBlogPosts**](Apis/PostApi.md#getcommunityblogposts) | **GET** /api/v1/community-profiles/{communityProfileId}/posts/blog | Get community blog posts |
 *PostApi* | [**getPost**](Apis/PostApi.md#getpost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
+*PostApi* | [**getPostsByCategory**](Apis/PostApi.md#getpostsbycategory) | **GET** /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset} | Get all posts associated with a category |
 *PostApi* | [**getPostsByTopic**](Apis/PostApi.md#getpostsbytopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
 *PostApi* | [**reportPost**](Apis/PostApi.md#reportpost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
 | *PostsApi* | [**getPosts**](Apis/PostsApi.md#getposts) | **GET** /api/v1/users/{userId}/posts | Get all the posts of a given user |
@@ -78,6 +80,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *UserProfileApi* | [**discoverProfiles**](Apis/UserProfileApi.md#discoverprofiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
 *UserProfileApi* | [**getUserProfile**](Apis/UserProfileApi.md#getuserprofile) | **GET** /api/v1/users/{userId} | gets a user profile |
 *UserProfileApi* | [**getUserProfiles**](Apis/UserProfileApi.md#getuserprofiles) | **GET** /api/v1/users/page-size/{pageSize}/page-number/{pageNumber} | Gets a set of user profiles |
+| *V2Api* | [**getCannyUserSSOToken**](Apis/V2Api.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny/accounty-type/{accountType} | Retrieves user sso token for canny |
 
 
 <a name="documentation-for-models"></a>
@@ -97,6 +100,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [Bookmark](./Models/Bookmark.md)
  - [BookmarkPostResponse](./Models/BookmarkPostResponse.md)
  - [BookmarkPublicationResponse](./Models/BookmarkPublicationResponse.md)
+ - [Category](./Models/Category.md)
  - [Comment](./Models/Comment.md)
  - [CommentReply](./Models/CommentReply.md)
  - [CommunityProfile](./Models/CommunityProfile.md)
@@ -141,6 +145,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetAccountsFollowingResponse](./Models/GetAccountsFollowingResponse.md)
  - [GetBlogPostsByTagResponse](./Models/GetBlogPostsByTagResponse.md)
  - [GetBookmarkedPostsResponse](./Models/GetBookmarkedPostsResponse.md)
+ - [GetCannyUserSSOTokenResponse](./Models/GetCannyUserSSOTokenResponse.md)
  - [GetCommentRepliesResponse](./Models/GetCommentRepliesResponse.md)
  - [GetCommunitiesUserFollowsResponse](./Models/GetCommunitiesUserFollowsResponse.md)
  - [GetCommunityBlogPostsResponse](./Models/GetCommunityBlogPostsResponse.md)
@@ -153,6 +158,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetPollsResponse](./Models/GetPollsResponse.md)
  - [GetPostResponse](./Models/GetPostResponse.md)
  - [GetPostThreadResponse](./Models/GetPostThreadResponse.md)
+ - [GetPostsByCategoryResponse](./Models/GetPostsByCategoryResponse.md)
  - [GetPostsByTopicResponse](./Models/GetPostsByTopicResponse.md)
  - [GetPostsResponse](./Models/GetPostsResponse.md)
  - [GetPublicationResponse](./Models/GetPublicationResponse.md)

@@ -1,3 +1,4 @@
+Apis/AccountApi.md
 Apis/BlockProfileApi.md
 Apis/BookmarkApi.md
 Apis/BookmarksApi.md
@@ -20,6 +21,7 @@ Apis/ThreadApi.md
 Apis/TopicApi.md
 Apis/UserApi.md
 Apis/UserProfileApi.md
+Apis/V2Api.md
 Models/AcceptFollowProfileResponse.md
 Models/AccountType.md
 Models/Actor.md
@@ -34,6 +36,7 @@ Models/BlockUserProfileResponse.md
 Models/Bookmark.md
 Models/BookmarkPostResponse.md
 Models/BookmarkPublicationResponse.md
+Models/Category.md
 Models/Comment.md
 Models/CommentReply.md
 Models/CommunityProfile.md
@@ -78,6 +81,7 @@ Models/FollowProfileResponse.md
 Models/GetAccountsFollowingResponse.md
 Models/GetBlogPostsByTagResponse.md
 Models/GetBookmarkedPostsResponse.md
+Models/GetCannyUserSSOTokenResponse.md
 Models/GetCommentRepliesResponse.md
 Models/GetCommunitiesUserFollowsResponse.md
 Models/GetCommunityBlogPostsResponse.md
@@ -90,6 +94,7 @@ Models/GetPollResponse.md
 Models/GetPollsResponse.md
 Models/GetPostResponse.md
 Models/GetPostThreadResponse.md
+Models/GetPostsByCategoryResponse.md
 Models/GetPostsByTopicResponse.md
 Models/GetPostsResponse.md
 Models/GetPublicationResponse.md

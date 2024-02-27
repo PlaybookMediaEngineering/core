@@ -11,6 +11,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | [**getBlogPostsByTag**](PostApi.md#getBlogPostsByTag) | **GET** /api/v1/posts/blog/tag/{tag} | Get blog posts by tag |
 | [**getCommunityBlogPosts**](PostApi.md#getCommunityBlogPosts) | **GET** /api/v1/community-profiles/{communityProfileId}/posts/blog | Get community blog posts |
 | [**getPost**](PostApi.md#getPost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
+| [**getPostsByCategory**](PostApi.md#getPostsByCategory) | **GET** /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset} | Get all posts associated with a category |
 | [**getPostsByTopic**](PostApi.md#getPostsByTopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
 | [**reportPost**](PostApi.md#reportPost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
 
@@ -207,6 +208,37 @@ Get a post
 ### Return type
 
 [**GetPostResponse**](../Models/GetPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="getPostsByCategory"></a>
+# **getPostsByCategory**
+> GetPostsByCategoryResponse getPostsByCategory(userId, category, postType, limit, offset)
+
+Get all posts associated with a category
+
+    This endpoint enables a client to get all posts tied to a category
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**|  | [default to null] |
+| **category** | **String**|  | [default to null] [enum: CATEGORY_UNSPECIFIED, CATEGORY_WORLD, CATEGORY_BUSINESS, CATEGORY_ECONOMICS, CATEGORY_FOREIGN_POLICY, CATEGORY_POLITICS, CATEGORY_TECHNOLOGY, CATEGORY_OTHER] |
+| **postType** | **String**|  | [default to null] [enum: POST_TYPE_UNSPECIFIED, POST_TYPE_POST, POST_TYPE_REPOST, POST_TYPE_QUESTION, POST_TYPE_ACHIEVEMENT, POST_TYPE_ANNOUNCEMENT, POST_TYPE_POLL, POST_TYPE_ARTICLE, POST_TYPE_SHORT_STORY] |
+| **limit** | **String**|  | [default to null] |
+| **offset** | **String**|  | [default to null] |
+
+### Return type
+
+[**GetPostsByCategoryResponse**](../Models/GetPostsByCategoryResponse.md)
 
 ### Authorization
 

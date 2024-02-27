@@ -22,6 +22,7 @@ import type {
   GetBlogPostsByTagResponse,
   GetCommunityBlogPostsResponse,
   GetPostResponse,
+  GetPostsByCategoryResponse,
   GetPostsByTopicResponse,
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
@@ -45,6 +46,8 @@ import {
     GetCommunityBlogPostsResponseToJSON,
     GetPostResponseFromJSON,
     GetPostResponseToJSON,
+    GetPostsByCategoryResponseFromJSON,
+    GetPostsByCategoryResponseToJSON,
     GetPostsByTopicResponseFromJSON,
     GetPostsByTopicResponseToJSON,
     InternalErrorMessageResponseFromJSON,
@@ -100,6 +103,14 @@ export interface GetPostRequest {
     userId: string;
     postId: string;
     postType: GetPostPostTypeEnum;
+}
+
+export interface GetPostsByCategoryRequest {
+    userId: string;
+    category: GetPostsByCategoryCategoryEnum;
+    postType: GetPostsByCategoryPostTypeEnum;
+    limit: string;
+    offset: string;
 }
 
 export interface GetPostsByTopicRequest {
@@ -416,6 +427,54 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
+     * This endpoint enables a client to get all posts tied to a category
+     * Get all posts associated with a category
+     */
+    async getPostsByCategoryRaw(requestParameters: GetPostsByCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetPostsByCategoryResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getPostsByCategory.');
+        }
+
+        if (requestParameters.category === null || requestParameters.category === undefined) {
+            throw new runtime.RequiredError('category','Required parameter requestParameters.category was null or undefined when calling getPostsByCategory.');
+        }
+
+        if (requestParameters.postType === null || requestParameters.postType === undefined) {
+            throw new runtime.RequiredError('postType','Required parameter requestParameters.postType was null or undefined when calling getPostsByCategory.');
+        }
+
+        if (requestParameters.limit === null || requestParameters.limit === undefined) {
+            throw new runtime.RequiredError('limit','Required parameter requestParameters.limit was null or undefined when calling getPostsByCategory.');
+        }
+
+        if (requestParameters.offset === null || requestParameters.offset === undefined) {
+            throw new runtime.RequiredError('offset','Required parameter requestParameters.offset was null or undefined when calling getPostsByCategory.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"category"}}`, encodeURIComponent(String(requestParameters.category))).replace(`{${"postType"}}`, encodeURIComponent(String(requestParameters.postType))).replace(`{${"limit"}}`, encodeURIComponent(String(requestParameters.limit))).replace(`{${"offset"}}`, encodeURIComponent(String(requestParameters.offset))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetPostsByCategoryResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint enables a client to get all posts tied to a category
+     * Get all posts associated with a category
+     */
+    async getPostsByCategory(requestParameters: GetPostsByCategoryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetPostsByCategoryResponse> {
+        const response = await this.getPostsByCategoryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * This endpoint enables a client to get all posts tied to a topic
      * Get all posts associated with a topic
      */
@@ -577,6 +636,35 @@ export const GetPostPostTypeEnum = {
     ShortStory: 'POST_TYPE_SHORT_STORY'
 } as const;
 export type GetPostPostTypeEnum = typeof GetPostPostTypeEnum[keyof typeof GetPostPostTypeEnum];
+/**
+ * @export
+ */
+export const GetPostsByCategoryCategoryEnum = {
+    Unspecified: 'CATEGORY_UNSPECIFIED',
+    World: 'CATEGORY_WORLD',
+    Business: 'CATEGORY_BUSINESS',
+    Economics: 'CATEGORY_ECONOMICS',
+    ForeignPolicy: 'CATEGORY_FOREIGN_POLICY',
+    Politics: 'CATEGORY_POLITICS',
+    Technology: 'CATEGORY_TECHNOLOGY',
+    Other: 'CATEGORY_OTHER'
+} as const;
+export type GetPostsByCategoryCategoryEnum = typeof GetPostsByCategoryCategoryEnum[keyof typeof GetPostsByCategoryCategoryEnum];
+/**
+ * @export
+ */
+export const GetPostsByCategoryPostTypeEnum = {
+    Unspecified: 'POST_TYPE_UNSPECIFIED',
+    Post: 'POST_TYPE_POST',
+    Repost: 'POST_TYPE_REPOST',
+    Question: 'POST_TYPE_QUESTION',
+    Achievement: 'POST_TYPE_ACHIEVEMENT',
+    Announcement: 'POST_TYPE_ANNOUNCEMENT',
+    Poll: 'POST_TYPE_POLL',
+    Article: 'POST_TYPE_ARTICLE',
+    ShortStory: 'POST_TYPE_SHORT_STORY'
+} as const;
+export type GetPostsByCategoryPostTypeEnum = typeof GetPostsByCategoryPostTypeEnum[keyof typeof GetPostsByCategoryPostTypeEnum];
 /**
  * @export
  */
