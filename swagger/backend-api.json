@@ -1041,6 +1041,219 @@
                 ]
             }
         },
+        "/api/v1/user/{userId}/canny/account-type/{accountType}": {
+            "get": {
+                "summary": "Retrieves user sso token for canny",
+                "description": "Fetches a user sso token for canny",
+                "operationId": "GetCannyUserSSOToken",
+                "responses": {
+                    "200": {
+                        "description": "Successful retrieval of user account sso token.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetCannyUserSSOTokenResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "accountType",
+                        "description": "Indicates the profile type to be queried.\nFor example: \"username:testuser\"",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "ACCOUNT_TYPE_UNSPECIFIED",
+                                "ACCOUNT_TYPE_USER",
+                                "ACCOUNT_TYPE_COMMUNITY"
+                            ]
+                        }
+                    }
+                ],
+                "tags": [
+                    "user profile"
+                ]
+            }
+        },
+        "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}": {
+            "get": {
+                "summary": "Get all posts associated with a category",
+                "description": "This endpoint enables a client to get all posts tied to a category",
+                "operationId": "GetPostsByCategory",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/GetPostsByCategoryResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Request failed due to invalid input.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Request failed due to incorrect path.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PathUnknownErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Request failed due to internal server error.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InternalErrorMessageResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Status"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "category",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "CATEGORY_UNSPECIFIED",
+                                "CATEGORY_WORLD",
+                                "CATEGORY_BUSINESS",
+                                "CATEGORY_ECONOMICS",
+                                "CATEGORY_FOREIGN_POLICY",
+                                "CATEGORY_POLITICS",
+                                "CATEGORY_TECHNOLOGY",
+                                "CATEGORY_OTHER"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "postType",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "POST_TYPE_UNSPECIFIED",
+                                "POST_TYPE_POST",
+                                "POST_TYPE_REPOST",
+                                "POST_TYPE_QUESTION",
+                                "POST_TYPE_ACHIEVEMENT",
+                                "POST_TYPE_ANNOUNCEMENT",
+                                "POST_TYPE_POLL",
+                                "POST_TYPE_ARTICLE",
+                                "POST_TYPE_SHORT_STORY"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uint64"
+                        }
+                    }
+                ],
+                "tags": [
+                    "post"
+                ]
+            }
+        },
         "/api/v1/users": {
             "post": {
                 "summary": "creates a user profile",
@@ -2210,7 +2423,7 @@
                     "required": true
                 },
                 "tags": [
-                    "user"
+                    "user profile"
                 ]
             }
         },
@@ -6835,6 +7048,20 @@
                     }
                 }
             },
+            "Category": {
+                "type": "string",
+                "enum": [
+                    "CATEGORY_UNSPECIFIED",
+                    "CATEGORY_WORLD",
+                    "CATEGORY_BUSINESS",
+                    "CATEGORY_ECONOMICS",
+                    "CATEGORY_FOREIGN_POLICY",
+                    "CATEGORY_POLITICS",
+                    "CATEGORY_TECHNOLOGY",
+                    "CATEGORY_OTHER"
+                ],
+                "default": "CATEGORY_UNSPECIFIED"
+            },
             "Comment": {
                 "type": "object",
                 "properties": {
@@ -7727,6 +7954,14 @@
                     }
                 }
             },
+            "GetCannyUserSSOTokenResponse": {
+                "type": "object",
+                "properties": {
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
             "GetCommentRepliesResponse": {
                 "type": "object",
                 "properties": {
@@ -7862,6 +8097,21 @@
                         "items": {
                             "$ref": "#/components/schemas/Post"
                         }
+                    }
+                }
+            },
+            "GetPostsByCategoryResponse": {
+                "type": "object",
+                "properties": {
+                    "posts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Post"
+                        }
+                    },
+                    "nextOffset": {
+                        "type": "string",
+                        "format": "uint64"
                     }
                 }
             },
@@ -8414,6 +8664,9 @@
                             "$ref": "#/components/schemas/Reaction"
                         },
                         "title": "a map of user ids to reactions left by users\n@gotag: bson:\"userIdToReactionMap\""
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
                     }
                 },
                 "required": [
@@ -8588,6 +8841,9 @@
                     "aiGeneratedQuestionResponse": {
                         "type": "string",
                         "title": "if the post is a question, this field will hold the response to the question by the ai\n@gotag: bson:\"aiGeneratedQuestionResponse\""
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
                     }
                 },
                 "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
@@ -9003,6 +9259,9 @@
                     },
                     "originalPostAction": {
                         "$ref": "#/components/schemas/PostType"
+                    },
+                    "category": {
+                        "$ref": "#/components/schemas/Category"
                     }
                 },
                 "title": "SharedPost: Posts reshared by other profiles\nTODO: need to expose api endpoints to interact with shared posts",

@@ -77,6 +77,64 @@
 	            "name": "user profile",
 	            "item": [
 	                        {
+    "name": "/api/v1/user/:userId/canny/account-type/:accountType",
+                "description": "Fetches a user sso token for canny",
+                 "item": [
+                            {
+                                "name": "Retrieves user sso token for canny",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/account-type/:accountType",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "user",
+                                            ":userId",
+                                            "canny",
+                                            "account-type",
+                                            ":accountType"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "userId",
+                                                "value": "",
+                                                "description": ""
+                                            },
+                                            {
+                                                "key": "accountType",
+                                                "value": "",
+                                                "description": "Indicates the profile type to be queried. For example: \&quot;username:testuser\&quot;"
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Fetches a user sso token for canny"
+                                }
+                            }
+                            ]
+                        },
+	                        {
     "name": "/api/v1/users",
                 "description": "This endpoint enables a client to create a user profile",
                  "item": [
@@ -171,6 +229,61 @@
                                         ]
                                     },
                                     "description": "This endpoint enables a client to delete a user profile"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/api/v1/users/:userId",
+                "description": "This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state",
+                 "item": [
+                            {
+                                "name": "update a user profile",
+                                "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"tags\": \"<string>\",\n \"name\": \"<string>\",\n \"private\": \"<string>\",\n \"followers\": \"<string>\",\n \"following\": \"<string>\",\n \"notificationFeedTimelineId\": \"<string>\",\n \"personalFeedTimelineId\": \"<string>\",\n \"newsFeedTimelineId\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"bookmarks\": \"<string>\",\n \"algoliaId\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/:userId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            ":userId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "userId",
+                                                "value": "",
+                                                "description": "the user ID trying to update this user profile (NOTE: userID refers to the ID from the vantage point of the user service. This ID is the single source of truth for a given user across our suite of services) | type: uint64"
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state"
                                 }
                             }
                             ]
@@ -1064,7 +1177,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"userIdToPollResponsesMap\": \"<string>\",\n \"pollOptions\": \"<string>\",\n \"pollDistribution\": \"<string>\",\n \"pollEndDate\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"userIdToPollResponsesMap\": \"<string>\",\n \"pollOptions\": \"<string>\",\n \"pollDistribution\": \"<string>\",\n \"pollEndDate\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"category\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1352,7 +1465,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\",\n \"category\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -2770,7 +2883,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\",\n \"category\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -2867,6 +2980,84 @@
                             ]
                         },
 	                        {
+    "name": "/api/v1/user/:userId/category/:category/posts/:postType/limit/:limit/offset/:offset",
+                "description": "This endpoint enables a client to get all posts tied to a category",
+                 "item": [
+                            {
+                                "name": "Get all posts associated with a category",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/user/:userId/category/:category/posts/:postType/limit/:limit/offset/:offset",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "user",
+                                            ":userId",
+                                            "category",
+                                            ":category",
+                                            "posts",
+                                            ":postType",
+                                            "limit",
+                                            ":limit",
+                                            "offset",
+                                            ":offset"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "userId",
+                                                "value": "",
+                                                "description": ""
+                                            },
+                                            {
+                                                "key": "category",
+                                                "value": "",
+                                                "description": ""
+                                            },
+                                            {
+                                                "key": "postType",
+                                                "value": "",
+                                                "description": ""
+                                            },
+                                            {
+                                                "key": "limit",
+                                                "value": "",
+                                                "description": ""
+                                            },
+                                            {
+                                                "key": "offset",
+                                                "value": "",
+                                                "description": ""
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint enables a client to get all posts tied to a category"
+                                }
+                            }
+                            ]
+                        },
+	                        {
     "name": "/api/v1/users/:userId/post",
                 "description": "This endpoint enables a client to create a post",
                  "item": [
@@ -2888,7 +3079,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\",\n \"category\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -3890,7 +4081,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"action\": \"<string>\",\n \"content\": \"<string>\",\n \"mentions\": \"<string>\",\n \"hashtags\": \"<string>\",\n \"media\": \"<string>\",\n \"extra\": \"<string>\",\n \"comments\": \"<string>\",\n \"backendPlatformUserId\": \"<string>\",\n \"profileId\": \"<string>\",\n \"title\": \"<string>\",\n \"tags\": \"<string>\",\n \"topicName\": \"<string>\",\n \"authorUsername\": \"<string>\",\n \"authorProfileImage\": \"<string>\",\n \"affinityScore\": \"<string>\",\n \"qualityScore\": \"<string>\",\n \"userIdToAffinityScoreMap\": \"<string>\",\n \"insights\": \"<string>\",\n \"userIdToReportsMap\": \"<string>\",\n \"readingTime\": \"<string>\",\n \"backgroundImageUrl\": \"<string>\",\n \"authorAccountType\": \"<string>\",\n \"notes\": \"<string>\",\n \"thread\": \"<string>\",\n \"threadParticipantType\": \"<string>\",\n \"userIdToReactionMap\": \"<string>\",\n \"aiGeneratedQuestionResponse\": \"<string>\",\n \"category\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -4453,66 +4644,6 @@
                                         ]
                                     },
                                     "description": "This endpoint performs a readiness check on the service"
-                                }
-                            }
-                            ]
-                        }
-	                    ]
-	        },
-	        {
-	            "name": "user",
-	            "item": [
-	                        {
-    "name": "/api/v1/users/:userId",
-                "description": "This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state",
-                 "item": [
-                            {
-                                "name": "update a user profile",
-                                "request": {
-                                    "method": "PUT",
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "Accept",
-                                            "value": "application/json",
-                                            "disabled": false
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"tags\": \"<string>\",\n \"name\": \"<string>\",\n \"private\": \"<string>\",\n \"followers\": \"<string>\",\n \"following\": \"<string>\",\n \"notificationFeedTimelineId\": \"<string>\",\n \"personalFeedTimelineId\": \"<string>\",\n \"newsFeedTimelineId\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"bookmarks\": \"<string>\",\n \"algoliaId\": \"<string>\"\n}",
-                                        "options": {
-                                            "raw": {
-                                                "language": "json"
-                                            }
-                                        }
-                                    },
-                                    "url": {
-                                        "raw": "{{baseUrl}}/api/v1/users/:userId",
-                                        "host": [
-                                            "{{baseUrl}}"
-                                        ],
-                                        "path": [
-                                            "api",
-                                            "v1",
-                                            "users",
-                                            ":userId"
-                                        ],
-                                        "variable": [
-                                            {
-                                                "key": "userId",
-                                                "value": "",
-                                                "description": "the user ID trying to update this user profile (NOTE: userID refers to the ID from the vantage point of the user service. This ID is the single source of truth for a given user across our suite of services) | type: uint64"
-                                            }
-                                        ],
-                                        "query": [
-                                        ]
-                                    },
-                                    "description": "This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state"
                                 }
                             }
                             ]

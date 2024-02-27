@@ -727,6 +727,161 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
+  /api/v1/user/{userId}/canny/account-type/{accountType}:
+    get:
+      description: Fetches a user sso token for canny
+      operationId: GetCannyUserSSOToken
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: |-
+          Indicates the profile type to be queried.
+          For example: "username:testuser"
+        explode: false
+        in: path
+        name: accountType
+        required: true
+        schema:
+          enum:
+          - ACCOUNT_TYPE_UNSPECIFIED
+          - ACCOUNT_TYPE_USER
+          - ACCOUNT_TYPE_COMMUNITY
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCannyUserSSOTokenResponse'
+          description: Successful retrieval of user account sso token.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Retrieves user sso token for canny
+      tags:
+      - user profile
+  /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}:
+    get:
+      description: This endpoint enables a client to get all posts tied to a category
+      operationId: GetPostsByCategory
+      parameters:
+      - explode: false
+        in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: category
+        required: true
+        schema:
+          enum:
+          - CATEGORY_UNSPECIFIED
+          - CATEGORY_WORLD
+          - CATEGORY_BUSINESS
+          - CATEGORY_ECONOMICS
+          - CATEGORY_FOREIGN_POLICY
+          - CATEGORY_POLITICS
+          - CATEGORY_TECHNOLOGY
+          - CATEGORY_OTHER
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: postType
+        required: true
+        schema:
+          enum:
+          - POST_TYPE_UNSPECIFIED
+          - POST_TYPE_POST
+          - POST_TYPE_REPOST
+          - POST_TYPE_QUESTION
+          - POST_TYPE_ACHIEVEMENT
+          - POST_TYPE_ANNOUNCEMENT
+          - POST_TYPE_POLL
+          - POST_TYPE_ARTICLE
+          - POST_TYPE_SHORT_STORY
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: limit
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: offset
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPostsByCategoryResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get all posts associated with a category
+      tags:
+      - post
   /api/v1/users:
     post:
       description: This endpoint enables a client to create a user profile
@@ -1548,7 +1703,7 @@ paths:
           description: An unexpected error response.
       summary: update a user profile
       tags:
-      - user
+      - user profile
   /api/v1/users/{userId}/communities-followed:
     get:
       description: This endpoint enables a client to get all the communities a user
@@ -5458,6 +5613,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -5866,6 +6022,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -6300,6 +6457,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -6781,6 +6939,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -7189,6 +7348,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -7623,6 +7783,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -8111,6 +8272,7 @@ components:
             backendPlatformUserId: backendPlatformUserId
             pollDistribution:
               key: 0.8008281904610115
+            category: null
             backgroundImageUrl: backgroundImageUrl
             authorAccountType: null
           sharedPost:
@@ -8519,6 +8681,7 @@ components:
               key: null
             originalPostId: test-user
             backendPlatformUserId: backendPlatformUserId
+            category: null
             authorAccountType: null
           origin: origin
           verb: null
@@ -8955,6 +9118,7 @@ components:
               key: null
             topicName: topicName
             backendPlatformUserId: backendPlatformUserId
+            category: null
             backgroundImageUrl: backgroundImageUrl
             authorAccountType: null
           target: target
@@ -9502,6 +9666,7 @@ components:
             backendPlatformUserId: backendPlatformUserId
             pollDistribution:
               key: 0.8008281904610115
+            category: null
             backgroundImageUrl: backgroundImageUrl
             authorAccountType: null
           sharedPost:
@@ -9910,6 +10075,7 @@ components:
               key: null
             originalPostId: test-user
             backendPlatformUserId: backendPlatformUserId
+            category: null
             authorAccountType: null
           origin: origin
           verb: null
@@ -10346,6 +10512,7 @@ components:
               key: null
             topicName: topicName
             backendPlatformUserId: backendPlatformUserId
+            category: null
             backgroundImageUrl: backgroundImageUrl
             authorAccountType: null
           target: target
@@ -10625,6 +10792,18 @@ components:
         bookmark:
           $ref: '#/components/schemas/Bookmark'
       type: object
+    Category:
+      default: CATEGORY_UNSPECIFIED
+      enum:
+      - CATEGORY_UNSPECIFIED
+      - CATEGORY_WORLD
+      - CATEGORY_BUSINESS
+      - CATEGORY_ECONOMICS
+      - CATEGORY_FOREIGN_POLICY
+      - CATEGORY_POLITICS
+      - CATEGORY_TECHNOLOGY
+      - CATEGORY_OTHER
+      type: string
     Comment:
       example:
         notes:
@@ -11858,6 +12037,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -12266,6 +12446,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -12700,6 +12881,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -13267,6 +13449,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -13675,6 +13858,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -14109,6 +14293,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -14561,6 +14746,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -15687,6 +15873,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -16095,6 +16282,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -16529,6 +16717,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -17129,6 +17318,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -17537,6 +17727,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         origin: origin
         verb: null
@@ -17973,6 +18164,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         target: target
@@ -18790,6 +18982,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -19224,6 +19417,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -19667,6 +19861,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -20101,6 +20296,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -20108,6 +20304,13 @@ components:
           items:
             $ref: '#/components/schemas/Post'
           type: array
+      type: object
+    GetCannyUserSSOTokenResponse:
+      example:
+        token: token
+      properties:
+        token:
+          type: string
       type: object
     GetCommentRepliesResponse:
       example:
@@ -20685,6 +20888,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -21119,6 +21323,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -21575,6 +21780,7 @@ components:
               backendPlatformUserId: backendPlatformUserId
               pollDistribution:
                 key: 0.8008281904610115
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             sharedPost:
@@ -21983,6 +22189,7 @@ components:
                 key: null
               originalPostId: test-user
               backendPlatformUserId: backendPlatformUserId
+              category: null
               authorAccountType: null
             origin: origin
             verb: null
@@ -22419,6 +22626,7 @@ components:
                 key: null
               topicName: topicName
               backendPlatformUserId: backendPlatformUserId
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             target: target
@@ -22966,6 +23174,7 @@ components:
               backendPlatformUserId: backendPlatformUserId
               pollDistribution:
                 key: 0.8008281904610115
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             sharedPost:
@@ -23374,6 +23583,7 @@ components:
                 key: null
               originalPostId: test-user
               backendPlatformUserId: backendPlatformUserId
+              category: null
               authorAccountType: null
             origin: origin
             verb: null
@@ -23810,6 +24020,7 @@ components:
                 key: null
               topicName: topicName
               backendPlatformUserId: backendPlatformUserId
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             target: target
@@ -24812,6 +25023,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -25263,6 +25475,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - pollEndDate: 2000-01-23T04:56:07.000+00:00
@@ -25707,6 +25920,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -26150,6 +26364,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -26594,6 +26809,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -27028,6 +27244,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -27035,6 +27252,889 @@ components:
           items:
             $ref: '#/components/schemas/Post'
           type: array
+      type: object
+    GetPostsByCategoryResponse:
+      example:
+        nextOffset: nextOffset
+        posts:
+        - notes:
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          hashtags:
+          - hashtags
+          - hashtags
+          userIdToReportsMap:
+            key: userIdToReportsMap
+          media:
+            createdAt: createdAt
+            metadata:
+              imageWidth: imageWidth
+              resize: null
+              id: id
+              type: null
+              crop: null
+              imageHeight: imageHeight
+            link: link
+            id: id
+          aiGeneratedQuestionResponse: aiGeneratedQuestionResponse
+          title: title
+          content: content
+          createdAt: createdAt
+          readingTime: readingTime
+          extra:
+            key: extra
+          qualityScore: qualityScore
+          action: null
+          id: id
+          comments:
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          insights:
+            languageConfidence: 0.8008282
+            sentiment:
+              negative: 30
+              neutral: 50
+              positive: 89
+              compound: 93
+            wordCount: wordCount
+            entities:
+            - text: text
+              label: label
+            - text: text
+              label: label
+            sentenceCount: "10"
+            language: language
+          userIdToAffinityScoreMap:
+            key: userIdToAffinityScoreMap
+          threadParticipantType: null
+          authorUsername: authorUsername
+          thread:
+            createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            parentPostId: parentPostId
+            updatedAt: updatedAt
+          tags:
+          - tags
+          - tags
+          authorProfileImage: authorProfileImage
+          profileId: profileId
+          affinityScore: affinityScore
+          mentions:
+          - mentions
+          - mentions
+          userIdToReactionMap:
+            key: null
+          topicName: topicName
+          backendPlatformUserId: backendPlatformUserId
+          category: null
+          backgroundImageUrl: backgroundImageUrl
+          authorAccountType: null
+        - notes:
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          - authorProfileImage: authorProfileImage
+            createdAt: createdAt
+            hashtags:
+            - hashtags
+            - hashtags
+            profileId: profileId
+            mentions:
+            - mentions
+            - mentions
+            authorUserName: authorUserName
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorAccountType: null
+          hashtags:
+          - hashtags
+          - hashtags
+          userIdToReportsMap:
+            key: userIdToReportsMap
+          media:
+            createdAt: createdAt
+            metadata:
+              imageWidth: imageWidth
+              resize: null
+              id: id
+              type: null
+              crop: null
+              imageHeight: imageHeight
+            link: link
+            id: id
+          aiGeneratedQuestionResponse: aiGeneratedQuestionResponse
+          title: title
+          content: content
+          createdAt: createdAt
+          readingTime: readingTime
+          extra:
+            key: extra
+          qualityScore: qualityScore
+          action: null
+          id: id
+          comments:
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          - notes:
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            - authorProfileImage: authorProfileImage
+              createdAt: createdAt
+              hashtags:
+              - hashtags
+              - hashtags
+              profileId: profileId
+              mentions:
+              - mentions
+              - mentions
+              authorUserName: authorUserName
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorAccountType: null
+            hashtags:
+            - hashtags
+            - hashtags
+            userIdToReportsMap:
+              key: userIdToReportsMap
+            userIdToAffinityScoreMap:
+              key: userIdToAffinityScoreMap
+            authorUsername: test-user
+            media:
+              createdAt: createdAt
+              metadata:
+                imageWidth: imageWidth
+                resize: null
+                id: id
+                type: null
+                crop: null
+                imageHeight: imageHeight
+              link: link
+              id: id
+            content: content
+            authorProfileImage: test-user
+            createdAt: createdAt
+            replies:
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            - hashtags:
+              - hashtags
+              - hashtags
+              userIdToReportsMap:
+                key: userIdToReportsMap
+              userIdToAffinityScoreMap:
+                key: userIdToAffinityScoreMap
+              authorUsername: test-user
+              media:
+                createdAt: createdAt
+                metadata:
+                  imageWidth: imageWidth
+                  resize: null
+                  id: id
+                  type: null
+                  crop: null
+                  imageHeight: imageHeight
+                link: link
+                id: id
+              content: content
+              authorProfileImage: test-user
+              createdAt: createdAt
+              profileId: profileId
+              affinityScore: affinityScore
+              mentions:
+              - mentions
+              - mentions
+              extra:
+                key: extra
+              userIdToReactionMap:
+                key: null
+              qualityScore: qualityScore
+              backendPlatformUserId: backendPlatformUserId
+              id: id
+              authorAccountType: null
+            profileId: profileId
+            affinityScore: affinityScore
+            mentions:
+            - mentions
+            - mentions
+            extra:
+              key: extra
+            userIdToReactionMap:
+              key: null
+            qualityScore: qualityScore
+            backendPlatformUserId: backendPlatformUserId
+            id: id
+            authorAccountType: null
+          insights:
+            languageConfidence: 0.8008282
+            sentiment:
+              negative: 30
+              neutral: 50
+              positive: 89
+              compound: 93
+            wordCount: wordCount
+            entities:
+            - text: text
+              label: label
+            - text: text
+              label: label
+            sentenceCount: "10"
+            language: language
+          userIdToAffinityScoreMap:
+            key: userIdToAffinityScoreMap
+          threadParticipantType: null
+          authorUsername: authorUsername
+          thread:
+            createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            parentPostId: parentPostId
+            updatedAt: updatedAt
+          tags:
+          - tags
+          - tags
+          authorProfileImage: authorProfileImage
+          profileId: profileId
+          affinityScore: affinityScore
+          mentions:
+          - mentions
+          - mentions
+          userIdToReactionMap:
+            key: null
+          topicName: topicName
+          backendPlatformUserId: backendPlatformUserId
+          category: null
+          backgroundImageUrl: backgroundImageUrl
+          authorAccountType: null
+      properties:
+        posts:
+          items:
+            $ref: '#/components/schemas/Post'
+          type: array
+        nextOffset:
+          format: uint64
+          type: string
       type: object
     GetPostsByTopicResponse:
       example:
@@ -27471,6 +28571,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -27905,6 +29006,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -28351,6 +29453,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         - notes:
@@ -28785,6 +29888,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -29290,6 +30394,7 @@ components:
               backendPlatformUserId: backendPlatformUserId
               pollDistribution:
                 key: 0.8008281904610115
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             sharedPost:
@@ -29698,6 +30803,7 @@ components:
                 key: null
               originalPostId: test-user
               backendPlatformUserId: backendPlatformUserId
+              category: null
               authorAccountType: null
             origin: origin
             verb: null
@@ -30134,6 +31240,7 @@ components:
                 key: null
               topicName: topicName
               backendPlatformUserId: backendPlatformUserId
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             target: target
@@ -30681,6 +31788,7 @@ components:
               backendPlatformUserId: backendPlatformUserId
               pollDistribution:
                 key: 0.8008281904610115
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             sharedPost:
@@ -31089,6 +32197,7 @@ components:
                 key: null
               originalPostId: test-user
               backendPlatformUserId: backendPlatformUserId
+              category: null
               authorAccountType: null
             origin: origin
             verb: null
@@ -31525,6 +32634,7 @@ components:
                 key: null
               topicName: topicName
               backendPlatformUserId: backendPlatformUserId
+              category: null
               backgroundImageUrl: backgroundImageUrl
               authorAccountType: null
             target: target
@@ -32806,6 +33916,7 @@ components:
         backendPlatformUserId: backendPlatformUserId
         pollDistribution:
           key: 0.8008281904610115
+        category: null
         backgroundImageUrl: backgroundImageUrl
         authorAccountType: null
       properties:
@@ -32988,6 +34099,8 @@ components:
             a map of user ids to reactions left by users
             @gotag: bson:"userIdToReactionMap"
           type: object
+        category:
+          $ref: '#/components/schemas/Category'
       required:
       - action
       - content
@@ -33456,6 +34569,7 @@ components:
           key: null
         topicName: topicName
         backendPlatformUserId: backendPlatformUserId
+        category: null
         backgroundImageUrl: backgroundImageUrl
         authorAccountType: null
       properties:
@@ -33613,6 +34727,8 @@ components:
             if the post is a question, this field will hold the response to the question by the ai
             @gotag: bson:"aiGeneratedQuestionResponse"
           type: string
+        category:
+          $ref: '#/components/schemas/Category'
       required:
       - action
       - content
@@ -34374,6 +35490,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
         sharedPost:
@@ -34782,6 +35899,7 @@ components:
             key: null
           originalPostId: test-user
           backendPlatformUserId: backendPlatformUserId
+          category: null
           authorAccountType: null
         regularPost:
           notes:
@@ -35216,6 +36334,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -35972,6 +37091,7 @@ components:
             key: null
           topicName: topicName
           backendPlatformUserId: backendPlatformUserId
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -36442,6 +37562,7 @@ components:
           backendPlatformUserId: backendPlatformUserId
           pollDistribution:
             key: 0.8008281904610115
+          category: null
           backgroundImageUrl: backgroundImageUrl
           authorAccountType: null
       properties:
@@ -36886,6 +38007,7 @@ components:
           key: null
         originalPostId: test-user
         backendPlatformUserId: backendPlatformUserId
+        category: null
         authorAccountType: null
       properties:
         id:
@@ -37038,6 +38160,8 @@ components:
           type: string
         originalPostAction:
           $ref: '#/components/schemas/PostType'
+        category:
+          $ref: '#/components/schemas/Category'
       required:
       - action
       - content

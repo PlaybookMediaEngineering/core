@@ -1632,3 +1632,42 @@ message GetBookmarkedPostsRequest {
 message GetBookmarkedPostsResponse {
   repeated Post posts = 1;
 }
+
+message GetPostsByCategoryRequest {
+  string user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED];
+  Category category = 2 [
+    (validate.rules).enum = {not_in: [0]}, 
+    (google.api.field_behavior) = REQUIRED];
+  uint64 limit = 3 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED];
+  uint64 offset = 4 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED];
+  PostType post_type = 5 [
+    (validate.rules).enum = {not_in: [0]},  
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message GetPostsByCategoryResponse {
+  repeated Post posts = 1;
+  uint64 next_offset = 2;
+}
+
+message GetCannyUserSSOTokenRequest {
+  string user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED];
+    /**
+   * Indicates the profile type to be queried.
+   * For example: "username:testuser"
+   */
+   AccountType account_type = 2 [
+    (google.api.field_behavior) = REQUIRED   
+  ];
+}
+
+message GetCannyUserSSOTokenResponse { string token = 1; }

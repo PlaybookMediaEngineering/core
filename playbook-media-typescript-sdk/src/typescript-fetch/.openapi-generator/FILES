@@ -18,7 +18,6 @@ apis/ServiceHealthApi.ts
 apis/ServiceReadynessApi.ts
 apis/ThreadApi.ts
 apis/TopicApi.ts
-apis/UserApi.ts
 apis/UserProfileApi.ts
 apis/index.ts
 index.ts
@@ -36,6 +35,7 @@ models/BlockUserProfileResponse.ts
 models/Bookmark.ts
 models/BookmarkPostResponse.ts
 models/BookmarkPublicationResponse.ts
+models/Category.ts
 models/Comment.ts
 models/CommentReply.ts
 models/CommunityProfile.ts
@@ -80,6 +80,7 @@ models/FollowProfileResponse.ts
 models/GetAccountsFollowingResponse.ts
 models/GetBlogPostsByTagResponse.ts
 models/GetBookmarkedPostsResponse.ts
+models/GetCannyUserSSOTokenResponse.ts
 models/GetCommentRepliesResponse.ts
 models/GetCommunitiesUserFollowsResponse.ts
 models/GetCommunityBlogPostsResponse.ts
@@ -92,6 +93,7 @@ models/GetPollResponse.ts
 models/GetPollsResponse.ts
 models/GetPostResponse.ts
 models/GetPostThreadResponse.ts
+models/GetPostsByCategoryResponse.ts
 models/GetPostsByTopicResponse.ts
 models/GetPostsResponse.ts
 models/GetPublicationResponse.ts

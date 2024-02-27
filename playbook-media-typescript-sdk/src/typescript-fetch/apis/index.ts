@@ -20,5 +20,4 @@ export * from './ServiceHealthApi';
 export * from './ServiceReadynessApi';
 export * from './ThreadApi';
 export * from './TopicApi';
-export * from './UserApi';
 export * from './UserProfileApi';

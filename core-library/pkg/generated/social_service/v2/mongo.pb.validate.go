@@ -935,6 +935,8 @@ func (m *Post) validate(all bool) error {
 
 	// no validation rules for AiGeneratedQuestionResponse
 
+	// no validation rules for Category
+
 	if len(errors) > 0 {
 		return PostMultiError(errors)
 	}
@@ -1379,6 +1381,8 @@ func (m *PollPost) validate(all bool) error {
 	// no validation rules for ThreadParticipantType
 
 	// no validation rules for UserIdToReactionMap
+
+	// no validation rules for Category
 
 	if len(errors) > 0 {
 		return PollPostMultiError(errors)
@@ -1841,6 +1845,8 @@ func (m *SharedPost) validate(all bool) error {
 		}
 		errors = append(errors, err)
 	}
+
+	// no validation rules for Category
 
 	if len(errors) > 0 {
 		return SharedPostMultiError(errors)

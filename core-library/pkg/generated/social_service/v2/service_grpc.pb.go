@@ -90,6 +90,8 @@ const (
 	SocialService_RemoveBookmarkedPost_FullMethodName              = "/social_service.v2.SocialService/RemoveBookmarkedPost"
 	SocialService_RemoveBookmarkedPublication_FullMethodName       = "/social_service.v2.SocialService/RemoveBookmarkedPublication"
 	SocialService_GetBookmarkedPosts_FullMethodName                = "/social_service.v2.SocialService/GetBookmarkedPosts"
+	SocialService_GetPostsByCategory_FullMethodName                = "/social_service.v2.SocialService/GetPostsByCategory"
+	SocialService_GetCannyUserSSOToken_FullMethodName              = "/social_service.v2.SocialService/GetCannyUserSSOToken"
 )
 
 // SocialServiceClient is the client API for SocialService service.
@@ -193,6 +195,9 @@ type SocialServiceClient interface {
 	RemoveBookmarkedPost(ctx context.Context, in *RemoveBookmarkedPostRequest, opts ...grpc.CallOption) (*RemoveBookmarkedPostResponse, error)
 	RemoveBookmarkedPublication(ctx context.Context, in *RemoveBookmarkedPublicationRequest, opts ...grpc.CallOption) (*RemoveBookmarkedPublicationResponse, error)
 	GetBookmarkedPosts(ctx context.Context, in *GetBookmarkedPostsRequest, opts ...grpc.CallOption) (*GetBookmarkedPostsResponse, error)
+	GetPostsByCategory(ctx context.Context, in *GetPostsByCategoryRequest, opts ...grpc.CallOption) (*GetPostsByCategoryResponse, error)
+	// the following endpoints are for the canny integration. it returns the sso token for a given user
+	GetCannyUserSSOToken(ctx context.Context, in *GetCannyUserSSOTokenRequest, opts ...grpc.CallOption) (*GetCannyUserSSOTokenResponse, error)
 }
 
 type socialServiceClient struct {
@@ -842,6 +847,24 @@ func (c *socialServiceClient) GetBookmarkedPosts(ctx context.Context, in *GetBoo
 	return out, nil
 }
 
+func (c *socialServiceClient) GetPostsByCategory(ctx context.Context, in *GetPostsByCategoryRequest, opts ...grpc.CallOption) (*GetPostsByCategoryResponse, error) {
+	out := new(GetPostsByCategoryResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetPostsByCategory_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) GetCannyUserSSOToken(ctx context.Context, in *GetCannyUserSSOTokenRequest, opts ...grpc.CallOption) (*GetCannyUserSSOTokenResponse, error) {
+	out := new(GetCannyUserSSOTokenResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetCannyUserSSOToken_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServiceServer is the server API for SocialService service.
 // All implementations must embed UnimplementedSocialServiceServer
 // for forward compatibility
@@ -943,6 +966,9 @@ type SocialServiceServer interface {
 	RemoveBookmarkedPost(context.Context, *RemoveBookmarkedPostRequest) (*RemoveBookmarkedPostResponse, error)
 	RemoveBookmarkedPublication(context.Context, *RemoveBookmarkedPublicationRequest) (*RemoveBookmarkedPublicationResponse, error)
 	GetBookmarkedPosts(context.Context, *GetBookmarkedPostsRequest) (*GetBookmarkedPostsResponse, error)
+	GetPostsByCategory(context.Context, *GetPostsByCategoryRequest) (*GetPostsByCategoryResponse, error)
+	// the following endpoints are for the canny integration. it returns the sso token for a given user
+	GetCannyUserSSOToken(context.Context, *GetCannyUserSSOTokenRequest) (*GetCannyUserSSOTokenResponse, error)
 	mustEmbedUnimplementedSocialServiceServer()
 }
 
@@ -1162,6 +1188,12 @@ func (UnimplementedSocialServiceServer) RemoveBookmarkedPublication(context.Cont
 }
 func (UnimplementedSocialServiceServer) GetBookmarkedPosts(context.Context, *GetBookmarkedPostsRequest) (*GetBookmarkedPostsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBookmarkedPosts not implemented")
+}
+func (UnimplementedSocialServiceServer) GetPostsByCategory(context.Context, *GetPostsByCategoryRequest) (*GetPostsByCategoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPostsByCategory not implemented")
+}
+func (UnimplementedSocialServiceServer) GetCannyUserSSOToken(context.Context, *GetCannyUserSSOTokenRequest) (*GetCannyUserSSOTokenResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCannyUserSSOToken not implemented")
 }
 func (UnimplementedSocialServiceServer) mustEmbedUnimplementedSocialServiceServer() {}
 
@@ -2454,6 +2486,42 @@ func _SocialService_GetBookmarkedPosts_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_GetPostsByCategory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPostsByCategoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetPostsByCategory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetPostsByCategory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetPostsByCategory(ctx, req.(*GetPostsByCategoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_GetCannyUserSSOToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCannyUserSSOTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetCannyUserSSOToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetCannyUserSSOToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetCannyUserSSOToken(ctx, req.(*GetCannyUserSSOTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocialService_ServiceDesc is the grpc.ServiceDesc for SocialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2744,6 +2812,14 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetBookmarkedPosts",
 			Handler:    _SocialService_GetBookmarkedPosts_Handler,
+		},
+		{
+			MethodName: "GetPostsByCategory",
+			Handler:    _SocialService_GetPostsByCategory_Handler,
+		},
+		{
+			MethodName: "GetCannyUserSSOToken",
+			Handler:    _SocialService_GetCannyUserSSOToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

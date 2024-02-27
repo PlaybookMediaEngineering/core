@@ -118,6 +118,17 @@ enum Reaction {
   REACTION_DISLIKE = 7;
 }
 
+enum Category {
+  CATEGORY_UNSPECIFIED = 0;
+  CATEGORY_WORLD = 1;
+  CATEGORY_BUSINESS = 2;
+  CATEGORY_ECONOMICS = 3;
+  CATEGORY_FOREIGN_POLICY = 4;
+  CATEGORY_POLITICS = 5;
+  CATEGORY_TECHNOLOGY = 7;
+  CATEGORY_OTHER = 8;
+}
+
 /*
     Posts: Critical to activities and define the content sent over by users and
    communities
@@ -235,6 +246,10 @@ message Post {
   // if the post is a question, this field will hold the response to the question by the ai
   // @gotag: bson:"aiGeneratedQuestionResponse"
   string ai_generated_question_response = 34;
+
+  // the category of the post
+  // @gotag: bson:"category"
+  Category category = 35;
 }
 
 message PollPost {
@@ -367,6 +382,10 @@ message PollPost {
   // a map of user ids to reactions left by users
   // @gotag: bson:"userIdToReactionMap"
   map<string, Reaction> user_id_to_reaction_map = 33;
+
+  // the category of the post
+  // @gotag: bson:"category"
+  Category category = 35;
 }
 
 message PollResponse {
@@ -513,6 +532,10 @@ message SharedPost {
     (validate.rules).enum = {in: [1,3,4,5,6,7,8]},
     (validate.rules).enum.defined_only = true
   ];
+
+  // the category of the post
+  // @gotag: bson:"category"
+  Category category = 39;
 }
 
 message Thread {

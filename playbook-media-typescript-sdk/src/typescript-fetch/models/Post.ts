@@ -19,6 +19,12 @@ import {
     AccountTypeFromJSONTyped,
     AccountTypeToJSON,
 } from './AccountType';
+import type { Category } from './Category';
+import {
+    CategoryFromJSON,
+    CategoryFromJSONTyped,
+    CategoryToJSON,
+} from './Category';
 import type { Comment } from './Comment';
 import {
     CommentFromJSON,
@@ -248,6 +254,12 @@ export interface Post {
      * @memberof Post
      */
     aiGeneratedQuestionResponse?: string;
+    /**
+     * 
+     * @type {Category}
+     * @memberof Post
+     */
+    category?: Category;
 }
 
 /**
@@ -300,6 +312,7 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'threadParticipantType': !exists(json, 'threadParticipantType') ? undefined : ThreadParticipantTypeFromJSON(json['threadParticipantType']),
         'userIdToReactionMap': !exists(json, 'userIdToReactionMap') ? undefined : (mapValues(json['userIdToReactionMap'], ReactionFromJSON)),
         'aiGeneratedQuestionResponse': !exists(json, 'aiGeneratedQuestionResponse') ? undefined : json['aiGeneratedQuestionResponse'],
+        'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
     };
 }
 
@@ -341,6 +354,7 @@ export function PostToJSON(value?: Post | null): any {
         'threadParticipantType': ThreadParticipantTypeToJSON(value.threadParticipantType),
         'userIdToReactionMap': value.userIdToReactionMap === undefined ? undefined : (mapValues(value.userIdToReactionMap, ReactionToJSON)),
         'aiGeneratedQuestionResponse': value.aiGeneratedQuestionResponse,
+        'category': CategoryToJSON(value.category),
     };
 }
 

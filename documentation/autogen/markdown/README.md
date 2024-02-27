@@ -52,6 +52,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *PostApi* | [**getBlogPostsByTag**](Apis/PostApi.md#getblogpostsbytag) | **GET** /api/v1/posts/blog/tag/{tag} | Get blog posts by tag |
 *PostApi* | [**getCommunityBlogPosts**](Apis/PostApi.md#getcommunityblogposts) | **GET** /api/v1/community-profiles/{communityProfileId}/posts/blog | Get community blog posts |
 *PostApi* | [**getPost**](Apis/PostApi.md#getpost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
+*PostApi* | [**getPostsByCategory**](Apis/PostApi.md#getpostsbycategory) | **GET** /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset} | Get all posts associated with a category |
 *PostApi* | [**getPostsByTopic**](Apis/PostApi.md#getpostsbytopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
 *PostApi* | [**reportPost**](Apis/PostApi.md#reportpost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
 | *PostsApi* | [**getPosts**](Apis/PostsApi.md#getposts) | **GET** /api/v1/users/{userId}/posts | Get all the posts of a given user |
@@ -72,10 +73,11 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
 | *TopicApi* | [**createTopic**](Apis/TopicApi.md#createtopic) | **POST** /api/v1/users/{userId}/community/{communityProfileId}/topic | Create A Topic |
 *TopicApi* | [**getTopicsOfCommunitiesUserFollows**](Apis/TopicApi.md#gettopicsofcommunitiesuserfollows) | **GET** /api/v1/users/{userId}/topics | Get Topics Of Communities User Follows |
-| *UserApi* | [**editUserProfile**](Apis/UserApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |
 | *UserProfileApi* | [**createUserProfile**](Apis/UserProfileApi.md#createuserprofile) | **POST** /api/v1/users | creates a user profile |
 *UserProfileApi* | [**deleteUserProfile**](Apis/UserProfileApi.md#deleteuserprofile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 *UserProfileApi* | [**discoverProfiles**](Apis/UserProfileApi.md#discoverprofiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
+*UserProfileApi* | [**editUserProfile**](Apis/UserProfileApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |
+*UserProfileApi* | [**getCannyUserSSOToken**](Apis/UserProfileApi.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
 *UserProfileApi* | [**getUserProfile**](Apis/UserProfileApi.md#getuserprofile) | **GET** /api/v1/users/{userId} | gets a user profile |
 *UserProfileApi* | [**getUserProfiles**](Apis/UserProfileApi.md#getuserprofiles) | **GET** /api/v1/users/page-size/{pageSize}/page-number/{pageNumber} | Gets a set of user profiles |
 
@@ -97,6 +99,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [Bookmark](./Models/Bookmark.md)
  - [BookmarkPostResponse](./Models/BookmarkPostResponse.md)
  - [BookmarkPublicationResponse](./Models/BookmarkPublicationResponse.md)
+ - [Category](./Models/Category.md)
  - [Comment](./Models/Comment.md)
  - [CommentReply](./Models/CommentReply.md)
  - [CommunityProfile](./Models/CommunityProfile.md)
@@ -141,6 +144,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetAccountsFollowingResponse](./Models/GetAccountsFollowingResponse.md)
  - [GetBlogPostsByTagResponse](./Models/GetBlogPostsByTagResponse.md)
  - [GetBookmarkedPostsResponse](./Models/GetBookmarkedPostsResponse.md)
+ - [GetCannyUserSSOTokenResponse](./Models/GetCannyUserSSOTokenResponse.md)
  - [GetCommentRepliesResponse](./Models/GetCommentRepliesResponse.md)
  - [GetCommunitiesUserFollowsResponse](./Models/GetCommunitiesUserFollowsResponse.md)
  - [GetCommunityBlogPostsResponse](./Models/GetCommunityBlogPostsResponse.md)
@@ -153,6 +157,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetPollsResponse](./Models/GetPollsResponse.md)
  - [GetPostResponse](./Models/GetPostResponse.md)
  - [GetPostThreadResponse](./Models/GetPostThreadResponse.md)
+ - [GetPostsByCategoryResponse](./Models/GetPostsByCategoryResponse.md)
  - [GetPostsByTopicResponse](./Models/GetPostsByTopicResponse.md)
  - [GetPostsResponse](./Models/GetPostsResponse.md)
  - [GetPublicationResponse](./Models/GetPublicationResponse.md)

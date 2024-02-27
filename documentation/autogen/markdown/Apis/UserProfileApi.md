@@ -7,6 +7,8 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | [**createUserProfile**](UserProfileApi.md#createUserProfile) | **POST** /api/v1/users | creates a user profile |
 | [**deleteUserProfile**](UserProfileApi.md#deleteUserProfile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 | [**discoverProfiles**](UserProfileApi.md#discoverProfiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
+| [**editUserProfile**](UserProfileApi.md#editUserProfile) | **PUT** /api/v1/users/{userId} | update a user profile |
+| [**getCannyUserSSOToken**](UserProfileApi.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
 | [**getUserProfile**](UserProfileApi.md#getUserProfile) | **GET** /api/v1/users/{userId} | gets a user profile |
 | [**getUserProfiles**](UserProfileApi.md#getUserProfiles) | **GET** /api/v1/users/page-size/{pageSize}/page-number/{pageNumber} | Gets a set of user profiles |
 
@@ -83,6 +85,62 @@ Discover Profiles
 ### Return type
 
 [**DiscoverProfilesResponse**](../Models/DiscoverProfilesResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="editUserProfile"></a>
+# **editUserProfile**
+> EditUserProfileResponse editUserProfile(userId, UserProfile)
+
+update a user profile
+
+    This endpoint performs an updates operation on a user profile based on the provided parametersThis update operation can span multiple services on specific cases (such as when the client is explicitly attempting to update the email of the user)All update operations are atomic by nature hence we should not expect any form of divergent state
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**| the user ID trying to update this user profile (NOTE: userID refers to the ID from the vantage point of the user service. This ID is the single source of truth for a given user across our suite of services) | type: uint64 | [default to null] |
+| **UserProfile** | [**UserProfile**](../Models/UserProfile.md)| the profile payload | type: json_object | |
+
+### Return type
+
+[**EditUserProfileResponse**](../Models/EditUserProfileResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="getCannyUserSSOToken"></a>
+# **getCannyUserSSOToken**
+> GetCannyUserSSOTokenResponse getCannyUserSSOToken(userId, accountType)
+
+Retrieves user sso token for canny
+
+    Fetches a user sso token for canny
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**|  | [default to null] |
+| **accountType** | **String**| Indicates the profile type to be queried. For example: \&quot;username:testuser\&quot; | [default to null] [enum: ACCOUNT_TYPE_UNSPECIFIED, ACCOUNT_TYPE_USER, ACCOUNT_TYPE_COMMUNITY] |
+
+### Return type
+
+[**GetCannyUserSSOTokenResponse**](../Models/GetCannyUserSSOTokenResponse.md)
 
 ### Authorization
 
