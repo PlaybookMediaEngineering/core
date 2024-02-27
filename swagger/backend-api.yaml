@@ -691,7 +691,7 @@ paths:
               - ACCOUNT_TYPE_COMMUNITY
       tags:
         - community profile
-  "/api/v1/user/{userId}/canny/accounty-type/{accountType}":
+  "/api/v1/user/{userId}/canny/account-type/{accountType}":
     get:
       summary: Retrieves user sso token for canny
       description: Fetches a user sso token for canny

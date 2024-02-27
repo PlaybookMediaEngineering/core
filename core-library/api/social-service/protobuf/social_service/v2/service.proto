@@ -1483,7 +1483,7 @@ service SocialService {
 
       // the following endpoints are for the canny integration. it returns the sso token for a given user
     rpc GetCannyUserSSOToken(GetCannyUserSSOTokenRequest) returns (GetCannyUserSSOTokenResponse) {
-        option (google.api.http) = {get: "/api/v1/user/{user_id}/canny/accounty-type/{account_type}"};
+        option (google.api.http) = {get: "/api/v1/user/{user_id}/canny/account-type/{account_type}"};
         option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
             summary: "Retrieves user sso token for canny",
             tags: ["account", "v2"],

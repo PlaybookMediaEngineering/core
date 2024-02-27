@@ -135,341 +135,6 @@
   "output_encoding": "json",
   "endpoints": [
     {
-      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "communityProfileId",
-        "accountType",
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/thread/{postId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/thread/{postId}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/user/{userId}/canny/accounty-type/{accountType}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/user/{userId}/canny/accounty-type/{accountType}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/topics",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/topics",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
       "endpoint": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
       "method": "GET",
       "output_encoding": "json",
@@ -478,482 +143,6 @@
       "backend": [
         {
           "url_pattern": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/posts/blog/tag/{tag}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/posts/blog/tag/{tag}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/bookmark/{postId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/bookmark/{postId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/post/{postId}/comment/{commentId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/post/{postId}/comment/{commentId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/follow-requests/{followRecordId}/accept",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/follow-requests/{followRecordId}/accept",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/polls",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/polls",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/note",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/followers",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/followers",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/timeline",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "feedType",
-        "accountType",
-        "nextPageToken"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/timeline",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/bookmark",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/bookmark",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/health",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/health",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/bookmarks/{userId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/bookmarks/{userId}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1033,16 +222,16 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
-      "method": "POST",
+      "endpoint": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
+      "method": "DELETE",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+          "url_pattern": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
           "encoding": "json",
-          "method": "POST",
+          "method": "DELETE",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1054,16 +243,16 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/poll/{pollId}",
-      "method": "POST",
+      "endpoint": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
+      "method": "PUT",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/poll/{pollId}",
+          "url_pattern": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
           "encoding": "json",
-          "method": "POST",
+          "method": "PUT",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1075,35 +264,16 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/publication",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/publication",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
-      "input_query_strings": [],
+      "input_query_strings": [
+        "limit"
+      ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1117,14 +287,81 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/follow/pending-requests",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/bookmark",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/bookmark",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/follow/pending-requests",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1138,16 +375,60 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/discover/limit/{limit}",
-      "method": "GET",
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
+      "method": "DELETE",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/discover/limit/{limit}",
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
           "encoding": "json",
-          "method": "GET",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/source/{sourceUserId}/follow/community-profiles/{targetCommunityProfileId}",
+          "encoding": "json",
+          "method": "POST",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1180,8 +461,8 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/replies",
-      "method": "GET",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
+      "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [
@@ -1189,7 +470,30 @@
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/replies",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/topics",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "limit"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/topics",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1203,16 +507,37 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/quality",
-      "method": "POST",
+      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/followers",
+      "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [
-        "postType"
+        "limit"
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/quality",
+          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/followers",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1247,14 +572,167 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+      "endpoint": "/api/v1/post/{postId}/comment/{commentId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/post/{postId}/comment/{commentId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/bookmarks/{userId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/bookmarks/{userId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/thread/{postId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/thread/{postId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+          "url_pattern": "/api/v1/users",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1268,14 +746,474 @@
       ]
     },
     {
-      "endpoint": "/api/v1/community-profiles/page-size/{pageSize}/page-number/{pageNumber}",
+      "endpoint": "/api/v1/users/{userId}/timeline",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "feedType",
+        "accountType",
+        "nextPageToken"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/timeline",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "communityProfileId",
+        "accountType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/publication",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/publication",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/user/{userId}/canny/account-type/{accountType}",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/community-profiles/page-size/{pageSize}/page-number/{pageNumber}",
+          "url_pattern": "/api/v1/user/{userId}/canny/account-type/{accountType}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/discover/limit/{limit}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/discover/limit/{limit}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "communityProfileId",
+        "accountType",
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/post/{postId}/type/{postType}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/post/{postId}/type/{postType}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/source/{sourceUserId}/follow/target/{targetUserId}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note/{noteId}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/posts/blog/tag/{tag}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/posts/blog/tag/{tag}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/bookmark/{postId}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/bookmark/{postId}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/communities-followed",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "limit"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/communities-followed",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1310,14 +1248,207 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/{userId}/posts",
+      "endpoint": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/follow/pending-requests",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/posts",
+          "url_pattern": "/api/v1/users/{userId}/follow/pending-requests",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/community-profiles/page-size/{pageSize}/page-number/{pageNumber}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/community-profiles/page-size/{pageSize}/page-number/{pageNumber}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/ready",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/ready",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/quality",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/quality",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/health",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/health",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1356,79 +1487,14 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/community-profiles/{communityProfileId}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+      "endpoint": "/api/v1/community-profiles/{userId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+          "url_pattern": "/api/v1/community-profiles/{userId}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1442,16 +1508,16 @@
       ]
     },
     {
-      "endpoint": "/api/v1/post/{postId}/type/{postType}",
-      "method": "PUT",
+      "endpoint": "/api/v1/users/{userId}/poll/{pollId}",
+      "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/post/{postId}/type/{postType}",
+          "url_pattern": "/api/v1/users/{userId}/poll/{pollId}",
           "encoding": "json",
-          "method": "PUT",
+          "method": "POST",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1463,16 +1529,16 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-      "method": "DELETE",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/note",
+      "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note",
           "encoding": "json",
-          "method": "DELETE",
+          "method": "POST",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1484,56 +1550,14 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+      "endpoint": "/api/v1/users/{userId}/posts",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+          "url_pattern": "/api/v1/users/{userId}/posts",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1547,50 +1571,8 @@
       ]
     },
     {
-      "endpoint": "/api/v1/users",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
-      "method": "POST",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/replies",
+      "method": "GET",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [
@@ -1598,9 +1580,9 @@
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/replies",
           "encoding": "json",
-          "method": "POST",
+          "method": "GET",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -1633,61 +1615,14 @@
       ]
     },
     {
-      "endpoint": "/api/v1/ready",
-      "method": "GET",
+      "endpoint": "/api/v1/follow-requests/{followRecordId}/accept",
+      "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/ready",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/communities-followed",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/communities-followed",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ]
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "3000ms",
-      "input_query_strings": [
-        "communityProfileId",
-        "accountType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post",
+          "url_pattern": "/api/v1/follow-requests/{followRecordId}/accept",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1701,14 +1636,79 @@
       ]
     },
     {
-      "endpoint": "/api/v1/community-profiles/{userId}",
+      "endpoint": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "3000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/community-profiles/{userId}",
+          "url_pattern": "/api/v1/users/source/{sourceUserId}/block/target/{targetUserId}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/polls",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/polls",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ]
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "3000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
           "encoding": "json",
           "method": "POST",
           "host": [

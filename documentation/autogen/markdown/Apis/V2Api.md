@@ -4,7 +4,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**getCannyUserSSOToken**](V2Api.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/accounty-type/{accountType} | Retrieves user sso token for canny |
+| [**getCannyUserSSOToken**](V2Api.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/account-type/{accountType} | Retrieves user sso token for canny |
 
 
 <a name="getCannyUserSSOToken"></a>

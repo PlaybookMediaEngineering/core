@@ -727,7 +727,7 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
-  /api/v1/user/{userId}/canny/accounty-type/{accountType}:
+  /api/v1/user/{userId}/canny/account-type/{accountType}:
     get:
       description: Fetches a user sso token for canny
       operationId: GetCannyUserSSOToken

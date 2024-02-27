@@ -62,7 +62,7 @@ export class V2Api extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/api/v1/user/{userId}/canny/accounty-type/{accountType}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"accountType"}}`, encodeURIComponent(String(requestParameters.accountType))),
+            path: `/api/v1/user/{userId}/canny/account-type/{accountType}`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))).replace(`{${"accountType"}}`, encodeURIComponent(String(requestParameters.accountType))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

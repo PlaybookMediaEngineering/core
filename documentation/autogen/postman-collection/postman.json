@@ -4601,7 +4601,7 @@
 	            "name": "account",
 	            "item": [
 	                        {
-    "name": "/api/v1/user/:userId/canny/accounty-type/:accountType",
+    "name": "/api/v1/user/:userId/canny/account-type/:accountType",
                 "description": "Fetches a user sso token for canny",
                  "item": [
                             {
@@ -4625,7 +4625,7 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/accounty-type/:accountType",
+                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/account-type/:accountType",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
@@ -4635,7 +4635,7 @@
                                             "user",
                                             ":userId",
                                             "canny",
-                                            "accounty-type",
+                                            "account-type",
                                             ":accountType"
                                         ],
                                         "variable": [
@@ -4659,7 +4659,7 @@
                             ]
                         },
 	                        {
-    "name": "/api/v1/user/:userId/canny/accounty-type/:accountType",
+    "name": "/api/v1/user/:userId/canny/account-type/:accountType",
                 "description": "Fetches a user sso token for canny",
                  "item": [
                             {
@@ -4683,7 +4683,7 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/accounty-type/:accountType",
+                                        "raw": "{{baseUrl}}/api/v1/user/:userId/canny/account-type/:accountType",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
@@ -4693,7 +4693,7 @@
                                             "user",
                                             ":userId",
                                             "canny",
-                                            "accounty-type",
+                                            "account-type",
                                             ":accountType"
                                         ],
                                         "variable": [
