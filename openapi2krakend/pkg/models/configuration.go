@@ -1,16 +1,18 @@
 package models
 
 import (
-	"github.com/okhuz/openapi2krakend/pkg/utility"
 	"strings"
+
+	"github.com/okhuz/openapi2krakend/pkg/utility"
 )
 
 type Backend struct {
-	UrlPattern          string   `json:"url_pattern"`
-	Encoding            string   `json:"encoding"`
-	Method              string   `json:"method"`
-	Host                []string `json:"host"`
-	DisableHostSanitize bool     `json:"disable_host_sanitize"`
+	UrlPattern          string                 `json:"url_pattern"`
+	Encoding            string                 `json:"encoding"`
+	Method              string                 `json:"method"`
+	Host                []string               `json:"host"`
+	DisableHostSanitize bool                   `json:"disable_host_sanitize"`
+	ExtraConfig         map[string]interface{} `json:"extra_config,omitempty"` // Added line
 }
 
 func NewBackend(host string, endpoint string, method string, outputEncoding string) Backend {
@@ -23,14 +25,26 @@ func NewBackend(host string, endpoint string, method string, outputEncoding stri
 	}
 }
 
+func NewBackendWithDefaults(host string, endpoint string, method string, outputEncoding string) Backend {
+	return Backend{
+		UrlPattern:          endpoint,
+		Encoding:            outputEncoding,
+		Method:              strings.ToUpper(method),
+		Host:                []string{host},
+		DisableHostSanitize: false,
+		ExtraConfig:         DefaultBackendExtraConfig(),
+	}
+}
+
 type Endpoint struct {
-	Endpoint          string    `json:"endpoint"`
-	Method            string    `json:"method"`
-	OutputEncoding    string    `json:"output_encoding"`
-	Timeout           string    `json:"timeout"`
-	InputQueryStrings []string  `json:"input_query_strings"`
-	Backend           []Backend `json:"backend"`
-	InputHeaders      []string  `json:"input_headers"`
+	Endpoint          string                 `json:"endpoint"`
+	Method            string                 `json:"method"`
+	OutputEncoding    string                 `json:"output_encoding"`
+	Timeout           string                 `json:"timeout"`
+	InputQueryStrings []string               `json:"input_query_strings"`
+	Backend           []Backend              `json:"backend"`
+	InputHeaders      []string               `json:"input_headers"`
+	ExtraConfig       map[string]interface{} `json:"extra_config,omitempty"`
 }
 
 func NewEndpoint(host string, endpoint string, backendEndpoint string, method string, outputEncoding string, timeout string) Endpoint {
@@ -44,6 +58,27 @@ func NewEndpoint(host string, endpoint string, backendEndpoint string, method st
 		Backend:           []Backend{backend},
 		InputHeaders:      []string{"Content-Type"},
 	}
+}
+
+func NewEndpointWithDefaults(host string, endpoint string, backendEndpoint string, method string, outputEncoding string, timeout string) Endpoint {
+	backend := NewBackendWithDefaults(host, backendEndpoint, method, outputEncoding)
+	return Endpoint{
+		Endpoint:          endpoint,
+		Method:            strings.ToUpper(method),
+		OutputEncoding:    outputEncoding,
+		Timeout:           timeout,
+		InputQueryStrings: []string{},
+		Backend:           []Backend{backend},
+		InputHeaders:      []string{"Content-Type"},
+		ExtraConfig:       DefaultEndpointExtraConfig(),
+	}
+}
+
+func (e *Endpoint) AddExtraConfig(key string, value interface{}) {
+	if e.ExtraConfig == nil {
+		e.ExtraConfig = make(map[string]interface{})
+	}
+	e.ExtraConfig[key] = value
 }
 
 func (e *Endpoint) InsertQuerystringParams(param string) {

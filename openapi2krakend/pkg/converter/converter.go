@@ -2,12 +2,13 @@ package converter
 
 import (
 	"fmt"
-	"github.com/okhuz/openapi2krakend/pkg/extensions"
-	"github.com/okhuz/openapi2krakend/pkg/models"
-	"github.com/okhuz/openapi2krakend/pkg/utility"
 	"io/fs"
 	"io/ioutil"
 	"strings"
+
+	"github.com/okhuz/openapi2krakend/pkg/extensions"
+	"github.com/okhuz/openapi2krakend/pkg/models"
+	"github.com/okhuz/openapi2krakend/pkg/utility"
 )
 
 func Convert(swaggerDirectory string, encoding string, globalTimeout string) models.Configuration {
@@ -48,7 +49,7 @@ func Convert(swaggerDirectory string, encoding string, globalTimeout string) mod
 					methodTimeout = extensionValue
 				}
 
-				krakendEndpoint := models.NewEndpoint(host, krakendEndpointUrl, pathUrl, methodName, encoding, methodTimeout)
+				krakendEndpoint := models.NewEndpointWithDefaults(host, krakendEndpointUrl, pathUrl, methodName, encoding, methodTimeout)
 				if methodObject.Security != nil {
 					lengthOfSecurity := len(*methodObject.Security)
 					if lengthOfSecurity > 0 {
@@ -83,7 +84,7 @@ func Convert(swaggerDirectory string, encoding string, globalTimeout string) mod
 		if additionalPaths != "" {
 			additionalPathArray := strings.Split(additionalPaths, ",")
 			for _, v := range additionalPathArray {
-				additionalEndpoint := models.NewEndpoint(host, fmt.Sprintf("/%s%s", path, v), v, "get", encoding, apiTimeout)
+				additionalEndpoint := models.NewEndpointWithDefaults(host, fmt.Sprintf("/%s%s", path, v), v, "get", encoding, apiTimeout)
 				additionalEndpoint.InsertHeadersToPass("Authorization")
 				configuration.InsertEndpoint(additionalEndpoint)
 			}

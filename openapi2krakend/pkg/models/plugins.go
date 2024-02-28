@@ -2,9 +2,10 @@ package models
 
 import (
 	"errors"
-	"github.com/okhuz/openapi2krakend/pkg/utility"
 	"log"
 	"strings"
+
+	"github.com/okhuz/openapi2krakend/pkg/utility"
 )
 
 type Logging struct {
