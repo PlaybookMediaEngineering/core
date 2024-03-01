@@ -1,4 +1,4 @@
-# SolomonAI Backend Platform APIs
+# Playbook Media Backend Platform APIs
 
 This tree hosts the configuration and APIs that drive [Envoy](https://www.envoyproxy.io/). The
 APIs are also in some cases used by other proxy solutions that aim to interoperate with management
