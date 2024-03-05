@@ -92,7 +92,7 @@ func Convert(swaggerDirectory string, encoding string, globalTimeout string, web
 
 		// Add webhook endpoint
 		if webhookCfg != nil {
-			webhookEndpoint := models.NewEndpointWithDefaults(
+			webhookEndpoint := models.NewEndpoint(
 				webhookCfg.WebhookHost,
 				webhookCfg.WebhookKrakendEndpointUrl,
 				webhookCfg.WebhookPathUrl,
