@@ -171,6 +171,17 @@ func (m *VirtualProfile) validate(all bool) error {
 
 	}
 
+	if utf8.RuneCountInString(m.GetStripeCustomerId()) < 1 {
+		err := VirtualProfileValidationError{
+			field:  "StripeCustomerId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return VirtualProfileMultiError(errors)
 	}

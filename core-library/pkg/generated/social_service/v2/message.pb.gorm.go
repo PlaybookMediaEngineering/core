@@ -17,6 +17,7 @@ type VirtualProfileORM struct {
 	Communities         []*CommunityProfileORM `gorm:"foreignkey:VirtualProfileId;association_foreignkey:Id;preload:true"`
 	Id                  uint64
 	ProfileType         string
+	StripeCustomerId    string
 	StripeSubscriptions []*StripeSubscriptionORM `gorm:"foreignkey:VirtualProfileId;association_foreignkey:Id;preload:true"`
 	User                *UserProfileORM          `gorm:"foreignkey:VirtualProfileId;association_foreignkey:Id;preload:true"`
 	UserId              string
@@ -70,6 +71,7 @@ func (m *VirtualProfile) ToORM(ctx context.Context) (VirtualProfileORM, error) {
 			to.StripeSubscriptions = append(to.StripeSubscriptions, nil)
 		}
 	}
+	to.StripeCustomerId = m.StripeCustomerId
 	if posthook, ok := interface{}(m).(VirtualProfileWithAfterToORM); ok {
 		err = posthook.AfterToORM(ctx, &to)
 	}
@@ -119,6 +121,7 @@ func (m *VirtualProfileORM) ToPB(ctx context.Context) (VirtualProfile, error) {
 			to.StripeSubscriptions = append(to.StripeSubscriptions, nil)
 		}
 	}
+	to.StripeCustomerId = m.StripeCustomerId
 	if posthook, ok := interface{}(m).(VirtualProfileWithAfterToPB); ok {
 		err = posthook.AfterToPB(ctx, &to)
 	}
@@ -1398,6 +1401,10 @@ func DefaultApplyFieldMaskVirtualProfile(ctx context.Context, patchee *VirtualPr
 		}
 		if f == prefix+"StripeSubscriptions" {
 			patchee.StripeSubscriptions = patcher.StripeSubscriptions
+			continue
+		}
+		if f == prefix+"StripeCustomerId" {
+			patchee.StripeCustomerId = patcher.StripeCustomerId
 			continue
 		}
 	}

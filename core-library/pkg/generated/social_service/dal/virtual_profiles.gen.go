@@ -32,6 +32,7 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 	_virtualProfileORM.Activated = field.NewBool(tableName, "activated")
 	_virtualProfileORM.Id = field.NewUint64(tableName, "id")
 	_virtualProfileORM.ProfileType = field.NewString(tableName, "profile_type")
+	_virtualProfileORM.StripeCustomerId = field.NewString(tableName, "stripe_customer_id")
 	_virtualProfileORM.UserId = field.NewString(tableName, "user_id")
 	_virtualProfileORM.User = virtualProfileORMHasOneUser{
 		db: db.Session(&gorm.Session{}),
@@ -104,12 +105,13 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 type virtualProfileORM struct {
 	virtualProfileORMDo
 
-	ALL         field.Asterisk
-	Activated   field.Bool
-	Id          field.Uint64
-	ProfileType field.String
-	UserId      field.String
-	User        virtualProfileORMHasOneUser
+	ALL              field.Asterisk
+	Activated        field.Bool
+	Id               field.Uint64
+	ProfileType      field.String
+	StripeCustomerId field.String
+	UserId           field.String
+	User             virtualProfileORMHasOneUser
 
 	Communities virtualProfileORMHasManyCommunities
 
@@ -133,6 +135,7 @@ func (v *virtualProfileORM) updateTableName(table string) *virtualProfileORM {
 	v.Activated = field.NewBool(table, "activated")
 	v.Id = field.NewUint64(table, "id")
 	v.ProfileType = field.NewString(table, "profile_type")
+	v.StripeCustomerId = field.NewString(table, "stripe_customer_id")
 	v.UserId = field.NewString(table, "user_id")
 
 	v.fillFieldMap()
@@ -150,10 +153,11 @@ func (v *virtualProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, b
 }
 
 func (v *virtualProfileORM) fillFieldMap() {
-	v.fieldMap = make(map[string]field.Expr, 7)
+	v.fieldMap = make(map[string]field.Expr, 8)
 	v.fieldMap["activated"] = v.Activated
 	v.fieldMap["id"] = v.Id
 	v.fieldMap["profile_type"] = v.ProfileType
+	v.fieldMap["stripe_customer_id"] = v.StripeCustomerId
 	v.fieldMap["user_id"] = v.UserId
 
 }
