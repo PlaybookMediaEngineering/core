@@ -6,6 +6,13 @@ import (
 	"github.com/okhuz/openapi2krakend/pkg/utility"
 )
 
+type WebhookFixedConfigurations struct {
+	WebhookHost               string `json:"webhook_host"`
+	WebhookPathUrl            string `json:"webhook_path_url"`
+	WebhookKrakendEndpointUrl string `json:"webhook_krakend_endpoint_url"`
+	WebhookMethod             string `json:"webhook_method"`
+}
+
 type Backend struct {
 	UrlPattern          string                 `json:"url_pattern"`
 	Encoding            string                 `json:"encoding"`
