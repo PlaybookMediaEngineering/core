@@ -156,7 +156,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"userId\": \"<string>\",\n \"idsOfCommunitiesToFollow\": \"<string>\",\n \"username\": \"<string>\",\n \"tags\": \"<string>\",\n \"isPrivate\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"email\": \"<string>\"\n}",
+                                        "raw": "{\n \"userId\": \"<string>\",\n \"idsOfCommunitiesToFollow\": \"<string>\",\n \"username\": \"<string>\",\n \"tags\": \"<string>\",\n \"isPrivate\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"email\": \"<string>\",\n \"userType\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

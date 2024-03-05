@@ -106,6 +106,13 @@ message CreateUserProfileRequest {
     (validate.rules).string.min_len = 1,
     (google.api.field_behavior) = REQUIRED
   ];
+
+  // the type of user being created | type: string 
+  // business means a creator and user means a regular user
+  VirtualProfileType user_type = 9 [
+    (validate.rules).enum = {not_in: [0]},  
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 // CreateCommunityProfileRequest: Represents the request object invoked against

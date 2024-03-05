@@ -19,6 +19,12 @@ import {
     UserTagsFromJSONTyped,
     UserTagsToJSON,
 } from './UserTags';
+import type { VirtualProfileType } from './VirtualProfileType';
+import {
+    VirtualProfileTypeFromJSON,
+    VirtualProfileTypeFromJSONTyped,
+    VirtualProfileTypeToJSON,
+} from './VirtualProfileType';
 
 /**
  * 
@@ -68,6 +74,12 @@ export interface CreateUserProfileRequest {
      * @memberof CreateUserProfileRequest
      */
     email: string;
+    /**
+     * 
+     * @type {VirtualProfileType}
+     * @memberof CreateUserProfileRequest
+     */
+    userType: VirtualProfileType;
 }
 
 /**
@@ -80,6 +92,7 @@ export function instanceOfCreateUserProfileRequest(value: object): boolean {
     isInstance = isInstance && "tags" in value;
     isInstance = isInstance && "profileImageUrl" in value;
     isInstance = isInstance && "email" in value;
+    isInstance = isInstance && "userType" in value;
 
     return isInstance;
 }
@@ -101,6 +114,7 @@ export function CreateUserProfileRequestFromJSONTyped(json: any, ignoreDiscrimin
         'isPrivate': !exists(json, 'isPrivate') ? undefined : json['isPrivate'],
         'profileImageUrl': json['profileImageUrl'],
         'email': json['email'],
+        'userType': VirtualProfileTypeFromJSON(json['userType']),
     };
 }
 
@@ -120,6 +134,7 @@ export function CreateUserProfileRequestToJSON(value?: CreateUserProfileRequest 
         'isPrivate': value.isPrivate,
         'profileImageUrl': value.profileImageUrl,
         'email': value.email,
+        'userType': VirtualProfileTypeToJSON(value.userType),
     };
 }
 

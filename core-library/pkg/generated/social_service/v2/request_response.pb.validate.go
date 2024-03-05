@@ -891,6 +891,17 @@ func (m *CreateUserProfileRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if _, ok := _CreateUserProfileRequest_UserType_NotInLookup[m.GetUserType()]; ok {
+		err := CreateUserProfileRequestValidationError{
+			field:  "UserType",
+			reason: "value must not be in list [VIRTUAL_PROFILE_TYPE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return CreateUserProfileRequestMultiError(errors)
 	}
@@ -970,6 +981,10 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = CreateUserProfileRequestValidationError{}
+
+var _CreateUserProfileRequest_UserType_NotInLookup = map[VirtualProfileType]struct{}{
+	0: {},
+}
 
 // Validate checks the field values on CreateCommunityProfileRequest with the
 // rules defined in the proto definition for this message. If any rules are

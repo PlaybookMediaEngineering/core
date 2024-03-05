@@ -156,5 +156,6 @@ models/Topic.ts
 models/UserProfile.ts
 models/UserTags.ts
 models/ValidationErrorMessageResponse.ts
+models/VirtualProfileType.ts
 models/index.ts
 runtime.ts

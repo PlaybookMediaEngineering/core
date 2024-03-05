@@ -223,6 +223,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [UserProfile](./Models/UserProfile.md)
  - [UserTags](./Models/UserTags.md)
  - [ValidationErrorMessageResponse](./Models/ValidationErrorMessageResponse.md)
+ - [VirtualProfileType](./Models/VirtualProfileType.md)
 
 
 <a name="documentation-for-authorization"></a>

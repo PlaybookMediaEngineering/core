@@ -135,3 +135,4 @@ export * from './Topic';
 export * from './UserProfile';
 export * from './UserTags';
 export * from './ValidationErrorMessageResponse';
+export * from './VirtualProfileType';

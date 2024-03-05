@@ -7789,6 +7789,9 @@
                     "email": {
                         "type": "string",
                         "title": "the email of the user | type: string"
+                    },
+                    "userType": {
+                        "$ref": "#/components/schemas/VirtualProfileType"
                     }
                 },
                 "title": "CreateUserProfileRequest: Represents the request object invoked against the\nsocial service to create a user profile account",
@@ -7797,7 +7800,8 @@
                     "username",
                     "tags",
                     "profileImageUrl",
-                    "email"
+                    "email",
+                    "userType"
                 ]
             },
             "CreateUserProfileResponse": {
@@ -9834,6 +9838,17 @@
                         "type": "string"
                     }
                 }
+            },
+            "VirtualProfileType": {
+                "type": "string",
+                "enum": [
+                    "VIRTUAL_PROFILE_TYPE_UNSPECIFIED",
+                    "VIRTUAL_PROFILE_TYPE_USER",
+                    "VIRTUAL_PROFILE_TYPE_BUSINESS"
+                ],
+                "default": "VIRTUAL_PROFILE_TYPE_UNSPECIFIED",
+                "description": "- VIRTUAL_PROFILE_TYPE_USER: this is essentially for regular users that just want to consume content\n - VIRTUAL_PROFILE_TYPE_BUSINESS: this is essentially for creators",
+                "title": "virtual profile type of the user account"
             }
         }
     }

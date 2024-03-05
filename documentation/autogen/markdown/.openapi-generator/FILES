@@ -154,4 +154,5 @@ Models/Topic.md
 Models/UserProfile.md
 Models/UserTags.md
 Models/ValidationErrorMessageResponse.md
+Models/VirtualProfileType.md
 README.md
