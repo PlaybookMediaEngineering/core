@@ -33,6 +33,7 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 	_virtualProfileORM.Email = field.NewString(tableName, "email")
 	_virtualProfileORM.Id = field.NewUint64(tableName, "id")
 	_virtualProfileORM.ProfileType = field.NewString(tableName, "profile_type")
+	_virtualProfileORM.StripeConnectAccountId = field.NewString(tableName, "stripe_connect_account_id")
 	_virtualProfileORM.StripeCustomerId = field.NewString(tableName, "stripe_customer_id")
 	_virtualProfileORM.UserId = field.NewString(tableName, "user_id")
 	_virtualProfileORM.User = virtualProfileORMHasOneUser{
@@ -106,14 +107,15 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 type virtualProfileORM struct {
 	virtualProfileORMDo
 
-	ALL              field.Asterisk
-	Activated        field.Bool
-	Email            field.String
-	Id               field.Uint64
-	ProfileType      field.String
-	StripeCustomerId field.String
-	UserId           field.String
-	User             virtualProfileORMHasOneUser
+	ALL                    field.Asterisk
+	Activated              field.Bool
+	Email                  field.String
+	Id                     field.Uint64
+	ProfileType            field.String
+	StripeConnectAccountId field.String
+	StripeCustomerId       field.String
+	UserId                 field.String
+	User                   virtualProfileORMHasOneUser
 
 	Communities virtualProfileORMHasManyCommunities
 
@@ -138,6 +140,7 @@ func (v *virtualProfileORM) updateTableName(table string) *virtualProfileORM {
 	v.Email = field.NewString(table, "email")
 	v.Id = field.NewUint64(table, "id")
 	v.ProfileType = field.NewString(table, "profile_type")
+	v.StripeConnectAccountId = field.NewString(table, "stripe_connect_account_id")
 	v.StripeCustomerId = field.NewString(table, "stripe_customer_id")
 	v.UserId = field.NewString(table, "user_id")
 
@@ -156,11 +159,12 @@ func (v *virtualProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, b
 }
 
 func (v *virtualProfileORM) fillFieldMap() {
-	v.fieldMap = make(map[string]field.Expr, 9)
+	v.fieldMap = make(map[string]field.Expr, 10)
 	v.fieldMap["activated"] = v.Activated
 	v.fieldMap["email"] = v.Email
 	v.fieldMap["id"] = v.Id
 	v.fieldMap["profile_type"] = v.ProfileType
+	v.fieldMap["stripe_connect_account_id"] = v.StripeConnectAccountId
 	v.fieldMap["stripe_customer_id"] = v.StripeCustomerId
 	v.fieldMap["user_id"] = v.UserId
 

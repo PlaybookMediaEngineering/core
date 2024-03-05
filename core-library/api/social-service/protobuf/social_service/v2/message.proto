@@ -79,6 +79,8 @@ message VirtualProfile {
   string stripe_customer_id = 11 [(validate.rules).string.min_len = 1, (google.api.field_behavior) = REQUIRED];
   // the email tied to the virtual profile
   string email = 12 [(validate.rules).string.min_len = 1, (google.api.field_behavior) = REQUIRED];
+  // the stripe connect account id tied to the virtual profile
+  string stripe_connect_account_id = 13 [(validate.rules).string.min_len = 1, (google.api.field_behavior) = REQUIRED];
 }
 
 /*
