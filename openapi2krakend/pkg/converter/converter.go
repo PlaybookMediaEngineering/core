@@ -11,7 +11,7 @@ import (
 	"github.com/okhuz/openapi2krakend/pkg/utility"
 )
 
-func Convert(swaggerDirectory string, encoding string, globalTimeout string) models.Configuration {
+func Convert(swaggerDirectory string, encoding string, globalTimeout string, webhookCfg *models.WebhookFixedConfigurations) models.Configuration {
 	var swaggerFiles []fs.FileInfo
 	if files, err := ioutil.ReadDir(swaggerDirectory); err == nil {
 		swaggerFiles = filterFiles(files)
@@ -88,6 +88,18 @@ func Convert(swaggerDirectory string, encoding string, globalTimeout string) mod
 				additionalEndpoint.InsertHeadersToPass("Authorization")
 				configuration.InsertEndpoint(additionalEndpoint)
 			}
+		}
+
+		// Add webhook endpoint
+		if webhookCfg != nil {
+			webhookEndpoint := models.NewEndpointWithDefaults(
+				webhookCfg.WebhookHost,
+				webhookCfg.WebhookKrakendEndpointUrl,
+				webhookCfg.WebhookPathUrl,
+				webhookCfg.WebhookMethod,
+				encoding,
+				apiTimeout)
+			configuration.InsertEndpoint(webhookEndpoint)
 		}
 	}
 	return configuration

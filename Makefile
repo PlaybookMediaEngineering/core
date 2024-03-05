@@ -33,7 +33,11 @@ update-docs:
 
 generate-krakend-config:
 	mkdir temp-swagger && cp ./swagger/backend-api.json ./temp-swagger/backend-api.json
-	go run ./openapi2krakend/pkg/main.go -directory ./temp-swagger -output ./krakend-config/krakend.json
+	go run ./openapi2krakend/pkg/main.go -directory ./temp-swagger -output ./krakend-config/krakend.json \
+		-webhookHost http://user-service.platform.svc.cluster.local:9898 \
+		-webhookPathUrl /stripe/webhook \
+		-webhookKrakendEndpointUrl /stripe/webhook \
+		--webhookMethod post
 	rm -rf temp-swagger
 
 prettify-krakend:
