@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PostType } from './PostType';
-import {
-    PostTypeFromJSON,
-    PostTypeFromJSONTyped,
-    PostTypeToJSON,
-} from './PostType';
-
 /**
  * 
  * @export
@@ -32,12 +25,6 @@ export interface PublishPostBody {
      * @memberof PublishPostBody
      */
     postId: string;
-    /**
-     * 
-     * @type {PostType}
-     * @memberof PublishPostBody
-     */
-    postType: PostType;
 }
 
 /**
@@ -46,7 +33,6 @@ export interface PublishPostBody {
 export function instanceOfPublishPostBody(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "postId" in value;
-    isInstance = isInstance && "postType" in value;
 
     return isInstance;
 }
@@ -62,7 +48,6 @@ export function PublishPostBodyFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'postId': json['postId'],
-        'postType': PostTypeFromJSON(json['postType']),
     };
 }
 
@@ -76,7 +61,6 @@ export function PublishPostBodyToJSON(value?: PublishPostBody | null): any {
     return {
         
         'postId': value.postId,
-        'postType': PostTypeToJSON(value.postType),
     };
 }
 

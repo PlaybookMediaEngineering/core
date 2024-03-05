@@ -3403,7 +3403,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"postId\": \"<string>\",\n \"postType\": \"<string>\"\n}",
+                                        "raw": "{\n \"postId\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -3460,7 +3460,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"postId\": \"<string>\",\n \"postType\": \"<string>\"\n}",
+                                        "raw": "{\n \"postId\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -3517,7 +3517,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"postId\": \"<string>\",\n \"postType\": \"<string>\"\n}",
+                                        "raw": "{\n \"postId\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

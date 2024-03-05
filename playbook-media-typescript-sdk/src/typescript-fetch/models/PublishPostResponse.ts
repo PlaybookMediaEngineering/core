@@ -13,12 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PollPost } from './PollPost';
-import {
-    PollPostFromJSON,
-    PollPostFromJSONTyped,
-    PollPostToJSON,
-} from './PollPost';
 import type { Post } from './Post';
 import {
     PostFromJSON,
@@ -37,19 +31,7 @@ export interface PublishPostResponse {
      * @type {Post}
      * @memberof PublishPostResponse
      */
-    regularPost?: Post;
-    /**
-     * 
-     * @type {PollPost}
-     * @memberof PublishPostResponse
-     */
-    pollPost?: PollPost;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PublishPostResponse
-     */
-    success?: boolean;
+    post?: Post;
 }
 
 /**
@@ -71,9 +53,7 @@ export function PublishPostResponseFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'regularPost': !exists(json, 'regularPost') ? undefined : PostFromJSON(json['regularPost']),
-        'pollPost': !exists(json, 'pollPost') ? undefined : PollPostFromJSON(json['pollPost']),
-        'success': !exists(json, 'success') ? undefined : json['success'],
+        'post': !exists(json, 'post') ? undefined : PostFromJSON(json['post']),
     };
 }
 
@@ -86,9 +66,7 @@ export function PublishPostResponseToJSON(value?: PublishPostResponse | null): a
     }
     return {
         
-        'regularPost': PostToJSON(value.regularPost),
-        'pollPost': PollPostToJSON(value.pollPost),
-        'success': value.success,
+        'post': PostToJSON(value.post),
     };
 }
 
