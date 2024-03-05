@@ -182,6 +182,17 @@ func (m *VirtualProfile) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if utf8.RuneCountInString(m.GetEmail()) < 1 {
+		err := VirtualProfileValidationError{
+			field:  "Email",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return VirtualProfileMultiError(errors)
 	}

@@ -7785,6 +7785,10 @@
                     },
                     "profileImageUrl": {
                         "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "title": "the email of the user | type: string"
                     }
                 },
                 "title": "CreateUserProfileRequest: Represents the request object invoked against the\nsocial service to create a user profile account",
@@ -7792,7 +7796,8 @@
                     "userId",
                     "username",
                     "tags",
-                    "profileImageUrl"
+                    "profileImageUrl",
+                    "email"
                 ]
             },
             "CreateUserProfileResponse": {

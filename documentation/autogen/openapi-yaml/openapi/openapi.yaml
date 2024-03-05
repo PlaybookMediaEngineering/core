@@ -14942,6 +14942,7 @@ components:
         isPrivate: true
         userId: userId
         profileImageUrl: profileImageUrl
+        email: email
         idsOfCommunitiesToFollow:
         - idsOfCommunitiesToFollow
         - idsOfCommunitiesToFollow
@@ -14978,7 +14979,11 @@ components:
           type: boolean
         profileImageUrl:
           type: string
+        email:
+          title: "the email of the user | type: string"
+          type: string
       required:
+      - email
       - profileImageUrl
       - tags
       - userId

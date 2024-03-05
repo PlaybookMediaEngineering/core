@@ -62,6 +62,12 @@ export interface CreateUserProfileRequest {
      * @memberof CreateUserProfileRequest
      */
     profileImageUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateUserProfileRequest
+     */
+    email: string;
 }
 
 /**
@@ -73,6 +79,7 @@ export function instanceOfCreateUserProfileRequest(value: object): boolean {
     isInstance = isInstance && "username" in value;
     isInstance = isInstance && "tags" in value;
     isInstance = isInstance && "profileImageUrl" in value;
+    isInstance = isInstance && "email" in value;
 
     return isInstance;
 }
@@ -93,6 +100,7 @@ export function CreateUserProfileRequestFromJSONTyped(json: any, ignoreDiscrimin
         'tags': ((json['tags'] as Array<any>).map(UserTagsFromJSON)),
         'isPrivate': !exists(json, 'isPrivate') ? undefined : json['isPrivate'],
         'profileImageUrl': json['profileImageUrl'],
+        'email': json['email'],
     };
 }
 
@@ -111,6 +119,7 @@ export function CreateUserProfileRequestToJSON(value?: CreateUserProfileRequest 
         'tags': ((value.tags as Array<any>).map(UserTagsToJSON)),
         'isPrivate': value.isPrivate,
         'profileImageUrl': value.profileImageUrl,
+        'email': value.email,
     };
 }
 

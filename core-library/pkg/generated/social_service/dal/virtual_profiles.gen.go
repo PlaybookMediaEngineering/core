@@ -30,6 +30,7 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 	tableName := _virtualProfileORM.virtualProfileORMDo.TableName()
 	_virtualProfileORM.ALL = field.NewAsterisk(tableName)
 	_virtualProfileORM.Activated = field.NewBool(tableName, "activated")
+	_virtualProfileORM.Email = field.NewString(tableName, "email")
 	_virtualProfileORM.Id = field.NewUint64(tableName, "id")
 	_virtualProfileORM.ProfileType = field.NewString(tableName, "profile_type")
 	_virtualProfileORM.StripeCustomerId = field.NewString(tableName, "stripe_customer_id")
@@ -107,6 +108,7 @@ type virtualProfileORM struct {
 
 	ALL              field.Asterisk
 	Activated        field.Bool
+	Email            field.String
 	Id               field.Uint64
 	ProfileType      field.String
 	StripeCustomerId field.String
@@ -133,6 +135,7 @@ func (v virtualProfileORM) As(alias string) *virtualProfileORM {
 func (v *virtualProfileORM) updateTableName(table string) *virtualProfileORM {
 	v.ALL = field.NewAsterisk(table)
 	v.Activated = field.NewBool(table, "activated")
+	v.Email = field.NewString(table, "email")
 	v.Id = field.NewUint64(table, "id")
 	v.ProfileType = field.NewString(table, "profile_type")
 	v.StripeCustomerId = field.NewString(table, "stripe_customer_id")
@@ -153,8 +156,9 @@ func (v *virtualProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, b
 }
 
 func (v *virtualProfileORM) fillFieldMap() {
-	v.fieldMap = make(map[string]field.Expr, 8)
+	v.fieldMap = make(map[string]field.Expr, 9)
 	v.fieldMap["activated"] = v.Activated
+	v.fieldMap["email"] = v.Email
 	v.fieldMap["id"] = v.Id
 	v.fieldMap["profile_type"] = v.ProfileType
 	v.fieldMap["stripe_customer_id"] = v.StripeCustomerId

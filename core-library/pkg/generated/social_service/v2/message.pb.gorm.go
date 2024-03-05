@@ -15,6 +15,7 @@ import (
 type VirtualProfileORM struct {
 	Activated           bool
 	Communities         []*CommunityProfileORM `gorm:"foreignkey:VirtualProfileId;association_foreignkey:Id;preload:true"`
+	Email               string
 	Id                  uint64
 	ProfileType         string
 	StripeCustomerId    string
@@ -72,6 +73,7 @@ func (m *VirtualProfile) ToORM(ctx context.Context) (VirtualProfileORM, error) {
 		}
 	}
 	to.StripeCustomerId = m.StripeCustomerId
+	to.Email = m.Email
 	if posthook, ok := interface{}(m).(VirtualProfileWithAfterToORM); ok {
 		err = posthook.AfterToORM(ctx, &to)
 	}
@@ -122,6 +124,7 @@ func (m *VirtualProfileORM) ToPB(ctx context.Context) (VirtualProfile, error) {
 		}
 	}
 	to.StripeCustomerId = m.StripeCustomerId
+	to.Email = m.Email
 	if posthook, ok := interface{}(m).(VirtualProfileWithAfterToPB); ok {
 		err = posthook.AfterToPB(ctx, &to)
 	}
@@ -1405,6 +1408,10 @@ func DefaultApplyFieldMaskVirtualProfile(ctx context.Context, patchee *VirtualPr
 		}
 		if f == prefix+"StripeCustomerId" {
 			patchee.StripeCustomerId = patcher.StripeCustomerId
+			continue
+		}
+		if f == prefix+"Email" {
+			patchee.Email = patcher.Email
 			continue
 		}
 	}

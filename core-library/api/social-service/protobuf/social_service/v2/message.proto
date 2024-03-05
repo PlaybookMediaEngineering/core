@@ -77,6 +77,8 @@ message VirtualProfile {
   repeated StripeSubscription stripe_subscriptions = 16 [(gorm.field).has_many = {disable_association_autocreate: false disable_association_autoupdate: false preload: true}];
   // the stripe customer id tied to the virtual profile
   string stripe_customer_id = 11 [(validate.rules).string.min_len = 1, (google.api.field_behavior) = REQUIRED];
+  // the email tied to the virtual profile
+  string email = 12 [(validate.rules).string.min_len = 1, (google.api.field_behavior) = REQUIRED];
 }
 
 /*

@@ -5344,6 +5344,9 @@ components:
           type: boolean
         profileImageUrl:
           type: string
+        email:
+          type: string
+          title: "the email of the user | type: string"
       title: >-
         CreateUserProfileRequest: Represents the request object invoked against
         the
@@ -5354,6 +5357,7 @@ components:
         - username
         - tags
         - profileImageUrl
+        - email
     CreateUserProfileResponse:
       type: object
       properties:
