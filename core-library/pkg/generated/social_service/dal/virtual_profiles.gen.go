@@ -90,6 +90,12 @@ func newVirtualProfileORM(db *gorm.DB, opts ...gen.DOOption) virtualProfileORM {
 		},
 	}
 
+	_virtualProfileORM.StripeSubscriptions = virtualProfileORMHasManyStripeSubscriptions{
+		db: db.Session(&gorm.Session{}),
+
+		RelationField: field.NewRelation("StripeSubscriptions", "social_servicev2.StripeSubscriptionORM"),
+	}
+
 	_virtualProfileORM.fillFieldMap()
 
 	return _virtualProfileORM
@@ -106,6 +112,8 @@ type virtualProfileORM struct {
 	User        virtualProfileORMHasOneUser
 
 	Communities virtualProfileORMHasManyCommunities
+
+	StripeSubscriptions virtualProfileORMHasManyStripeSubscriptions
 
 	fieldMap map[string]field.Expr
 }
@@ -142,7 +150,7 @@ func (v *virtualProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, b
 }
 
 func (v *virtualProfileORM) fillFieldMap() {
-	v.fieldMap = make(map[string]field.Expr, 6)
+	v.fieldMap = make(map[string]field.Expr, 7)
 	v.fieldMap["activated"] = v.Activated
 	v.fieldMap["id"] = v.Id
 	v.fieldMap["profile_type"] = v.ProfileType
@@ -319,6 +327,77 @@ func (a virtualProfileORMHasManyCommunitiesTx) Clear() error {
 }
 
 func (a virtualProfileORMHasManyCommunitiesTx) Count() int64 {
+	return a.tx.Count()
+}
+
+type virtualProfileORMHasManyStripeSubscriptions struct {
+	db *gorm.DB
+
+	field.RelationField
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptions) Where(conds ...field.Expr) *virtualProfileORMHasManyStripeSubscriptions {
+	if len(conds) == 0 {
+		return &a
+	}
+
+	exprs := make([]clause.Expression, 0, len(conds))
+	for _, cond := range conds {
+		exprs = append(exprs, cond.BeCond().(clause.Expression))
+	}
+	a.db = a.db.Clauses(clause.Where{Exprs: exprs})
+	return &a
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptions) WithContext(ctx context.Context) *virtualProfileORMHasManyStripeSubscriptions {
+	a.db = a.db.WithContext(ctx)
+	return &a
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptions) Session(session *gorm.Session) *virtualProfileORMHasManyStripeSubscriptions {
+	a.db = a.db.Session(session)
+	return &a
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptions) Model(m *social_servicev2.VirtualProfileORM) *virtualProfileORMHasManyStripeSubscriptionsTx {
+	return &virtualProfileORMHasManyStripeSubscriptionsTx{a.db.Model(m).Association(a.Name())}
+}
+
+type virtualProfileORMHasManyStripeSubscriptionsTx struct{ tx *gorm.Association }
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Find() (result []*social_servicev2.StripeSubscriptionORM, err error) {
+	return result, a.tx.Find(&result)
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Append(values ...*social_servicev2.StripeSubscriptionORM) (err error) {
+	targetValues := make([]interface{}, len(values))
+	for i, v := range values {
+		targetValues[i] = v
+	}
+	return a.tx.Append(targetValues...)
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Replace(values ...*social_servicev2.StripeSubscriptionORM) (err error) {
+	targetValues := make([]interface{}, len(values))
+	for i, v := range values {
+		targetValues[i] = v
+	}
+	return a.tx.Replace(targetValues...)
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Delete(values ...*social_servicev2.StripeSubscriptionORM) (err error) {
+	targetValues := make([]interface{}, len(values))
+	for i, v := range values {
+		targetValues[i] = v
+	}
+	return a.tx.Delete(targetValues...)
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Clear() error {
+	return a.tx.Clear()
+}
+
+func (a virtualProfileORMHasManyStripeSubscriptionsTx) Count() int64 {
 	return a.tx.Count()
 }
 

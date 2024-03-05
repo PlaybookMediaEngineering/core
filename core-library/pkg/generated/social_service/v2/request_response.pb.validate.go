@@ -20846,3 +20846,993 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = GetCannyUserSSOTokenResponseValidationError{}
+
+// Validate checks the field values on PublishPostRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *PublishPostRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PublishPostRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// PublishPostRequestMultiError, or nil if none found.
+func (m *PublishPostRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PublishPostRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := PublishPostRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetPostId()) < 1 {
+		err := PublishPostRequestValidationError{
+			field:  "PostId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _PublishPostRequest_PostType_NotInLookup[m.GetPostType()]; ok {
+		err := PublishPostRequestValidationError{
+			field:  "PostType",
+			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return PublishPostRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// PublishPostRequestMultiError is an error wrapping multiple validation errors
+// returned by PublishPostRequest.ValidateAll() if the designated constraints
+// aren't met.
+type PublishPostRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PublishPostRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PublishPostRequestMultiError) AllErrors() []error { return m }
+
+// PublishPostRequestValidationError is the validation error returned by
+// PublishPostRequest.Validate if the designated constraints aren't met.
+type PublishPostRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PublishPostRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PublishPostRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PublishPostRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PublishPostRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PublishPostRequestValidationError) ErrorName() string {
+	return "PublishPostRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PublishPostRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPublishPostRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PublishPostRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PublishPostRequestValidationError{}
+
+var _PublishPostRequest_PostType_NotInLookup = map[PostType]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on PublishPostResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *PublishPostResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on PublishPostResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// PublishPostResponseMultiError, or nil if none found.
+func (m *PublishPostResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *PublishPostResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	switch v := m.Post.(type) {
+	case *PublishPostResponse_RegularPost:
+		if v == nil {
+			err := PublishPostResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetRegularPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, PublishPostResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, PublishPostResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return PublishPostResponseValidationError{
+					field:  "RegularPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *PublishPostResponse_PollPost:
+		if v == nil {
+			err := PublishPostResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetPollPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, PublishPostResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, PublishPostResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return PublishPostResponseValidationError{
+					field:  "PollPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	default:
+		_ = v // ensures v is used
+	}
+
+	if len(errors) > 0 {
+		return PublishPostResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// PublishPostResponseMultiError is an error wrapping multiple validation
+// errors returned by PublishPostResponse.ValidateAll() if the designated
+// constraints aren't met.
+type PublishPostResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m PublishPostResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m PublishPostResponseMultiError) AllErrors() []error { return m }
+
+// PublishPostResponseValidationError is the validation error returned by
+// PublishPostResponse.Validate if the designated constraints aren't met.
+type PublishPostResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e PublishPostResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e PublishPostResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e PublishPostResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e PublishPostResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e PublishPostResponseValidationError) ErrorName() string {
+	return "PublishPostResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e PublishPostResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sPublishPostResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = PublishPostResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = PublishPostResponseValidationError{}
+
+// Validate checks the field values on ReviewPostRequest with the rules defined
+// in the proto definition for this message. If any rules are violated, the
+// first error encountered is returned, or nil if there are no violations.
+func (m *ReviewPostRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ReviewPostRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ReviewPostRequestMultiError, or nil if none found.
+func (m *ReviewPostRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ReviewPostRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := ReviewPostRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetPostId()) < 1 {
+		err := ReviewPostRequestValidationError{
+			field:  "PostId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _ReviewPostRequest_PostType_NotInLookup[m.GetPostType()]; ok {
+		err := ReviewPostRequestValidationError{
+			field:  "PostType",
+			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return ReviewPostRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReviewPostRequestMultiError is an error wrapping multiple validation errors
+// returned by ReviewPostRequest.ValidateAll() if the designated constraints
+// aren't met.
+type ReviewPostRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReviewPostRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReviewPostRequestMultiError) AllErrors() []error { return m }
+
+// ReviewPostRequestValidationError is the validation error returned by
+// ReviewPostRequest.Validate if the designated constraints aren't met.
+type ReviewPostRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReviewPostRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReviewPostRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReviewPostRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReviewPostRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReviewPostRequestValidationError) ErrorName() string {
+	return "ReviewPostRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ReviewPostRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReviewPostRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReviewPostRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReviewPostRequestValidationError{}
+
+var _ReviewPostRequest_PostType_NotInLookup = map[PostType]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on ReviewPostResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ReviewPostResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ReviewPostResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ReviewPostResponseMultiError, or nil if none found.
+func (m *ReviewPostResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ReviewPostResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	switch v := m.Post.(type) {
+	case *ReviewPostResponse_RegularPost:
+		if v == nil {
+			err := ReviewPostResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetRegularPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ReviewPostResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ReviewPostResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ReviewPostResponseValidationError{
+					field:  "RegularPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *ReviewPostResponse_PollPost:
+		if v == nil {
+			err := ReviewPostResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetPollPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, ReviewPostResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, ReviewPostResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return ReviewPostResponseValidationError{
+					field:  "PollPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	default:
+		_ = v // ensures v is used
+	}
+
+	if len(errors) > 0 {
+		return ReviewPostResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// ReviewPostResponseMultiError is an error wrapping multiple validation errors
+// returned by ReviewPostResponse.ValidateAll() if the designated constraints
+// aren't met.
+type ReviewPostResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ReviewPostResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ReviewPostResponseMultiError) AllErrors() []error { return m }
+
+// ReviewPostResponseValidationError is the validation error returned by
+// ReviewPostResponse.Validate if the designated constraints aren't met.
+type ReviewPostResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ReviewPostResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ReviewPostResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ReviewPostResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ReviewPostResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ReviewPostResponseValidationError) ErrorName() string {
+	return "ReviewPostResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ReviewPostResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sReviewPostResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ReviewPostResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ReviewPostResponseValidationError{}
+
+// Validate checks the field values on SetPostInDraftModeRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetPostInDraftModeRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetPostInDraftModeRequest with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetPostInDraftModeRequestMultiError, or nil if none found.
+func (m *SetPostInDraftModeRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetPostInDraftModeRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if utf8.RuneCountInString(m.GetUserId()) < 1 {
+		err := SetPostInDraftModeRequestValidationError{
+			field:  "UserId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if utf8.RuneCountInString(m.GetPostId()) < 1 {
+		err := SetPostInDraftModeRequestValidationError{
+			field:  "PostId",
+			reason: "value length must be at least 1 runes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if _, ok := _SetPostInDraftModeRequest_PostType_NotInLookup[m.GetPostType()]; ok {
+		err := SetPostInDraftModeRequestValidationError{
+			field:  "PostType",
+			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return SetPostInDraftModeRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetPostInDraftModeRequestMultiError is an error wrapping multiple validation
+// errors returned by SetPostInDraftModeRequest.ValidateAll() if the
+// designated constraints aren't met.
+type SetPostInDraftModeRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetPostInDraftModeRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetPostInDraftModeRequestMultiError) AllErrors() []error { return m }
+
+// SetPostInDraftModeRequestValidationError is the validation error returned by
+// SetPostInDraftModeRequest.Validate if the designated constraints aren't met.
+type SetPostInDraftModeRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetPostInDraftModeRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetPostInDraftModeRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetPostInDraftModeRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetPostInDraftModeRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetPostInDraftModeRequestValidationError) ErrorName() string {
+	return "SetPostInDraftModeRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetPostInDraftModeRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetPostInDraftModeRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetPostInDraftModeRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetPostInDraftModeRequestValidationError{}
+
+var _SetPostInDraftModeRequest_PostType_NotInLookup = map[PostType]struct{}{
+	0: {},
+}
+
+// Validate checks the field values on SetPostInDraftModeResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *SetPostInDraftModeResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on SetPostInDraftModeResponse with the
+// rules defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// SetPostInDraftModeResponseMultiError, or nil if none found.
+func (m *SetPostInDraftModeResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *SetPostInDraftModeResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	// no validation rules for Success
+
+	switch v := m.Post.(type) {
+	case *SetPostInDraftModeResponse_RegularPost:
+		if v == nil {
+			err := SetPostInDraftModeResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetRegularPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, SetPostInDraftModeResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, SetPostInDraftModeResponseValidationError{
+						field:  "RegularPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return SetPostInDraftModeResponseValidationError{
+					field:  "RegularPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	case *SetPostInDraftModeResponse_PollPost:
+		if v == nil {
+			err := SetPostInDraftModeResponseValidationError{
+				field:  "Post",
+				reason: "oneof value cannot be a typed-nil",
+			}
+			if !all {
+				return err
+			}
+			errors = append(errors, err)
+		}
+
+		if all {
+			switch v := interface{}(m.GetPollPost()).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, SetPostInDraftModeResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, SetPostInDraftModeResponseValidationError{
+						field:  "PollPost",
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return SetPostInDraftModeResponseValidationError{
+					field:  "PollPost",
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	default:
+		_ = v // ensures v is used
+	}
+
+	if len(errors) > 0 {
+		return SetPostInDraftModeResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// SetPostInDraftModeResponseMultiError is an error wrapping multiple
+// validation errors returned by SetPostInDraftModeResponse.ValidateAll() if
+// the designated constraints aren't met.
+type SetPostInDraftModeResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m SetPostInDraftModeResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m SetPostInDraftModeResponseMultiError) AllErrors() []error { return m }
+
+// SetPostInDraftModeResponseValidationError is the validation error returned
+// by SetPostInDraftModeResponse.Validate if the designated constraints aren't met.
+type SetPostInDraftModeResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e SetPostInDraftModeResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e SetPostInDraftModeResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e SetPostInDraftModeResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e SetPostInDraftModeResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e SetPostInDraftModeResponseValidationError) ErrorName() string {
+	return "SetPostInDraftModeResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e SetPostInDraftModeResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sSetPostInDraftModeResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = SetPostInDraftModeResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = SetPostInDraftModeResponseValidationError{}

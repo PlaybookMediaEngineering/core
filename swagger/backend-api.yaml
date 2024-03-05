@@ -2371,6 +2371,156 @@ paths:
             type: string
       tags:
         - bookmark
+  "/api/v1/users/{userId}/post/draft":
+    post:
+      summary: Sets a post in draft mode
+      description: This endpoint enables a client to set a post in draft mode
+      operationId: SetPostInDraftMode
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SetPostInDraftModeResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SetPostInDraftModeBody"
+        required: true
+      tags:
+        - post
+  "/api/v1/users/{userId}/post/publish":
+    post:
+      summary: Publishes a post
+      description: This endpoint enables a client to publish a post
+      operationId: PublishPost
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PublishPostResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublishPostBody"
+        required: true
+      tags:
+        - post
+  "/api/v1/users/{userId}/post/review":
+    post:
+      summary: Reviews a post
+      description: This endpoint enables a client to review a post
+      operationId: ReviewPost
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReviewPostResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReviewPostBody"
+        required: true
+      tags:
+        - post
   "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}":
     post:
       summary: Share a post
@@ -6200,6 +6350,8 @@ components:
             @gotag: bson:"userIdToReactionMap"
         category:
           $ref: "#/components/schemas/Category"
+        publishStatus:
+          $ref: "#/components/schemas/PostPublishStatus"
       required:
         - action
         - content
@@ -6406,6 +6558,8 @@ components:
             @gotag: bson:"aiGeneratedQuestionResponse"
         category:
           $ref: "#/components/schemas/Category"
+        publishStatus:
+          $ref: "#/components/schemas/PostPublishStatus"
       title: >-
         Posts: Critical to activities and define the content sent over by users
         and
@@ -6414,6 +6568,15 @@ components:
       required:
         - action
         - content
+    PostPublishStatus:
+      type: string
+      enum:
+        - POST_PUBLISH_STATUS_UNSPECIFIED
+        - POST_PUBLISH_STATUS_DRAFT
+        - POST_PUBLISH_STATUS_PUBLISHED
+        - POST_PUBLISH_STATUS_IN_REVIEW
+        - POST_PUBLISH_STATUS_ARCHIVED
+      default: POST_PUBLISH_STATUS_UNSPECIFIED
     PostType:
       type: string
       enum:
@@ -6509,6 +6672,31 @@ components:
          - PUBLICATION_TYPE_PLATFORM: a publication that accepts stories published around solomon
          - PUBLICATION_TYPE_BLOG: A community blog, a publication that is created specifically to share subset (community) news
          - PUBLICATION_TYPE_SUBJECTS: A collection of individual stories by a set of authors that are part of a whole
+    PublishPostBody:
+      type: object
+      properties:
+        postId:
+          type: string
+        postType:
+          $ref: "#/components/schemas/PostType"
+      title: |-
+        PublishPostRequest: Represents the request object invoked against the
+        social service to publish a post
+      required:
+        - postId
+        - postType
+    PublishPostResponse:
+      type: object
+      properties:
+        regularPost:
+          $ref: "#/components/schemas/Post"
+        pollPost:
+          $ref: "#/components/schemas/PollPost"
+        success:
+          type: boolean
+      title: |-
+        PublishPostResponse: Represents the response object returned as a
+        response to the publish post request
     ReactToCommentReplyResponse:
       type: object
       properties:
@@ -6618,6 +6806,31 @@ components:
       properties:
         poll:
           $ref: "#/components/schemas/PollPost"
+    ReviewPostBody:
+      type: object
+      properties:
+        postId:
+          type: string
+        postType:
+          $ref: "#/components/schemas/PostType"
+      title: |-
+        ReviewPostRequest: Represents the request object invoked against the
+        social service to review a post
+      required:
+        - postId
+        - postType
+    ReviewPostResponse:
+      type: object
+      properties:
+        regularPost:
+          $ref: "#/components/schemas/Post"
+        pollPost:
+          $ref: "#/components/schemas/PollPost"
+        success:
+          type: boolean
+      title: |-
+        ReviewPostResponse: Represents the response object returned as a
+        response to the review post request
     Sentiment:
       type: object
       properties:
@@ -6637,6 +6850,33 @@ components:
           type: number
           format: float
           example: 93
+    SetPostInDraftModeBody:
+      type: object
+      properties:
+        postId:
+          type: string
+        postType:
+          $ref: "#/components/schemas/PostType"
+      title: >-
+        SetPostInDraftModeRequest: Represents the request object invoked against
+        the
+
+        social service to set a post in draft mode
+      required:
+        - postId
+        - postType
+    SetPostInDraftModeResponse:
+      type: object
+      properties:
+        regularPost:
+          $ref: "#/components/schemas/Post"
+        pollPost:
+          $ref: "#/components/schemas/PollPost"
+        success:
+          type: boolean
+      title: |-
+        SetPostInDraftModeResponse: Represents the response object returned as a
+        response to the set post in draft mode request
     SharePostResponse:
       type: object
       properties:

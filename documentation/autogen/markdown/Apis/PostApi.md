@@ -13,7 +13,10 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | [**getPost**](PostApi.md#getPost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
 | [**getPostsByCategory**](PostApi.md#getPostsByCategory) | **GET** /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset} | Get all posts associated with a category |
 | [**getPostsByTopic**](PostApi.md#getPostsByTopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
+| [**publishPost**](PostApi.md#publishPost) | **POST** /api/v1/users/{userId}/post/publish | Publishes a post |
 | [**reportPost**](PostApi.md#reportPost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
+| [**reviewPost**](PostApi.md#reviewPost) | **POST** /api/v1/users/{userId}/post/review | Reviews a post |
+| [**setPostInDraftMode**](PostApi.md#setPostInDraftMode) | **POST** /api/v1/users/{userId}/post/draft | Sets a post in draft mode |
 
 
 <a name="addPostQualityScore"></a>
@@ -277,6 +280,34 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+<a name="publishPost"></a>
+# **publishPost**
+> PublishPostResponse publishPost(userId, PublishPostBody)
+
+Publishes a post
+
+    This endpoint enables a client to publish a post
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**|  | [default to null] |
+| **PublishPostBody** | [**PublishPostBody**](../Models/PublishPostBody.md)|  | |
+
+### Return type
+
+[**PublishPostResponse**](../Models/PublishPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
 <a name="reportPost"></a>
 # **reportPost**
 > ReportPostResponse reportPost(userId, postId, postType)
@@ -304,5 +335,61 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="reviewPost"></a>
+# **reviewPost**
+> ReviewPostResponse reviewPost(userId, ReviewPostBody)
+
+Reviews a post
+
+    This endpoint enables a client to review a post
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**|  | [default to null] |
+| **ReviewPostBody** | [**ReviewPostBody**](../Models/ReviewPostBody.md)|  | |
+
+### Return type
+
+[**ReviewPostResponse**](../Models/ReviewPostResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+<a name="setPostInDraftMode"></a>
+# **setPostInDraftMode**
+> SetPostInDraftModeResponse setPostInDraftMode(userId, SetPostInDraftModeBody)
+
+Sets a post in draft mode
+
+    This endpoint enables a client to set a post in draft mode
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **userId** | **String**|  | [default to null] |
+| **SetPostInDraftModeBody** | [**SetPostInDraftModeBody**](../Models/SetPostInDraftModeBody.md)|  | |
+
+### Return type
+
+[**SetPostInDraftModeResponse**](../Models/SetPostInDraftModeResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

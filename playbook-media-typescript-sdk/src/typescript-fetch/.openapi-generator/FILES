@@ -119,9 +119,12 @@ models/PendingFollowRequest.ts
 models/PollPost.ts
 models/PollResponse.ts
 models/Post.ts
+models/PostPublishStatus.ts
 models/PostType.ts
 models/Publication.ts
 models/PublicationType.ts
+models/PublishPostBody.ts
+models/PublishPostResponse.ts
 models/ReactToCommentReplyResponse.ts
 models/ReactToCommentResponse.ts
 models/ReactToPostResponse.ts
@@ -137,7 +140,11 @@ models/ReportCommentResponse.ts
 models/ReportPostResponse.ts
 models/RespondToPollBody.ts
 models/RespondToPollResponse.ts
+models/ReviewPostBody.ts
+models/ReviewPostResponse.ts
 models/Sentiment.ts
+models/SetPostInDraftModeBody.ts
+models/SetPostInDraftModeResponse.ts
 models/SharePostResponse.ts
 models/SharedPost.ts
 models/SocialProfileMetadata.ts

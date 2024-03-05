@@ -82,6 +82,7 @@ func Test_WithContext(t *testing.T) {
 		qCtx.CommunityProfileORM.UnderlyingDB().Statement.Context,
 		qCtx.FollowerORM.UnderlyingDB().Statement.Context,
 		qCtx.PublicationORM.UnderlyingDB().Statement.Context,
+		qCtx.StripeSubscriptionORM.UnderlyingDB().Statement.Context,
 		qCtx.TopicORM.UnderlyingDB().Statement.Context,
 		qCtx.UserProfileORM.UnderlyingDB().Statement.Context,
 		qCtx.UserTagsORM.UnderlyingDB().Statement.Context,

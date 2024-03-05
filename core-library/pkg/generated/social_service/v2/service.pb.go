@@ -34,7 +34,7 @@ var file_social_service_v2_service_proto_rawDesc = []byte{
 	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x2e, 0x70, 0x72,
 	0x6f, 0x74, 0x6f, 0x63, 0x2d, 0x67, 0x65, 0x6e, 0x2d, 0x6f, 0x70, 0x65, 0x6e, 0x61, 0x70, 0x69,
 	0x76, 0x32, 0x2f, 0x6f, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xc0, 0xda, 0x01,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0x96, 0xe2, 0x01,
 	0x0a, 0x0d, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
 	0xa6, 0x02, 0x0a, 0x0b, 0x48, 0x65, 0x61, 0x6c, 0x74, 0x68, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x12,
 	0x25, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
@@ -1783,23 +1783,85 @@ var file_social_service_v2_service_proto_rawDesc = []byte{
 	0xe4, 0x93, 0x02, 0x2c, 0x12, 0x2a, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73,
 	0x65, 0x72, 0x2f, 0x7b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x63, 0x61, 0x6e,
 	0x6e, 0x79, 0x2f, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x2f, 0x7b, 0x65, 0x6d, 0x61, 0x69, 0x6c, 0x7d,
-	0x42, 0x80, 0x02, 0x0a, 0x15, 0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f,
-	0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x42, 0x0c, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x78, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x50, 0x6c, 0x61, 0x79, 0x62, 0x6f, 0x6f, 0x6b, 0x4d,
-	0x65, 0x64, 0x69, 0x61, 0x45, 0x6e, 0x67, 0x69, 0x6e, 0x65, 0x65, 0x72, 0x69, 0x6e, 0x67, 0x2f,
-	0x63, 0x6f, 0x72, 0x65, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2d, 0x6c, 0x69, 0x62, 0x72, 0x61, 0x72,
-	0x79, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x2f,
-	0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x76,
-	0x32, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x2f, 0x76, 0x32, 0x3b, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x76, 0x32, 0xa2, 0x02, 0x03, 0x53, 0x58, 0x58, 0xaa, 0x02, 0x10, 0x53, 0x6f, 0x63,
-	0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x56, 0x32, 0xca, 0x02, 0x10,
-	0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5c, 0x56, 0x32,
-	0xe2, 0x02, 0x1c, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x5c, 0x56, 0x32, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea,
-	0x02, 0x11, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x3a,
-	0x3a, 0x56, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x12, 0xb6, 0x02, 0x0a, 0x0b, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x50, 0x6f, 0x73, 0x74,
+	0x12, 0x25, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x50, 0x6f, 0x73, 0x74,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x26, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c,
+	0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x75, 0x62, 0x6c,
+	0x69, 0x73, 0x68, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0xd7, 0x01, 0x92, 0x41, 0xa4, 0x01, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x12, 0x10, 0x50, 0x75,
+	0x62, 0x6c, 0x69, 0x73, 0x68, 0x65, 0x73, 0x20, 0x61, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x1a, 0x30,
+	0x54, 0x68, 0x69, 0x73, 0x20, 0x65, 0x6e, 0x64, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x20, 0x65, 0x6e,
+	0x61, 0x62, 0x6c, 0x65, 0x73, 0x20, 0x61, 0x20, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x20, 0x74,
+	0x6f, 0x20, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x20, 0x61, 0x20, 0x70, 0x6f, 0x73, 0x74,
+	0x2a, 0x0b, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x50, 0x6f, 0x73, 0x74, 0x4a, 0x4b, 0x0a,
+	0x03, 0x32, 0x30, 0x30, 0x12, 0x44, 0x0a, 0x16, 0x41, 0x20, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x66, 0x75, 0x6c, 0x20, 0x72, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x12, 0x2a,
+	0x0a, 0x28, 0x1a, 0x26, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x50, 0x6f,
+	0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x29,
+	0x3a, 0x01, 0x2a, 0x22, 0x24, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65,
+	0x72, 0x73, 0x2f, 0x7b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x70, 0x6f, 0x73,
+	0x74, 0x2f, 0x70, 0x75, 0x62, 0x6c, 0x69, 0x73, 0x68, 0x12, 0xad, 0x02, 0x0a, 0x0a, 0x52, 0x65,
+	0x76, 0x69, 0x65, 0x77, 0x50, 0x6f, 0x73, 0x74, 0x12, 0x24, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61,
+	0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x52, 0x65, 0x76,
+	0x69, 0x65, 0x77, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x25,
+	0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x76, 0x32, 0x2e, 0x52, 0x65, 0x76, 0x69, 0x65, 0x77, 0x50, 0x6f, 0x73, 0x74, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xd1, 0x01, 0x92, 0x41, 0x9f, 0x01, 0x0a, 0x04, 0x70, 0x6f,
+	0x73, 0x74, 0x12, 0x0e, 0x52, 0x65, 0x76, 0x69, 0x65, 0x77, 0x73, 0x20, 0x61, 0x20, 0x70, 0x6f,
+	0x73, 0x74, 0x1a, 0x2f, 0x54, 0x68, 0x69, 0x73, 0x20, 0x65, 0x6e, 0x64, 0x70, 0x6f, 0x69, 0x6e,
+	0x74, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x20, 0x61, 0x20, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x20, 0x74, 0x6f, 0x20, 0x72, 0x65, 0x76, 0x69, 0x65, 0x77, 0x20, 0x61, 0x20, 0x70,
+	0x6f, 0x73, 0x74, 0x2a, 0x0a, 0x52, 0x65, 0x76, 0x69, 0x65, 0x77, 0x50, 0x6f, 0x73, 0x74, 0x4a,
+	0x4a, 0x0a, 0x03, 0x32, 0x30, 0x30, 0x12, 0x43, 0x0a, 0x16, 0x41, 0x20, 0x73, 0x75, 0x63, 0x63,
+	0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x20, 0x72, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e,
+	0x12, 0x29, 0x0a, 0x27, 0x1a, 0x25, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x52, 0x65, 0x76, 0x69, 0x65, 0x77, 0x50,
+	0x6f, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x82, 0xd3, 0xe4, 0x93, 0x02,
+	0x28, 0x3a, 0x01, 0x2a, 0x22, 0x23, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73,
+	0x65, 0x72, 0x73, 0x2f, 0x7b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x70, 0x6f,
+	0x73, 0x74, 0x2f, 0x72, 0x65, 0x76, 0x69, 0x65, 0x77, 0x12, 0xea, 0x02, 0x0a, 0x12, 0x53, 0x65,
+	0x74, 0x50, 0x6f, 0x73, 0x74, 0x49, 0x6e, 0x44, 0x72, 0x61, 0x66, 0x74, 0x4d, 0x6f, 0x64, 0x65,
+	0x12, 0x2c, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x2e, 0x76, 0x32, 0x2e, 0x53, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x74, 0x49, 0x6e, 0x44, 0x72,
+	0x61, 0x66, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x2d,
+	0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x76, 0x32, 0x2e, 0x53, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x74, 0x49, 0x6e, 0x44, 0x72, 0x61, 0x66,
+	0x74, 0x4d, 0x6f, 0x64, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0xf6, 0x01,
+	0x92, 0x41, 0xc5, 0x01, 0x0a, 0x04, 0x70, 0x6f, 0x73, 0x74, 0x12, 0x19, 0x53, 0x65, 0x74, 0x73,
+	0x20, 0x61, 0x20, 0x70, 0x6f, 0x73, 0x74, 0x20, 0x69, 0x6e, 0x20, 0x64, 0x72, 0x61, 0x66, 0x74,
+	0x20, 0x6d, 0x6f, 0x64, 0x65, 0x1a, 0x3a, 0x54, 0x68, 0x69, 0x73, 0x20, 0x65, 0x6e, 0x64, 0x70,
+	0x6f, 0x69, 0x6e, 0x74, 0x20, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x73, 0x20, 0x61, 0x20, 0x63,
+	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x20, 0x74, 0x6f, 0x20, 0x73, 0x65, 0x74, 0x20, 0x61, 0x20, 0x70,
+	0x6f, 0x73, 0x74, 0x20, 0x69, 0x6e, 0x20, 0x64, 0x72, 0x61, 0x66, 0x74, 0x20, 0x6d, 0x6f, 0x64,
+	0x65, 0x2a, 0x12, 0x53, 0x65, 0x74, 0x50, 0x6f, 0x73, 0x74, 0x49, 0x6e, 0x44, 0x72, 0x61, 0x66,
+	0x74, 0x4d, 0x6f, 0x64, 0x65, 0x4a, 0x52, 0x0a, 0x03, 0x32, 0x30, 0x30, 0x12, 0x4b, 0x0a, 0x16,
+	0x41, 0x20, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x66, 0x75, 0x6c, 0x20, 0x72, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x2e, 0x12, 0x31, 0x0a, 0x2f, 0x1a, 0x2d, 0x2e, 0x73, 0x6f, 0x63,
+	0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x53,
+	0x65, 0x74, 0x50, 0x6f, 0x73, 0x74, 0x49, 0x6e, 0x44, 0x72, 0x61, 0x66, 0x74, 0x4d, 0x6f, 0x64,
+	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x27, 0x3a,
+	0x01, 0x2a, 0x22, 0x22, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x75, 0x73, 0x65, 0x72,
+	0x73, 0x2f, 0x7b, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x7d, 0x2f, 0x70, 0x6f, 0x73, 0x74,
+	0x2f, 0x64, 0x72, 0x61, 0x66, 0x74, 0x42, 0x80, 0x02, 0x0a, 0x15, 0x63, 0x6f, 0x6d, 0x2e, 0x73,
+	0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32,
+	0x42, 0x0c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01,
+	0x5a, 0x78, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x50, 0x6c, 0x61,
+	0x79, 0x62, 0x6f, 0x6f, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x61, 0x45, 0x6e, 0x67, 0x69, 0x6e, 0x65,
+	0x65, 0x72, 0x69, 0x6e, 0x67, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2d,
+	0x6c, 0x69, 0x62, 0x72, 0x61, 0x72, 0x79, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x65,
+	0x72, 0x61, 0x74, 0x65, 0x64, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2d, 0x73, 0x65, 0x72,
+	0x76, 0x69, 0x63, 0x65, 0x2f, 0x76, 0x32, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x76, 0x32, 0x3b, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c,
+	0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x76, 0x32, 0xa2, 0x02, 0x03, 0x53, 0x58, 0x58,
+	0xaa, 0x02, 0x10, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x2e, 0x56, 0x32, 0xca, 0x02, 0x10, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76,
+	0x69, 0x63, 0x65, 0x5c, 0x56, 0x32, 0xe2, 0x02, 0x1c, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53,
+	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5c, 0x56, 0x32, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74,
+	0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x11, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65,
+	0x72, 0x76, 0x69, 0x63, 0x65, 0x3a, 0x3a, 0x56, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
+	0x33,
 }
 
 var file_social_service_v2_service_proto_goTypes = []interface{}{
@@ -1876,79 +1938,85 @@ var file_social_service_v2_service_proto_goTypes = []interface{}{
 	(*GetBookmarkedPostsRequest)(nil),                 // 70: social_service.v2.GetBookmarkedPostsRequest
 	(*GetPostsByCategoryRequest)(nil),                 // 71: social_service.v2.GetPostsByCategoryRequest
 	(*GetCannyUserSSOTokenRequest)(nil),               // 72: social_service.v2.GetCannyUserSSOTokenRequest
-	(*HealthCheckResponse)(nil),                       // 73: social_service.v2.HealthCheckResponse
-	(*ReadynessCheckResponse)(nil),                    // 74: social_service.v2.ReadynessCheckResponse
-	(*EditUserProfileResponse)(nil),                   // 75: social_service.v2.EditUserProfileResponse
-	(*GetUserProfileResponse)(nil),                    // 76: social_service.v2.GetUserProfileResponse
-	(*CreateUserProfileResponse)(nil),                 // 77: social_service.v2.CreateUserProfileResponse
-	(*DeleteUserProfileResponse)(nil),                 // 78: social_service.v2.DeleteUserProfileResponse
-	(*BlockUserProfileResponse)(nil),                  // 79: social_service.v2.BlockUserProfileResponse
-	(*FollowProfileResponse)(nil),                     // 80: social_service.v2.FollowProfileResponse
-	(*AcceptFollowProfileResponse)(nil),               // 81: social_service.v2.AcceptFollowProfileResponse
-	(*GetUserProfilesResponse)(nil),                   // 82: social_service.v2.GetUserProfilesResponse
-	(*DiscoverProfilesResponse)(nil),                  // 83: social_service.v2.DiscoverProfilesResponse
-	(*GetCommunityProfileResponse)(nil),               // 84: social_service.v2.GetCommunityProfileResponse
-	(*CreateCommunityProfileResponse)(nil),            // 85: social_service.v2.CreateCommunityProfileResponse
-	(*GetCommunitiesUserFollowsResponse)(nil),         // 86: social_service.v2.GetCommunitiesUserFollowsResponse
-	(*FollowCommunityProfileResponse)(nil),            // 87: social_service.v2.FollowCommunityProfileResponse
-	(*GetCommunityProfilesResponse)(nil),              // 88: social_service.v2.GetCommunityProfilesResponse
-	(*DeleteCommunityProfileResponse)(nil),            // 89: social_service.v2.DeleteCommunityProfileResponse
-	(*EditCommunityProfileResponse)(nil),              // 90: social_service.v2.EditCommunityProfileResponse
-	(*CreatePostResponse)(nil),                        // 91: social_service.v2.CreatePostResponse
-	(*DeletePostResponse)(nil),                        // 92: social_service.v2.DeletePostResponse
-	(*GetPostResponse)(nil),                           // 93: social_service.v2.GetPostResponse
-	(*GetPostsByTopicResponse)(nil),                   // 94: social_service.v2.GetPostsByTopicResponse
-	(*EditPostResponse)(nil),                          // 95: social_service.v2.EditPostResponse
-	(*ReportPostResponse)(nil),                        // 96: social_service.v2.ReportPostResponse
-	(*SharePostResponse)(nil),                         // 97: social_service.v2.SharePostResponse
-	(*AddPostToThreadResponse)(nil),                   // 98: social_service.v2.AddPostToThreadResponse
-	(*RemovePostFromThreadResponse)(nil),              // 99: social_service.v2.RemovePostFromThreadResponse
-	(*GetPostThreadResponse)(nil),                     // 100: social_service.v2.GetPostThreadResponse
-	(*AddPostQualityScoreResponse)(nil),               // 101: social_service.v2.AddPostQualityScoreResponse
-	(*ReactToPostResponse)(nil),                       // 102: social_service.v2.ReactToPostResponse
-	(*ReactToCommentResponse)(nil),                    // 103: social_service.v2.ReactToCommentResponse
-	(*ReactToCommentReplyResponse)(nil),               // 104: social_service.v2.ReactToCommentReplyResponse
-	(*GetBlogPostsByTagResponse)(nil),                 // 105: social_service.v2.GetBlogPostsByTagResponse
-	(*GetCommunityBlogPostsResponse)(nil),             // 106: social_service.v2.GetCommunityBlogPostsResponse
-	(*GetUserFeedResponse)(nil),                       // 107: social_service.v2.GetUserFeedResponse
-	(*GetCommunityFeedResponse)(nil),                  // 108: social_service.v2.GetCommunityFeedResponse
-	(*CreateCommentResponse)(nil),                     // 109: social_service.v2.CreateCommentResponse
-	(*DeleteCommentResponse)(nil),                     // 110: social_service.v2.DeleteCommentResponse
-	(*ReportCommentResponse)(nil),                     // 111: social_service.v2.ReportCommentResponse
-	(*AddCommentQualityScoreResponse)(nil),            // 112: social_service.v2.AddCommentQualityScoreResponse
-	(*CreateCommentReplyResponse)(nil),                // 113: social_service.v2.CreateCommentReplyResponse
-	(*DeleteCommentReplyResponse)(nil),                // 114: social_service.v2.DeleteCommentReplyResponse
-	(*EditCommentReplyResponse)(nil),                  // 115: social_service.v2.EditCommentReplyResponse
-	(*GetCommentRepliesResponse)(nil),                 // 116: social_service.v2.GetCommentRepliesResponse
-	(*ReportCommentReplyResponse)(nil),                // 117: social_service.v2.ReportCommentReplyResponse
-	(*CreateTopicResponse)(nil),                       // 118: social_service.v2.CreateTopicResponse
-	(*GetTopicsOfCommunitiesUserFollowsResponse)(nil), // 119: social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse
-	(*GetPendingFollowsResponse)(nil),                 // 120: social_service.v2.GetPendingFollowsResponse
-	(*GetFollowersResponse)(nil),                      // 121: social_service.v2.GetFollowersResponse
-	(*GetAccountsFollowingResponse)(nil),              // 122: social_service.v2.GetAccountsFollowingResponse
-	(*CreatePollResponse)(nil),                        // 123: social_service.v2.CreatePollResponse
-	(*DeletePollResponse)(nil),                        // 124: social_service.v2.DeletePollResponse
-	(*GetPollResponse)(nil),                           // 125: social_service.v2.GetPollResponse
-	(*GetPollsResponse)(nil),                          // 126: social_service.v2.GetPollsResponse
-	(*GetPostsResponse)(nil),                          // 127: social_service.v2.GetPostsResponse
-	(*RespondToPollResponse)(nil),                     // 128: social_service.v2.RespondToPollResponse
-	(*CreateNoteResponse)(nil),                        // 129: social_service.v2.CreateNoteResponse
-	(*DeleteNoteResponse)(nil),                        // 130: social_service.v2.DeleteNoteResponse
-	(*EditNoteResponse)(nil),                          // 131: social_service.v2.EditNoteResponse
-	(*CreatePublicationResponse)(nil),                 // 132: social_service.v2.CreatePublicationResponse
-	(*GetPublicationResponse)(nil),                    // 133: social_service.v2.GetPublicationResponse
-	(*DeletePublicationResponse)(nil),                 // 134: social_service.v2.DeletePublicationResponse
-	(*AddPublicationEditorResponse)(nil),              // 135: social_service.v2.AddPublicationEditorResponse
-	(*DeletePublicationEditorResponse)(nil),           // 136: social_service.v2.DeletePublicationEditorResponse
-	(*AddPostToPublicationResponse)(nil),              // 137: social_service.v2.AddPostToPublicationResponse
-	(*DeletePostFromPublicationResponse)(nil),         // 138: social_service.v2.DeletePostFromPublicationResponse
-	(*BookmarkPostResponse)(nil),                      // 139: social_service.v2.BookmarkPostResponse
-	(*BookmarkPublicationResponse)(nil),               // 140: social_service.v2.BookmarkPublicationResponse
-	(*RemoveBookmarkedPostResponse)(nil),              // 141: social_service.v2.RemoveBookmarkedPostResponse
-	(*RemoveBookmarkedPublicationResponse)(nil),       // 142: social_service.v2.RemoveBookmarkedPublicationResponse
-	(*GetBookmarkedPostsResponse)(nil),                // 143: social_service.v2.GetBookmarkedPostsResponse
-	(*GetPostsByCategoryResponse)(nil),                // 144: social_service.v2.GetPostsByCategoryResponse
-	(*GetCannyUserSSOTokenResponse)(nil),              // 145: social_service.v2.GetCannyUserSSOTokenResponse
+	(*PublishPostRequest)(nil),                        // 73: social_service.v2.PublishPostRequest
+	(*ReviewPostRequest)(nil),                         // 74: social_service.v2.ReviewPostRequest
+	(*SetPostInDraftModeRequest)(nil),                 // 75: social_service.v2.SetPostInDraftModeRequest
+	(*HealthCheckResponse)(nil),                       // 76: social_service.v2.HealthCheckResponse
+	(*ReadynessCheckResponse)(nil),                    // 77: social_service.v2.ReadynessCheckResponse
+	(*EditUserProfileResponse)(nil),                   // 78: social_service.v2.EditUserProfileResponse
+	(*GetUserProfileResponse)(nil),                    // 79: social_service.v2.GetUserProfileResponse
+	(*CreateUserProfileResponse)(nil),                 // 80: social_service.v2.CreateUserProfileResponse
+	(*DeleteUserProfileResponse)(nil),                 // 81: social_service.v2.DeleteUserProfileResponse
+	(*BlockUserProfileResponse)(nil),                  // 82: social_service.v2.BlockUserProfileResponse
+	(*FollowProfileResponse)(nil),                     // 83: social_service.v2.FollowProfileResponse
+	(*AcceptFollowProfileResponse)(nil),               // 84: social_service.v2.AcceptFollowProfileResponse
+	(*GetUserProfilesResponse)(nil),                   // 85: social_service.v2.GetUserProfilesResponse
+	(*DiscoverProfilesResponse)(nil),                  // 86: social_service.v2.DiscoverProfilesResponse
+	(*GetCommunityProfileResponse)(nil),               // 87: social_service.v2.GetCommunityProfileResponse
+	(*CreateCommunityProfileResponse)(nil),            // 88: social_service.v2.CreateCommunityProfileResponse
+	(*GetCommunitiesUserFollowsResponse)(nil),         // 89: social_service.v2.GetCommunitiesUserFollowsResponse
+	(*FollowCommunityProfileResponse)(nil),            // 90: social_service.v2.FollowCommunityProfileResponse
+	(*GetCommunityProfilesResponse)(nil),              // 91: social_service.v2.GetCommunityProfilesResponse
+	(*DeleteCommunityProfileResponse)(nil),            // 92: social_service.v2.DeleteCommunityProfileResponse
+	(*EditCommunityProfileResponse)(nil),              // 93: social_service.v2.EditCommunityProfileResponse
+	(*CreatePostResponse)(nil),                        // 94: social_service.v2.CreatePostResponse
+	(*DeletePostResponse)(nil),                        // 95: social_service.v2.DeletePostResponse
+	(*GetPostResponse)(nil),                           // 96: social_service.v2.GetPostResponse
+	(*GetPostsByTopicResponse)(nil),                   // 97: social_service.v2.GetPostsByTopicResponse
+	(*EditPostResponse)(nil),                          // 98: social_service.v2.EditPostResponse
+	(*ReportPostResponse)(nil),                        // 99: social_service.v2.ReportPostResponse
+	(*SharePostResponse)(nil),                         // 100: social_service.v2.SharePostResponse
+	(*AddPostToThreadResponse)(nil),                   // 101: social_service.v2.AddPostToThreadResponse
+	(*RemovePostFromThreadResponse)(nil),              // 102: social_service.v2.RemovePostFromThreadResponse
+	(*GetPostThreadResponse)(nil),                     // 103: social_service.v2.GetPostThreadResponse
+	(*AddPostQualityScoreResponse)(nil),               // 104: social_service.v2.AddPostQualityScoreResponse
+	(*ReactToPostResponse)(nil),                       // 105: social_service.v2.ReactToPostResponse
+	(*ReactToCommentResponse)(nil),                    // 106: social_service.v2.ReactToCommentResponse
+	(*ReactToCommentReplyResponse)(nil),               // 107: social_service.v2.ReactToCommentReplyResponse
+	(*GetBlogPostsByTagResponse)(nil),                 // 108: social_service.v2.GetBlogPostsByTagResponse
+	(*GetCommunityBlogPostsResponse)(nil),             // 109: social_service.v2.GetCommunityBlogPostsResponse
+	(*GetUserFeedResponse)(nil),                       // 110: social_service.v2.GetUserFeedResponse
+	(*GetCommunityFeedResponse)(nil),                  // 111: social_service.v2.GetCommunityFeedResponse
+	(*CreateCommentResponse)(nil),                     // 112: social_service.v2.CreateCommentResponse
+	(*DeleteCommentResponse)(nil),                     // 113: social_service.v2.DeleteCommentResponse
+	(*ReportCommentResponse)(nil),                     // 114: social_service.v2.ReportCommentResponse
+	(*AddCommentQualityScoreResponse)(nil),            // 115: social_service.v2.AddCommentQualityScoreResponse
+	(*CreateCommentReplyResponse)(nil),                // 116: social_service.v2.CreateCommentReplyResponse
+	(*DeleteCommentReplyResponse)(nil),                // 117: social_service.v2.DeleteCommentReplyResponse
+	(*EditCommentReplyResponse)(nil),                  // 118: social_service.v2.EditCommentReplyResponse
+	(*GetCommentRepliesResponse)(nil),                 // 119: social_service.v2.GetCommentRepliesResponse
+	(*ReportCommentReplyResponse)(nil),                // 120: social_service.v2.ReportCommentReplyResponse
+	(*CreateTopicResponse)(nil),                       // 121: social_service.v2.CreateTopicResponse
+	(*GetTopicsOfCommunitiesUserFollowsResponse)(nil), // 122: social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse
+	(*GetPendingFollowsResponse)(nil),                 // 123: social_service.v2.GetPendingFollowsResponse
+	(*GetFollowersResponse)(nil),                      // 124: social_service.v2.GetFollowersResponse
+	(*GetAccountsFollowingResponse)(nil),              // 125: social_service.v2.GetAccountsFollowingResponse
+	(*CreatePollResponse)(nil),                        // 126: social_service.v2.CreatePollResponse
+	(*DeletePollResponse)(nil),                        // 127: social_service.v2.DeletePollResponse
+	(*GetPollResponse)(nil),                           // 128: social_service.v2.GetPollResponse
+	(*GetPollsResponse)(nil),                          // 129: social_service.v2.GetPollsResponse
+	(*GetPostsResponse)(nil),                          // 130: social_service.v2.GetPostsResponse
+	(*RespondToPollResponse)(nil),                     // 131: social_service.v2.RespondToPollResponse
+	(*CreateNoteResponse)(nil),                        // 132: social_service.v2.CreateNoteResponse
+	(*DeleteNoteResponse)(nil),                        // 133: social_service.v2.DeleteNoteResponse
+	(*EditNoteResponse)(nil),                          // 134: social_service.v2.EditNoteResponse
+	(*CreatePublicationResponse)(nil),                 // 135: social_service.v2.CreatePublicationResponse
+	(*GetPublicationResponse)(nil),                    // 136: social_service.v2.GetPublicationResponse
+	(*DeletePublicationResponse)(nil),                 // 137: social_service.v2.DeletePublicationResponse
+	(*AddPublicationEditorResponse)(nil),              // 138: social_service.v2.AddPublicationEditorResponse
+	(*DeletePublicationEditorResponse)(nil),           // 139: social_service.v2.DeletePublicationEditorResponse
+	(*AddPostToPublicationResponse)(nil),              // 140: social_service.v2.AddPostToPublicationResponse
+	(*DeletePostFromPublicationResponse)(nil),         // 141: social_service.v2.DeletePostFromPublicationResponse
+	(*BookmarkPostResponse)(nil),                      // 142: social_service.v2.BookmarkPostResponse
+	(*BookmarkPublicationResponse)(nil),               // 143: social_service.v2.BookmarkPublicationResponse
+	(*RemoveBookmarkedPostResponse)(nil),              // 144: social_service.v2.RemoveBookmarkedPostResponse
+	(*RemoveBookmarkedPublicationResponse)(nil),       // 145: social_service.v2.RemoveBookmarkedPublicationResponse
+	(*GetBookmarkedPostsResponse)(nil),                // 146: social_service.v2.GetBookmarkedPostsResponse
+	(*GetPostsByCategoryResponse)(nil),                // 147: social_service.v2.GetPostsByCategoryResponse
+	(*GetCannyUserSSOTokenResponse)(nil),              // 148: social_service.v2.GetCannyUserSSOTokenResponse
+	(*PublishPostResponse)(nil),                       // 149: social_service.v2.PublishPostResponse
+	(*ReviewPostResponse)(nil),                        // 150: social_service.v2.ReviewPostResponse
+	(*SetPostInDraftModeResponse)(nil),                // 151: social_service.v2.SetPostInDraftModeResponse
 }
 var file_social_service_v2_service_proto_depIdxs = []int32{
 	0,   // 0: social_service.v2.SocialService.HealthCheck:input_type -> social_service.v2.HealthCheckRequest
@@ -2024,81 +2092,87 @@ var file_social_service_v2_service_proto_depIdxs = []int32{
 	70,  // 70: social_service.v2.SocialService.GetBookmarkedPosts:input_type -> social_service.v2.GetBookmarkedPostsRequest
 	71,  // 71: social_service.v2.SocialService.GetPostsByCategory:input_type -> social_service.v2.GetPostsByCategoryRequest
 	72,  // 72: social_service.v2.SocialService.GetCannyUserSSOToken:input_type -> social_service.v2.GetCannyUserSSOTokenRequest
-	73,  // 73: social_service.v2.SocialService.HealthCheck:output_type -> social_service.v2.HealthCheckResponse
-	74,  // 74: social_service.v2.SocialService.ReadynessCheck:output_type -> social_service.v2.ReadynessCheckResponse
-	75,  // 75: social_service.v2.SocialService.EditUserProfile:output_type -> social_service.v2.EditUserProfileResponse
-	76,  // 76: social_service.v2.SocialService.GetUserProfile:output_type -> social_service.v2.GetUserProfileResponse
-	77,  // 77: social_service.v2.SocialService.CreateUserProfile:output_type -> social_service.v2.CreateUserProfileResponse
-	78,  // 78: social_service.v2.SocialService.DeleteUserProfile:output_type -> social_service.v2.DeleteUserProfileResponse
-	79,  // 79: social_service.v2.SocialService.BlockUserProfile:output_type -> social_service.v2.BlockUserProfileResponse
-	80,  // 80: social_service.v2.SocialService.FollowProfile:output_type -> social_service.v2.FollowProfileResponse
-	81,  // 81: social_service.v2.SocialService.AcceptFollowProfile:output_type -> social_service.v2.AcceptFollowProfileResponse
-	82,  // 82: social_service.v2.SocialService.GetUserProfiles:output_type -> social_service.v2.GetUserProfilesResponse
-	83,  // 83: social_service.v2.SocialService.DiscoverProfiles:output_type -> social_service.v2.DiscoverProfilesResponse
-	84,  // 84: social_service.v2.SocialService.GetCommunityProfile:output_type -> social_service.v2.GetCommunityProfileResponse
-	85,  // 85: social_service.v2.SocialService.CreateCommunityProfile:output_type -> social_service.v2.CreateCommunityProfileResponse
-	86,  // 86: social_service.v2.SocialService.GetCommunitiesUserFollows:output_type -> social_service.v2.GetCommunitiesUserFollowsResponse
-	87,  // 87: social_service.v2.SocialService.FollowCommunityProfile:output_type -> social_service.v2.FollowCommunityProfileResponse
-	88,  // 88: social_service.v2.SocialService.GetCommunityProfiles:output_type -> social_service.v2.GetCommunityProfilesResponse
-	89,  // 89: social_service.v2.SocialService.DeleteCommunityProfile:output_type -> social_service.v2.DeleteCommunityProfileResponse
-	90,  // 90: social_service.v2.SocialService.EditCommunityProfile:output_type -> social_service.v2.EditCommunityProfileResponse
-	91,  // 91: social_service.v2.SocialService.CreatePost:output_type -> social_service.v2.CreatePostResponse
-	92,  // 92: social_service.v2.SocialService.DeletePost:output_type -> social_service.v2.DeletePostResponse
-	93,  // 93: social_service.v2.SocialService.GetPost:output_type -> social_service.v2.GetPostResponse
-	94,  // 94: social_service.v2.SocialService.GetPostsByTopic:output_type -> social_service.v2.GetPostsByTopicResponse
-	95,  // 95: social_service.v2.SocialService.EditPost:output_type -> social_service.v2.EditPostResponse
-	96,  // 96: social_service.v2.SocialService.ReportPost:output_type -> social_service.v2.ReportPostResponse
-	97,  // 97: social_service.v2.SocialService.SharePost:output_type -> social_service.v2.SharePostResponse
-	98,  // 98: social_service.v2.SocialService.AddPostToThread:output_type -> social_service.v2.AddPostToThreadResponse
-	99,  // 99: social_service.v2.SocialService.RemovePostFromThread:output_type -> social_service.v2.RemovePostFromThreadResponse
-	100, // 100: social_service.v2.SocialService.GetPostThread:output_type -> social_service.v2.GetPostThreadResponse
-	101, // 101: social_service.v2.SocialService.AddPostQualityScore:output_type -> social_service.v2.AddPostQualityScoreResponse
-	102, // 102: social_service.v2.SocialService.ReactToPost:output_type -> social_service.v2.ReactToPostResponse
-	103, // 103: social_service.v2.SocialService.ReactToComment:output_type -> social_service.v2.ReactToCommentResponse
-	104, // 104: social_service.v2.SocialService.ReactToCommentReply:output_type -> social_service.v2.ReactToCommentReplyResponse
-	105, // 105: social_service.v2.SocialService.GetBlogPostsByTag:output_type -> social_service.v2.GetBlogPostsByTagResponse
-	106, // 106: social_service.v2.SocialService.GetCommunityBlogPosts:output_type -> social_service.v2.GetCommunityBlogPostsResponse
-	107, // 107: social_service.v2.SocialService.GetUserFeed:output_type -> social_service.v2.GetUserFeedResponse
-	108, // 108: social_service.v2.SocialService.GetCommunityFeed:output_type -> social_service.v2.GetCommunityFeedResponse
-	109, // 109: social_service.v2.SocialService.CreateComment:output_type -> social_service.v2.CreateCommentResponse
-	110, // 110: social_service.v2.SocialService.DeleteComment:output_type -> social_service.v2.DeleteCommentResponse
-	111, // 111: social_service.v2.SocialService.ReportComment:output_type -> social_service.v2.ReportCommentResponse
-	112, // 112: social_service.v2.SocialService.AddCommentQualityScore:output_type -> social_service.v2.AddCommentQualityScoreResponse
-	113, // 113: social_service.v2.SocialService.CreateCommentReply:output_type -> social_service.v2.CreateCommentReplyResponse
-	114, // 114: social_service.v2.SocialService.DeleteCommentReply:output_type -> social_service.v2.DeleteCommentReplyResponse
-	115, // 115: social_service.v2.SocialService.EditCommentReply:output_type -> social_service.v2.EditCommentReplyResponse
-	116, // 116: social_service.v2.SocialService.GetCommentReplies:output_type -> social_service.v2.GetCommentRepliesResponse
-	117, // 117: social_service.v2.SocialService.ReportCommentReply:output_type -> social_service.v2.ReportCommentReplyResponse
-	118, // 118: social_service.v2.SocialService.CreateTopic:output_type -> social_service.v2.CreateTopicResponse
-	119, // 119: social_service.v2.SocialService.GetTopicsOfCommunitiesUserFollows:output_type -> social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse
-	120, // 120: social_service.v2.SocialService.GetPendingFollows:output_type -> social_service.v2.GetPendingFollowsResponse
-	121, // 121: social_service.v2.SocialService.GetFollowers:output_type -> social_service.v2.GetFollowersResponse
-	122, // 122: social_service.v2.SocialService.GetAccountsFollowing:output_type -> social_service.v2.GetAccountsFollowingResponse
-	123, // 123: social_service.v2.SocialService.CreatePoll:output_type -> social_service.v2.CreatePollResponse
-	124, // 124: social_service.v2.SocialService.DeletePoll:output_type -> social_service.v2.DeletePollResponse
-	125, // 125: social_service.v2.SocialService.GetPoll:output_type -> social_service.v2.GetPollResponse
-	126, // 126: social_service.v2.SocialService.GetPolls:output_type -> social_service.v2.GetPollsResponse
-	127, // 127: social_service.v2.SocialService.GetPosts:output_type -> social_service.v2.GetPostsResponse
-	128, // 128: social_service.v2.SocialService.RespondToPoll:output_type -> social_service.v2.RespondToPollResponse
-	129, // 129: social_service.v2.SocialService.CreateNote:output_type -> social_service.v2.CreateNoteResponse
-	130, // 130: social_service.v2.SocialService.DeleteNote:output_type -> social_service.v2.DeleteNoteResponse
-	131, // 131: social_service.v2.SocialService.EditNote:output_type -> social_service.v2.EditNoteResponse
-	132, // 132: social_service.v2.SocialService.CreatePublication:output_type -> social_service.v2.CreatePublicationResponse
-	133, // 133: social_service.v2.SocialService.GetPublication:output_type -> social_service.v2.GetPublicationResponse
-	134, // 134: social_service.v2.SocialService.DeletePublication:output_type -> social_service.v2.DeletePublicationResponse
-	135, // 135: social_service.v2.SocialService.AddPublicationEditor:output_type -> social_service.v2.AddPublicationEditorResponse
-	136, // 136: social_service.v2.SocialService.DeletePublicationEditor:output_type -> social_service.v2.DeletePublicationEditorResponse
-	137, // 137: social_service.v2.SocialService.AddPostToPublication:output_type -> social_service.v2.AddPostToPublicationResponse
-	138, // 138: social_service.v2.SocialService.DeletePostFromPublication:output_type -> social_service.v2.DeletePostFromPublicationResponse
-	139, // 139: social_service.v2.SocialService.BookmarkPost:output_type -> social_service.v2.BookmarkPostResponse
-	140, // 140: social_service.v2.SocialService.BookmarkPublication:output_type -> social_service.v2.BookmarkPublicationResponse
-	141, // 141: social_service.v2.SocialService.RemoveBookmarkedPost:output_type -> social_service.v2.RemoveBookmarkedPostResponse
-	142, // 142: social_service.v2.SocialService.RemoveBookmarkedPublication:output_type -> social_service.v2.RemoveBookmarkedPublicationResponse
-	143, // 143: social_service.v2.SocialService.GetBookmarkedPosts:output_type -> social_service.v2.GetBookmarkedPostsResponse
-	144, // 144: social_service.v2.SocialService.GetPostsByCategory:output_type -> social_service.v2.GetPostsByCategoryResponse
-	145, // 145: social_service.v2.SocialService.GetCannyUserSSOToken:output_type -> social_service.v2.GetCannyUserSSOTokenResponse
-	73,  // [73:146] is the sub-list for method output_type
-	0,   // [0:73] is the sub-list for method input_type
+	73,  // 73: social_service.v2.SocialService.PublishPost:input_type -> social_service.v2.PublishPostRequest
+	74,  // 74: social_service.v2.SocialService.ReviewPost:input_type -> social_service.v2.ReviewPostRequest
+	75,  // 75: social_service.v2.SocialService.SetPostInDraftMode:input_type -> social_service.v2.SetPostInDraftModeRequest
+	76,  // 76: social_service.v2.SocialService.HealthCheck:output_type -> social_service.v2.HealthCheckResponse
+	77,  // 77: social_service.v2.SocialService.ReadynessCheck:output_type -> social_service.v2.ReadynessCheckResponse
+	78,  // 78: social_service.v2.SocialService.EditUserProfile:output_type -> social_service.v2.EditUserProfileResponse
+	79,  // 79: social_service.v2.SocialService.GetUserProfile:output_type -> social_service.v2.GetUserProfileResponse
+	80,  // 80: social_service.v2.SocialService.CreateUserProfile:output_type -> social_service.v2.CreateUserProfileResponse
+	81,  // 81: social_service.v2.SocialService.DeleteUserProfile:output_type -> social_service.v2.DeleteUserProfileResponse
+	82,  // 82: social_service.v2.SocialService.BlockUserProfile:output_type -> social_service.v2.BlockUserProfileResponse
+	83,  // 83: social_service.v2.SocialService.FollowProfile:output_type -> social_service.v2.FollowProfileResponse
+	84,  // 84: social_service.v2.SocialService.AcceptFollowProfile:output_type -> social_service.v2.AcceptFollowProfileResponse
+	85,  // 85: social_service.v2.SocialService.GetUserProfiles:output_type -> social_service.v2.GetUserProfilesResponse
+	86,  // 86: social_service.v2.SocialService.DiscoverProfiles:output_type -> social_service.v2.DiscoverProfilesResponse
+	87,  // 87: social_service.v2.SocialService.GetCommunityProfile:output_type -> social_service.v2.GetCommunityProfileResponse
+	88,  // 88: social_service.v2.SocialService.CreateCommunityProfile:output_type -> social_service.v2.CreateCommunityProfileResponse
+	89,  // 89: social_service.v2.SocialService.GetCommunitiesUserFollows:output_type -> social_service.v2.GetCommunitiesUserFollowsResponse
+	90,  // 90: social_service.v2.SocialService.FollowCommunityProfile:output_type -> social_service.v2.FollowCommunityProfileResponse
+	91,  // 91: social_service.v2.SocialService.GetCommunityProfiles:output_type -> social_service.v2.GetCommunityProfilesResponse
+	92,  // 92: social_service.v2.SocialService.DeleteCommunityProfile:output_type -> social_service.v2.DeleteCommunityProfileResponse
+	93,  // 93: social_service.v2.SocialService.EditCommunityProfile:output_type -> social_service.v2.EditCommunityProfileResponse
+	94,  // 94: social_service.v2.SocialService.CreatePost:output_type -> social_service.v2.CreatePostResponse
+	95,  // 95: social_service.v2.SocialService.DeletePost:output_type -> social_service.v2.DeletePostResponse
+	96,  // 96: social_service.v2.SocialService.GetPost:output_type -> social_service.v2.GetPostResponse
+	97,  // 97: social_service.v2.SocialService.GetPostsByTopic:output_type -> social_service.v2.GetPostsByTopicResponse
+	98,  // 98: social_service.v2.SocialService.EditPost:output_type -> social_service.v2.EditPostResponse
+	99,  // 99: social_service.v2.SocialService.ReportPost:output_type -> social_service.v2.ReportPostResponse
+	100, // 100: social_service.v2.SocialService.SharePost:output_type -> social_service.v2.SharePostResponse
+	101, // 101: social_service.v2.SocialService.AddPostToThread:output_type -> social_service.v2.AddPostToThreadResponse
+	102, // 102: social_service.v2.SocialService.RemovePostFromThread:output_type -> social_service.v2.RemovePostFromThreadResponse
+	103, // 103: social_service.v2.SocialService.GetPostThread:output_type -> social_service.v2.GetPostThreadResponse
+	104, // 104: social_service.v2.SocialService.AddPostQualityScore:output_type -> social_service.v2.AddPostQualityScoreResponse
+	105, // 105: social_service.v2.SocialService.ReactToPost:output_type -> social_service.v2.ReactToPostResponse
+	106, // 106: social_service.v2.SocialService.ReactToComment:output_type -> social_service.v2.ReactToCommentResponse
+	107, // 107: social_service.v2.SocialService.ReactToCommentReply:output_type -> social_service.v2.ReactToCommentReplyResponse
+	108, // 108: social_service.v2.SocialService.GetBlogPostsByTag:output_type -> social_service.v2.GetBlogPostsByTagResponse
+	109, // 109: social_service.v2.SocialService.GetCommunityBlogPosts:output_type -> social_service.v2.GetCommunityBlogPostsResponse
+	110, // 110: social_service.v2.SocialService.GetUserFeed:output_type -> social_service.v2.GetUserFeedResponse
+	111, // 111: social_service.v2.SocialService.GetCommunityFeed:output_type -> social_service.v2.GetCommunityFeedResponse
+	112, // 112: social_service.v2.SocialService.CreateComment:output_type -> social_service.v2.CreateCommentResponse
+	113, // 113: social_service.v2.SocialService.DeleteComment:output_type -> social_service.v2.DeleteCommentResponse
+	114, // 114: social_service.v2.SocialService.ReportComment:output_type -> social_service.v2.ReportCommentResponse
+	115, // 115: social_service.v2.SocialService.AddCommentQualityScore:output_type -> social_service.v2.AddCommentQualityScoreResponse
+	116, // 116: social_service.v2.SocialService.CreateCommentReply:output_type -> social_service.v2.CreateCommentReplyResponse
+	117, // 117: social_service.v2.SocialService.DeleteCommentReply:output_type -> social_service.v2.DeleteCommentReplyResponse
+	118, // 118: social_service.v2.SocialService.EditCommentReply:output_type -> social_service.v2.EditCommentReplyResponse
+	119, // 119: social_service.v2.SocialService.GetCommentReplies:output_type -> social_service.v2.GetCommentRepliesResponse
+	120, // 120: social_service.v2.SocialService.ReportCommentReply:output_type -> social_service.v2.ReportCommentReplyResponse
+	121, // 121: social_service.v2.SocialService.CreateTopic:output_type -> social_service.v2.CreateTopicResponse
+	122, // 122: social_service.v2.SocialService.GetTopicsOfCommunitiesUserFollows:output_type -> social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse
+	123, // 123: social_service.v2.SocialService.GetPendingFollows:output_type -> social_service.v2.GetPendingFollowsResponse
+	124, // 124: social_service.v2.SocialService.GetFollowers:output_type -> social_service.v2.GetFollowersResponse
+	125, // 125: social_service.v2.SocialService.GetAccountsFollowing:output_type -> social_service.v2.GetAccountsFollowingResponse
+	126, // 126: social_service.v2.SocialService.CreatePoll:output_type -> social_service.v2.CreatePollResponse
+	127, // 127: social_service.v2.SocialService.DeletePoll:output_type -> social_service.v2.DeletePollResponse
+	128, // 128: social_service.v2.SocialService.GetPoll:output_type -> social_service.v2.GetPollResponse
+	129, // 129: social_service.v2.SocialService.GetPolls:output_type -> social_service.v2.GetPollsResponse
+	130, // 130: social_service.v2.SocialService.GetPosts:output_type -> social_service.v2.GetPostsResponse
+	131, // 131: social_service.v2.SocialService.RespondToPoll:output_type -> social_service.v2.RespondToPollResponse
+	132, // 132: social_service.v2.SocialService.CreateNote:output_type -> social_service.v2.CreateNoteResponse
+	133, // 133: social_service.v2.SocialService.DeleteNote:output_type -> social_service.v2.DeleteNoteResponse
+	134, // 134: social_service.v2.SocialService.EditNote:output_type -> social_service.v2.EditNoteResponse
+	135, // 135: social_service.v2.SocialService.CreatePublication:output_type -> social_service.v2.CreatePublicationResponse
+	136, // 136: social_service.v2.SocialService.GetPublication:output_type -> social_service.v2.GetPublicationResponse
+	137, // 137: social_service.v2.SocialService.DeletePublication:output_type -> social_service.v2.DeletePublicationResponse
+	138, // 138: social_service.v2.SocialService.AddPublicationEditor:output_type -> social_service.v2.AddPublicationEditorResponse
+	139, // 139: social_service.v2.SocialService.DeletePublicationEditor:output_type -> social_service.v2.DeletePublicationEditorResponse
+	140, // 140: social_service.v2.SocialService.AddPostToPublication:output_type -> social_service.v2.AddPostToPublicationResponse
+	141, // 141: social_service.v2.SocialService.DeletePostFromPublication:output_type -> social_service.v2.DeletePostFromPublicationResponse
+	142, // 142: social_service.v2.SocialService.BookmarkPost:output_type -> social_service.v2.BookmarkPostResponse
+	143, // 143: social_service.v2.SocialService.BookmarkPublication:output_type -> social_service.v2.BookmarkPublicationResponse
+	144, // 144: social_service.v2.SocialService.RemoveBookmarkedPost:output_type -> social_service.v2.RemoveBookmarkedPostResponse
+	145, // 145: social_service.v2.SocialService.RemoveBookmarkedPublication:output_type -> social_service.v2.RemoveBookmarkedPublicationResponse
+	146, // 146: social_service.v2.SocialService.GetBookmarkedPosts:output_type -> social_service.v2.GetBookmarkedPostsResponse
+	147, // 147: social_service.v2.SocialService.GetPostsByCategory:output_type -> social_service.v2.GetPostsByCategoryResponse
+	148, // 148: social_service.v2.SocialService.GetCannyUserSSOToken:output_type -> social_service.v2.GetCannyUserSSOTokenResponse
+	149, // 149: social_service.v2.SocialService.PublishPost:output_type -> social_service.v2.PublishPostResponse
+	150, // 150: social_service.v2.SocialService.ReviewPost:output_type -> social_service.v2.ReviewPostResponse
+	151, // 151: social_service.v2.SocialService.SetPostInDraftMode:output_type -> social_service.v2.SetPostInDraftModeResponse
+	76,  // [76:152] is the sub-list for method output_type
+	0,   // [0:76] is the sub-list for method input_type
 	0,   // [0:0] is the sub-list for extension type_name
 	0,   // [0:0] is the sub-list for extension extendee
 	0,   // [0:0] is the sub-list for field type_name

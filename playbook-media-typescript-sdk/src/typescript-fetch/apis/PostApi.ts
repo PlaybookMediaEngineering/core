@@ -27,7 +27,13 @@ import type {
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
   Post,
+  PublishPostBody,
+  PublishPostResponse,
   ReportPostResponse,
+  ReviewPostBody,
+  ReviewPostResponse,
+  SetPostInDraftModeBody,
+  SetPostInDraftModeResponse,
   Status,
   ValidationErrorMessageResponse,
 } from '../models/index';
@@ -56,8 +62,20 @@ import {
     PathUnknownErrorMessageResponseToJSON,
     PostFromJSON,
     PostToJSON,
+    PublishPostBodyFromJSON,
+    PublishPostBodyToJSON,
+    PublishPostResponseFromJSON,
+    PublishPostResponseToJSON,
     ReportPostResponseFromJSON,
     ReportPostResponseToJSON,
+    ReviewPostBodyFromJSON,
+    ReviewPostBodyToJSON,
+    ReviewPostResponseFromJSON,
+    ReviewPostResponseToJSON,
+    SetPostInDraftModeBodyFromJSON,
+    SetPostInDraftModeBodyToJSON,
+    SetPostInDraftModeResponseFromJSON,
+    SetPostInDraftModeResponseToJSON,
     StatusFromJSON,
     StatusToJSON,
     ValidationErrorMessageResponseFromJSON,
@@ -118,10 +136,25 @@ export interface GetPostsByTopicRequest {
     topicName: string;
 }
 
+export interface PublishPostRequest {
+    userId: string;
+    publishPostBody: PublishPostBody;
+}
+
 export interface ReportPostRequest {
     userId: string;
     postId: string;
     postType: ReportPostPostTypeEnum;
+}
+
+export interface ReviewPostRequest {
+    userId: string;
+    reviewPostBody: ReviewPostBody;
+}
+
+export interface SetPostInDraftModeRequest {
+    userId: string;
+    setPostInDraftModeBody: SetPostInDraftModeBody;
 }
 
 /**
@@ -511,6 +544,45 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
+     * This endpoint enables a client to publish a post
+     * Publishes a post
+     */
+    async publishPostRaw(requestParameters: PublishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PublishPostResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling publishPost.');
+        }
+
+        if (requestParameters.publishPostBody === null || requestParameters.publishPostBody === undefined) {
+            throw new runtime.RequiredError('publishPostBody','Required parameter requestParameters.publishPostBody was null or undefined when calling publishPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/v1/users/{userId}/post/publish`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PublishPostBodyToJSON(requestParameters.publishPostBody),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PublishPostResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint enables a client to publish a post
+     * Publishes a post
+     */
+    async publishPost(requestParameters: PublishPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PublishPostResponse> {
+        const response = await this.publishPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * This endpoint enables a client to report a post
      * Report a post
      */
@@ -547,6 +619,84 @@ export class PostApi extends runtime.BaseAPI {
      */
     async reportPost(requestParameters: ReportPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ReportPostResponse> {
         const response = await this.reportPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * This endpoint enables a client to review a post
+     * Reviews a post
+     */
+    async reviewPostRaw(requestParameters: ReviewPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ReviewPostResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling reviewPost.');
+        }
+
+        if (requestParameters.reviewPostBody === null || requestParameters.reviewPostBody === undefined) {
+            throw new runtime.RequiredError('reviewPostBody','Required parameter requestParameters.reviewPostBody was null or undefined when calling reviewPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/v1/users/{userId}/post/review`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: ReviewPostBodyToJSON(requestParameters.reviewPostBody),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ReviewPostResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint enables a client to review a post
+     * Reviews a post
+     */
+    async reviewPost(requestParameters: ReviewPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ReviewPostResponse> {
+        const response = await this.reviewPostRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * This endpoint enables a client to set a post in draft mode
+     * Sets a post in draft mode
+     */
+    async setPostInDraftModeRaw(requestParameters: SetPostInDraftModeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SetPostInDraftModeResponse>> {
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling setPostInDraftMode.');
+        }
+
+        if (requestParameters.setPostInDraftModeBody === null || requestParameters.setPostInDraftModeBody === undefined) {
+            throw new runtime.RequiredError('setPostInDraftModeBody','Required parameter requestParameters.setPostInDraftModeBody was null or undefined when calling setPostInDraftMode.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/v1/users/{userId}/post/draft`.replace(`{${"userId"}}`, encodeURIComponent(String(requestParameters.userId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: SetPostInDraftModeBodyToJSON(requestParameters.setPostInDraftModeBody),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SetPostInDraftModeResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint enables a client to set a post in draft mode
+     * Sets a post in draft mode
+     */
+    async setPostInDraftMode(requestParameters: SetPostInDraftModeRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SetPostInDraftModeResponse> {
+        const response = await this.setPostInDraftModeRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

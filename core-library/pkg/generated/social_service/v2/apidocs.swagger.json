@@ -2570,6 +2570,180 @@
         ]
       }
     },
+    "/api/v1/users/{userId}/post/draft": {
+      "post": {
+        "summary": "Sets a post in draft mode",
+        "description": "This endpoint enables a client to set a post in draft mode",
+        "operationId": "SetPostInDraftMode",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/SetPostInDraftModeResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SetPostInDraftModeBody"
+            }
+          }
+        ],
+        "tags": [
+          "post"
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/post/publish": {
+      "post": {
+        "summary": "Publishes a post",
+        "description": "This endpoint enables a client to publish a post",
+        "operationId": "PublishPost",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/PublishPostResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PublishPostBody"
+            }
+          }
+        ],
+        "tags": [
+          "post"
+        ]
+      }
+    },
+    "/api/v1/users/{userId}/post/review": {
+      "post": {
+        "summary": "Reviews a post",
+        "description": "This endpoint enables a client to review a post",
+        "operationId": "ReviewPost",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ReviewPostResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ReviewPostBody"
+            }
+          }
+        ],
+        "tags": [
+          "post"
+        ]
+      }
+    },
     "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}": {
       "post": {
         "summary": "Share a post",
@@ -6871,6 +7045,10 @@
         "category": {
           "$ref": "#/definitions/Category",
           "title": "the category of the post\n@gotag: bson:\"category\""
+        },
+        "publishStatus": {
+          "$ref": "#/definitions/PostPublishStatus",
+          "title": "the publish status of the post\n@gotag: bson:\"publishStatus\""
         }
       },
       "required": [
@@ -7057,6 +7235,10 @@
         "category": {
           "$ref": "#/definitions/Category",
           "title": "the category of the post\n@gotag: bson:\"category\""
+        },
+        "publishStatus": {
+          "$ref": "#/definitions/PostPublishStatus",
+          "title": "the publish status of the post\n@gotag: bson:\"publishStatus\""
         }
       },
       "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
@@ -7064,6 +7246,17 @@
         "action",
         "content"
       ]
+    },
+    "PostPublishStatus": {
+      "type": "string",
+      "enum": [
+        "POST_PUBLISH_STATUS_UNSPECIFIED",
+        "POST_PUBLISH_STATUS_DRAFT",
+        "POST_PUBLISH_STATUS_PUBLISHED",
+        "POST_PUBLISH_STATUS_IN_REVIEW",
+        "POST_PUBLISH_STATUS_ARCHIVED"
+      ],
+      "default": "POST_PUBLISH_STATUS_UNSPECIFIED"
     },
     "PostType": {
       "type": "string",
@@ -7154,6 +7347,37 @@
       ],
       "default": "PUBLICATION_TYPE_UNSPECIFIED",
       "title": "- PUBLICATION_TYPE_MAGAZINE: a publication with a fixed publication staff that posts stories around a specific topic\n - PUBLICATION_TYPE_PLATFORM: a publication that accepts stories published around solomon\n - PUBLICATION_TYPE_BLOG: A community blog, a publication that is created specifically to share subset (community) news\n - PUBLICATION_TYPE_SUBJECTS: A collection of individual stories by a set of authors that are part of a whole"
+    },
+    "PublishPostBody": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string"
+        },
+        "postType": {
+          "$ref": "#/definitions/PostType"
+        }
+      },
+      "title": "PublishPostRequest: Represents the request object invoked against the\nsocial service to publish a post",
+      "required": [
+        "postId",
+        "postType"
+      ]
+    },
+    "PublishPostResponse": {
+      "type": "object",
+      "properties": {
+        "regularPost": {
+          "$ref": "#/definitions/Post"
+        },
+        "pollPost": {
+          "$ref": "#/definitions/PollPost"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "title": "PublishPostResponse: Represents the response object returned as a\nresponse to the publish post request"
     },
     "ReactToCommentReplyResponse": {
       "type": "object",
@@ -7307,6 +7531,37 @@
         }
       }
     },
+    "ReviewPostBody": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string"
+        },
+        "postType": {
+          "$ref": "#/definitions/PostType"
+        }
+      },
+      "title": "ReviewPostRequest: Represents the request object invoked against the\nsocial service to review a post",
+      "required": [
+        "postId",
+        "postType"
+      ]
+    },
+    "ReviewPostResponse": {
+      "type": "object",
+      "properties": {
+        "regularPost": {
+          "$ref": "#/definitions/Post"
+        },
+        "pollPost": {
+          "$ref": "#/definitions/PollPost"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "title": "ReviewPostResponse: Represents the response object returned as a\nresponse to the review post request"
+    },
     "Sentiment": {
       "type": "object",
       "properties": {
@@ -7331,6 +7586,37 @@
           "example": 93
         }
       }
+    },
+    "SetPostInDraftModeBody": {
+      "type": "object",
+      "properties": {
+        "postId": {
+          "type": "string"
+        },
+        "postType": {
+          "$ref": "#/definitions/PostType"
+        }
+      },
+      "title": "SetPostInDraftModeRequest: Represents the request object invoked against the\nsocial service to set a post in draft mode",
+      "required": [
+        "postId",
+        "postType"
+      ]
+    },
+    "SetPostInDraftModeResponse": {
+      "type": "object",
+      "properties": {
+        "regularPost": {
+          "$ref": "#/definitions/Post"
+        },
+        "pollPost": {
+          "$ref": "#/definitions/PollPost"
+        },
+        "success": {
+          "type": "boolean"
+        }
+      },
+      "title": "SetPostInDraftModeResponse: Represents the response object returned as a\nresponse to the set post in draft mode request"
     },
     "SharePostResponse": {
       "type": "object",

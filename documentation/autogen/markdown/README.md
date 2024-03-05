@@ -54,7 +54,10 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *PostApi* | [**getPost**](Apis/PostApi.md#getpost) | **GET** /api/v1/users/{userId}/post/{postId}/type/{postType} | Get a post |
 *PostApi* | [**getPostsByCategory**](Apis/PostApi.md#getpostsbycategory) | **GET** /api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset} | Get all posts associated with a category |
 *PostApi* | [**getPostsByTopic**](Apis/PostApi.md#getpostsbytopic) | **GET** /api/v1/community/{communityProfileId}/topic/{topicName}/posts | Get all posts associated with a topic |
+*PostApi* | [**publishPost**](Apis/PostApi.md#publishpost) | **POST** /api/v1/users/{userId}/post/publish | Publishes a post |
 *PostApi* | [**reportPost**](Apis/PostApi.md#reportpost) | **POST** /api/v1/users/{userId}/post/{postId}/type/{postType}/report | Report a post |
+*PostApi* | [**reviewPost**](Apis/PostApi.md#reviewpost) | **POST** /api/v1/users/{userId}/post/review | Reviews a post |
+*PostApi* | [**setPostInDraftMode**](Apis/PostApi.md#setpostindraftmode) | **POST** /api/v1/users/{userId}/post/draft | Sets a post in draft mode |
 | *PostsApi* | [**getPosts**](Apis/PostsApi.md#getposts) | **GET** /api/v1/users/{userId}/posts | Get all the posts of a given user |
 | *PublicationApi* | [**addPostToPublication**](Apis/PublicationApi.md#addposttopublication) | **POST** /api/v1/users/editor/{editorUserId}/publication/{publicationId} | Add a post to a publication |
 *PublicationApi* | [**addPublicationEditor**](Apis/PublicationApi.md#addpublicationeditor) | **PUT** /api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId} | Adds an editor to a publication |
@@ -183,9 +186,12 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [PollPost](./Models/PollPost.md)
  - [PollResponse](./Models/PollResponse.md)
  - [Post](./Models/Post.md)
+ - [PostPublishStatus](./Models/PostPublishStatus.md)
  - [PostType](./Models/PostType.md)
  - [Publication](./Models/Publication.md)
  - [PublicationType](./Models/PublicationType.md)
+ - [PublishPostBody](./Models/PublishPostBody.md)
+ - [PublishPostResponse](./Models/PublishPostResponse.md)
  - [ReactToCommentReplyResponse](./Models/ReactToCommentReplyResponse.md)
  - [ReactToCommentResponse](./Models/ReactToCommentResponse.md)
  - [ReactToPostResponse](./Models/ReactToPostResponse.md)
@@ -201,7 +207,11 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [ReportPostResponse](./Models/ReportPostResponse.md)
  - [RespondToPollBody](./Models/RespondToPollBody.md)
  - [RespondToPollResponse](./Models/RespondToPollResponse.md)
+ - [ReviewPostBody](./Models/ReviewPostBody.md)
+ - [ReviewPostResponse](./Models/ReviewPostResponse.md)
  - [Sentiment](./Models/Sentiment.md)
+ - [SetPostInDraftModeBody](./Models/SetPostInDraftModeBody.md)
+ - [SetPostInDraftModeResponse](./Models/SetPostInDraftModeResponse.md)
  - [SharePostResponse](./Models/SharePostResponse.md)
  - [SharedPost](./Models/SharedPost.md)
  - [SocialProfileMetadata](./Models/SocialProfileMetadata.md)

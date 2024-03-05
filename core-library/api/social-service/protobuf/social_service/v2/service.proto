@@ -1500,4 +1500,70 @@ service SocialService {
             }
         };
     }
+
+    rpc PublishPost(PublishPostRequest) returns (PublishPostResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/users/{user_id}/post/publish"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Publishes a post",
+            tags: ["post"],
+            operation_id: "PublishPost",
+            description: "This endpoint enables a client to publish a post",
+            responses: {
+                key: "200",
+                value: {
+                    description: "A successful response.",
+                    schema: {
+                        json_schema: {ref: ".social_service.v2.PublishPostResponse"}
+                    }
+                }
+            }
+        };
+    }
+
+    rpc ReviewPost(ReviewPostRequest) returns (ReviewPostResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/users/{user_id}/post/review"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Reviews a post",
+            tags: ["post"],
+            operation_id: "ReviewPost",
+            description: "This endpoint enables a client to review a post",
+            responses: {
+                key: "200",
+                value: {
+                    description: "A successful response.",
+                    schema: {
+                        json_schema: {ref: ".social_service.v2.ReviewPostResponse"}
+                    }
+                }
+            }
+        };
+    }
+
+    rpc SetPostInDraftMode(SetPostInDraftModeRequest) returns (SetPostInDraftModeResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/users/{user_id}/post/draft"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Sets a post in draft mode",
+            tags: ["post"],
+            operation_id: "SetPostInDraftMode",
+            description: "This endpoint enables a client to set a post in draft mode",
+            responses: {
+                key: "200",
+                value: {
+                    description: "A successful response.",
+                    schema: {
+                        json_schema: {ref: ".social_service.v2.SetPostInDraftModeResponse"}
+                    }
+                }
+            }
+        };
+    }
 }
