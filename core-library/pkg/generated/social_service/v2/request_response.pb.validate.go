@@ -20902,17 +20902,6 @@ func (m *PublishPostRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if _, ok := _PublishPostRequest_PostType_NotInLookup[m.GetPostType()]; ok {
-		err := PublishPostRequestValidationError{
-			field:  "PostType",
-			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return PublishPostRequestMultiError(errors)
 	}
@@ -20993,10 +20982,6 @@ var _ interface {
 	ErrorName() string
 } = PublishPostRequestValidationError{}
 
-var _PublishPostRequest_PostType_NotInLookup = map[PostType]struct{}{
-	0: {},
-}
-
 // Validate checks the field values on PublishPostResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -21019,93 +21004,33 @@ func (m *PublishPostResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Success
-
-	switch v := m.Post.(type) {
-	case *PublishPostResponse_RegularPost:
-		if v == nil {
-			err := PublishPostResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetRegularPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, PublishPostResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, PublishPostResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return PublishPostResponseValidationError{
-					field:  "RegularPost",
+	if all {
+		switch v := interface{}(m.GetPost()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, PublishPostResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
-		}
-
-	case *PublishPostResponse_PollPost:
-		if v == nil {
-			err := PublishPostResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetPollPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, PublishPostResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, PublishPostResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				return PublishPostResponseValidationError{
-					field:  "PollPost",
+				errors = append(errors, PublishPostResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
 		}
-
-	default:
-		_ = v // ensures v is used
+	} else if v, ok := interface{}(m.GetPost()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return PublishPostResponseValidationError{
+				field:  "Post",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
 	}
 
 	if len(errors) > 0 {
@@ -21232,17 +21157,6 @@ func (m *ReviewPostRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if _, ok := _ReviewPostRequest_PostType_NotInLookup[m.GetPostType()]; ok {
-		err := ReviewPostRequestValidationError{
-			field:  "PostType",
-			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return ReviewPostRequestMultiError(errors)
 	}
@@ -21323,10 +21237,6 @@ var _ interface {
 	ErrorName() string
 } = ReviewPostRequestValidationError{}
 
-var _ReviewPostRequest_PostType_NotInLookup = map[PostType]struct{}{
-	0: {},
-}
-
 // Validate checks the field values on ReviewPostResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -21349,93 +21259,33 @@ func (m *ReviewPostResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Success
-
-	switch v := m.Post.(type) {
-	case *ReviewPostResponse_RegularPost:
-		if v == nil {
-			err := ReviewPostResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetRegularPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ReviewPostResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, ReviewPostResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return ReviewPostResponseValidationError{
-					field:  "RegularPost",
+	if all {
+		switch v := interface{}(m.GetPost()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ReviewPostResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
-		}
-
-	case *ReviewPostResponse_PollPost:
-		if v == nil {
-			err := ReviewPostResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetPollPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, ReviewPostResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, ReviewPostResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				return ReviewPostResponseValidationError{
-					field:  "PollPost",
+				errors = append(errors, ReviewPostResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
 		}
-
-	default:
-		_ = v // ensures v is used
+	} else if v, ok := interface{}(m.GetPost()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ReviewPostResponseValidationError{
+				field:  "Post",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
 	}
 
 	if len(errors) > 0 {
@@ -21562,17 +21412,6 @@ func (m *SetPostInDraftModeRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if _, ok := _SetPostInDraftModeRequest_PostType_NotInLookup[m.GetPostType()]; ok {
-		err := SetPostInDraftModeRequestValidationError{
-			field:  "PostType",
-			reason: "value must not be in list [POST_TYPE_UNSPECIFIED]",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return SetPostInDraftModeRequestMultiError(errors)
 	}
@@ -21653,10 +21492,6 @@ var _ interface {
 	ErrorName() string
 } = SetPostInDraftModeRequestValidationError{}
 
-var _SetPostInDraftModeRequest_PostType_NotInLookup = map[PostType]struct{}{
-	0: {},
-}
-
 // Validate checks the field values on SetPostInDraftModeResponse with the
 // rules defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
@@ -21679,93 +21514,33 @@ func (m *SetPostInDraftModeResponse) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Success
-
-	switch v := m.Post.(type) {
-	case *SetPostInDraftModeResponse_RegularPost:
-		if v == nil {
-			err := SetPostInDraftModeResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetRegularPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, SetPostInDraftModeResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, SetPostInDraftModeResponseValidationError{
-						field:  "RegularPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetRegularPost()).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return SetPostInDraftModeResponseValidationError{
-					field:  "RegularPost",
+	if all {
+		switch v := interface{}(m.GetPost()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, SetPostInDraftModeResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
-		}
-
-	case *SetPostInDraftModeResponse_PollPost:
-		if v == nil {
-			err := SetPostInDraftModeResponseValidationError{
-				field:  "Post",
-				reason: "oneof value cannot be a typed-nil",
-			}
-			if !all {
-				return err
-			}
-			errors = append(errors, err)
-		}
-
-		if all {
-			switch v := interface{}(m.GetPollPost()).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, SetPostInDraftModeResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, SetPostInDraftModeResponseValidationError{
-						field:  "PollPost",
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(m.GetPollPost()).(interface{ Validate() error }); ok {
+		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				return SetPostInDraftModeResponseValidationError{
-					field:  "PollPost",
+				errors = append(errors, SetPostInDraftModeResponseValidationError{
+					field:  "Post",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
 			}
 		}
-
-	default:
-		_ = v // ensures v is used
+	} else if v, ok := interface{}(m.GetPost()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return SetPostInDraftModeResponseValidationError{
+				field:  "Post",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
 	}
 
 	if len(errors) > 0 {

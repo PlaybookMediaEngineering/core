@@ -7358,28 +7358,18 @@
       "properties": {
         "postId": {
           "type": "string"
-        },
-        "postType": {
-          "$ref": "#/definitions/PostType"
         }
       },
       "title": "PublishPostRequest: Represents the request object invoked against the\nsocial service to publish a post",
       "required": [
-        "postId",
-        "postType"
+        "postId"
       ]
     },
     "PublishPostResponse": {
       "type": "object",
       "properties": {
-        "regularPost": {
+        "post": {
           "$ref": "#/definitions/Post"
-        },
-        "pollPost": {
-          "$ref": "#/definitions/PollPost"
-        },
-        "success": {
-          "type": "boolean"
         }
       },
       "title": "PublishPostResponse: Represents the response object returned as a\nresponse to the publish post request"
@@ -7541,28 +7531,18 @@
       "properties": {
         "postId": {
           "type": "string"
-        },
-        "postType": {
-          "$ref": "#/definitions/PostType"
         }
       },
       "title": "ReviewPostRequest: Represents the request object invoked against the\nsocial service to review a post",
       "required": [
-        "postId",
-        "postType"
+        "postId"
       ]
     },
     "ReviewPostResponse": {
       "type": "object",
       "properties": {
-        "regularPost": {
+        "post": {
           "$ref": "#/definitions/Post"
-        },
-        "pollPost": {
-          "$ref": "#/definitions/PollPost"
-        },
-        "success": {
-          "type": "boolean"
         }
       },
       "title": "ReviewPostResponse: Represents the response object returned as a\nresponse to the review post request"
@@ -7597,28 +7577,18 @@
       "properties": {
         "postId": {
           "type": "string"
-        },
-        "postType": {
-          "$ref": "#/definitions/PostType"
         }
       },
       "title": "SetPostInDraftModeRequest: Represents the request object invoked against the\nsocial service to set a post in draft mode",
       "required": [
-        "postId",
-        "postType"
+        "postId"
       ]
     },
     "SetPostInDraftModeResponse": {
       "type": "object",
       "properties": {
-        "regularPost": {
+        "post": {
           "$ref": "#/definitions/Post"
-        },
-        "pollPost": {
-          "$ref": "#/definitions/PollPost"
-        },
-        "success": {
-          "type": "boolean"
         }
       },
       "title": "SetPostInDraftModeResponse: Represents the response object returned as a\nresponse to the set post in draft mode request"

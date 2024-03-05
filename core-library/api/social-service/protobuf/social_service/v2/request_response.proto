@@ -1686,21 +1686,12 @@ message PublishPostRequest {
     (validate.rules).string.min_len = 1,
     (google.api.field_behavior) = REQUIRED
   ];
-  PostType post_type = 3 [
-    (validate.rules).enum = {not_in: [0]},  
-    (google.api.field_behavior) = REQUIRED
-  ];
 }
 
 // PublishPostResponse: Represents the response object returned as a
 // response to the publish post request
 message PublishPostResponse {
-  oneof post {
-    Post regular_post = 1;
-    PollPost poll_post = 2;
-  }
-
-  bool success = 3;
+  Post post = 1;
 }
 
 // ReviewPostRequest: Represents the request object invoked against the
@@ -1713,21 +1704,12 @@ message ReviewPostRequest {
     (validate.rules).string.min_len = 1,
     (google.api.field_behavior) = REQUIRED
   ];
-  PostType post_type = 3 [
-    (validate.rules).enum = {not_in: [0]},  
-    (google.api.field_behavior) = REQUIRED
-  ];
 }
 
 // ReviewPostResponse: Represents the response object returned as a
 // response to the review post request
 message ReviewPostResponse {
-  oneof post {
-    Post regular_post = 1;
-    PollPost poll_post = 2;
-  }
-
-  bool success = 3;
+  Post post = 1;
 }
 
 // SetPostInDraftModeRequest: Represents the request object invoked against the
@@ -1740,19 +1722,10 @@ message SetPostInDraftModeRequest {
     (validate.rules).string.min_len = 1,
     (google.api.field_behavior) = REQUIRED
   ];
-  PostType post_type = 3 [
-    (validate.rules).enum = {not_in: [0]},  
-    (google.api.field_behavior) = REQUIRED
-  ];
 }
 
 // SetPostInDraftModeResponse: Represents the response object returned as a
 // response to the set post in draft mode request
 message SetPostInDraftModeResponse {
-  oneof post {
-    Post regular_post = 1;
-    PollPost poll_post = 2;
-  }
-
-  bool success = 3;
+  Post post = 1;
 }
