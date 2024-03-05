@@ -12,6 +12,7 @@ func GetDatabaseSchemas() []interface{} {
 		PublicationORM{},
 		BookmarkORM{},
 		CommunityProfileORM{},
+		StripeSubscriptionORM{},
 	}
 
 	return models

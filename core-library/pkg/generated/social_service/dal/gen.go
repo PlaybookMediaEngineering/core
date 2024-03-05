@@ -16,16 +16,17 @@ import (
 )
 
 var (
-	Q                   = new(Query)
-	BlockedORM          *blockedORM
-	BookmarkORM         *bookmarkORM
-	CommunityProfileORM *communityProfileORM
-	FollowerORM         *followerORM
-	PublicationORM      *publicationORM
-	TopicORM            *topicORM
-	UserProfileORM      *userProfileORM
-	UserTagsORM         *userTagsORM
-	VirtualProfileORM   *virtualProfileORM
+	Q                     = new(Query)
+	BlockedORM            *blockedORM
+	BookmarkORM           *bookmarkORM
+	CommunityProfileORM   *communityProfileORM
+	FollowerORM           *followerORM
+	PublicationORM        *publicationORM
+	StripeSubscriptionORM *stripeSubscriptionORM
+	TopicORM              *topicORM
+	UserProfileORM        *userProfileORM
+	UserTagsORM           *userTagsORM
+	VirtualProfileORM     *virtualProfileORM
 )
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
@@ -35,6 +36,7 @@ func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	CommunityProfileORM = &Q.CommunityProfileORM
 	FollowerORM = &Q.FollowerORM
 	PublicationORM = &Q.PublicationORM
+	StripeSubscriptionORM = &Q.StripeSubscriptionORM
 	TopicORM = &Q.TopicORM
 	UserProfileORM = &Q.UserProfileORM
 	UserTagsORM = &Q.UserTagsORM
@@ -43,47 +45,50 @@ func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
-		db:                  db,
-		BlockedORM:          newBlockedORM(db, opts...),
-		BookmarkORM:         newBookmarkORM(db, opts...),
-		CommunityProfileORM: newCommunityProfileORM(db, opts...),
-		FollowerORM:         newFollowerORM(db, opts...),
-		PublicationORM:      newPublicationORM(db, opts...),
-		TopicORM:            newTopicORM(db, opts...),
-		UserProfileORM:      newUserProfileORM(db, opts...),
-		UserTagsORM:         newUserTagsORM(db, opts...),
-		VirtualProfileORM:   newVirtualProfileORM(db, opts...),
+		db:                    db,
+		BlockedORM:            newBlockedORM(db, opts...),
+		BookmarkORM:           newBookmarkORM(db, opts...),
+		CommunityProfileORM:   newCommunityProfileORM(db, opts...),
+		FollowerORM:           newFollowerORM(db, opts...),
+		PublicationORM:        newPublicationORM(db, opts...),
+		StripeSubscriptionORM: newStripeSubscriptionORM(db, opts...),
+		TopicORM:              newTopicORM(db, opts...),
+		UserProfileORM:        newUserProfileORM(db, opts...),
+		UserTagsORM:           newUserTagsORM(db, opts...),
+		VirtualProfileORM:     newVirtualProfileORM(db, opts...),
 	}
 }
 
 type Query struct {
 	db *gorm.DB
 
-	BlockedORM          blockedORM
-	BookmarkORM         bookmarkORM
-	CommunityProfileORM communityProfileORM
-	FollowerORM         followerORM
-	PublicationORM      publicationORM
-	TopicORM            topicORM
-	UserProfileORM      userProfileORM
-	UserTagsORM         userTagsORM
-	VirtualProfileORM   virtualProfileORM
+	BlockedORM            blockedORM
+	BookmarkORM           bookmarkORM
+	CommunityProfileORM   communityProfileORM
+	FollowerORM           followerORM
+	PublicationORM        publicationORM
+	StripeSubscriptionORM stripeSubscriptionORM
+	TopicORM              topicORM
+	UserProfileORM        userProfileORM
+	UserTagsORM           userTagsORM
+	VirtualProfileORM     virtualProfileORM
 }
 
 func (q *Query) Available() bool { return q.db != nil }
 
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
-		db:                  db,
-		BlockedORM:          q.BlockedORM.clone(db),
-		BookmarkORM:         q.BookmarkORM.clone(db),
-		CommunityProfileORM: q.CommunityProfileORM.clone(db),
-		FollowerORM:         q.FollowerORM.clone(db),
-		PublicationORM:      q.PublicationORM.clone(db),
-		TopicORM:            q.TopicORM.clone(db),
-		UserProfileORM:      q.UserProfileORM.clone(db),
-		UserTagsORM:         q.UserTagsORM.clone(db),
-		VirtualProfileORM:   q.VirtualProfileORM.clone(db),
+		db:                    db,
+		BlockedORM:            q.BlockedORM.clone(db),
+		BookmarkORM:           q.BookmarkORM.clone(db),
+		CommunityProfileORM:   q.CommunityProfileORM.clone(db),
+		FollowerORM:           q.FollowerORM.clone(db),
+		PublicationORM:        q.PublicationORM.clone(db),
+		StripeSubscriptionORM: q.StripeSubscriptionORM.clone(db),
+		TopicORM:              q.TopicORM.clone(db),
+		UserProfileORM:        q.UserProfileORM.clone(db),
+		UserTagsORM:           q.UserTagsORM.clone(db),
+		VirtualProfileORM:     q.VirtualProfileORM.clone(db),
 	}
 }
 
@@ -97,42 +102,45 @@ func (q *Query) WriteDB() *Query {
 
 func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
-		db:                  db,
-		BlockedORM:          q.BlockedORM.replaceDB(db),
-		BookmarkORM:         q.BookmarkORM.replaceDB(db),
-		CommunityProfileORM: q.CommunityProfileORM.replaceDB(db),
-		FollowerORM:         q.FollowerORM.replaceDB(db),
-		PublicationORM:      q.PublicationORM.replaceDB(db),
-		TopicORM:            q.TopicORM.replaceDB(db),
-		UserProfileORM:      q.UserProfileORM.replaceDB(db),
-		UserTagsORM:         q.UserTagsORM.replaceDB(db),
-		VirtualProfileORM:   q.VirtualProfileORM.replaceDB(db),
+		db:                    db,
+		BlockedORM:            q.BlockedORM.replaceDB(db),
+		BookmarkORM:           q.BookmarkORM.replaceDB(db),
+		CommunityProfileORM:   q.CommunityProfileORM.replaceDB(db),
+		FollowerORM:           q.FollowerORM.replaceDB(db),
+		PublicationORM:        q.PublicationORM.replaceDB(db),
+		StripeSubscriptionORM: q.StripeSubscriptionORM.replaceDB(db),
+		TopicORM:              q.TopicORM.replaceDB(db),
+		UserProfileORM:        q.UserProfileORM.replaceDB(db),
+		UserTagsORM:           q.UserTagsORM.replaceDB(db),
+		VirtualProfileORM:     q.VirtualProfileORM.replaceDB(db),
 	}
 }
 
 type queryCtx struct {
-	BlockedORM          IBlockedORMDo
-	BookmarkORM         IBookmarkORMDo
-	CommunityProfileORM ICommunityProfileORMDo
-	FollowerORM         IFollowerORMDo
-	PublicationORM      IPublicationORMDo
-	TopicORM            ITopicORMDo
-	UserProfileORM      IUserProfileORMDo
-	UserTagsORM         IUserTagsORMDo
-	VirtualProfileORM   IVirtualProfileORMDo
+	BlockedORM            IBlockedORMDo
+	BookmarkORM           IBookmarkORMDo
+	CommunityProfileORM   ICommunityProfileORMDo
+	FollowerORM           IFollowerORMDo
+	PublicationORM        IPublicationORMDo
+	StripeSubscriptionORM IStripeSubscriptionORMDo
+	TopicORM              ITopicORMDo
+	UserProfileORM        IUserProfileORMDo
+	UserTagsORM           IUserTagsORMDo
+	VirtualProfileORM     IVirtualProfileORMDo
 }
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
-		BlockedORM:          q.BlockedORM.WithContext(ctx),
-		BookmarkORM:         q.BookmarkORM.WithContext(ctx),
-		CommunityProfileORM: q.CommunityProfileORM.WithContext(ctx),
-		FollowerORM:         q.FollowerORM.WithContext(ctx),
-		PublicationORM:      q.PublicationORM.WithContext(ctx),
-		TopicORM:            q.TopicORM.WithContext(ctx),
-		UserProfileORM:      q.UserProfileORM.WithContext(ctx),
-		UserTagsORM:         q.UserTagsORM.WithContext(ctx),
-		VirtualProfileORM:   q.VirtualProfileORM.WithContext(ctx),
+		BlockedORM:            q.BlockedORM.WithContext(ctx),
+		BookmarkORM:           q.BookmarkORM.WithContext(ctx),
+		CommunityProfileORM:   q.CommunityProfileORM.WithContext(ctx),
+		FollowerORM:           q.FollowerORM.WithContext(ctx),
+		PublicationORM:        q.PublicationORM.WithContext(ctx),
+		StripeSubscriptionORM: q.StripeSubscriptionORM.WithContext(ctx),
+		TopicORM:              q.TopicORM.WithContext(ctx),
+		UserProfileORM:        q.UserProfileORM.WithContext(ctx),
+		UserTagsORM:           q.UserTagsORM.WithContext(ctx),
+		VirtualProfileORM:     q.VirtualProfileORM.WithContext(ctx),
 	}
 }
 

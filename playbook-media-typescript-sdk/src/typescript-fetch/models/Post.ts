@@ -49,6 +49,12 @@ import {
     NoteFromJSONTyped,
     NoteToJSON,
 } from './Note';
+import type { PostPublishStatus } from './PostPublishStatus';
+import {
+    PostPublishStatusFromJSON,
+    PostPublishStatusFromJSONTyped,
+    PostPublishStatusToJSON,
+} from './PostPublishStatus';
 import type { PostType } from './PostType';
 import {
     PostTypeFromJSON,
@@ -260,6 +266,12 @@ export interface Post {
      * @memberof Post
      */
     category?: Category;
+    /**
+     * 
+     * @type {PostPublishStatus}
+     * @memberof Post
+     */
+    publishStatus?: PostPublishStatus;
 }
 
 /**
@@ -313,6 +325,7 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'userIdToReactionMap': !exists(json, 'userIdToReactionMap') ? undefined : (mapValues(json['userIdToReactionMap'], ReactionFromJSON)),
         'aiGeneratedQuestionResponse': !exists(json, 'aiGeneratedQuestionResponse') ? undefined : json['aiGeneratedQuestionResponse'],
         'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
+        'publishStatus': !exists(json, 'publishStatus') ? undefined : PostPublishStatusFromJSON(json['publishStatus']),
     };
 }
 
@@ -355,6 +368,7 @@ export function PostToJSON(value?: Post | null): any {
         'userIdToReactionMap': value.userIdToReactionMap === undefined ? undefined : (mapValues(value.userIdToReactionMap, ReactionToJSON)),
         'aiGeneratedQuestionResponse': value.aiGeneratedQuestionResponse,
         'category': CategoryToJSON(value.category),
+        'publishStatus': PostPublishStatusToJSON(value.publishStatus),
     };
 }
 

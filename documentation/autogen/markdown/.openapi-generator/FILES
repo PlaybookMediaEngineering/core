@@ -117,9 +117,12 @@ Models/PendingFollowRequest.md
 Models/PollPost.md
 Models/PollResponse.md
 Models/Post.md
+Models/PostPublishStatus.md
 Models/PostType.md
 Models/Publication.md
 Models/PublicationType.md
+Models/PublishPostBody.md
+Models/PublishPostResponse.md
 Models/ReactToCommentReplyResponse.md
 Models/ReactToCommentResponse.md
 Models/ReactToPostResponse.md
@@ -135,7 +138,11 @@ Models/ReportCommentResponse.md
 Models/ReportPostResponse.md
 Models/RespondToPollBody.md
 Models/RespondToPollResponse.md
+Models/ReviewPostBody.md
+Models/ReviewPostResponse.md
 Models/Sentiment.md
+Models/SetPostInDraftModeBody.md
+Models/SetPostInDraftModeResponse.md
 Models/SharePostResponse.md
 Models/SharedPost.md
 Models/SocialProfileMetadata.md

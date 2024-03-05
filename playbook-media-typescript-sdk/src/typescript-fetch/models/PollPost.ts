@@ -55,6 +55,12 @@ import {
     PollResponseFromJSONTyped,
     PollResponseToJSON,
 } from './PollResponse';
+import type { PostPublishStatus } from './PostPublishStatus';
+import {
+    PostPublishStatusFromJSON,
+    PostPublishStatusFromJSONTyped,
+    PostPublishStatusToJSON,
+} from './PostPublishStatus';
 import type { PostType } from './PostType';
 import {
     PostTypeFromJSON,
@@ -278,6 +284,12 @@ export interface PollPost {
      * @memberof PollPost
      */
     category?: Category;
+    /**
+     * 
+     * @type {PostPublishStatus}
+     * @memberof PollPost
+     */
+    publishStatus?: PostPublishStatus;
 }
 
 /**
@@ -334,6 +346,7 @@ export function PollPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'threadParticipantType': !exists(json, 'threadParticipantType') ? undefined : ThreadParticipantTypeFromJSON(json['threadParticipantType']),
         'userIdToReactionMap': !exists(json, 'userIdToReactionMap') ? undefined : (mapValues(json['userIdToReactionMap'], ReactionFromJSON)),
         'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
+        'publishStatus': !exists(json, 'publishStatus') ? undefined : PostPublishStatusFromJSON(json['publishStatus']),
     };
 }
 
@@ -378,6 +391,7 @@ export function PollPostToJSON(value?: PollPost | null): any {
         'threadParticipantType': ThreadParticipantTypeToJSON(value.threadParticipantType),
         'userIdToReactionMap': value.userIdToReactionMap === undefined ? undefined : (mapValues(value.userIdToReactionMap, ReactionToJSON)),
         'category': CategoryToJSON(value.category),
+        'publishStatus': PostPublishStatusToJSON(value.publishStatus),
     };
 }
 

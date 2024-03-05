@@ -13,9 +13,25 @@ option go_package = "github.com/PlaybookMediaEngineering/core/core-library/pkg/g
 // virtual profile type of the user account
 enum VirtualProfileType {
   VIRTUAL_PROFILE_TYPE_UNSPECIFIED = 0;
-  VIRTUAL_PROFILE_TYPE_USER = 1;
-  VIRTUAL_PROFILE_TYPE_BUSINESS = 2;
+  VIRTUAL_PROFILE_TYPE_USER = 1; // this is essentially for regular users that just want to consume content
+  VIRTUAL_PROFILE_TYPE_BUSINESS = 2; // this is essentially for creators
 }
+
+// the subscription status of a user
+enum StripeSubscriptionStatus {
+  STRIPE_SUBSCRIPTION_STATUS_UNSPECIFIED = 0;
+  STRIPE_SUBSCRIPTION_STATUS_TRIALING = 1;
+  STRIPE_SUBSCRIPTION_STATUS_ACTIVE = 2;
+  STRIPE_SUBSCRIPTION_STATUS_PAST_DUE = 3;
+  STRIPE_SUBSCRIPTION_STATUS_CANCELED = 4;
+  STRIPE_SUBSCRIPTION_STATUS_UNPAID = 5;
+  STRIPE_SUBSCRIPTION_STATUS_COMPLETE = 6;
+  STRIPE_SUBSCRIPTION_STATUS_INCOMPLETE = 7;
+  STRIPE_SUBSCRIPTION_STATUS_INCOMPLETE_EXPIRED = 8;
+  STRIPE_SUBSCRIPTION_STATUS_CREATED = 9;
+   STRIPE_SUBSCRIPTION_STATUS_PAUSED = 10;
+}
+
 /*
     VirtualProfile: Every user/community has a virtual profile account id
    associated with it. A virtual profile abstracts a grouping of separate social
@@ -57,6 +73,8 @@ message VirtualProfile {
   // Active defines wether the account is a/ctive or not
   bool activated = 9;
   VirtualProfileType profile_type = 10;
+// the stripe subscriptions the user profile actively maintains
+  repeated StripeSubscription stripe_subscriptions = 16 [(gorm.field).has_many = {disable_association_autocreate: false disable_association_autoupdate: false preload: true}];
 }
 
 /*
@@ -465,4 +483,21 @@ message Publication {
   string created_at = 10 ;
   PublicationType type = 11[  (google.api.field_behavior) = REQUIRED];
   string publication_name = 13 [(validate.rules).string.min_len = 1,  (google.api.field_behavior) = REQUIRED];
+}
+
+
+// StripeSubscription stores high level stripe subscription details of which the user profile has
+message StripeSubscription {
+  option (gorm.opts) = {ormable: true};
+  uint64 id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
+  // stripe subscription id tied to the customer
+  string stripe_subscription_id = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
+  // stripe subscription status
+  StripeSubscriptionStatus stripe_subscription_status = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
+  // stripe subscription active until 
+  string stripe_subscription_active_until = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
+  // stripe webhook latest timestamp 
+  string stripe_webhook_latest_timestamp = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
+  // wether the subscription is trialing
+  bool is_trialing = 6;
 }

@@ -92,6 +92,9 @@ const (
 	SocialService_GetBookmarkedPosts_FullMethodName                = "/social_service.v2.SocialService/GetBookmarkedPosts"
 	SocialService_GetPostsByCategory_FullMethodName                = "/social_service.v2.SocialService/GetPostsByCategory"
 	SocialService_GetCannyUserSSOToken_FullMethodName              = "/social_service.v2.SocialService/GetCannyUserSSOToken"
+	SocialService_PublishPost_FullMethodName                       = "/social_service.v2.SocialService/PublishPost"
+	SocialService_ReviewPost_FullMethodName                        = "/social_service.v2.SocialService/ReviewPost"
+	SocialService_SetPostInDraftMode_FullMethodName                = "/social_service.v2.SocialService/SetPostInDraftMode"
 )
 
 // SocialServiceClient is the client API for SocialService service.
@@ -198,6 +201,9 @@ type SocialServiceClient interface {
 	GetPostsByCategory(ctx context.Context, in *GetPostsByCategoryRequest, opts ...grpc.CallOption) (*GetPostsByCategoryResponse, error)
 	// the following endpoints are for the canny integration. it returns the sso token for a given user
 	GetCannyUserSSOToken(ctx context.Context, in *GetCannyUserSSOTokenRequest, opts ...grpc.CallOption) (*GetCannyUserSSOTokenResponse, error)
+	PublishPost(ctx context.Context, in *PublishPostRequest, opts ...grpc.CallOption) (*PublishPostResponse, error)
+	ReviewPost(ctx context.Context, in *ReviewPostRequest, opts ...grpc.CallOption) (*ReviewPostResponse, error)
+	SetPostInDraftMode(ctx context.Context, in *SetPostInDraftModeRequest, opts ...grpc.CallOption) (*SetPostInDraftModeResponse, error)
 }
 
 type socialServiceClient struct {
@@ -865,6 +871,33 @@ func (c *socialServiceClient) GetCannyUserSSOToken(ctx context.Context, in *GetC
 	return out, nil
 }
 
+func (c *socialServiceClient) PublishPost(ctx context.Context, in *PublishPostRequest, opts ...grpc.CallOption) (*PublishPostResponse, error) {
+	out := new(PublishPostResponse)
+	err := c.cc.Invoke(ctx, SocialService_PublishPost_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) ReviewPost(ctx context.Context, in *ReviewPostRequest, opts ...grpc.CallOption) (*ReviewPostResponse, error) {
+	out := new(ReviewPostResponse)
+	err := c.cc.Invoke(ctx, SocialService_ReviewPost_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) SetPostInDraftMode(ctx context.Context, in *SetPostInDraftModeRequest, opts ...grpc.CallOption) (*SetPostInDraftModeResponse, error) {
+	out := new(SetPostInDraftModeResponse)
+	err := c.cc.Invoke(ctx, SocialService_SetPostInDraftMode_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServiceServer is the server API for SocialService service.
 // All implementations must embed UnimplementedSocialServiceServer
 // for forward compatibility
@@ -969,6 +1002,9 @@ type SocialServiceServer interface {
 	GetPostsByCategory(context.Context, *GetPostsByCategoryRequest) (*GetPostsByCategoryResponse, error)
 	// the following endpoints are for the canny integration. it returns the sso token for a given user
 	GetCannyUserSSOToken(context.Context, *GetCannyUserSSOTokenRequest) (*GetCannyUserSSOTokenResponse, error)
+	PublishPost(context.Context, *PublishPostRequest) (*PublishPostResponse, error)
+	ReviewPost(context.Context, *ReviewPostRequest) (*ReviewPostResponse, error)
+	SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error)
 	mustEmbedUnimplementedSocialServiceServer()
 }
 
@@ -1194,6 +1230,15 @@ func (UnimplementedSocialServiceServer) GetPostsByCategory(context.Context, *Get
 }
 func (UnimplementedSocialServiceServer) GetCannyUserSSOToken(context.Context, *GetCannyUserSSOTokenRequest) (*GetCannyUserSSOTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetCannyUserSSOToken not implemented")
+}
+func (UnimplementedSocialServiceServer) PublishPost(context.Context, *PublishPostRequest) (*PublishPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PublishPost not implemented")
+}
+func (UnimplementedSocialServiceServer) ReviewPost(context.Context, *ReviewPostRequest) (*ReviewPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReviewPost not implemented")
+}
+func (UnimplementedSocialServiceServer) SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPostInDraftMode not implemented")
 }
 func (UnimplementedSocialServiceServer) mustEmbedUnimplementedSocialServiceServer() {}
 
@@ -2522,6 +2567,60 @@ func _SocialService_GetCannyUserSSOToken_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_PublishPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PublishPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).PublishPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_PublishPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).PublishPost(ctx, req.(*PublishPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_ReviewPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReviewPostRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).ReviewPost(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_ReviewPost_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).ReviewPost(ctx, req.(*ReviewPostRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_SetPostInDraftMode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetPostInDraftModeRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).SetPostInDraftMode(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_SetPostInDraftMode_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).SetPostInDraftMode(ctx, req.(*SetPostInDraftModeRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocialService_ServiceDesc is the grpc.ServiceDesc for SocialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2820,6 +2919,18 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetCannyUserSSOToken",
 			Handler:    _SocialService_GetCannyUserSSOToken_Handler,
+		},
+		{
+			MethodName: "PublishPost",
+			Handler:    _SocialService_PublishPost_Handler,
+		},
+		{
+			MethodName: "ReviewPost",
+			Handler:    _SocialService_ReviewPost_Handler,
+		},
+		{
+			MethodName: "SetPostInDraftMode",
+			Handler:    _SocialService_SetPostInDraftMode_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

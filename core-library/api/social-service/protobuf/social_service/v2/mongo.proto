@@ -129,6 +129,14 @@ enum Category {
   CATEGORY_OTHER = 8;
 }
 
+enum PostPublishStatus {
+  POST_PUBLISH_STATUS_UNSPECIFIED = 0;
+  POST_PUBLISH_STATUS_DRAFT = 1;
+  POST_PUBLISH_STATUS_PUBLISHED = 2;
+  POST_PUBLISH_STATUS_IN_REVIEW = 3;
+  POST_PUBLISH_STATUS_ARCHIVED = 4;
+}
+
 /*
     Posts: Critical to activities and define the content sent over by users and
    communities
@@ -250,6 +258,10 @@ message Post {
   // the category of the post
   // @gotag: bson:"category"
   Category category = 35;
+
+  // the publish status of the post
+  // @gotag: bson:"publishStatus"
+  PostPublishStatus publish_status = 36;
 }
 
 message PollPost {
@@ -386,6 +398,10 @@ message PollPost {
   // the category of the post
   // @gotag: bson:"category"
   Category category = 35;
+
+  // the publish status of the post
+  // @gotag: bson:"publishStatus"
+  PostPublishStatus publish_status = 36;
 }
 
 message PollResponse {

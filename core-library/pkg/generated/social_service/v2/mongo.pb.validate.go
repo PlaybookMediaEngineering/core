@@ -937,6 +937,8 @@ func (m *Post) validate(all bool) error {
 
 	// no validation rules for Category
 
+	// no validation rules for PublishStatus
+
 	if len(errors) > 0 {
 		return PostMultiError(errors)
 	}
@@ -1383,6 +1385,8 @@ func (m *PollPost) validate(all bool) error {
 	// no validation rules for UserIdToReactionMap
 
 	// no validation rules for Category
+
+	// no validation rules for PublishStatus
 
 	if len(errors) > 0 {
 		return PollPostMultiError(errors)
