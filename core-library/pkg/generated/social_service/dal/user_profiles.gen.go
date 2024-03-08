@@ -34,10 +34,12 @@ func newUserProfileORM(db *gorm.DB, opts ...gen.DOOption) userProfileORM {
 	_userProfileORM.EditorsPublicationId = field.NewUint64(tableName, "editors_publication_id")
 	_userProfileORM.Followers = field.NewInt64(tableName, "followers")
 	_userProfileORM.Following = field.NewInt64(tableName, "following")
+	_userProfileORM.FreeFeedTimelineId = field.NewString(tableName, "free_feed_timeline_id")
 	_userProfileORM.Id = field.NewUint64(tableName, "id")
 	_userProfileORM.Name = field.NewString(tableName, "name")
 	_userProfileORM.NewsFeedTimelineId = field.NewString(tableName, "news_feed_timeline_id")
 	_userProfileORM.NotificationFeedTimelineId = field.NewString(tableName, "notification_feed_timeline_id")
+	_userProfileORM.PaidFeedTimelineId = field.NewString(tableName, "paid_feed_timeline_id")
 	_userProfileORM.PersonalFeedTimelineId = field.NewString(tableName, "personal_feed_timeline_id")
 	_userProfileORM.Private = field.NewBool(tableName, "private")
 	_userProfileORM.ProfileImageUrl = field.NewString(tableName, "profile_image_url")
@@ -112,10 +114,12 @@ type userProfileORM struct {
 	EditorsPublicationId       field.Uint64
 	Followers                  field.Int64
 	Following                  field.Int64
+	FreeFeedTimelineId         field.String
 	Id                         field.Uint64
 	Name                       field.String
 	NewsFeedTimelineId         field.String
 	NotificationFeedTimelineId field.String
+	PaidFeedTimelineId         field.String
 	PersonalFeedTimelineId     field.String
 	Private                    field.Bool
 	ProfileImageUrl            field.String
@@ -145,10 +149,12 @@ func (u *userProfileORM) updateTableName(table string) *userProfileORM {
 	u.EditorsPublicationId = field.NewUint64(table, "editors_publication_id")
 	u.Followers = field.NewInt64(table, "followers")
 	u.Following = field.NewInt64(table, "following")
+	u.FreeFeedTimelineId = field.NewString(table, "free_feed_timeline_id")
 	u.Id = field.NewUint64(table, "id")
 	u.Name = field.NewString(table, "name")
 	u.NewsFeedTimelineId = field.NewString(table, "news_feed_timeline_id")
 	u.NotificationFeedTimelineId = field.NewString(table, "notification_feed_timeline_id")
+	u.PaidFeedTimelineId = field.NewString(table, "paid_feed_timeline_id")
 	u.PersonalFeedTimelineId = field.NewString(table, "personal_feed_timeline_id")
 	u.Private = field.NewBool(table, "private")
 	u.ProfileImageUrl = field.NewString(table, "profile_image_url")
@@ -169,17 +175,19 @@ func (u *userProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, bool
 }
 
 func (u *userProfileORM) fillFieldMap() {
-	u.fieldMap = make(map[string]field.Expr, 16)
+	u.fieldMap = make(map[string]field.Expr, 18)
 	u.fieldMap["admin_publication_id"] = u.AdminPublicationId
 	u.fieldMap["algolia_id"] = u.AlgoliaId
 	u.fieldMap["bookmark_id"] = u.BookmarkId
 	u.fieldMap["editors_publication_id"] = u.EditorsPublicationId
 	u.fieldMap["followers"] = u.Followers
 	u.fieldMap["following"] = u.Following
+	u.fieldMap["free_feed_timeline_id"] = u.FreeFeedTimelineId
 	u.fieldMap["id"] = u.Id
 	u.fieldMap["name"] = u.Name
 	u.fieldMap["news_feed_timeline_id"] = u.NewsFeedTimelineId
 	u.fieldMap["notification_feed_timeline_id"] = u.NotificationFeedTimelineId
+	u.fieldMap["paid_feed_timeline_id"] = u.PaidFeedTimelineId
 	u.fieldMap["personal_feed_timeline_id"] = u.PersonalFeedTimelineId
 	u.fieldMap["private"] = u.Private
 	u.fieldMap["profile_image_url"] = u.ProfileImageUrl

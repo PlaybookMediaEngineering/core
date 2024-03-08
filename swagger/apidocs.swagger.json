@@ -7944,6 +7944,16 @@
           "type": "string",
           "example": "asndlkhaskhdhasgdahsf-feed-id",
           "title": "The id of the algolia record referencing this user"
+        },
+        "paidFeedTimelineId": {
+          "type": "string",
+          "example": "asndlkhaskhdhasgdahsf-feed-id",
+          "title": "the paid feed timeline id for which paying users can subscribe to"
+        },
+        "freeFeedTimelineId": {
+          "type": "string",
+          "example": "asndlkhaskhdhasgdahsf-feed-id",
+          "title": "the free feed timeline id for which non-paying users can subscribe to"
         }
       },
       "title": "UserProfile: The profile object tied to a given user",
@@ -7958,7 +7968,9 @@
         "newsFeedTimelineId",
         "profileImageUrl",
         "bookmarks",
-        "algoliaId"
+        "algoliaId",
+        "paidFeedTimelineId",
+        "freeFeedTimelineId"
       ]
     },
     "UserTags": {

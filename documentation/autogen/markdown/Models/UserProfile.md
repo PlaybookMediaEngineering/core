@@ -15,6 +15,8 @@
 | **profileImageUrl** | **String** |  | [default to null] |
 | **bookmarks** | [**Bookmark**](Bookmark.md) |  | [default to null] |
 | **algoliaId** | **String** |  | [default to null] |
+| **paidFeedTimelineId** | **String** |  | [default to null] |
+| **freeFeedTimelineId** | **String** |  | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

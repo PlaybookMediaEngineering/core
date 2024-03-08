@@ -5077,6 +5077,20 @@ components:
             we can test against. a community is really cool and ideal
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
         userProfile:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
           bookmarks:
             postIds:
             - postIds
@@ -5122,24 +5136,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
       properties:
         userProfile:
           $ref: '#/components/schemas/UserProfile'
@@ -9306,6 +9308,20 @@ components:
                 that we can test against. a community is really cool and ideal
               profileImageUrl: asndlkhaskhdhasgdahsf.jpg
             userProfile:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
               bookmarks:
                 postIds:
                 - postIds
@@ -9351,24 +9367,12 @@ components:
                   - tags
                   - tags
               newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-              private: true
               followers: followers
-              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
               following: following
               algoliaId: asndlkhaskhdhasgdahsf-feed-id
               name: test-user
-              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
               id: id
               profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-              tags:
-              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                id: id
-                tagName: test-tagname
-              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                id: id
-                tagName: test-tagname
           foreignId: foreignId
           score: score
           extra:
@@ -10702,6 +10706,20 @@ components:
                 that we can test against. a community is really cool and ideal
               profileImageUrl: asndlkhaskhdhasgdahsf.jpg
             userProfile:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
               bookmarks:
                 postIds:
                 - postIds
@@ -10747,24 +10765,12 @@ components:
                   - tags
                   - tags
               newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-              private: true
               followers: followers
-              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
               following: following
               algoliaId: asndlkhaskhdhasgdahsf-feed-id
               name: test-user
-              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
               id: id
               profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-              tags:
-              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                id: id
-                tagName: test-tagname
-              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                id: id
-                tagName: test-tagname
           foreignId: foreignId
           score: score
           extra:
@@ -15258,7 +15264,21 @@ components:
             CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
           id: id
         userProfiles:
-        - bookmarks:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -15303,15 +15323,17 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           tags:
           - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
@@ -15321,7 +15343,7 @@ components:
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
             id: id
             tagName: test-tagname
-        - bookmarks:
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -15366,24 +15388,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
         communityProfiles:
         - private: true
           visible: true
@@ -16914,6 +16924,20 @@ components:
     EditUserProfileResponse:
       example:
         profile:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
           bookmarks:
             postIds:
             - postIds
@@ -16959,24 +16983,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
       properties:
         profile:
           $ref: '#/components/schemas/UserProfile'
@@ -18372,6 +18384,20 @@ components:
               that we can test against. a community is really cool and ideal
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
           userProfile:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
             bookmarks:
               postIds:
               - postIds
@@ -18417,24 +18443,12 @@ components:
                 - tags
                 - tags
             newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-            private: true
             followers: followers
-            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             following: following
             algoliaId: asndlkhaskhdhasgdahsf-feed-id
             name: test-user
-            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-            tags:
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
         foreignId: foreignId
         score: score
         extra:
@@ -18535,7 +18549,21 @@ components:
     GetAccountsFollowingResponse:
       example:
         users:
-        - bookmarks:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -18580,15 +18608,17 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           tags:
           - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
@@ -18598,7 +18628,7 @@ components:
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
             id: id
             tagName: test-tagname
-        - bookmarks:
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -18643,24 +18673,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
         communities:
         - private: true
           visible: true
@@ -22842,6 +22860,20 @@ components:
                   that we can test against. a community is really cool and ideal
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
               userProfile:
+                private: true
+                paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                tags:
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
                 bookmarks:
                   postIds:
                   - postIds
@@ -22887,24 +22919,12 @@ components:
                     - tags
                     - tags
                 newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-                private: true
                 followers: followers
-                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 following: following
                 algoliaId: asndlkhaskhdhasgdahsf-feed-id
                 name: test-user
-                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 id: id
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-                tags:
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
             foreignId: foreignId
             score: score
             extra:
@@ -24238,6 +24258,20 @@ components:
                   that we can test against. a community is really cool and ideal
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
               userProfile:
+                private: true
+                paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                tags:
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
                 bookmarks:
                   postIds:
                   - postIds
@@ -24283,24 +24317,12 @@ components:
                     - tags
                     - tags
                 newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-                private: true
                 followers: followers
-                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 following: following
                 algoliaId: asndlkhaskhdhasgdahsf-feed-id
                 name: test-user
-                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 id: id
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-                tags:
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
             foreignId: foreignId
             score: score
             extra:
@@ -24487,7 +24509,21 @@ components:
     GetFollowersResponse:
       example:
         users:
-        - bookmarks:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -24532,15 +24568,17 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           tags:
           - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
@@ -24550,7 +24588,7 @@ components:
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
             id: id
             tagName: test-tagname
-        - bookmarks:
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -24595,24 +24633,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
       properties:
         users:
           items:
@@ -24625,6 +24651,20 @@ components:
         - createdAt: createdAt
           followRequestId: followRequestId
           followerRequestionToFollow:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
             bookmarks:
               postIds:
               - postIds
@@ -24670,27 +24710,29 @@ components:
                 - tags
                 - tags
             newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-            private: true
             followers: followers
-            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             following: following
             algoliaId: asndlkhaskhdhasgdahsf-feed-id
             name: test-user
-            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-            tags:
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
         - createdAt: createdAt
           followRequestId: followRequestId
           followerRequestionToFollow:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
             bookmarks:
               postIds:
               - postIds
@@ -24736,24 +24778,12 @@ components:
                 - tags
                 - tags
             newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-            private: true
             followers: followers
-            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             following: following
             algoliaId: asndlkhaskhdhasgdahsf-feed-id
             name: test-user
-            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-            tags:
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
-            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-              id: id
-              tagName: test-tagname
       properties:
         requests:
           items:
@@ -31472,6 +31502,20 @@ components:
                   that we can test against. a community is really cool and ideal
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
               userProfile:
+                private: true
+                paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                tags:
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
                 bookmarks:
                   postIds:
                   - postIds
@@ -31517,24 +31561,12 @@ components:
                     - tags
                     - tags
                 newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-                private: true
                 followers: followers
-                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 following: following
                 algoliaId: asndlkhaskhdhasgdahsf-feed-id
                 name: test-user
-                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 id: id
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-                tags:
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
             foreignId: foreignId
             score: score
             extra:
@@ -32868,6 +32900,20 @@ components:
                   that we can test against. a community is really cool and ideal
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
               userProfile:
+                private: true
+                paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+                tags:
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
+                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                  id: id
+                  tagName: test-tagname
                 bookmarks:
                   postIds:
                   - postIds
@@ -32913,24 +32959,12 @@ components:
                     - tags
                     - tags
                 newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-                private: true
                 followers: followers
-                notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 following: following
                 algoliaId: asndlkhaskhdhasgdahsf-feed-id
                 name: test-user
-                personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
                 id: id
                 profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-                tags:
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
-                - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-                    CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-                  id: id
-                  tagName: test-tagname
             foreignId: foreignId
             score: score
             extra:
@@ -33017,6 +33051,20 @@ components:
             profileType: null
             profileId: profileId
         profile:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
           bookmarks:
             postIds:
             - postIds
@@ -33062,24 +33110,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
       properties:
         profile:
           $ref: '#/components/schemas/UserProfile'
@@ -33092,7 +33128,21 @@ components:
     GetUserProfilesResponse:
       example:
         profiles:
-        - bookmarks:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -33137,15 +33187,17 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           tags:
           - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
@@ -33155,7 +33207,7 @@ components:
               CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
             id: id
             tagName: test-tagname
-        - bookmarks:
+          bookmarks:
             postIds:
             - postIds
             - postIds
@@ -33200,24 +33252,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
         nextPageNumber: 0
       properties:
         nextPageNumber:
@@ -33593,6 +33633,20 @@ components:
         createdAt: createdAt
         followRequestId: followRequestId
         followerRequestionToFollow:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
           bookmarks:
             postIds:
             - postIds
@@ -33638,24 +33692,12 @@ components:
               - tags
               - tags
           newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-          private: true
           followers: followers
-          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           following: following
           algoliaId: asndlkhaskhdhasgdahsf-feed-id
           name: test-user
-          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-          tags:
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
-          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-            id: id
-            tagName: test-tagname
       properties:
         followRequestId:
           format: uint64
@@ -39888,6 +39930,20 @@ components:
       type: object
     UserProfile:
       example:
+        private: true
+        paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+        notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+        personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+        freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+        tags:
+        - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+            CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+          id: id
+          tagName: test-tagname
+        - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+            CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+          id: id
+          tagName: test-tagname
         bookmarks:
           postIds:
           - postIds
@@ -39933,24 +39989,12 @@ components:
             - tags
             - tags
         newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
-        private: true
         followers: followers
-        notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
         following: following
         algoliaId: asndlkhaskhdhasgdahsf-feed-id
         name: test-user
-        personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
         id: id
         profileImageUrl: asndlkhaskhdhasgdahsf.jpg
-        tags:
-        - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-            CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-          id: id
-          tagName: test-tagname
-        - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
-            CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
-          id: id
-          tagName: test-tagname
       properties:
         id:
           format: uint64
@@ -40006,14 +40050,25 @@ components:
           example: asndlkhaskhdhasgdahsf-feed-id
           title: The id of the algolia record referencing this user
           type: string
+        paidFeedTimelineId:
+          example: asndlkhaskhdhasgdahsf-feed-id
+          title: the paid feed timeline id for which paying users can subscribe to
+          type: string
+        freeFeedTimelineId:
+          example: asndlkhaskhdhasgdahsf-feed-id
+          title: the free feed timeline id for which non-paying users can subscribe
+            to
+          type: string
       required:
       - algoliaId
       - bookmarks
       - followers
       - following
+      - freeFeedTimelineId
       - name
       - newsFeedTimelineId
       - notificationFeedTimelineId
+      - paidFeedTimelineId
       - personalFeedTimelineId
       - private
       - profileImageUrl

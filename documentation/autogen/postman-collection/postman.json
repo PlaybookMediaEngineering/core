@@ -255,7 +255,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"tags\": \"<string>\",\n \"name\": \"<string>\",\n \"private\": \"<string>\",\n \"followers\": \"<string>\",\n \"following\": \"<string>\",\n \"notificationFeedTimelineId\": \"<string>\",\n \"personalFeedTimelineId\": \"<string>\",\n \"newsFeedTimelineId\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"bookmarks\": \"<string>\",\n \"algoliaId\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"tags\": \"<string>\",\n \"name\": \"<string>\",\n \"private\": \"<string>\",\n \"followers\": \"<string>\",\n \"following\": \"<string>\",\n \"notificationFeedTimelineId\": \"<string>\",\n \"personalFeedTimelineId\": \"<string>\",\n \"newsFeedTimelineId\": \"<string>\",\n \"profileImageUrl\": \"<string>\",\n \"bookmarks\": \"<string>\",\n \"algoliaId\": \"<string>\",\n \"paidFeedTimelineId\": \"<string>\",\n \"freeFeedTimelineId\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

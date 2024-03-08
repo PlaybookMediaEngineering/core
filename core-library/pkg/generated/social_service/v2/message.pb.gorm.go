@@ -165,10 +165,12 @@ type UserProfileORM struct {
 	EditorsPublicationId       *uint64
 	Followers                  int64
 	Following                  int64
+	FreeFeedTimelineId         string
 	Id                         uint64
 	Name                       string
 	NewsFeedTimelineId         string
 	NotificationFeedTimelineId string
+	PaidFeedTimelineId         string
 	PersonalFeedTimelineId     string
 	Private                    bool
 	ProfileImageUrl            string
@@ -219,6 +221,8 @@ func (m *UserProfile) ToORM(ctx context.Context) (UserProfileORM, error) {
 		to.Bookmarks = &tempBookmarks
 	}
 	to.AlgoliaId = m.AlgoliaId
+	to.PaidFeedTimelineId = m.PaidFeedTimelineId
+	to.FreeFeedTimelineId = m.FreeFeedTimelineId
 	if posthook, ok := interface{}(m).(UserProfileWithAfterToORM); ok {
 		err = posthook.AfterToORM(ctx, &to)
 	}
@@ -263,6 +267,8 @@ func (m *UserProfileORM) ToPB(ctx context.Context) (UserProfile, error) {
 		to.Bookmarks = &tempBookmarks
 	}
 	to.AlgoliaId = m.AlgoliaId
+	to.PaidFeedTimelineId = m.PaidFeedTimelineId
+	to.FreeFeedTimelineId = m.FreeFeedTimelineId
 	if posthook, ok := interface{}(m).(UserProfileWithAfterToPB); ok {
 		err = posthook.AfterToPB(ctx, &to)
 	}
@@ -1834,6 +1840,14 @@ func DefaultApplyFieldMaskUserProfile(ctx context.Context, patchee *UserProfile,
 		}
 		if f == prefix+"AlgoliaId" {
 			patchee.AlgoliaId = patcher.AlgoliaId
+			continue
+		}
+		if f == prefix+"PaidFeedTimelineId" {
+			patchee.PaidFeedTimelineId = patcher.PaidFeedTimelineId
+			continue
+		}
+		if f == prefix+"FreeFeedTimelineId" {
+			patchee.FreeFeedTimelineId = patcher.FreeFeedTimelineId
 			continue
 		}
 	}

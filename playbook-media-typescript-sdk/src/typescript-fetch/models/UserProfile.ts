@@ -104,6 +104,18 @@ export interface UserProfile {
      * @memberof UserProfile
      */
     algoliaId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfile
+     */
+    paidFeedTimelineId: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserProfile
+     */
+    freeFeedTimelineId: string;
 }
 
 /**
@@ -122,6 +134,8 @@ export function instanceOfUserProfile(value: object): boolean {
     isInstance = isInstance && "profileImageUrl" in value;
     isInstance = isInstance && "bookmarks" in value;
     isInstance = isInstance && "algoliaId" in value;
+    isInstance = isInstance && "paidFeedTimelineId" in value;
+    isInstance = isInstance && "freeFeedTimelineId" in value;
 
     return isInstance;
 }
@@ -148,6 +162,8 @@ export function UserProfileFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'profileImageUrl': json['profileImageUrl'],
         'bookmarks': BookmarkFromJSON(json['bookmarks']),
         'algoliaId': json['algoliaId'],
+        'paidFeedTimelineId': json['paidFeedTimelineId'],
+        'freeFeedTimelineId': json['freeFeedTimelineId'],
     };
 }
 
@@ -172,6 +188,8 @@ export function UserProfileToJSON(value?: UserProfile | null): any {
         'profileImageUrl': value.profileImageUrl,
         'bookmarks': BookmarkToJSON(value.bookmarks),
         'algoliaId': value.algoliaId,
+        'paidFeedTimelineId': value.paidFeedTimelineId,
+        'freeFeedTimelineId': value.freeFeedTimelineId,
     };
 }
 
