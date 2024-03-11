@@ -6359,10 +6359,22 @@ components:
           $ref: "#/components/schemas/Category"
         publishStatus:
           $ref: "#/components/schemas/PostPublishStatus"
+        threePointSummary:
+          type: string
+          title: |-
+            the article summary
+            @gotag: bson:"three_point_summary"
+        backgroundContext:
+          type: string
+          title: |-
+            the article background context
+            @gotag: bson:"backgroundContext"
       required:
         - action
         - content
         - pollOptions
+        - threePointSummary
+        - backgroundContext
     PollResponse:
       type: object
       properties:
@@ -6567,6 +6579,16 @@ components:
           $ref: "#/components/schemas/Category"
         publishStatus:
           $ref: "#/components/schemas/PostPublishStatus"
+        threePointSummary:
+          type: string
+          title: |-
+            the article summary
+            @gotag: bson:"three_point_summary"
+        backgroundContext:
+          type: string
+          title: |-
+            the article background context
+            @gotag: bson:"backgroundContext"
       title: >-
         Posts: Critical to activities and define the content sent over by users
         and
@@ -6575,6 +6597,8 @@ components:
       required:
         - action
         - content
+        - threePointSummary
+        - backgroundContext
     PostPublishStatus:
       type: string
       enum:

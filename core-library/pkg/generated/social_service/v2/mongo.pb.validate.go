@@ -939,6 +939,28 @@ func (m *Post) validate(all bool) error {
 
 	// no validation rules for PublishStatus
 
+	if len(m.GetThreePointSummary()) < 5 {
+		err := PostValidationError{
+			field:  "ThreePointSummary",
+			reason: "value length must be at least 5 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(m.GetBackgroundContext()) < 5 {
+		err := PostValidationError{
+			field:  "BackgroundContext",
+			reason: "value length must be at least 5 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return PostMultiError(errors)
 	}
@@ -1387,6 +1409,28 @@ func (m *PollPost) validate(all bool) error {
 	// no validation rules for Category
 
 	// no validation rules for PublishStatus
+
+	if len(m.GetThreePointSummary()) < 5 {
+		err := PollPostValidationError{
+			field:  "ThreePointSummary",
+			reason: "value length must be at least 5 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(m.GetBackgroundContext()) < 5 {
+		err := PollPostValidationError{
+			field:  "BackgroundContext",
+			reason: "value length must be at least 5 bytes",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
 
 	if len(errors) > 0 {
 		return PollPostMultiError(errors)

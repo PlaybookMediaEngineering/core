@@ -5399,6 +5399,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -5742,6 +5743,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -6249,6 +6251,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -6589,6 +6592,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -6727,6 +6731,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -7070,6 +7075,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -7577,6 +7583,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -7917,6 +7924,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -8062,6 +8070,7 @@ components:
             title: title
             content: content
             createdAt: createdAt
+            backgroundContext: backgroundContext
             extra:
               key: extra
             qualityScore: qualityScore
@@ -8405,6 +8414,7 @@ components:
               key: userIdToAffinityScoreMap
             threadParticipantType: null
             authorUsername: authorUsername
+            threePointSummary: threePointSummary
             thread:
               createdAt: createdAt
               postIds:
@@ -8914,6 +8924,7 @@ components:
             content: content
             createdAt: createdAt
             readingTime: readingTime
+            backgroundContext: backgroundContext
             extra:
               key: extra
             qualityScore: qualityScore
@@ -9254,6 +9265,7 @@ components:
               key: userIdToAffinityScoreMap
             threadParticipantType: null
             authorUsername: authorUsername
+            threePointSummary: threePointSummary
             thread:
               createdAt: createdAt
               postIds:
@@ -9460,6 +9472,7 @@ components:
             title: title
             content: content
             createdAt: createdAt
+            backgroundContext: backgroundContext
             extra:
               key: extra
             qualityScore: qualityScore
@@ -9803,6 +9816,7 @@ components:
               key: userIdToAffinityScoreMap
             threadParticipantType: null
             authorUsername: authorUsername
+            threePointSummary: threePointSummary
             thread:
               createdAt: createdAt
               postIds:
@@ -10312,6 +10326,7 @@ components:
             content: content
             createdAt: createdAt
             readingTime: readingTime
+            backgroundContext: backgroundContext
             extra:
               key: extra
             qualityScore: qualityScore
@@ -10652,6 +10667,7 @@ components:
               key: userIdToAffinityScoreMap
             threadParticipantType: null
             authorUsername: authorUsername
+            threePointSummary: threePointSummary
             thread:
               createdAt: createdAt
               postIds:
@@ -11835,6 +11851,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -12178,6 +12195,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -12685,6 +12703,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -13025,6 +13044,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -13249,6 +13269,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -13592,6 +13613,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -14099,6 +14121,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -14439,6 +14462,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -14553,6 +14577,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -14893,6 +14918,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -15689,6 +15715,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -16032,6 +16059,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -16539,6 +16567,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -16879,6 +16908,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -17138,6 +17168,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -17481,6 +17512,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -17990,6 +18022,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -18330,6 +18363,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -18815,6 +18849,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -19155,6 +19190,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -19251,6 +19287,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -19591,6 +19628,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -19696,6 +19734,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -20036,6 +20075,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -20132,6 +20172,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -20472,6 +20513,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -20725,6 +20767,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -21065,6 +21108,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -21161,6 +21205,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -21501,6 +21546,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -21614,6 +21660,7 @@ components:
               title: title
               content: content
               createdAt: createdAt
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -21957,6 +22004,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -22466,6 +22514,7 @@ components:
               content: content
               createdAt: createdAt
               readingTime: readingTime
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -22806,6 +22855,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -23012,6 +23062,7 @@ components:
               title: title
               content: content
               createdAt: createdAt
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -23355,6 +23406,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -23864,6 +23916,7 @@ components:
               content: content
               createdAt: createdAt
               readingTime: readingTime
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -24204,6 +24257,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -24873,6 +24927,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -25216,6 +25271,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -25326,6 +25382,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -25669,6 +25726,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -25772,6 +25830,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -26115,6 +26174,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -26222,6 +26282,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -26562,6 +26623,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -26668,6 +26730,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -27008,6 +27071,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -27104,6 +27168,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -27444,6 +27509,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -27550,6 +27616,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -27890,6 +27957,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -27986,6 +28054,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -28326,6 +28395,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -28434,6 +28504,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -28774,6 +28845,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -28870,6 +28942,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -29210,6 +29283,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -29318,6 +29392,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -29658,6 +29733,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -29754,6 +29830,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -30094,6 +30171,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -30256,6 +30334,7 @@ components:
               title: title
               content: content
               createdAt: createdAt
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -30599,6 +30678,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -31108,6 +31188,7 @@ components:
               content: content
               createdAt: createdAt
               readingTime: readingTime
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -31448,6 +31529,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -31654,6 +31736,7 @@ components:
               title: title
               content: content
               createdAt: createdAt
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -31997,6 +32080,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -32506,6 +32590,7 @@ components:
               content: content
               createdAt: createdAt
               readingTime: readingTime
+              backgroundContext: backgroundContext
               extra:
                 key: extra
               qualityScore: qualityScore
@@ -32846,6 +32931,7 @@ components:
                 key: userIdToAffinityScoreMap
               threadParticipantType: null
               authorUsername: authorUsername
+              threePointSummary: threePointSummary
               thread:
                 createdAt: createdAt
                 postIds:
@@ -33794,6 +33880,7 @@ components:
         title: title
         content: content
         createdAt: createdAt
+        backgroundContext: backgroundContext
         extra:
           key: extra
         qualityScore: qualityScore
@@ -34137,6 +34224,7 @@ components:
           key: userIdToAffinityScoreMap
         threadParticipantType: null
         authorUsername: authorUsername
+        threePointSummary: threePointSummary
         thread:
           createdAt: createdAt
           postIds:
@@ -34347,10 +34435,22 @@ components:
           $ref: '#/components/schemas/Category'
         publishStatus:
           $ref: '#/components/schemas/PostPublishStatus'
+        threePointSummary:
+          title: |-
+            the article summary
+            @gotag: bson:"three_point_summary"
+          type: string
+        backgroundContext:
+          title: |-
+            the article background context
+            @gotag: bson:"backgroundContext"
+          type: string
       required:
       - action
+      - backgroundContext
       - content
       - pollOptions
+      - threePointSummary
       type: object
     PollResponse:
       example:
@@ -34455,6 +34555,7 @@ components:
         content: content
         createdAt: createdAt
         readingTime: readingTime
+        backgroundContext: backgroundContext
         extra:
           key: extra
         qualityScore: qualityScore
@@ -34795,6 +34896,7 @@ components:
           key: userIdToAffinityScoreMap
         threadParticipantType: null
         authorUsername: authorUsername
+        threePointSummary: threePointSummary
         thread:
           createdAt: createdAt
           postIds:
@@ -34978,9 +35080,21 @@ components:
           $ref: '#/components/schemas/Category'
         publishStatus:
           $ref: '#/components/schemas/PostPublishStatus'
+        threePointSummary:
+          title: |-
+            the article summary
+            @gotag: bson:"three_point_summary"
+          type: string
+        backgroundContext:
+          title: |-
+            the article background context
+            @gotag: bson:"backgroundContext"
+          type: string
       required:
       - action
+      - backgroundContext
       - content
+      - threePointSummary
       title: |-
         Posts: Critical to activities and define the content sent over by users and
         communities
@@ -35184,6 +35298,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -35524,6 +35639,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -35841,6 +35957,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -36184,6 +36301,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -36691,6 +36809,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -37031,6 +37150,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -37449,6 +37569,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -37789,6 +37910,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -37916,6 +38038,7 @@ components:
           title: title
           content: content
           createdAt: createdAt
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -38259,6 +38382,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -38376,6 +38500,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -38716,6 +38841,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:
@@ -38858,6 +38984,7 @@ components:
           content: content
           createdAt: createdAt
           readingTime: readingTime
+          backgroundContext: backgroundContext
           extra:
             key: extra
           qualityScore: qualityScore
@@ -39198,6 +39325,7 @@ components:
             key: userIdToAffinityScoreMap
           threadParticipantType: null
           authorUsername: authorUsername
+          threePointSummary: threePointSummary
           thread:
             createdAt: createdAt
             postIds:

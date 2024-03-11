@@ -7059,12 +7059,22 @@
         "publishStatus": {
           "$ref": "#/definitions/PostPublishStatus",
           "title": "the publish status of the post\n@gotag: bson:\"publishStatus\""
+        },
+        "threePointSummary": {
+          "type": "string",
+          "title": "the article summary\n@gotag: bson:\"three_point_summary\""
+        },
+        "backgroundContext": {
+          "type": "string",
+          "title": "the article background context\n@gotag: bson:\"backgroundContext\""
         }
       },
       "required": [
         "action",
         "content",
-        "pollOptions"
+        "pollOptions",
+        "threePointSummary",
+        "backgroundContext"
       ]
     },
     "PollResponse": {
@@ -7249,12 +7259,22 @@
         "publishStatus": {
           "$ref": "#/definitions/PostPublishStatus",
           "title": "the publish status of the post\n@gotag: bson:\"publishStatus\""
+        },
+        "threePointSummary": {
+          "type": "string",
+          "title": "the article summary\n@gotag: bson:\"three_point_summary\""
+        },
+        "backgroundContext": {
+          "type": "string",
+          "title": "the article background context\n@gotag: bson:\"backgroundContext\""
         }
       },
       "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
       "required": [
         "action",
-        "content"
+        "content",
+        "threePointSummary",
+        "backgroundContext"
       ]
     },
     "PostPublishStatus": {

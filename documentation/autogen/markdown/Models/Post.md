@@ -34,6 +34,8 @@
 | **aiGeneratedQuestionResponse** | **String** |  | [optional] [default to null] |
 | **category** | [**Category**](Category.md) |  | [optional] [default to null] |
 | **publishStatus** | [**PostPublishStatus**](PostPublishStatus.md) |  | [optional] [default to null] |
+| **threePointSummary** | **String** |  | [default to null] |
+| **backgroundContext** | **String** |  | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
