@@ -7272,9 +7272,7 @@
       "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
       "required": [
         "action",
-        "content",
-        "threePointSummary",
-        "backgroundContext"
+        "content"
       ]
     },
     "PostPublishStatus": {

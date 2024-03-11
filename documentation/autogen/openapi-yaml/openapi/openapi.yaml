@@ -35092,9 +35092,7 @@ components:
           type: string
       required:
       - action
-      - backgroundContext
       - content
-      - threePointSummary
       title: |-
         Posts: Critical to activities and define the content sent over by users and
         communities

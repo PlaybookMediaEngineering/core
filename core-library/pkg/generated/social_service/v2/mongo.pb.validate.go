@@ -939,27 +939,9 @@ func (m *Post) validate(all bool) error {
 
 	// no validation rules for PublishStatus
 
-	if len(m.GetThreePointSummary()) < 5 {
-		err := PostValidationError{
-			field:  "ThreePointSummary",
-			reason: "value length must be at least 5 bytes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for ThreePointSummary
 
-	if len(m.GetBackgroundContext()) < 5 {
-		err := PostValidationError{
-			field:  "BackgroundContext",
-			reason: "value length must be at least 5 bytes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for BackgroundContext
 
 	if len(errors) > 0 {
 		return PostMultiError(errors)

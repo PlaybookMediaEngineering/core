@@ -277,13 +277,13 @@ export interface Post {
      * @type {string}
      * @memberof Post
      */
-    threePointSummary: string;
+    threePointSummary?: string;
     /**
      * 
      * @type {string}
      * @memberof Post
      */
-    backgroundContext: string;
+    backgroundContext?: string;
 }
 
 /**
@@ -293,8 +293,6 @@ export function instanceOfPost(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "action" in value;
     isInstance = isInstance && "content" in value;
-    isInstance = isInstance && "threePointSummary" in value;
-    isInstance = isInstance && "backgroundContext" in value;
 
     return isInstance;
 }
@@ -340,8 +338,8 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'aiGeneratedQuestionResponse': !exists(json, 'aiGeneratedQuestionResponse') ? undefined : json['aiGeneratedQuestionResponse'],
         'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
         'publishStatus': !exists(json, 'publishStatus') ? undefined : PostPublishStatusFromJSON(json['publishStatus']),
-        'threePointSummary': json['threePointSummary'],
-        'backgroundContext': json['backgroundContext'],
+        'threePointSummary': !exists(json, 'threePointSummary') ? undefined : json['threePointSummary'],
+        'backgroundContext': !exists(json, 'backgroundContext') ? undefined : json['backgroundContext'],
     };
 }
 

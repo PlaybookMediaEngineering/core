@@ -6597,8 +6597,6 @@ components:
       required:
         - action
         - content
-        - threePointSummary
-        - backgroundContext
     PostPublishStatus:
       type: string
       enum:
