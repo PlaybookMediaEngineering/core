@@ -178,7 +178,7 @@ message UserProfile {
 
   // the paid feed timeline id for which paying users can subscribe to
   string paid_feed_timeline_id = 16 [
-    (validate.rules).string = {min_bytes: 1},
+    (validate.rules).string = {min_bytes: 0},
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       min_length: 0,
       example: "\"asndlkhaskhdhasgdahsf-feed-id\""
@@ -188,7 +188,7 @@ message UserProfile {
 
   // the free feed timeline id for which non-paying users can subscribe to
   string free_feed_timeline_id = 17 [
-    (validate.rules).string = {min_bytes: 1},
+    (validate.rules).string = {min_bytes: 0},
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       min_length: 0,
       example: "\"asndlkhaskhdhasgdahsf-feed-id\""

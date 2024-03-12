@@ -441,10 +441,10 @@ func (m *UserProfile) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if len(m.GetPaidFeedTimelineId()) < 1 {
+	if len(m.GetPaidFeedTimelineId()) < 0 {
 		err := UserProfileValidationError{
 			field:  "PaidFeedTimelineId",
-			reason: "value length must be at least 1 bytes",
+			reason: "value length must be at least 0 bytes",
 		}
 		if !all {
 			return err
@@ -452,10 +452,10 @@ func (m *UserProfile) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
-	if len(m.GetFreeFeedTimelineId()) < 1 {
+	if len(m.GetFreeFeedTimelineId()) < 0 {
 		err := UserProfileValidationError{
 			field:  "FreeFeedTimelineId",
-			reason: "value length must be at least 1 bytes",
+			reason: "value length must be at least 0 bytes",
 		}
 		if !all {
 			return err
