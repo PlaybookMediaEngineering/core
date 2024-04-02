@@ -578,6 +578,15 @@ message TeamProfile {
       preload: true
     }
   ];
+  // Personal timeline ID Has activities for a team that can be followed
+  string personal_feed_timeline_id = 14 [
+    (validate.rules).string = {min_bytes: 1},
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      min_length: 0,
+      example: "\"asndlkhaskhdhasgdahsf-feed-id\""
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
 }
 
 // Enum for defining different types of permissions

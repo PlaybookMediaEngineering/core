@@ -14,6 +14,7 @@
 | **teamName** | **String** |  | [optional] [default to null] |
 | **roles** | [**List**](Role.md) |  | [optional] [default to null] |
 | **auditLogs** | [**List**](AuditLog.md) |  | [optional] [default to null] |
+| **personalFeedTimelineId** | **String** |  | [default to null] |
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

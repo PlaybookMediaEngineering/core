@@ -110,6 +110,12 @@ export interface TeamProfile {
      * @memberof TeamProfile
      */
     auditLogs?: Array<AuditLog>;
+    /**
+     * 
+     * @type {string}
+     * @memberof TeamProfile
+     */
+    personalFeedTimelineId: string;
 }
 
 /**
@@ -117,6 +123,7 @@ export interface TeamProfile {
  */
 export function instanceOfTeamProfile(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "personalFeedTimelineId" in value;
 
     return isInstance;
 }
@@ -142,6 +149,7 @@ export function TeamProfileFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'teamName': !exists(json, 'teamName') ? undefined : json['teamName'],
         'roles': !exists(json, 'roles') ? undefined : ((json['roles'] as Array<any>).map(RoleFromJSON)),
         'auditLogs': !exists(json, 'auditLogs') ? undefined : ((json['auditLogs'] as Array<any>).map(AuditLogFromJSON)),
+        'personalFeedTimelineId': json['personalFeedTimelineId'],
     };
 }
 
@@ -165,6 +173,7 @@ export function TeamProfileToJSON(value?: TeamProfile | null): any {
         'teamName': value.teamName,
         'roles': value.roles === undefined ? undefined : ((value.roles as Array<any>).map(RoleToJSON)),
         'auditLogs': value.auditLogs === undefined ? undefined : ((value.auditLogs as Array<any>).map(AuditLogToJSON)),
+        'personalFeedTimelineId': value.personalFeedTimelineId,
     };
 }
 

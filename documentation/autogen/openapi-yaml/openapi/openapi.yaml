@@ -8879,6 +8879,7 @@ components:
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
           description: description
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           focusAreas:
           - focusAreas
@@ -18358,6 +18359,7 @@ components:
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
           description: description
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           focusAreas:
           - focusAreas
@@ -32271,6 +32273,7 @@ components:
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
           description: description
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           focusAreas:
           - focusAreas
@@ -39753,6 +39756,7 @@ components:
             id: id
             profileImageUrl: asndlkhaskhdhasgdahsf.jpg
           description: description
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
           id: id
           focusAreas:
           - focusAreas
@@ -42987,6 +42991,7 @@ components:
           id: id
           profileImageUrl: asndlkhaskhdhasgdahsf.jpg
         description: description
+        personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
         id: id
         focusAreas:
         - focusAreas
@@ -43075,6 +43080,12 @@ components:
             $ref: '#/components/schemas/AuditLog'
           title: Audit log for tracking changes made by team members
           type: array
+        personalFeedTimelineId:
+          example: asndlkhaskhdhasgdahsf-feed-id
+          title: Personal timeline ID Has activities for a team that can be followed
+          type: string
+      required:
+      - personalFeedTimelineId
       type: object
     Thread:
       example:

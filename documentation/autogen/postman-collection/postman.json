@@ -484,7 +484,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"id\": \"<string>\",\n \"publications\": \"<string>\",\n \"admin\": \"<string>\",\n \"tags\": \"<string>\",\n \"members\": \"<string>\",\n \"focusAreas\": \"<string>\",\n \"description\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"teamName\": \"<string>\",\n \"roles\": \"<string>\",\n \"auditLogs\": \"<string>\"\n}",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"publications\": \"<string>\",\n \"admin\": \"<string>\",\n \"tags\": \"<string>\",\n \"members\": \"<string>\",\n \"focusAreas\": \"<string>\",\n \"description\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"teamName\": \"<string>\",\n \"roles\": \"<string>\",\n \"auditLogs\": \"<string>\",\n \"personalFeedTimelineId\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

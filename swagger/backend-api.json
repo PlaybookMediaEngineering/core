@@ -10663,8 +10663,16 @@
                             "$ref": "#/components/schemas/AuditLog"
                         },
                         "title": "Audit log for tracking changes made by team members"
+                    },
+                    "personalFeedTimelineId": {
+                        "type": "string",
+                        "example": "asndlkhaskhdhasgdahsf-feed-id",
+                        "title": "Personal timeline ID Has activities for a team that can be followed"
                     }
-                }
+                },
+                "required": [
+                    "personalFeedTimelineId"
+                ]
             },
             "Thread": {
                 "type": "object",
