@@ -2263,23 +2263,13 @@ func (m *AuditLog) validate(all bool) error {
 
 	// no validation rules for Id
 
-	// no validation rules for Action
+	// no validation rules for ActionName
 
 	// no validation rules for UserId
 
 	// no validation rules for Timestamp
 
-	// no validation rules for Description
-
 	// no validation rules for ActionType
-
-	// no validation rules for IpAddress
-
-	// no validation rules for Outcome
-
-	// no validation rules for AffectedEntityType
-
-	// no validation rules for AffectedEntityId
 
 	if len(errors) > 0 {
 		return AuditLogMultiError(errors)

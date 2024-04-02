@@ -200,7 +200,6 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [NotificationActivity](./Models/NotificationActivity.md)
  - [NotificationFeedGroup](./Models/NotificationFeedGroup.md)
  - [NotificationTimeline](./Models/NotificationTimeline.md)
- - [Outcome](./Models/Outcome.md)
  - [PathUnknownErrorMessageResponse](./Models/PathUnknownErrorMessageResponse.md)
  - [PendingFollowRequest](./Models/PendingFollowRequest.md)
  - [PermissionType](./Models/PermissionType.md)

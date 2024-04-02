@@ -19,12 +19,6 @@ import {
     ActionTypeFromJSONTyped,
     ActionTypeToJSON,
 } from './ActionType';
-import type { Outcome } from './Outcome';
-import {
-    OutcomeFromJSON,
-    OutcomeFromJSONTyped,
-    OutcomeToJSON,
-} from './Outcome';
 
 /**
  * 
@@ -43,7 +37,7 @@ export interface AuditLog {
      * @type {string}
      * @memberof AuditLog
      */
-    action?: string;
+    actionName?: string;
     /**
      * 
      * @type {string}
@@ -58,40 +52,10 @@ export interface AuditLog {
     timestamp?: string;
     /**
      * 
-     * @type {string}
-     * @memberof AuditLog
-     */
-    description?: string;
-    /**
-     * 
      * @type {ActionType}
      * @memberof AuditLog
      */
     actionType?: ActionType;
-    /**
-     * logs the IP address from where the action was initiated, which is useful for security and auditing purposes.
-     * @type {string}
-     * @memberof AuditLog
-     */
-    ipAddress?: string;
-    /**
-     * 
-     * @type {Outcome}
-     * @memberof AuditLog
-     */
-    outcome?: Outcome;
-    /**
-     * give specific information about the entity that was affected by the action, making it easier to trace and understand the impact of each logged activity.
-     * @type {string}
-     * @memberof AuditLog
-     */
-    affectedEntityType?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuditLog
-     */
-    affectedEntityId?: string;
 }
 
 /**
@@ -114,15 +78,10 @@ export function AuditLogFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'action': !exists(json, 'action') ? undefined : json['action'],
+        'actionName': !exists(json, 'actionName') ? undefined : json['actionName'],
         'userId': !exists(json, 'userId') ? undefined : json['userId'],
         'timestamp': !exists(json, 'timestamp') ? undefined : json['timestamp'],
-        'description': !exists(json, 'description') ? undefined : json['description'],
         'actionType': !exists(json, 'actionType') ? undefined : ActionTypeFromJSON(json['actionType']),
-        'ipAddress': !exists(json, 'ipAddress') ? undefined : json['ipAddress'],
-        'outcome': !exists(json, 'outcome') ? undefined : OutcomeFromJSON(json['outcome']),
-        'affectedEntityType': !exists(json, 'affectedEntityType') ? undefined : json['affectedEntityType'],
-        'affectedEntityId': !exists(json, 'affectedEntityId') ? undefined : json['affectedEntityId'],
     };
 }
 
@@ -136,15 +95,10 @@ export function AuditLogToJSON(value?: AuditLog | null): any {
     return {
         
         'id': value.id,
-        'action': value.action,
+        'actionName': value.actionName,
         'userId': value.userId,
         'timestamp': value.timestamp,
-        'description': value.description,
         'actionType': ActionTypeToJSON(value.actionType),
-        'ipAddress': value.ipAddress,
-        'outcome': OutcomeToJSON(value.outcome),
-        'affectedEntityType': value.affectedEntityType,
-        'affectedEntityId': value.affectedEntityId,
     };
 }
 

@@ -28,14 +28,9 @@ func newAuditLogORM(db *gorm.DB, opts ...gen.DOOption) auditLogORM {
 
 	tableName := _auditLogORM.auditLogORMDo.TableName()
 	_auditLogORM.ALL = field.NewAsterisk(tableName)
-	_auditLogORM.Action = field.NewString(tableName, "action")
+	_auditLogORM.ActionName = field.NewString(tableName, "action_name")
 	_auditLogORM.ActionType = field.NewString(tableName, "action_type")
-	_auditLogORM.AffectedEntityId = field.NewString(tableName, "affected_entity_id")
-	_auditLogORM.AffectedEntityType = field.NewString(tableName, "affected_entity_type")
-	_auditLogORM.Description = field.NewString(tableName, "description")
 	_auditLogORM.Id = field.NewUint64(tableName, "id")
-	_auditLogORM.IpAddress = field.NewString(tableName, "ip_address")
-	_auditLogORM.Outcome = field.NewString(tableName, "outcome")
 	_auditLogORM.TeamProfileId = field.NewUint64(tableName, "team_profile_id")
 	_auditLogORM.Timestamp = field.NewString(tableName, "timestamp")
 	_auditLogORM.UserId = field.NewString(tableName, "user_id")
@@ -48,18 +43,13 @@ func newAuditLogORM(db *gorm.DB, opts ...gen.DOOption) auditLogORM {
 type auditLogORM struct {
 	auditLogORMDo
 
-	ALL                field.Asterisk
-	Action             field.String
-	ActionType         field.String
-	AffectedEntityId   field.String
-	AffectedEntityType field.String
-	Description        field.String
-	Id                 field.Uint64
-	IpAddress          field.String
-	Outcome            field.String
-	TeamProfileId      field.Uint64
-	Timestamp          field.String
-	UserId             field.String
+	ALL           field.Asterisk
+	ActionName    field.String
+	ActionType    field.String
+	Id            field.Uint64
+	TeamProfileId field.Uint64
+	Timestamp     field.String
+	UserId        field.String
 
 	fieldMap map[string]field.Expr
 }
@@ -76,14 +66,9 @@ func (a auditLogORM) As(alias string) *auditLogORM {
 
 func (a *auditLogORM) updateTableName(table string) *auditLogORM {
 	a.ALL = field.NewAsterisk(table)
-	a.Action = field.NewString(table, "action")
+	a.ActionName = field.NewString(table, "action_name")
 	a.ActionType = field.NewString(table, "action_type")
-	a.AffectedEntityId = field.NewString(table, "affected_entity_id")
-	a.AffectedEntityType = field.NewString(table, "affected_entity_type")
-	a.Description = field.NewString(table, "description")
 	a.Id = field.NewUint64(table, "id")
-	a.IpAddress = field.NewString(table, "ip_address")
-	a.Outcome = field.NewString(table, "outcome")
 	a.TeamProfileId = field.NewUint64(table, "team_profile_id")
 	a.Timestamp = field.NewString(table, "timestamp")
 	a.UserId = field.NewString(table, "user_id")
@@ -103,15 +88,10 @@ func (a *auditLogORM) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (a *auditLogORM) fillFieldMap() {
-	a.fieldMap = make(map[string]field.Expr, 11)
-	a.fieldMap["action"] = a.Action
+	a.fieldMap = make(map[string]field.Expr, 6)
+	a.fieldMap["action_name"] = a.ActionName
 	a.fieldMap["action_type"] = a.ActionType
-	a.fieldMap["affected_entity_id"] = a.AffectedEntityId
-	a.fieldMap["affected_entity_type"] = a.AffectedEntityType
-	a.fieldMap["description"] = a.Description
 	a.fieldMap["id"] = a.Id
-	a.fieldMap["ip_address"] = a.IpAddress
-	a.fieldMap["outcome"] = a.Outcome
 	a.fieldMap["team_profile_id"] = a.TeamProfileId
 	a.fieldMap["timestamp"] = a.Timestamp
 	a.fieldMap["user_id"] = a.UserId

@@ -125,7 +125,6 @@ Models/Note.md
 Models/NotificationActivity.md
 Models/NotificationFeedGroup.md
 Models/NotificationTimeline.md
-Models/Outcome.md
 Models/PathUnknownErrorMessageResponse.md
 Models/PendingFollowRequest.md
 Models/PermissionType.md

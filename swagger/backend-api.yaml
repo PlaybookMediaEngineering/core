@@ -5295,29 +5295,14 @@ components:
         id:
           type: string
           format: uint64
-        action:
+        actionName:
           type: string
         userId:
           type: string
         timestamp:
           type: string
-        description:
-          type: string
         actionType:
           $ref: "#/components/schemas/ActionType"
-        ipAddress:
-          type: string
-          description: logs the IP address from where the action was initiated, which is
-            useful for security and auditing purposes.
-        outcome:
-          $ref: "#/components/schemas/Outcome"
-        affectedEntityType:
-          type: string
-          description: give specific information about the entity that was affected by the
-            action, making it easier to trace and understand the impact of each
-            logged activity.
-        affectedEntityId:
-          type: string
     BaseTimeline:
       type: object
       properties:
@@ -6710,15 +6695,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NotificationFeedGroup"
-    Outcome:
-      type: string
-      enum:
-        - OUTCOME_UNSPECIFIED
-        - OUTCOME_SUCCESS
-        - OUTCOME_FAILURE
-        - OUTCOME_ERROR
-      default: OUTCOME_UNSPECIFIED
-      title: Enum for defining possible outcomes of an action
     PathUnknownErrorMessageResponse:
       type: object
       example:

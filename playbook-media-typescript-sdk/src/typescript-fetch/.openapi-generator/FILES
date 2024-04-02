@@ -127,7 +127,6 @@ models/Note.ts
 models/NotificationActivity.ts
 models/NotificationFeedGroup.ts
 models/NotificationTimeline.ts
-models/Outcome.ts
 models/PathUnknownErrorMessageResponse.ts
 models/PendingFollowRequest.ts
 models/PermissionType.ts

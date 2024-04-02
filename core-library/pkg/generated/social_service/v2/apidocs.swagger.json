@@ -5874,7 +5874,7 @@
           "type": "string",
           "format": "uint64"
         },
-        "action": {
+        "actionName": {
           "type": "string"
         },
         "userId": {
@@ -5883,27 +5883,9 @@
         "timestamp": {
           "type": "string"
         },
-        "description": {
-          "type": "string"
-        },
         "actionType": {
           "$ref": "#/definitions/ActionType",
           "description": "helps categorize the type of action (e.g., user operations, post operations, system tasks)."
-        },
-        "ipAddress": {
-          "type": "string",
-          "description": "logs the IP address from where the action was initiated, which is useful for security and auditing purposes."
-        },
-        "outcome": {
-          "$ref": "#/definitions/Outcome",
-          "description": "records whether the action was successful, failed, or resulted in an error, which is crucial for audit trails and understanding system behavior."
-        },
-        "affectedEntityType": {
-          "type": "string",
-          "description": "give specific information about the entity that was affected by the action, making it easier to trace and understand the impact of each logged activity."
-        },
-        "affectedEntityId": {
-          "type": "string"
         }
       }
     },
@@ -7518,17 +7500,6 @@
           }
         }
       }
-    },
-    "Outcome": {
-      "type": "string",
-      "enum": [
-        "OUTCOME_UNSPECIFIED",
-        "OUTCOME_SUCCESS",
-        "OUTCOME_FAILURE",
-        "OUTCOME_ERROR"
-      ],
-      "default": "OUTCOME_UNSPECIFIED",
-      "title": "Enum for defining possible outcomes of an action"
     },
     "PathUnknownErrorMessageResponse": {
       "type": "object",

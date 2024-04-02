@@ -8507,25 +8507,15 @@ components:
         team:
           teamName: teamName
           auditLogs:
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
           createdAt: createdAt
           members:
@@ -8933,43 +8923,23 @@ components:
       type: object
     AuditLog:
       example:
-        affectedEntityType: affectedEntityType
         actionType: null
-        ipAddress: ipAddress
-        action: action
-        description: description
         id: id
-        affectedEntityId: affectedEntityId
         userId: userId
-        outcome: null
+        actionName: actionName
         timestamp: timestamp
       properties:
         id:
           format: uint64
           type: string
-        action:
+        actionName:
           type: string
         userId:
           type: string
         timestamp:
           type: string
-        description:
-          type: string
         actionType:
           $ref: '#/components/schemas/ActionType'
-        ipAddress:
-          description: "logs the IP address from where the action was initiated, which\
-            \ is useful for security and auditing purposes."
-          type: string
-        outcome:
-          $ref: '#/components/schemas/Outcome'
-        affectedEntityType:
-          description: "give specific information about the entity that was affected\
-            \ by the action, making it easier to trace and understand the impact of\
-            \ each logged activity."
-          type: string
-        affectedEntityId:
-          type: string
       type: object
     BaseTimeline:
       example:
@@ -17975,25 +17945,15 @@ components:
         team:
           teamName: teamName
           auditLogs:
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
           createdAt: createdAt
           members:
@@ -31864,25 +31824,15 @@ components:
         team:
           teamName: teamName
           auditLogs:
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
           createdAt: createdAt
           members:
@@ -35754,15 +35704,6 @@ components:
             $ref: '#/components/schemas/NotificationFeedGroup'
           type: array
       type: object
-    Outcome:
-      default: OUTCOME_UNSPECIFIED
-      enum:
-      - OUTCOME_UNSPECIFIED
-      - OUTCOME_SUCCESS
-      - OUTCOME_FAILURE
-      - OUTCOME_ERROR
-      title: Enum for defining possible outcomes of an action
-      type: string
     PathUnknownErrorMessageResponse:
       example:
         code: undefined_endpoint
@@ -39327,25 +39268,15 @@ components:
         team:
           teamName: teamName
           auditLogs:
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
-          - affectedEntityType: affectedEntityType
-            actionType: null
-            ipAddress: ipAddress
-            action: action
-            description: description
+          - actionType: null
             id: id
-            affectedEntityId: affectedEntityId
             userId: userId
-            outcome: null
+            actionName: actionName
             timestamp: timestamp
           createdAt: createdAt
           members:
@@ -42557,25 +42488,15 @@ components:
       example:
         teamName: teamName
         auditLogs:
-        - affectedEntityType: affectedEntityType
-          actionType: null
-          ipAddress: ipAddress
-          action: action
-          description: description
+        - actionType: null
           id: id
-          affectedEntityId: affectedEntityId
           userId: userId
-          outcome: null
+          actionName: actionName
           timestamp: timestamp
-        - affectedEntityType: affectedEntityType
-          actionType: null
-          ipAddress: ipAddress
-          action: action
-          description: description
+        - actionType: null
           id: id
-          affectedEntityId: affectedEntityId
           userId: userId
-          outcome: null
+          actionName: actionName
           timestamp: timestamp
         createdAt: createdAt
         members:

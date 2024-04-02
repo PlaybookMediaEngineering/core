@@ -104,7 +104,6 @@ export * from './Note';
 export * from './NotificationActivity';
 export * from './NotificationFeedGroup';
 export * from './NotificationTimeline';
-export * from './Outcome';
 export * from './PathUnknownErrorMessageResponse';
 export * from './PendingFollowRequest';
 export * from './PermissionType';
