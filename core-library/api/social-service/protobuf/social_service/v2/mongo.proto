@@ -263,13 +263,9 @@ message Post {
   // @gotag: bson:"publishStatus"
   PostPublishStatus publish_status = 36;
 
-  // the article summary
-  // @gotag: bson:"three_point_summary"
-  string three_point_summary = 37;
-
-  // the article background context
-  // @gotag: bson:"backgroundContext"
-  string background_context = 38;
+  // the team id who owns the post
+  // @gotag: bson:"teamId"
+  uint64 team_id = 39;
 }
 
 message PollPost {
@@ -411,19 +407,9 @@ message PollPost {
   // @gotag: bson:"publishStatus"
   PostPublishStatus publish_status = 36;
 
-  // the article summary
-  // @gotag: bson:"three_point_summary"
-  string three_point_summary = 37 [
-    (validate.rules).string = {min_bytes: 5},
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // the article background context
-  // @gotag: bson:"backgroundContext"
-  string background_context = 38 [
-    (validate.rules).string = {min_bytes: 5},
-    (google.api.field_behavior) = REQUIRED
-  ];
+   // the team id who owns the post
+  // @gotag: bson:"teamId"
+  uint64 team_id = 39;
 }
 
 message PollResponse {

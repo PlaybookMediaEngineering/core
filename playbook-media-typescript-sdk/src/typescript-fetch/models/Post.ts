@@ -277,13 +277,7 @@ export interface Post {
      * @type {string}
      * @memberof Post
      */
-    threePointSummary?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Post
-     */
-    backgroundContext?: string;
+    teamId?: string;
 }
 
 /**
@@ -338,8 +332,7 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'aiGeneratedQuestionResponse': !exists(json, 'aiGeneratedQuestionResponse') ? undefined : json['aiGeneratedQuestionResponse'],
         'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
         'publishStatus': !exists(json, 'publishStatus') ? undefined : PostPublishStatusFromJSON(json['publishStatus']),
-        'threePointSummary': !exists(json, 'threePointSummary') ? undefined : json['threePointSummary'],
-        'backgroundContext': !exists(json, 'backgroundContext') ? undefined : json['backgroundContext'],
+        'teamId': !exists(json, 'teamId') ? undefined : json['teamId'],
     };
 }
 
@@ -383,8 +376,7 @@ export function PostToJSON(value?: Post | null): any {
         'aiGeneratedQuestionResponse': value.aiGeneratedQuestionResponse,
         'category': CategoryToJSON(value.category),
         'publishStatus': PostPublishStatusToJSON(value.publishStatus),
-        'threePointSummary': value.threePointSummary,
-        'backgroundContext': value.backgroundContext,
+        'teamId': value.teamId,
     };
 }
 

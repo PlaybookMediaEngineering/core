@@ -295,13 +295,7 @@ export interface PollPost {
      * @type {string}
      * @memberof PollPost
      */
-    threePointSummary: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof PollPost
-     */
-    backgroundContext: string;
+    teamId?: string;
 }
 
 /**
@@ -312,8 +306,6 @@ export function instanceOfPollPost(value: object): boolean {
     isInstance = isInstance && "action" in value;
     isInstance = isInstance && "content" in value;
     isInstance = isInstance && "pollOptions" in value;
-    isInstance = isInstance && "threePointSummary" in value;
-    isInstance = isInstance && "backgroundContext" in value;
 
     return isInstance;
 }
@@ -361,8 +353,7 @@ export function PollPostFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'userIdToReactionMap': !exists(json, 'userIdToReactionMap') ? undefined : (mapValues(json['userIdToReactionMap'], ReactionFromJSON)),
         'category': !exists(json, 'category') ? undefined : CategoryFromJSON(json['category']),
         'publishStatus': !exists(json, 'publishStatus') ? undefined : PostPublishStatusFromJSON(json['publishStatus']),
-        'threePointSummary': json['threePointSummary'],
-        'backgroundContext': json['backgroundContext'],
+        'teamId': !exists(json, 'teamId') ? undefined : json['teamId'],
     };
 }
 
@@ -408,8 +399,7 @@ export function PollPostToJSON(value?: PollPost | null): any {
         'userIdToReactionMap': value.userIdToReactionMap === undefined ? undefined : (mapValues(value.userIdToReactionMap, ReactionToJSON)),
         'category': CategoryToJSON(value.category),
         'publishStatus': PostPublishStatusToJSON(value.publishStatus),
-        'threePointSummary': value.threePointSummary,
-        'backgroundContext': value.backgroundContext,
+        'teamId': value.teamId,
     };
 }
 

@@ -9814,21 +9814,16 @@
                     "publishStatus": {
                         "$ref": "#/components/schemas/PostPublishStatus"
                     },
-                    "threePointSummary": {
+                    "teamId": {
                         "type": "string",
-                        "title": "the article summary\n@gotag: bson:\"three_point_summary\""
-                    },
-                    "backgroundContext": {
-                        "type": "string",
-                        "title": "the article background context\n@gotag: bson:\"backgroundContext\""
+                        "format": "uint64",
+                        "title": "the team id who owns the post\n@gotag: bson:\"teamId\""
                     }
                 },
                 "required": [
                     "action",
                     "content",
-                    "pollOptions",
-                    "threePointSummary",
-                    "backgroundContext"
+                    "pollOptions"
                 ]
             },
             "PollResponse": {
@@ -10004,13 +9999,10 @@
                     "publishStatus": {
                         "$ref": "#/components/schemas/PostPublishStatus"
                     },
-                    "threePointSummary": {
+                    "teamId": {
                         "type": "string",
-                        "title": "the article summary\n@gotag: bson:\"three_point_summary\""
-                    },
-                    "backgroundContext": {
-                        "type": "string",
-                        "title": "the article background context\n@gotag: bson:\"backgroundContext\""
+                        "format": "uint64",
+                        "title": "the team id who owns the post\n@gotag: bson:\"teamId\""
                     }
                 },
                 "title": "Posts: Critical to activities and define the content sent over by users and\ncommunities",
