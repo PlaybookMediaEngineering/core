@@ -727,6 +727,179 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
+  /api/v1/teams/{teamId}/members:
+    get:
+      description: This endpoint fetches all members of a team.
+      operationId: GetTeamMembers
+      parameters:
+      - description: The unique identifier of the team whose members are being requested.
+          This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTeamMembersResponse'
+          description: A successful response with the team members.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get all team members
+      tags:
+      - team-member
+  /api/v1/teams/{teamId}/members/{memberUserId}:
+    get:
+      description: This endpoint fetches details of a specific team member.
+      operationId: GetTeamMember
+      parameters:
+      - description: The unique identifier of the team whose members are being requested.
+          This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      - description: The user ID of the member whose details are being requested.
+          This field is required.
+        explode: false
+        in: path
+        name: memberUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTeamMemberResponse'
+          description: A successful response with the team member details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get details of a team member
+      tags:
+      - team-member
+  /api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}:
+    delete:
+      description: This endpoint removes a member from a team.
+      operationId: RemoveTeamMember
+      parameters:
+      - description: The unique identifier of the team from which the member is being
+          removed. This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      - description: The user ID of the member being removed from the team. This field
+          is required.
+        explode: false
+        in: path
+        name: memberUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The user ID of the team administrator. This field is required.
+        explode: false
+        in: path
+        name: adminUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveTeamMemberResponse'
+          description: A successful response indicating the team member was removed.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Remove a team member
+      tags:
+      - team-member
   /api/v1/user/{userId}/canny/email/{email}:
     get:
       description: Fetches a user sso token for canny
@@ -1513,6 +1686,324 @@ paths:
       summary: follow a user profile
       tags:
       - follow-profile
+  /api/v1/users/team/{adminOrMemberUserId}/{teamId}:
+    get:
+      description: This endpoint gets a specific team.
+      operationId: GetTeam
+      parameters:
+      - description: The user ID of the member or admin requesting the team details.
+          This field is required.
+        explode: false
+        in: path
+        name: adminOrMemberUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The unique identifier of the team whose details are being requested.
+          This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      - description: |-
+          Optional flag to include detailed information about team members in the response.
+          If true, the response will contain a list of team members and their roles.
+        explode: true
+        in: query
+        name: includeMembers
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: |-
+          Optional flag to include a list of publicatins or activities associated with the team in the response.
+          If true, the response will contain detailed information about the team's projects or activities.
+        explode: true
+        in: query
+        name: includePublications
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - description: |-
+          Optional flag to include the team's audit log entries in the response.
+          If true, the response will contain recent audit log entries for the team.
+        explode: true
+        in: query
+        name: includeAuditLogs
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTeamResponse'
+          description: A successful response with the team details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get a team
+      tags:
+      - team
+  /api/v1/users/team/{adminUserId}:
+    post:
+      description: This endpoint enables a client to create a team
+      operationId: CreateTeam
+      parameters:
+      - description: The user ID of the team administrator. This field is required.
+        explode: false
+        in: path
+        name: adminUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTeamResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Creates a team
+      tags:
+      - team
+  /api/v1/users/team/{adminUserId}/{teamId}:
+    delete:
+      description: This endpoint deletes a specific team.
+      operationId: DeleteTeam
+      parameters:
+      - description: The user ID of the team administrator. This field is required.
+        explode: false
+        in: path
+        name: adminUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The unique identifier of the team being deleted. This field is
+          required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteTeamResponse'
+          description: A successful response with the team details.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Delete a team
+      tags:
+      - team
+  /api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}:
+    put:
+      description: This endpoint enables a client to update a team.
+      operationId: EditTeam
+      parameters:
+      - description: The user ID of the team administrator. This field is required.
+        explode: false
+        in: path
+        name: adminOrMemberUserId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: The unique identifier of the team being updated. This field is
+          required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamProfile'
+        description: The team to update
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EditTeamResponse'
+          description: A successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: update a user profile
+      tags:
+      - user profile
+  /api/v1/users/teams/{teamId}/members:
+    post:
+      description: This endpoint adds a new member to a team.
+      operationId: AddTeamMember
+      parameters:
+      - description: The unique identifier of the team to which the member is being
+          added. This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddTeamMemberBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddTeamMemberResponse'
+          description: A successful response with details of the newly added team
+            member.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Add a new team member
+      tags:
+      - team-member
   /api/v1/users/{userId}:
     delete:
       description: This endpoint enables a client to delete a user profile
@@ -5047,6 +5538,18 @@ components:
         AccountType used to differ the type of profile an operation
         is being performed against
       type: string
+    ActionType:
+      default: ACTION_TYPE_UNSPECIFIED
+      enum:
+      - ACTION_TYPE_UNSPECIFIED
+      - ACTION_TYPE_CREATE
+      - ACTION_TYPE_UPDATE
+      - ACTION_TYPE_DELETE
+      - ACTION_TYPE_READ
+      - ACTION_TYPE_LOGIN
+      - ACTION_TYPE_LOGOUT
+      - ACTION_TYPE_POST_OPERATION
+      type: string
     Actor:
       example:
         actorType: null
@@ -7983,10 +8486,493 @@ components:
         publication:
           $ref: '#/components/schemas/Publication'
       type: object
+    AddTeamMemberBody:
+      example:
+        adminUserId: adminUserId
+        memberUserId: memberUserId
+        memberPermissionType: null
+      properties:
+        adminUserId:
+          description: The user ID of the team administrator. This field is required.
+          type: string
+        memberUserId:
+          description: The user ID of the member being added to the team. This field
+            is required.
+          type: string
+        memberPermissionType:
+          $ref: '#/components/schemas/PermissionType'
+      required:
+      - adminUserId
+      - memberPermissionType
+      - memberUserId
+      type: object
+    AddTeamMemberResponse:
+      example:
+        team:
+          teamName: teamName
+          auditLogs:
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          createdAt: createdAt
+          members:
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          roles:
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          admin:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          focusAreas:
+          - focusAreas
+          - focusAreas
+          publications:
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          tags:
+          - tags
+          - tags
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamProfile'
+      type: object
     Any:
       additionalProperties: {}
       properties:
         '@type':
+          type: string
+      type: object
+    AuditLog:
+      example:
+        affectedEntityType: affectedEntityType
+        actionType: null
+        ipAddress: ipAddress
+        action: action
+        description: description
+        id: id
+        affectedEntityId: affectedEntityId
+        userId: userId
+        outcome: null
+        timestamp: timestamp
+      properties:
+        id:
+          format: uint64
+          type: string
+        action:
+          type: string
+        userId:
+          type: string
+        timestamp:
+          type: string
+        description:
+          type: string
+        actionType:
+          $ref: '#/components/schemas/ActionType'
+        ipAddress:
+          description: "logs the IP address from where the action was initiated, which\
+            \ is useful for security and auditing purposes."
+          type: string
+        outcome:
+          $ref: '#/components/schemas/Outcome'
+        affectedEntityType:
+          description: "give specific information about the entity that was affected\
+            \ by the action, making it easier to trace and understand the impact of\
+            \ each logged activity."
+          type: string
+        affectedEntityId:
           type: string
       type: object
     BaseTimeline:
@@ -14958,6 +15944,46 @@ components:
           format: uint64
           type: string
       type: object
+    CreateTeamBody:
+      example:
+        teamName: teamName
+        adminPermissionType: null
+        description: description
+        tags:
+        - tags
+        - tags
+      properties:
+        teamName:
+          description: The name of the team. This field is required and should be
+            unique.
+          type: string
+        description:
+          description: "A brief description of the team, outlining its purpose and\
+            \ goals. This field is required."
+          type: string
+        tags:
+          description: "A list of tags associated with the team, helping in categorization\
+            \ or searching. \nAt least three tags are required."
+          items:
+            type: string
+          type: array
+        adminPermissionType:
+          $ref: '#/components/schemas/PermissionType'
+      required:
+      - adminPermissionType
+      - description
+      - tags
+      - teamName
+      type: object
+    CreateTeamResponse:
+      example:
+        teamId: teamId
+      properties:
+        teamId:
+          description: The ID of the newly created team.
+          format: uint64
+          type: string
+      type: object
     CreateTopicResponse:
       example:
         topicId: topicId
@@ -15264,6 +16290,14 @@ components:
         success: true
       properties:
         success:
+          type: boolean
+      type: object
+    DeleteTeamResponse:
+      example:
+        success: true
+      properties:
+        success:
+          description: A boolean flag indicating if the team was successfully deleted.
           type: boolean
       type: object
     DeleteUserProfileResponse:
@@ -16950,6 +17984,429 @@ components:
       title: |-
         EditPostResponse: Represent the object returned as a
         response to the update post request
+      type: object
+    EditTeamResponse:
+      example:
+        team:
+          teamName: teamName
+          auditLogs:
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          createdAt: createdAt
+          members:
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          roles:
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          admin:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          focusAreas:
+          - focusAreas
+          - focusAreas
+          publications:
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          tags:
+          - tags
+          - tags
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamProfile'
       type: object
     EditUserProfileResponse:
       example:
@@ -30228,6 +31685,642 @@ components:
         publication:
           $ref: '#/components/schemas/Publication'
       type: object
+    GetTeamMemberResponse:
+      example:
+        member:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+      properties:
+        member:
+          $ref: '#/components/schemas/UserProfile'
+      type: object
+    GetTeamMembersResponse:
+      example:
+        members:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+      properties:
+        members:
+          description: A list of team member profile objects containing details about
+            the team members.
+          items:
+            $ref: '#/components/schemas/UserProfile'
+          type: array
+      type: object
+    GetTeamResponse:
+      example:
+        team:
+          teamName: teamName
+          auditLogs:
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          createdAt: createdAt
+          members:
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          roles:
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          admin:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          focusAreas:
+          - focusAreas
+          - focusAreas
+          publications:
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          tags:
+          - tags
+          - tags
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamProfile'
+      type: object
     GetTopicsOfCommunitiesUserFollowsResponse:
       example:
         topic:
@@ -33704,6 +35797,15 @@ components:
             $ref: '#/components/schemas/NotificationFeedGroup'
           type: array
       type: object
+    Outcome:
+      default: OUTCOME_UNSPECIFIED
+      enum:
+      - OUTCOME_UNSPECIFIED
+      - OUTCOME_SUCCESS
+      - OUTCOME_FAILURE
+      - OUTCOME_ERROR
+      title: Enum for defining possible outcomes of an action
+      type: string
     PathUnknownErrorMessageResponse:
       example:
         code: undefined_endpoint
@@ -33801,6 +35903,19 @@ components:
         PendingFollowRequest defines the record describing the given pending follow
         relationship
       type: object
+    PermissionType:
+      default: PERMISSION_TYPE_UNSPECIFIED
+      enum:
+      - PERMISSION_TYPE_UNSPECIFIED
+      - PERMISSION_TYPE_READ
+      - PERMISSION_TYPE_WRITE
+      - PERMISSION_TYPE_EDIT
+      - PERMISSION_TYPE_DELETE
+      - PERMISSION_TYPE_PUBLISH
+      - PERMISSION_TYPE_MODERATE
+      - PERMISSION_TYPE_ADMIN
+      title: Enum for defining different types of permissions
+      type: string
     PollPost:
       example:
         pollEndDate: 2000-01-23T04:56:07.000+00:00
@@ -37265,6 +39380,429 @@ components:
         success:
           type: boolean
       type: object
+    RemoveTeamMemberResponse:
+      example:
+        team:
+          teamName: teamName
+          auditLogs:
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          - affectedEntityType: affectedEntityType
+            actionType: null
+            ipAddress: ipAddress
+            action: action
+            description: description
+            id: id
+            affectedEntityId: affectedEntityId
+            userId: userId
+            outcome: null
+            timestamp: timestamp
+          createdAt: createdAt
+          members:
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          - private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          roles:
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          - createdAt: createdAt
+            permissions:
+            - null
+            - null
+            name: name
+            member:
+              private: true
+              paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              tags:
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                  CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+                id: id
+                tagName: test-tagname
+              bookmarks:
+                postIds:
+                - postIds
+                - postIds
+                id: id
+                publications:
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+                - createdAt: createdAt
+                  postIds:
+                  - postIds
+                  - postIds
+                  subjects:
+                  - subjects
+                  - subjects
+                  admin: null
+                  adminBackendPlatformUserId: adminBackendPlatformUserId
+                  description: description
+                  id: id
+                  type: null
+                  publicationName: publicationName
+                  editors:
+                  - null
+                  - null
+                  tags:
+                  - tags
+                  - tags
+              newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+              followers: followers
+              following: following
+              algoliaId: asndlkhaskhdhasgdahsf-feed-id
+              name: test-user
+              id: id
+              profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+            description: description
+            id: id
+            updatedAt: updatedAt
+          admin:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          focusAreas:
+          - focusAreas
+          - focusAreas
+          publications:
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          - createdAt: createdAt
+            postIds:
+            - postIds
+            - postIds
+            subjects:
+            - subjects
+            - subjects
+            admin: null
+            adminBackendPlatformUserId: adminBackendPlatformUserId
+            description: description
+            id: id
+            type: null
+            publicationName: publicationName
+            editors:
+            - null
+            - null
+            tags:
+            - tags
+            - tags
+          tags:
+          - tags
+          - tags
+      properties:
+        team:
+          $ref: '#/components/schemas/TeamProfile'
+      type: object
     ReportCommentBody:
       example:
         postType: null
@@ -38871,6 +41409,104 @@ components:
         ReviewPostResponse: Represents the response object returned as a
         response to the review post request
       type: object
+    Role:
+      example:
+        createdAt: createdAt
+        permissions:
+        - null
+        - null
+        name: name
+        member:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        description: description
+        id: id
+        updatedAt: updatedAt
+      properties:
+        id:
+          format: uint64
+          type: string
+        name:
+          type: string
+        description:
+          title: A brief description of the role and its responsibilities
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionType'
+          title: Granular permissions associated with the role
+          type: array
+        member:
+          $ref: '#/components/schemas/UserProfile'
+        createdAt:
+          title: Timestamps for role creation and last update
+          type: string
+        updatedAt:
+          type: string
+      type: object
     Sentiment:
       example:
         negative: 30
@@ -39977,6 +42613,467 @@ components:
         details:
           items:
             $ref: '#/components/schemas/Any'
+          type: array
+      type: object
+    TeamProfile:
+      example:
+        teamName: teamName
+        auditLogs:
+        - affectedEntityType: affectedEntityType
+          actionType: null
+          ipAddress: ipAddress
+          action: action
+          description: description
+          id: id
+          affectedEntityId: affectedEntityId
+          userId: userId
+          outcome: null
+          timestamp: timestamp
+        - affectedEntityType: affectedEntityType
+          actionType: null
+          ipAddress: ipAddress
+          action: action
+          description: description
+          id: id
+          affectedEntityId: affectedEntityId
+          userId: userId
+          outcome: null
+          timestamp: timestamp
+        createdAt: createdAt
+        members:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        roles:
+        - createdAt: createdAt
+          permissions:
+          - null
+          - null
+          name: name
+          member:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          updatedAt: updatedAt
+        - createdAt: createdAt
+          permissions:
+          - null
+          - null
+          name: name
+          member:
+            private: true
+            paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            tags:
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+                CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+              id: id
+              tagName: test-tagname
+            bookmarks:
+              postIds:
+              - postIds
+              - postIds
+              id: id
+              publications:
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+              - createdAt: createdAt
+                postIds:
+                - postIds
+                - postIds
+                subjects:
+                - subjects
+                - subjects
+                admin: null
+                adminBackendPlatformUserId: adminBackendPlatformUserId
+                description: description
+                id: id
+                type: null
+                publicationName: publicationName
+                editors:
+                - null
+                - null
+                tags:
+                - tags
+                - tags
+            newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+            followers: followers
+            following: following
+            algoliaId: asndlkhaskhdhasgdahsf-feed-id
+            name: test-user
+            id: id
+            profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+          description: description
+          id: id
+          updatedAt: updatedAt
+        admin:
+          private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        description: description
+        id: id
+        focusAreas:
+        - focusAreas
+        - focusAreas
+        publications:
+        - createdAt: createdAt
+          postIds:
+          - postIds
+          - postIds
+          subjects:
+          - subjects
+          - subjects
+          admin: null
+          adminBackendPlatformUserId: adminBackendPlatformUserId
+          description: description
+          id: id
+          type: null
+          publicationName: publicationName
+          editors:
+          - null
+          - null
+          tags:
+          - tags
+          - tags
+        - createdAt: createdAt
+          postIds:
+          - postIds
+          - postIds
+          subjects:
+          - subjects
+          - subjects
+          admin: null
+          adminBackendPlatformUserId: adminBackendPlatformUserId
+          description: description
+          id: id
+          type: null
+          publicationName: publicationName
+          editors:
+          - null
+          - null
+          tags:
+          - tags
+          - tags
+        tags:
+        - tags
+        - tags
+      properties:
+        id:
+          format: uint64
+          type: string
+        publications:
+          items:
+            $ref: '#/components/schemas/Publication'
+          title: Publications managed by the team
+          type: array
+        admin:
+          $ref: '#/components/schemas/UserProfile'
+        tags:
+          items:
+            type: string
+          type: array
+        members:
+          items:
+            $ref: '#/components/schemas/UserProfile'
+          title: Team members who can contribute to the team’s projects
+          type: array
+        focusAreas:
+          items:
+            type: string
+          type: array
+        description:
+          type: string
+        createdAt:
+          type: string
+        teamName:
+          type: string
+        roles:
+          items:
+            $ref: '#/components/schemas/Role'
+          title: |-
+            Additional fields for team management
+            Detailed roles within the team
+          type: array
+        auditLogs:
+          items:
+            $ref: '#/components/schemas/AuditLog'
+          title: Audit log for tracking changes made by team members
           type: array
       type: object
     Thread:

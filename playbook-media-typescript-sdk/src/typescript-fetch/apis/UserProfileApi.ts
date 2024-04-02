@@ -19,6 +19,7 @@ import type {
   CreateUserProfileResponse,
   DeleteUserProfileResponse,
   DiscoverProfilesResponse,
+  EditTeamResponse,
   EditUserProfileResponse,
   GetCannyUserSSOTokenResponse,
   GetUserProfileResponse,
@@ -26,6 +27,7 @@ import type {
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
   Status,
+  TeamProfile,
   UserProfile,
   ValidationErrorMessageResponse,
 } from '../models/index';
@@ -38,6 +40,8 @@ import {
     DeleteUserProfileResponseToJSON,
     DiscoverProfilesResponseFromJSON,
     DiscoverProfilesResponseToJSON,
+    EditTeamResponseFromJSON,
+    EditTeamResponseToJSON,
     EditUserProfileResponseFromJSON,
     EditUserProfileResponseToJSON,
     GetCannyUserSSOTokenResponseFromJSON,
@@ -52,6 +56,8 @@ import {
     PathUnknownErrorMessageResponseToJSON,
     StatusFromJSON,
     StatusToJSON,
+    TeamProfileFromJSON,
+    TeamProfileToJSON,
     UserProfileFromJSON,
     UserProfileToJSON,
     ValidationErrorMessageResponseFromJSON,
@@ -69,6 +75,12 @@ export interface DeleteUserProfileRequest {
 export interface DiscoverProfilesRequest {
     userId: string;
     limit: string;
+}
+
+export interface EditTeamRequest {
+    adminOrMemberUserId: string;
+    teamId: string;
+    teamProfile: TeamProfile;
 }
 
 export interface EditUserProfileRequest {
@@ -197,6 +209,49 @@ export class UserProfileApi extends runtime.BaseAPI {
      */
     async discoverProfiles(requestParameters: DiscoverProfilesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiscoverProfilesResponse> {
         const response = await this.discoverProfilesRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * This endpoint enables a client to update a team.
+     * update a user profile
+     */
+    async editTeamRaw(requestParameters: EditTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<EditTeamResponse>> {
+        if (requestParameters.adminOrMemberUserId === null || requestParameters.adminOrMemberUserId === undefined) {
+            throw new runtime.RequiredError('adminOrMemberUserId','Required parameter requestParameters.adminOrMemberUserId was null or undefined when calling editTeam.');
+        }
+
+        if (requestParameters.teamId === null || requestParameters.teamId === undefined) {
+            throw new runtime.RequiredError('teamId','Required parameter requestParameters.teamId was null or undefined when calling editTeam.');
+        }
+
+        if (requestParameters.teamProfile === null || requestParameters.teamProfile === undefined) {
+            throw new runtime.RequiredError('teamProfile','Required parameter requestParameters.teamProfile was null or undefined when calling editTeam.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}`.replace(`{${"adminOrMemberUserId"}}`, encodeURIComponent(String(requestParameters.adminOrMemberUserId))).replace(`{${"teamId"}}`, encodeURIComponent(String(requestParameters.teamId))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+            body: TeamProfileToJSON(requestParameters.teamProfile),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => EditTeamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint enables a client to update a team.
+     * update a user profile
+     */
+    async editTeam(requestParameters: EditTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<EditTeamResponse> {
+        const response = await this.editTeamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -7,6 +7,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | [**createUserProfile**](UserProfileApi.md#createUserProfile) | **POST** /api/v1/users | creates a user profile |
 | [**deleteUserProfile**](UserProfileApi.md#deleteUserProfile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 | [**discoverProfiles**](UserProfileApi.md#discoverProfiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
+| [**editTeam**](UserProfileApi.md#editTeam) | **PUT** /api/v1/users/teams/{adminOrMemberUserId}/team/{teamId} | update a user profile |
 | [**editUserProfile**](UserProfileApi.md#editUserProfile) | **PUT** /api/v1/users/{userId} | update a user profile |
 | [**getCannyUserSSOToken**](UserProfileApi.md#getCannyUserSSOToken) | **GET** /api/v1/user/{userId}/canny/email/{email} | Retrieves user sso token for canny |
 | [**getUserProfile**](UserProfileApi.md#getUserProfile) | **GET** /api/v1/users/{userId} | gets a user profile |
@@ -93,6 +94,35 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="editTeam"></a>
+# **editTeam**
+> EditTeamResponse editTeam(adminOrMemberUserId, teamId, TeamProfile)
+
+update a user profile
+
+    This endpoint enables a client to update a team.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **adminOrMemberUserId** | **String**| The user ID of the team administrator. This field is required. | [default to null] |
+| **teamId** | **String**| The unique identifier of the team being updated. This field is required. | [default to null] |
+| **TeamProfile** | [**TeamProfile**](../Models/TeamProfile.md)| The team to update | |
+
+### Return type
+
+[**EditTeamResponse**](../Models/EditTeamResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 <a name="editUserProfile"></a>

@@ -691,6 +691,167 @@ paths:
               - ACCOUNT_TYPE_COMMUNITY
       tags:
         - community profile
+  "/api/v1/teams/{teamId}/members":
+    get:
+      summary: Get all team members
+      description: This endpoint fetches all members of a team.
+      operationId: GetTeamMembers
+      responses:
+        "200":
+          description: A successful response with the team members.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetTeamMembersResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: teamId
+          description: The unique identifier of the team whose members are being
+            requested. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      tags:
+        - team-member
+  "/api/v1/teams/{teamId}/members/{memberUserId}":
+    get:
+      summary: Get details of a team member
+      description: This endpoint fetches details of a specific team member.
+      operationId: GetTeamMember
+      responses:
+        "200":
+          description: A successful response with the team member details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetTeamMemberResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: teamId
+          description: The unique identifier of the team whose members are being
+            requested. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+        - name: memberUserId
+          description: The user ID of the member whose details are being requested. This
+            field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - team-member
+  "/api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}":
+    delete:
+      summary: Remove a team member
+      description: This endpoint removes a member from a team.
+      operationId: RemoveTeamMember
+      responses:
+        "200":
+          description: A successful response indicating the team member was removed.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RemoveTeamMemberResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: teamId
+          description: The unique identifier of the team from which the member is being
+            removed. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+        - name: memberUserId
+          description: The user ID of the member being removed from the team. This field
+            is required.
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: adminUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+      tags:
+        - team-member
   "/api/v1/user/{userId}/canny/email/{email}":
     get:
       summary: Retrieves user sso token for canny
@@ -1431,6 +1592,307 @@ paths:
             type: string
       tags:
         - follow-profile
+  "/api/v1/users/team/{adminOrMemberUserId}/{teamId}":
+    get:
+      summary: Get a team
+      description: This endpoint gets a specific team.
+      operationId: GetTeam
+      responses:
+        "200":
+          description: A successful response with the team details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminOrMemberUserId
+          description: The user ID of the member or admin requesting the team details.
+            This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          description: The unique identifier of the team whose details are being
+            requested. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+        - name: includeMembers
+          description: >-
+            Optional flag to include detailed information about team members in
+            the response.
+
+            If true, the response will contain a list of team members and their roles.
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: includePublications
+          description: >-
+            Optional flag to include a list of publicatins or activities
+            associated with the team in the response.
+
+            If true, the response will contain detailed information about the team's projects or activities.
+          in: query
+          required: false
+          schema:
+            type: boolean
+        - name: includeAuditLogs
+          description: >-
+            Optional flag to include the team's audit log entries in the
+            response.
+
+            If true, the response will contain recent audit log entries for the team.
+          in: query
+          required: false
+          schema:
+            type: boolean
+      tags:
+        - team
+  "/api/v1/users/team/{adminUserId}":
+    post:
+      summary: Creates a team
+      description: This endpoint enables a client to create a team
+      operationId: CreateTeam
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTeamBody"
+        required: true
+      tags:
+        - team
+  "/api/v1/users/team/{adminUserId}/{teamId}":
+    delete:
+      summary: Delete a team
+      description: This endpoint deletes a specific team.
+      operationId: DeleteTeam
+      responses:
+        "200":
+          description: A successful response with the team details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          description: The unique identifier of the team being deleted. This field is
+            required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      tags:
+        - team
+  "/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}":
+    put:
+      summary: update a user profile
+      description: This endpoint enables a client to update a team.
+      operationId: EditTeam
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EditTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminOrMemberUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          description: The unique identifier of the team being updated. This field is
+            required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TeamProfile"
+        description: The team to update
+        required: true
+      tags:
+        - user profile
+  "/api/v1/users/teams/{teamId}/members":
+    post:
+      summary: Add a new team member
+      description: This endpoint adds a new member to a team.
+      operationId: AddTeamMember
+      responses:
+        "200":
+          description: A successful response with details of the newly added team member.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AddTeamMemberResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: teamId
+          description: The unique identifier of the team to which the member is being
+            added. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddTeamMemberBody"
+        required: true
+      tags:
+        - team-member
   "/api/v1/users/{userId}":
     get:
       summary: gets a user profile
@@ -4741,6 +5203,18 @@ components:
       title: |-
         AccountType used to differ the type of profile an operation
         is being performed against
+    ActionType:
+      type: string
+      enum:
+        - ACTION_TYPE_UNSPECIFIED
+        - ACTION_TYPE_CREATE
+        - ACTION_TYPE_UPDATE
+        - ACTION_TYPE_DELETE
+        - ACTION_TYPE_READ
+        - ACTION_TYPE_LOGIN
+        - ACTION_TYPE_LOGOUT
+        - ACTION_TYPE_POST_OPERATION
+      default: ACTION_TYPE_UNSPECIFIED
     Actor:
       type: object
       properties:
@@ -4788,12 +5262,62 @@ components:
       properties:
         publication:
           $ref: "#/components/schemas/Publication"
+    AddTeamMemberBody:
+      type: object
+      properties:
+        adminUserId:
+          type: string
+          description: The user ID of the team administrator. This field is required.
+        memberUserId:
+          type: string
+          description: The user ID of the member being added to the team. This field is
+            required.
+        memberPermissionType:
+          $ref: "#/components/schemas/PermissionType"
+      required:
+        - adminUserId
+        - memberUserId
+        - memberPermissionType
+    AddTeamMemberResponse:
+      type: object
+      properties:
+        team:
+          $ref: "#/components/schemas/TeamProfile"
     Any:
       type: object
       properties:
         "@type":
           type: string
       additionalProperties: {}
+    AuditLog:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        action:
+          type: string
+        userId:
+          type: string
+        timestamp:
+          type: string
+        description:
+          type: string
+        actionType:
+          $ref: "#/components/schemas/ActionType"
+        ipAddress:
+          type: string
+          description: logs the IP address from where the action was initiated, which is
+            useful for security and auditing purposes.
+        outcome:
+          $ref: "#/components/schemas/Outcome"
+        affectedEntityType:
+          type: string
+          description: give specific information about the entity that was affected by the
+            action, making it easier to trace and understand the impact of each
+            logged activity.
+        affectedEntityId:
+          type: string
     BaseTimeline:
       type: object
       properties:
@@ -5307,6 +5831,39 @@ components:
         id:
           type: string
           format: uint64
+    CreateTeamBody:
+      type: object
+      properties:
+        teamName:
+          type: string
+          description: The name of the team. This field is required and should be unique.
+        description:
+          type: string
+          description: A brief description of the team, outlining its purpose and goals.
+            This field is required.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            A list of tags associated with the team, helping in categorization
+            or searching. 
+
+            At least three tags are required.
+        adminPermissionType:
+          $ref: "#/components/schemas/PermissionType"
+      required:
+        - teamName
+        - description
+        - tags
+        - adminPermissionType
+    CreateTeamResponse:
+      type: object
+      properties:
+        teamId:
+          type: string
+          format: uint64
+          description: The ID of the newly created team.
     CreateTopicResponse:
       type: object
       properties:
@@ -5426,6 +5983,12 @@ components:
       properties:
         success:
           type: boolean
+    DeleteTeamResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: A boolean flag indicating if the team was successfully deleted.
     DeleteUserProfileResponse:
       type: object
       properties:
@@ -5521,6 +6084,11 @@ components:
       title: |-
         EditPostResponse: Represent the object returned as a
         response to the update post request
+    EditTeamResponse:
+      type: object
+      properties:
+        team:
+          $ref: "#/components/schemas/TeamProfile"
     EditUserProfileResponse:
       type: object
       properties:
@@ -5853,6 +6421,25 @@ components:
       properties:
         publication:
           $ref: "#/components/schemas/Publication"
+    GetTeamMemberResponse:
+      type: object
+      properties:
+        member:
+          $ref: "#/components/schemas/UserProfile"
+    GetTeamMembersResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserProfile"
+          description: A list of team member profile objects containing details about the
+            team members.
+    GetTeamResponse:
+      type: object
+      properties:
+        team:
+          $ref: "#/components/schemas/TeamProfile"
     GetTopicsOfCommunitiesUserFollowsResponse:
       type: object
       properties:
@@ -6123,6 +6710,15 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/NotificationFeedGroup"
+    Outcome:
+      type: string
+      enum:
+        - OUTCOME_UNSPECIFIED
+        - OUTCOME_SUCCESS
+        - OUTCOME_FAILURE
+        - OUTCOME_ERROR
+      default: OUTCOME_UNSPECIFIED
+      title: Enum for defining possible outcomes of an action
     PathUnknownErrorMessageResponse:
       type: object
       example:
@@ -6153,6 +6749,19 @@ components:
       required:
         - followerRequestionToFollow
         - createdAt
+    PermissionType:
+      type: string
+      enum:
+        - PERMISSION_TYPE_UNSPECIFIED
+        - PERMISSION_TYPE_READ
+        - PERMISSION_TYPE_WRITE
+        - PERMISSION_TYPE_EDIT
+        - PERMISSION_TYPE_DELETE
+        - PERMISSION_TYPE_PUBLISH
+        - PERMISSION_TYPE_MODERATE
+        - PERMISSION_TYPE_ADMIN
+      default: PERMISSION_TYPE_UNSPECIFIED
+      title: Enum for defining different types of permissions
     PollPost:
       type: object
       properties:
@@ -6775,6 +7384,11 @@ components:
       properties:
         success:
           type: boolean
+    RemoveTeamMemberResponse:
+      type: object
+      properties:
+        team:
+          $ref: "#/components/schemas/TeamProfile"
     ReportCommentBody:
       type: object
       properties:
@@ -6846,6 +7460,29 @@ components:
       title: |-
         ReviewPostResponse: Represents the response object returned as a
         response to the review post request
+    Role:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        name:
+          type: string
+        description:
+          type: string
+          title: A brief description of the role and its responsibilities
+        permissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/PermissionType"
+          title: Granular permissions associated with the role
+        member:
+          $ref: "#/components/schemas/UserProfile"
+        createdAt:
+          type: string
+          title: Timestamps for role creation and last update
+        updatedAt:
+          type: string
     Sentiment:
       type: object
       properties:
@@ -7101,6 +7738,50 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Any"
+    TeamProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uint64
+        publications:
+          type: array
+          items:
+            $ref: "#/components/schemas/Publication"
+          title: Publications managed by the team
+        admin:
+          $ref: "#/components/schemas/UserProfile"
+        tags:
+          type: array
+          items:
+            type: string
+        members:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserProfile"
+          title: Team members who can contribute to the team’s projects
+        focusAreas:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        createdAt:
+          type: string
+        teamName:
+          type: string
+        roles:
+          type: array
+          items:
+            $ref: "#/components/schemas/Role"
+          title: |-
+            Additional fields for team management
+            Detailed roles within the team
+        auditLogs:
+          type: array
+          items:
+            $ref: "#/components/schemas/AuditLog"
+          title: Audit log for tracking changes made by team members
     Thread:
       type: object
       properties:

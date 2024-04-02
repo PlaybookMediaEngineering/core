@@ -16,18 +16,24 @@ Apis/PublicationApi.md
 Apis/ReactionApi.md
 Apis/ServiceHealthApi.md
 Apis/ServiceReadynessApi.md
+Apis/TeamApi.md
+Apis/TeamMemberApi.md
 Apis/ThreadApi.md
 Apis/TopicApi.md
 Apis/UserProfileApi.md
 Models/AcceptFollowProfileResponse.md
 Models/AccountType.md
+Models/ActionType.md
 Models/Actor.md
 Models/AddCommentQualityScoreResponse.md
 Models/AddPostQualityScoreResponse.md
 Models/AddPostToPublicationResponse.md
 Models/AddPostToThreadResponse.md
 Models/AddPublicationEditorResponse.md
+Models/AddTeamMemberBody.md
+Models/AddTeamMemberResponse.md
 Models/Any.md
+Models/AuditLog.md
 Models/BaseTimeline.md
 Models/BlockUserProfileResponse.md
 Models/Bookmark.md
@@ -48,6 +54,8 @@ Models/CreateNoteResponse.md
 Models/CreatePollResponse.md
 Models/CreatePostResponse.md
 Models/CreatePublicationResponse.md
+Models/CreateTeamBody.md
+Models/CreateTeamResponse.md
 Models/CreateTopicResponse.md
 Models/CreateUserProfileRequest.md
 Models/CreateUserProfileResponse.md
@@ -60,6 +68,7 @@ Models/DeletePostFromPublicationResponse.md
 Models/DeletePostResponse.md
 Models/DeletePublicationEditorResponse.md
 Models/DeletePublicationResponse.md
+Models/DeleteTeamResponse.md
 Models/DeleteUserProfileResponse.md
 Models/DiscoverProfilesResponse.md
 Models/EditCommentReplyBody.md
@@ -68,6 +77,7 @@ Models/EditCommunityProfileRequest.md
 Models/EditCommunityProfileResponse.md
 Models/EditNoteResponse.md
 Models/EditPostResponse.md
+Models/EditTeamResponse.md
 Models/EditUserProfileResponse.md
 Models/Entities.md
 Models/ErrorCode.md
@@ -95,6 +105,9 @@ Models/GetPostsByCategoryResponse.md
 Models/GetPostsByTopicResponse.md
 Models/GetPostsResponse.md
 Models/GetPublicationResponse.md
+Models/GetTeamMemberResponse.md
+Models/GetTeamMembersResponse.md
+Models/GetTeamResponse.md
 Models/GetTopicsOfCommunitiesUserFollowsResponse.md
 Models/GetUserFeedResponse.md
 Models/GetUserProfileResponse.md
@@ -112,8 +125,10 @@ Models/Note.md
 Models/NotificationActivity.md
 Models/NotificationFeedGroup.md
 Models/NotificationTimeline.md
+Models/Outcome.md
 Models/PathUnknownErrorMessageResponse.md
 Models/PendingFollowRequest.md
+Models/PermissionType.md
 Models/PollPost.md
 Models/PollResponse.md
 Models/Post.md
@@ -131,6 +146,7 @@ Models/ReadynessCheckResponse.md
 Models/RemoveBookmarkedPostResponse.md
 Models/RemoveBookmarkedPublicationResponse.md
 Models/RemovePostFromThreadResponse.md
+Models/RemoveTeamMemberResponse.md
 Models/ReportCommentBody.md
 Models/ReportCommentReplyBody.md
 Models/ReportCommentReplyResponse.md
@@ -140,6 +156,7 @@ Models/RespondToPollBody.md
 Models/RespondToPollResponse.md
 Models/ReviewPostBody.md
 Models/ReviewPostResponse.md
+Models/Role.md
 Models/Sentiment.md
 Models/SetPostInDraftModeBody.md
 Models/SetPostInDraftModeResponse.md
@@ -148,6 +165,7 @@ Models/SharedPost.md
 Models/SocialProfileMetadata.md
 Models/SocialRelationshipMetadata.md
 Models/Status.md
+Models/TeamProfile.md
 Models/Thread.md
 Models/ThreadParticipantType.md
 Models/Topic.md

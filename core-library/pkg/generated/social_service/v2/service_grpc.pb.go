@@ -95,6 +95,14 @@ const (
 	SocialService_PublishPost_FullMethodName                       = "/social_service.v2.SocialService/PublishPost"
 	SocialService_ReviewPost_FullMethodName                        = "/social_service.v2.SocialService/ReviewPost"
 	SocialService_SetPostInDraftMode_FullMethodName                = "/social_service.v2.SocialService/SetPostInDraftMode"
+	SocialService_CreateTeam_FullMethodName                        = "/social_service.v2.SocialService/CreateTeam"
+	SocialService_DeleteTeam_FullMethodName                        = "/social_service.v2.SocialService/DeleteTeam"
+	SocialService_GetTeam_FullMethodName                           = "/social_service.v2.SocialService/GetTeam"
+	SocialService_EditTeam_FullMethodName                          = "/social_service.v2.SocialService/EditTeam"
+	SocialService_AddTeamMember_FullMethodName                     = "/social_service.v2.SocialService/AddTeamMember"
+	SocialService_GetTeamMember_FullMethodName                     = "/social_service.v2.SocialService/GetTeamMember"
+	SocialService_RemoveTeamMember_FullMethodName                  = "/social_service.v2.SocialService/RemoveTeamMember"
+	SocialService_GetTeamMembers_FullMethodName                    = "/social_service.v2.SocialService/GetTeamMembers"
 )
 
 // SocialServiceClient is the client API for SocialService service.
@@ -204,6 +212,17 @@ type SocialServiceClient interface {
 	PublishPost(ctx context.Context, in *PublishPostRequest, opts ...grpc.CallOption) (*PublishPostResponse, error)
 	ReviewPost(ctx context.Context, in *ReviewPostRequest, opts ...grpc.CallOption) (*ReviewPostResponse, error)
 	SetPostInDraftMode(ctx context.Context, in *SetPostInDraftModeRequest, opts ...grpc.CallOption) (*SetPostInDraftModeResponse, error)
+	CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error)
+	// Delete a Team
+	DeleteTeam(ctx context.Context, in *DeleteTeamRequest, opts ...grpc.CallOption) (*DeleteTeamResponse, error)
+	GetTeam(ctx context.Context, in *GetTeamRequest, opts ...grpc.CallOption) (*GetTeamResponse, error)
+	EditTeam(ctx context.Context, in *EditTeamRequest, opts ...grpc.CallOption) (*EditTeamResponse, error)
+	AddTeamMember(ctx context.Context, in *AddTeamMemberRequest, opts ...grpc.CallOption) (*AddTeamMemberResponse, error)
+	// Get details of a specific TeamMember
+	GetTeamMember(ctx context.Context, in *GetTeamMemberRequest, opts ...grpc.CallOption) (*GetTeamMemberResponse, error)
+	// Remove a member from a Team
+	RemoveTeamMember(ctx context.Context, in *RemoveTeamMemberRequest, opts ...grpc.CallOption) (*RemoveTeamMemberResponse, error)
+	GetTeamMembers(ctx context.Context, in *GetTeamMembersRequest, opts ...grpc.CallOption) (*GetTeamMembersResponse, error)
 }
 
 type socialServiceClient struct {
@@ -898,6 +917,78 @@ func (c *socialServiceClient) SetPostInDraftMode(ctx context.Context, in *SetPos
 	return out, nil
 }
 
+func (c *socialServiceClient) CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error) {
+	out := new(CreateTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_CreateTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) DeleteTeam(ctx context.Context, in *DeleteTeamRequest, opts ...grpc.CallOption) (*DeleteTeamResponse, error) {
+	out := new(DeleteTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_DeleteTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) GetTeam(ctx context.Context, in *GetTeamRequest, opts ...grpc.CallOption) (*GetTeamResponse, error) {
+	out := new(GetTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) EditTeam(ctx context.Context, in *EditTeamRequest, opts ...grpc.CallOption) (*EditTeamResponse, error) {
+	out := new(EditTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_EditTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) AddTeamMember(ctx context.Context, in *AddTeamMemberRequest, opts ...grpc.CallOption) (*AddTeamMemberResponse, error) {
+	out := new(AddTeamMemberResponse)
+	err := c.cc.Invoke(ctx, SocialService_AddTeamMember_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) GetTeamMember(ctx context.Context, in *GetTeamMemberRequest, opts ...grpc.CallOption) (*GetTeamMemberResponse, error) {
+	out := new(GetTeamMemberResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetTeamMember_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) RemoveTeamMember(ctx context.Context, in *RemoveTeamMemberRequest, opts ...grpc.CallOption) (*RemoveTeamMemberResponse, error) {
+	out := new(RemoveTeamMemberResponse)
+	err := c.cc.Invoke(ctx, SocialService_RemoveTeamMember_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) GetTeamMembers(ctx context.Context, in *GetTeamMembersRequest, opts ...grpc.CallOption) (*GetTeamMembersResponse, error) {
+	out := new(GetTeamMembersResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetTeamMembers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServiceServer is the server API for SocialService service.
 // All implementations must embed UnimplementedSocialServiceServer
 // for forward compatibility
@@ -1005,6 +1096,17 @@ type SocialServiceServer interface {
 	PublishPost(context.Context, *PublishPostRequest) (*PublishPostResponse, error)
 	ReviewPost(context.Context, *ReviewPostRequest) (*ReviewPostResponse, error)
 	SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error)
+	CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error)
+	// Delete a Team
+	DeleteTeam(context.Context, *DeleteTeamRequest) (*DeleteTeamResponse, error)
+	GetTeam(context.Context, *GetTeamRequest) (*GetTeamResponse, error)
+	EditTeam(context.Context, *EditTeamRequest) (*EditTeamResponse, error)
+	AddTeamMember(context.Context, *AddTeamMemberRequest) (*AddTeamMemberResponse, error)
+	// Get details of a specific TeamMember
+	GetTeamMember(context.Context, *GetTeamMemberRequest) (*GetTeamMemberResponse, error)
+	// Remove a member from a Team
+	RemoveTeamMember(context.Context, *RemoveTeamMemberRequest) (*RemoveTeamMemberResponse, error)
+	GetTeamMembers(context.Context, *GetTeamMembersRequest) (*GetTeamMembersResponse, error)
 	mustEmbedUnimplementedSocialServiceServer()
 }
 
@@ -1239,6 +1341,30 @@ func (UnimplementedSocialServiceServer) ReviewPost(context.Context, *ReviewPostR
 }
 func (UnimplementedSocialServiceServer) SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetPostInDraftMode not implemented")
+}
+func (UnimplementedSocialServiceServer) CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTeam not implemented")
+}
+func (UnimplementedSocialServiceServer) DeleteTeam(context.Context, *DeleteTeamRequest) (*DeleteTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTeam not implemented")
+}
+func (UnimplementedSocialServiceServer) GetTeam(context.Context, *GetTeamRequest) (*GetTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTeam not implemented")
+}
+func (UnimplementedSocialServiceServer) EditTeam(context.Context, *EditTeamRequest) (*EditTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EditTeam not implemented")
+}
+func (UnimplementedSocialServiceServer) AddTeamMember(context.Context, *AddTeamMemberRequest) (*AddTeamMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddTeamMember not implemented")
+}
+func (UnimplementedSocialServiceServer) GetTeamMember(context.Context, *GetTeamMemberRequest) (*GetTeamMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTeamMember not implemented")
+}
+func (UnimplementedSocialServiceServer) RemoveTeamMember(context.Context, *RemoveTeamMemberRequest) (*RemoveTeamMemberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RemoveTeamMember not implemented")
+}
+func (UnimplementedSocialServiceServer) GetTeamMembers(context.Context, *GetTeamMembersRequest) (*GetTeamMembersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTeamMembers not implemented")
 }
 func (UnimplementedSocialServiceServer) mustEmbedUnimplementedSocialServiceServer() {}
 
@@ -2621,6 +2747,150 @@ func _SocialService_SetPostInDraftMode_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_CreateTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).CreateTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_CreateTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).CreateTeam(ctx, req.(*CreateTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_DeleteTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).DeleteTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_DeleteTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).DeleteTeam(ctx, req.(*DeleteTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_GetTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetTeam(ctx, req.(*GetTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_EditTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EditTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).EditTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_EditTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).EditTeam(ctx, req.(*EditTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_AddTeamMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddTeamMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).AddTeamMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_AddTeamMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).AddTeamMember(ctx, req.(*AddTeamMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_GetTeamMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTeamMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetTeamMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetTeamMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetTeamMember(ctx, req.(*GetTeamMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_RemoveTeamMember_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RemoveTeamMemberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).RemoveTeamMember(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_RemoveTeamMember_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).RemoveTeamMember(ctx, req.(*RemoveTeamMemberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_GetTeamMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTeamMembersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetTeamMembers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetTeamMembers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetTeamMembers(ctx, req.(*GetTeamMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocialService_ServiceDesc is the grpc.ServiceDesc for SocialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2931,6 +3201,38 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetPostInDraftMode",
 			Handler:    _SocialService_SetPostInDraftMode_Handler,
+		},
+		{
+			MethodName: "CreateTeam",
+			Handler:    _SocialService_CreateTeam_Handler,
+		},
+		{
+			MethodName: "DeleteTeam",
+			Handler:    _SocialService_DeleteTeam_Handler,
+		},
+		{
+			MethodName: "GetTeam",
+			Handler:    _SocialService_GetTeam_Handler,
+		},
+		{
+			MethodName: "EditTeam",
+			Handler:    _SocialService_EditTeam_Handler,
+		},
+		{
+			MethodName: "AddTeamMember",
+			Handler:    _SocialService_AddTeamMember_Handler,
+		},
+		{
+			MethodName: "GetTeamMember",
+			Handler:    _SocialService_GetTeamMember_Handler,
+		},
+		{
+			MethodName: "RemoveTeamMember",
+			Handler:    _SocialService_RemoveTeamMember_Handler,
+		},
+		{
+			MethodName: "GetTeamMembers",
+			Handler:    _SocialService_GetTeamMembers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
