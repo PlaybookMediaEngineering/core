@@ -95,6 +95,8 @@ const (
 	SocialService_PublishPost_FullMethodName                       = "/social_service.v2.SocialService/PublishPost"
 	SocialService_ReviewPost_FullMethodName                        = "/social_service.v2.SocialService/ReviewPost"
 	SocialService_SetPostInDraftMode_FullMethodName                = "/social_service.v2.SocialService/SetPostInDraftMode"
+	SocialService_CreateTeam_FullMethodName                        = "/social_service.v2.SocialService/CreateTeam"
+	SocialService_DeleteTeam_FullMethodName                        = "/social_service.v2.SocialService/DeleteTeam"
 )
 
 // SocialServiceClient is the client API for SocialService service.
@@ -204,6 +206,9 @@ type SocialServiceClient interface {
 	PublishPost(ctx context.Context, in *PublishPostRequest, opts ...grpc.CallOption) (*PublishPostResponse, error)
 	ReviewPost(ctx context.Context, in *ReviewPostRequest, opts ...grpc.CallOption) (*ReviewPostResponse, error)
 	SetPostInDraftMode(ctx context.Context, in *SetPostInDraftModeRequest, opts ...grpc.CallOption) (*SetPostInDraftModeResponse, error)
+	CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error)
+	// Delete a Team
+	DeleteTeam(ctx context.Context, in *DeleteTeamRequest, opts ...grpc.CallOption) (*DeleteTeamResponse, error)
 }
 
 type socialServiceClient struct {
@@ -898,6 +903,24 @@ func (c *socialServiceClient) SetPostInDraftMode(ctx context.Context, in *SetPos
 	return out, nil
 }
 
+func (c *socialServiceClient) CreateTeam(ctx context.Context, in *CreateTeamRequest, opts ...grpc.CallOption) (*CreateTeamResponse, error) {
+	out := new(CreateTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_CreateTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *socialServiceClient) DeleteTeam(ctx context.Context, in *DeleteTeamRequest, opts ...grpc.CallOption) (*DeleteTeamResponse, error) {
+	out := new(DeleteTeamResponse)
+	err := c.cc.Invoke(ctx, SocialService_DeleteTeam_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServiceServer is the server API for SocialService service.
 // All implementations must embed UnimplementedSocialServiceServer
 // for forward compatibility
@@ -1005,6 +1028,9 @@ type SocialServiceServer interface {
 	PublishPost(context.Context, *PublishPostRequest) (*PublishPostResponse, error)
 	ReviewPost(context.Context, *ReviewPostRequest) (*ReviewPostResponse, error)
 	SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error)
+	CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error)
+	// Delete a Team
+	DeleteTeam(context.Context, *DeleteTeamRequest) (*DeleteTeamResponse, error)
 	mustEmbedUnimplementedSocialServiceServer()
 }
 
@@ -1239,6 +1265,12 @@ func (UnimplementedSocialServiceServer) ReviewPost(context.Context, *ReviewPostR
 }
 func (UnimplementedSocialServiceServer) SetPostInDraftMode(context.Context, *SetPostInDraftModeRequest) (*SetPostInDraftModeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SetPostInDraftMode not implemented")
+}
+func (UnimplementedSocialServiceServer) CreateTeam(context.Context, *CreateTeamRequest) (*CreateTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateTeam not implemented")
+}
+func (UnimplementedSocialServiceServer) DeleteTeam(context.Context, *DeleteTeamRequest) (*DeleteTeamResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTeam not implemented")
 }
 func (UnimplementedSocialServiceServer) mustEmbedUnimplementedSocialServiceServer() {}
 
@@ -2621,6 +2653,42 @@ func _SocialService_SetPostInDraftMode_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_CreateTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).CreateTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_CreateTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).CreateTeam(ctx, req.(*CreateTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _SocialService_DeleteTeam_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteTeamRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).DeleteTeam(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_DeleteTeam_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).DeleteTeam(ctx, req.(*DeleteTeamRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocialService_ServiceDesc is the grpc.ServiceDesc for SocialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2931,6 +2999,14 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SetPostInDraftMode",
 			Handler:    _SocialService_SetPostInDraftMode_Handler,
+		},
+		{
+			MethodName: "CreateTeam",
+			Handler:    _SocialService_CreateTeam_Handler,
+		},
+		{
+			MethodName: "DeleteTeam",
+			Handler:    _SocialService_DeleteTeam_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

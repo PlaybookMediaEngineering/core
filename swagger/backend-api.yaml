@@ -1431,6 +1431,110 @@ paths:
             type: string
       tags:
         - follow-profile
+  "/api/v1/users/team/{adminUserId}":
+    post:
+      summary: Creates a team
+      description: This endpoint enables a client to create a team
+      operationId: CreateTeam
+      responses:
+        "200":
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTeamBody"
+        required: true
+      tags:
+        - team
+  "/api/v1/users/team/{adminUserId}/{teamId}":
+    delete:
+      summary: Delete a team
+      description: This endpoint deletes a specific team.
+      operationId: DeleteTeam
+      responses:
+        "200":
+          description: A successful response with the team details.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteTeamResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: adminUserId
+          description: The user ID of the team administrator. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: teamId
+          description: The unique identifier of the team being deleted. This field is
+            required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      tags:
+        - team
   "/api/v1/users/{userId}":
     get:
       summary: gets a user profile
@@ -5307,6 +5411,39 @@ components:
         id:
           type: string
           format: uint64
+    CreateTeamBody:
+      type: object
+      properties:
+        teamName:
+          type: string
+          description: The name of the team. This field is required and should be unique.
+        description:
+          type: string
+          description: A brief description of the team, outlining its purpose and goals.
+            This field is required.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            A list of tags associated with the team, helping in categorization
+            or searching. 
+
+            At least three tags are required.
+        adminPermissionType:
+          $ref: "#/components/schemas/PermissionType"
+      required:
+        - teamName
+        - description
+        - tags
+        - adminPermissionType
+    CreateTeamResponse:
+      type: object
+      properties:
+        teamId:
+          type: string
+          format: uint64
+          description: The ID of the newly created team.
     CreateTopicResponse:
       type: object
       properties:
@@ -5426,6 +5563,12 @@ components:
       properties:
         success:
           type: boolean
+    DeleteTeamResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: A boolean flag indicating if the team was successfully deleted.
     DeleteUserProfileResponse:
       type: object
       properties:
@@ -6153,6 +6296,19 @@ components:
       required:
         - followerRequestionToFollow
         - createdAt
+    PermissionType:
+      type: string
+      enum:
+        - PERMISSION_TYPE_UNSPECIFIED
+        - PERMISSION_TYPE_READ
+        - PERMISSION_TYPE_WRITE
+        - PERMISSION_TYPE_EDIT
+        - PERMISSION_TYPE_DELETE
+        - PERMISSION_TYPE_PUBLISH
+        - PERMISSION_TYPE_MODERATE
+        - PERMISSION_TYPE_ADMIN
+      default: PERMISSION_TYPE_UNSPECIFIED
+      title: Enum for defining different types of permissions
     PollPost:
       type: object
       properties:

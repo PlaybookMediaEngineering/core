@@ -16,6 +16,7 @@ Apis/PublicationApi.md
 Apis/ReactionApi.md
 Apis/ServiceHealthApi.md
 Apis/ServiceReadynessApi.md
+Apis/TeamApi.md
 Apis/ThreadApi.md
 Apis/TopicApi.md
 Apis/UserProfileApi.md
@@ -48,6 +49,8 @@ Models/CreateNoteResponse.md
 Models/CreatePollResponse.md
 Models/CreatePostResponse.md
 Models/CreatePublicationResponse.md
+Models/CreateTeamBody.md
+Models/CreateTeamResponse.md
 Models/CreateTopicResponse.md
 Models/CreateUserProfileRequest.md
 Models/CreateUserProfileResponse.md
@@ -60,6 +63,7 @@ Models/DeletePostFromPublicationResponse.md
 Models/DeletePostResponse.md
 Models/DeletePublicationEditorResponse.md
 Models/DeletePublicationResponse.md
+Models/DeleteTeamResponse.md
 Models/DeleteUserProfileResponse.md
 Models/DiscoverProfilesResponse.md
 Models/EditCommentReplyBody.md
@@ -114,6 +118,7 @@ Models/NotificationFeedGroup.md
 Models/NotificationTimeline.md
 Models/PathUnknownErrorMessageResponse.md
 Models/PendingFollowRequest.md
+Models/PermissionType.md
 Models/PollPost.md
 Models/PollResponse.md
 Models/Post.md

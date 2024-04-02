@@ -37,6 +37,7 @@ func newPublicationORM(db *gorm.DB, opts ...gen.DOOption) publicationORM {
 	_publicationORM.PublicationName = field.NewString(tableName, "publication_name")
 	_publicationORM.Subjects = field.NewField(tableName, "subjects")
 	_publicationORM.Tags = field.NewField(tableName, "tags")
+	_publicationORM.TeamId = field.NewUint64(tableName, "team_id")
 	_publicationORM.Type = field.NewString(tableName, "type")
 	_publicationORM.Admin = publicationORMHasOneAdmin{
 		db: db.Session(&gorm.Session{}),
@@ -108,6 +109,7 @@ type publicationORM struct {
 	PublicationName            field.String
 	Subjects                   field.Field
 	Tags                       field.Field
+	TeamId                     field.Uint64
 	Type                       field.String
 	Admin                      publicationORMHasOneAdmin
 
@@ -137,6 +139,7 @@ func (p *publicationORM) updateTableName(table string) *publicationORM {
 	p.PublicationName = field.NewString(table, "publication_name")
 	p.Subjects = field.NewField(table, "subjects")
 	p.Tags = field.NewField(table, "tags")
+	p.TeamId = field.NewUint64(table, "team_id")
 	p.Type = field.NewString(table, "type")
 
 	p.fillFieldMap()
@@ -154,7 +157,7 @@ func (p *publicationORM) GetFieldByName(fieldName string) (field.OrderExpr, bool
 }
 
 func (p *publicationORM) fillFieldMap() {
-	p.fieldMap = make(map[string]field.Expr, 12)
+	p.fieldMap = make(map[string]field.Expr, 13)
 	p.fieldMap["admin_backend_platform_user_id"] = p.AdminBackendPlatformUserId
 	p.fieldMap["bookmark_id"] = p.BookmarkId
 	p.fieldMap["created_at"] = p.CreatedAt
@@ -164,6 +167,7 @@ func (p *publicationORM) fillFieldMap() {
 	p.fieldMap["publication_name"] = p.PublicationName
 	p.fieldMap["subjects"] = p.Subjects
 	p.fieldMap["tags"] = p.Tags
+	p.fieldMap["team_id"] = p.TeamId
 	p.fieldMap["type"] = p.Type
 
 }

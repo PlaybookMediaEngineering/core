@@ -1566,4 +1566,46 @@ service SocialService {
             }
         };
     }
+
+    rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/users/team/{admin_user_id}"
+            body: "*"
+        };
+        option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+            summary: "Creates a team",
+            tags: ["team"],
+            operation_id: "CreateTeam",
+            description: "This endpoint enables a client to create a team",
+            responses: {
+                key: "200",
+                value: {
+                    description: "A successful response.",
+                    schema: {
+                        json_schema: {ref: ".social_service.v2.CreateTeamResponse"}
+                    }
+                }
+            }
+        };
+    }
+
+  // Delete a Team
+  rpc DeleteTeam(DeleteTeamRequest) returns (DeleteTeamResponse) {
+    option (google.api.http) = {delete: "/api/v1/users/team/{admin_user_id}/{team_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Delete a team"
+      tags: ["team"]
+      operation_id: "DeleteTeam"
+      description: "This endpoint deletes a specific team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response with the team details."
+           schema: {
+              json_schema: {ref: ".social_service.v2.DeleteTeamResponse"}
+           }
+        }
+      }
+    };
+  }
 }

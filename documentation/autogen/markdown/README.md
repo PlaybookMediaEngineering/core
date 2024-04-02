@@ -71,6 +71,8 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *ReactionApi* | [**reactToPost**](Apis/ReactionApi.md#reacttopost) | **POST** /api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction} | Reacts to a post |
 | *ServiceHealthApi* | [**healthCheck**](Apis/ServiceHealthApi.md#healthcheck) | **GET** /api/v1/health | health check |
 | *ServiceReadynessApi* | [**readynessCheck**](Apis/ServiceReadynessApi.md#readynesscheck) | **GET** /api/v1/ready | readyness check |
+| *TeamApi* | [**createTeam**](Apis/TeamApi.md#createteam) | **POST** /api/v1/users/team/{adminUserId} | Creates a team |
+*TeamApi* | [**deleteTeam**](Apis/TeamApi.md#deleteteam) | **DELETE** /api/v1/users/team/{adminUserId}/{teamId} | Delete a team |
 | *ThreadApi* | [**addPostToThread**](Apis/ThreadApi.md#addposttothread) | **POST** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType} | Adds A Post To A Thread |
 *ThreadApi* | [**getPostThread**](Apis/ThreadApi.md#getpostthread) | **GET** /api/v1/users/{userId}/post/thread/{postId} | Gets A Post's Thread |
 *ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
@@ -117,6 +119,8 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [CreatePollResponse](./Models/CreatePollResponse.md)
  - [CreatePostResponse](./Models/CreatePostResponse.md)
  - [CreatePublicationResponse](./Models/CreatePublicationResponse.md)
+ - [CreateTeamBody](./Models/CreateTeamBody.md)
+ - [CreateTeamResponse](./Models/CreateTeamResponse.md)
  - [CreateTopicResponse](./Models/CreateTopicResponse.md)
  - [CreateUserProfileRequest](./Models/CreateUserProfileRequest.md)
  - [CreateUserProfileResponse](./Models/CreateUserProfileResponse.md)
@@ -129,6 +133,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [DeletePostResponse](./Models/DeletePostResponse.md)
  - [DeletePublicationEditorResponse](./Models/DeletePublicationEditorResponse.md)
  - [DeletePublicationResponse](./Models/DeletePublicationResponse.md)
+ - [DeleteTeamResponse](./Models/DeleteTeamResponse.md)
  - [DeleteUserProfileResponse](./Models/DeleteUserProfileResponse.md)
  - [DiscoverProfilesResponse](./Models/DiscoverProfilesResponse.md)
  - [EditCommentReplyBody](./Models/EditCommentReplyBody.md)
@@ -183,6 +188,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [NotificationTimeline](./Models/NotificationTimeline.md)
  - [PathUnknownErrorMessageResponse](./Models/PathUnknownErrorMessageResponse.md)
  - [PendingFollowRequest](./Models/PendingFollowRequest.md)
+ - [PermissionType](./Models/PermissionType.md)
  - [PollPost](./Models/PollPost.md)
  - [PollResponse](./Models/PollResponse.md)
  - [Post](./Models/Post.md)

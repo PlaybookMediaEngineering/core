@@ -1441,6 +1441,124 @@
 	                    ]
 	        },
 	        {
+	            "name": "team",
+	            "item": [
+	                        {
+    "name": "/api/v1/users/team/:adminUserId",
+                "description": "This endpoint enables a client to create a team",
+                 "item": [
+                            {
+                                "name": "Creates a team",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"teamName\": \"<string>\",\n \"description\": \"<string>\",\n \"tags\": \"<string>\",\n \"adminPermissionType\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/team/:adminUserId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "team",
+                                            ":adminUserId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "adminUserId",
+                                                "value": "",
+                                                "description": "The user ID of the team administrator. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint enables a client to create a team"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/api/v1/users/team/:adminUserId/:teamId",
+                "description": "This endpoint deletes a specific team.",
+                 "item": [
+                            {
+                                "name": "Delete a team",
+                                "request": {
+                                    "method": "DELETE",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/team/:adminUserId/:teamId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "team",
+                                            ":adminUserId",
+                                            ":teamId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "adminUserId",
+                                                "value": "",
+                                                "description": "The user ID of the team administrator. This field is required."
+                                            },
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team being deleted. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint deletes a specific team."
+                                }
+                            }
+                            ]
+                        }
+	                    ]
+	        },
+	        {
 	            "name": "thread",
 	            "item": [
 	                        {

@@ -18,6 +18,7 @@ export * from './PublicationApi';
 export * from './ReactionApi';
 export * from './ServiceHealthApi';
 export * from './ServiceReadynessApi';
+export * from './TeamApi';
 export * from './ThreadApi';
 export * from './TopicApi';
 export * from './UserProfileApi';

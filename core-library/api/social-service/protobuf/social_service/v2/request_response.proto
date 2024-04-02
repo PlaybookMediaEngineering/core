@@ -1736,3 +1736,130 @@ message SetPostInDraftModeRequest {
 message SetPostInDraftModeResponse {
   Post post = 1;
 }
+
+message CreateTeamRequest {
+  // The user ID of the team administrator. This field is required.
+  string admin_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The name of the team. This field is required and should be unique.
+  string team_name = 2 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // A brief description of the team, outlining its purpose and goals. This field is required.
+  string description = 3 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // A list of tags associated with the team, helping in categorization or searching. 
+  // At least three tags are required.
+  repeated string tags = 4 [
+    (validate.rules).repeated = {min_items: 3},  
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The administrative permission type assigned to the team administrator. 
+  // It should not be unspecified (0).
+  PermissionType admin_permission_type = 5 [
+    (google.api.field_behavior) = REQUIRED,
+    (validate.rules).enum = {not_in: [0]}
+  ];
+}
+
+message CreateTeamResponse {
+  // The ID of the newly created team.
+  uint64 team_id = 1;
+}
+
+message GetTeamRequest {
+  // The user ID of the member or admin requesting the team details. This field is required.
+  string admin_or_member_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The unique identifier of the team whose details are being requested. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // Optional flag to include detailed information about team members in the response.
+  // If true, the response will contain a list of team members and their roles.
+  bool include_members = 3;
+
+  // Optional flag to include a list of publicatins or activities associated with the team in the response.
+  // If true, the response will contain detailed information about the team's projects or activities.
+  bool include_publications = 4;
+
+  // Optional flag to include the team's audit log entries in the response.
+  // If true, the response will contain recent audit log entries for the team.
+  bool include_audit_logs = 5;
+}
+
+message GetTeamResponse {
+  // The team profile object containing details about the team.
+  Team team = 1;
+}
+
+message UpdateTeamRequest {
+  // The user ID of the team administrator. This field is required.
+  string admin_or_member_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The unique identifier of the team being updated. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The name of the team. This field is required.
+  string team_name = 3 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // A brief description of the team, outlining its purpose and goals. This field is required.
+  string description = 4 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // A list of tags associated with the team, helping in categorization or searching. 
+  // At least three tags are required.
+  repeated string tags = 5 [
+    (validate.rules).repeated = {min_items: 3},  
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message UpdateTeamResponse {
+  // The updated team profile object containing details about the team.
+  Team team = 1;
+}
+
+message DeleteTeamRequest {
+  // The user ID of the team administrator. This field is required.
+  string admin_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The unique identifier of the team being deleted. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message DeleteTeamResponse {
+  // A boolean flag indicating if the team was successfully deleted.
+  bool success = 1;
+}
