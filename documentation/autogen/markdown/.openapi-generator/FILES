@@ -106,6 +106,7 @@ Models/GetPostsByTopicResponse.md
 Models/GetPostsResponse.md
 Models/GetPublicationResponse.md
 Models/GetTeamMemberResponse.md
+Models/GetTeamMembersResponse.md
 Models/GetTeamResponse.md
 Models/GetTopicsOfCommunitiesUserFollowsResponse.md
 Models/GetUserFeedResponse.md

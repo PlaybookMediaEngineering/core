@@ -6,6 +6,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 |------------- | ------------- | -------------|
 | [**addTeamMember**](TeamMemberApi.md#addTeamMember) | **POST** /api/v1/users/teams/{teamId}/members | Add a new team member |
 | [**getTeamMember**](TeamMemberApi.md#getTeamMember) | **GET** /api/v1/teams/{teamId}/members/{memberUserId} | Get details of a team member |
+| [**getTeamMembers**](TeamMemberApi.md#getTeamMembers) | **GET** /api/v1/teams/{teamId}/members | Get all team members |
 | [**removeTeamMember**](TeamMemberApi.md#removeTeamMember) | **DELETE** /api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId} | Remove a team member |
 
 
@@ -55,6 +56,33 @@ Get details of a team member
 ### Return type
 
 [**GetTeamMemberResponse**](../Models/GetTeamMemberResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+<a name="getTeamMembers"></a>
+# **getTeamMembers**
+> GetTeamMembersResponse getTeamMembers(teamId)
+
+Get all team members
+
+    This endpoint fetches all members of a team.
+
+### Parameters
+
+|Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **teamId** | **String**| The unique identifier of the team whose members are being requested. This field is required. | [default to null] |
+
+### Return type
+
+[**GetTeamMembersResponse**](../Models/GetTeamMembersResponse.md)
 
 ### Authorization
 

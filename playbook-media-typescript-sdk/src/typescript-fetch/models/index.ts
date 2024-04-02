@@ -85,6 +85,7 @@ export * from './GetPostsByTopicResponse';
 export * from './GetPostsResponse';
 export * from './GetPublicationResponse';
 export * from './GetTeamMemberResponse';
+export * from './GetTeamMembersResponse';
 export * from './GetTeamResponse';
 export * from './GetTopicsOfCommunitiesUserFollowsResponse';
 export * from './GetUserFeedResponse';

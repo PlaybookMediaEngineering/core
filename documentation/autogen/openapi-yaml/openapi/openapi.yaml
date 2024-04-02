@@ -727,6 +727,55 @@ paths:
       summary: Get a community Profile
       tags:
       - community profile
+  /api/v1/teams/{teamId}/members:
+    get:
+      description: This endpoint fetches all members of a team.
+      operationId: GetTeamMembers
+      parameters:
+      - description: The unique identifier of the team whose members are being requested.
+          This field is required.
+        explode: false
+        in: path
+        name: teamId
+        required: true
+        schema:
+          format: uint64
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetTeamMembersResponse'
+          description: A successful response with the team members.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorMessageResponse'
+          description: Request failed due to invalid input.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PathUnknownErrorMessageResponse'
+          description: Request failed due to incorrect path.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalErrorMessageResponse'
+          description: Request failed due to internal server error.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: An unexpected error response.
+      summary: Get all team members
+      tags:
+      - team-member
   /api/v1/teams/{teamId}/members/{memberUserId}:
     get:
       description: This endpoint fetches details of a specific team member.
@@ -31707,6 +31756,147 @@ components:
       properties:
         member:
           $ref: '#/components/schemas/UserProfile'
+      type: object
+    GetTeamMembersResponse:
+      example:
+        members:
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+        - private: true
+          paidFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          notificationFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          personalFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          freeFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          tags:
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          - description: test-description sakjlDKJGSAHGHFDHSGJHFGAHDFJKGSHAJDLgAKSGDHAS
+              CSVDJKSADASKJHDASFDGJKJLHSAHGFJDSAHD kjskhdgfhgdhfgkhsdfdsdfdssdfsdf
+            id: id
+            tagName: test-tagname
+          bookmarks:
+            postIds:
+            - postIds
+            - postIds
+            id: id
+            publications:
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+            - createdAt: createdAt
+              postIds:
+              - postIds
+              - postIds
+              subjects:
+              - subjects
+              - subjects
+              admin: null
+              adminBackendPlatformUserId: adminBackendPlatformUserId
+              description: description
+              id: id
+              type: null
+              publicationName: publicationName
+              editors:
+              - null
+              - null
+              tags:
+              - tags
+              - tags
+          newsFeedTimelineId: asndlkhaskhdhasgdahsf-feed-id
+          followers: followers
+          following: following
+          algoliaId: asndlkhaskhdhasgdahsf-feed-id
+          name: test-user
+          id: id
+          profileImageUrl: asndlkhaskhdhasgdahsf.jpg
+      properties:
+        members:
+          description: A list of team member profile objects containing details about
+            the team members.
+          items:
+            $ref: '#/components/schemas/UserProfile'
+          type: array
       type: object
     GetTeamResponse:
       example:

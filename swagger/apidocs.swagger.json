@@ -777,6 +777,58 @@
         ]
       }
     },
+    "/api/v1/teams/{teamId}/members": {
+      "get": {
+        "summary": "Get all team members",
+        "description": "This endpoint fetches all members of a team.",
+        "operationId": "GetTeamMembers",
+        "responses": {
+          "200": {
+            "description": "A successful response with the team members.",
+            "schema": {
+              "$ref": "#/definitions/GetTeamMembersResponse"
+            }
+          },
+          "400": {
+            "description": "Request failed due to invalid input.",
+            "schema": {
+              "$ref": "#/definitions/ValidationErrorMessageResponse"
+            }
+          },
+          "404": {
+            "description": "Request failed due to incorrect path.",
+            "schema": {
+              "$ref": "#/definitions/PathUnknownErrorMessageResponse"
+            }
+          },
+          "500": {
+            "description": "Request failed due to internal server error.",
+            "schema": {
+              "$ref": "#/definitions/InternalErrorMessageResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/Status"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "teamId",
+            "description": "The unique identifier of the team whose members are being requested. This field is required.",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "team-member"
+        ]
+      }
+    },
     "/api/v1/teams/{teamId}/members/{memberUserId}": {
       "get": {
         "summary": "Get details of a team member",
@@ -7118,6 +7170,19 @@
         "member": {
           "$ref": "#/definitions/UserProfile",
           "description": "The team member profile object containing details about the team member."
+        }
+      }
+    },
+    "GetTeamMembersResponse": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/UserProfile"
+          },
+          "description": "A list of team member profile objects containing details about the team members."
         }
       }
     },

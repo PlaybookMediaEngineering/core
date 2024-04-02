@@ -76,6 +76,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 *TeamApi* | [**getTeam**](Apis/TeamApi.md#getteam) | **GET** /api/v1/users/team/{adminOrMemberUserId}/{teamId} | Get a team |
 | *TeamMemberApi* | [**addTeamMember**](Apis/TeamMemberApi.md#addteammember) | **POST** /api/v1/users/teams/{teamId}/members | Add a new team member |
 *TeamMemberApi* | [**getTeamMember**](Apis/TeamMemberApi.md#getteammember) | **GET** /api/v1/teams/{teamId}/members/{memberUserId} | Get details of a team member |
+*TeamMemberApi* | [**getTeamMembers**](Apis/TeamMemberApi.md#getteammembers) | **GET** /api/v1/teams/{teamId}/members | Get all team members |
 *TeamMemberApi* | [**removeTeamMember**](Apis/TeamMemberApi.md#removeteammember) | **DELETE** /api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId} | Remove a team member |
 | *ThreadApi* | [**addPostToThread**](Apis/ThreadApi.md#addposttothread) | **POST** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType} | Adds A Post To A Thread |
 *ThreadApi* | [**getPostThread**](Apis/ThreadApi.md#getpostthread) | **GET** /api/v1/users/{userId}/post/thread/{postId} | Gets A Post's Thread |
@@ -180,6 +181,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetPostsResponse](./Models/GetPostsResponse.md)
  - [GetPublicationResponse](./Models/GetPublicationResponse.md)
  - [GetTeamMemberResponse](./Models/GetTeamMemberResponse.md)
+ - [GetTeamMembersResponse](./Models/GetTeamMembersResponse.md)
  - [GetTeamResponse](./Models/GetTeamResponse.md)
  - [GetTopicsOfCommunitiesUserFollowsResponse](./Models/GetTopicsOfCommunitiesUserFollowsResponse.md)
  - [GetUserFeedResponse](./Models/GetUserFeedResponse.md)

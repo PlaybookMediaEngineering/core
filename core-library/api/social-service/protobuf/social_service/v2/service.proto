@@ -1706,4 +1706,21 @@ service SocialService {
       }
     };
   }
+
+  rpc GetTeamMembers(GetTeamMembersRequest) returns (GetTeamMembersResponse) {
+    option (google.api.http) = {get: "/api/v1/teams/{team_id}/members"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get all team members"
+      tags: ["team-member"]
+      operation_id: "GetTeamMembers"
+      description: "This endpoint fetches all members of a team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response with the team members."
+          schema: {json_schema: {ref: ".social_service.v2.GetTeamMembersResponse"}}
+        }
+      }
+    };
+  }
 }

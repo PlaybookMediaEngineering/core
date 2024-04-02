@@ -23469,3 +23469,252 @@ var _ interface {
 	Cause() error
 	ErrorName() string
 } = RemoveTeamMemberResponseValidationError{}
+
+// Validate checks the field values on GetTeamMembersRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetTeamMembersRequest) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetTeamMembersRequest with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetTeamMembersRequestMultiError, or nil if none found.
+func (m *GetTeamMembersRequest) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetTeamMembersRequest) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if m.GetTeamId() <= 0 {
+		err := GetTeamMembersRequestValidationError{
+			field:  "TeamId",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if len(errors) > 0 {
+		return GetTeamMembersRequestMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetTeamMembersRequestMultiError is an error wrapping multiple validation
+// errors returned by GetTeamMembersRequest.ValidateAll() if the designated
+// constraints aren't met.
+type GetTeamMembersRequestMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetTeamMembersRequestMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetTeamMembersRequestMultiError) AllErrors() []error { return m }
+
+// GetTeamMembersRequestValidationError is the validation error returned by
+// GetTeamMembersRequest.Validate if the designated constraints aren't met.
+type GetTeamMembersRequestValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetTeamMembersRequestValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetTeamMembersRequestValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetTeamMembersRequestValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetTeamMembersRequestValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetTeamMembersRequestValidationError) ErrorName() string {
+	return "GetTeamMembersRequestValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetTeamMembersRequestValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetTeamMembersRequest.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetTeamMembersRequestValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetTeamMembersRequestValidationError{}
+
+// Validate checks the field values on GetTeamMembersResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *GetTeamMembersResponse) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on GetTeamMembersResponse with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// GetTeamMembersResponseMultiError, or nil if none found.
+func (m *GetTeamMembersResponse) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *GetTeamMembersResponse) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	for idx, item := range m.GetMembers() {
+		_, _ = idx, item
+
+		if all {
+			switch v := interface{}(item).(type) {
+			case interface{ ValidateAll() error }:
+				if err := v.ValidateAll(); err != nil {
+					errors = append(errors, GetTeamMembersResponseValidationError{
+						field:  fmt.Sprintf("Members[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			case interface{ Validate() error }:
+				if err := v.Validate(); err != nil {
+					errors = append(errors, GetTeamMembersResponseValidationError{
+						field:  fmt.Sprintf("Members[%v]", idx),
+						reason: "embedded message failed validation",
+						cause:  err,
+					})
+				}
+			}
+		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
+			if err := v.Validate(); err != nil {
+				return GetTeamMembersResponseValidationError{
+					field:  fmt.Sprintf("Members[%v]", idx),
+					reason: "embedded message failed validation",
+					cause:  err,
+				}
+			}
+		}
+
+	}
+
+	if len(errors) > 0 {
+		return GetTeamMembersResponseMultiError(errors)
+	}
+
+	return nil
+}
+
+// GetTeamMembersResponseMultiError is an error wrapping multiple validation
+// errors returned by GetTeamMembersResponse.ValidateAll() if the designated
+// constraints aren't met.
+type GetTeamMembersResponseMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m GetTeamMembersResponseMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m GetTeamMembersResponseMultiError) AllErrors() []error { return m }
+
+// GetTeamMembersResponseValidationError is the validation error returned by
+// GetTeamMembersResponse.Validate if the designated constraints aren't met.
+type GetTeamMembersResponseValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e GetTeamMembersResponseValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e GetTeamMembersResponseValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e GetTeamMembersResponseValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e GetTeamMembersResponseValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e GetTeamMembersResponseValidationError) ErrorName() string {
+	return "GetTeamMembersResponseValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e GetTeamMembersResponseValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sGetTeamMembersResponse.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = GetTeamMembersResponseValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = GetTeamMembersResponseValidationError{}

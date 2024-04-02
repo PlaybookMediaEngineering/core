@@ -1922,3 +1922,16 @@ message RemoveTeamMemberResponse {
   // The updated team profile object containing details about the team.
   TeamProfile team = 1;
 }
+
+message GetTeamMembersRequest {
+  // The unique identifier of the team whose members are being requested. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message GetTeamMembersResponse {
+  // A list of team member profile objects containing details about the team members.
+  repeated UserProfile members = 1;
+}

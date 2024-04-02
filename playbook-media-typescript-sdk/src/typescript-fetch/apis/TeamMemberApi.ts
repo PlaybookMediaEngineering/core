@@ -18,6 +18,7 @@ import type {
   AddTeamMemberBody,
   AddTeamMemberResponse,
   GetTeamMemberResponse,
+  GetTeamMembersResponse,
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
   RemoveTeamMemberResponse,
@@ -31,6 +32,8 @@ import {
     AddTeamMemberResponseToJSON,
     GetTeamMemberResponseFromJSON,
     GetTeamMemberResponseToJSON,
+    GetTeamMembersResponseFromJSON,
+    GetTeamMembersResponseToJSON,
     InternalErrorMessageResponseFromJSON,
     InternalErrorMessageResponseToJSON,
     PathUnknownErrorMessageResponseFromJSON,
@@ -51,6 +54,10 @@ export interface AddTeamMemberRequest {
 export interface GetTeamMemberRequest {
     teamId: string;
     memberUserId: string;
+}
+
+export interface GetTeamMembersRequest {
+    teamId: string;
 }
 
 export interface RemoveTeamMemberRequest {
@@ -136,6 +143,38 @@ export class TeamMemberApi extends runtime.BaseAPI {
      */
     async getTeamMember(requestParameters: GetTeamMemberRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTeamMemberResponse> {
         const response = await this.getTeamMemberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * This endpoint fetches all members of a team.
+     * Get all team members
+     */
+    async getTeamMembersRaw(requestParameters: GetTeamMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTeamMembersResponse>> {
+        if (requestParameters.teamId === null || requestParameters.teamId === undefined) {
+            throw new runtime.RequiredError('teamId','Required parameter requestParameters.teamId was null or undefined when calling getTeamMembers.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/api/v1/teams/{teamId}/members`.replace(`{${"teamId"}}`, encodeURIComponent(String(requestParameters.teamId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTeamMembersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint fetches all members of a team.
+     * Get all team members
+     */
+    async getTeamMembers(requestParameters: GetTeamMembersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTeamMembersResponse> {
+        const response = await this.getTeamMembersRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

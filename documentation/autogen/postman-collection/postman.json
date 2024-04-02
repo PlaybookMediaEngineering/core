@@ -1104,6 +1104,57 @@
 	            "name": "team-member",
 	            "item": [
 	                        {
+    "name": "/api/v1/teams/:teamId/members",
+                "description": "This endpoint fetches all members of a team.",
+                 "item": [
+                            {
+                                "name": "Get all team members",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/teams/:teamId/members",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "teams",
+                                            ":teamId",
+                                            "members"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team whose members are being requested. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint fetches all members of a team."
+                                }
+                            }
+                            ]
+                        },
+	                        {
     "name": "/api/v1/teams/:teamId/members/:memberUserId",
                 "description": "This endpoint fetches details of a specific team member.",
                  "item": [

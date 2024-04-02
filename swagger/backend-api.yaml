@@ -691,6 +691,53 @@ paths:
               - ACCOUNT_TYPE_COMMUNITY
       tags:
         - community profile
+  "/api/v1/teams/{teamId}/members":
+    get:
+      summary: Get all team members
+      description: This endpoint fetches all members of a team.
+      operationId: GetTeamMembers
+      responses:
+        "200":
+          description: A successful response with the team members.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetTeamMembersResponse"
+        "400":
+          description: Request failed due to invalid input.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationErrorMessageResponse"
+        "404":
+          description: Request failed due to incorrect path.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PathUnknownErrorMessageResponse"
+        "500":
+          description: Request failed due to internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InternalErrorMessageResponse"
+        default:
+          description: An unexpected error response.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Status"
+      parameters:
+        - name: teamId
+          description: The unique identifier of the team whose members are being
+            requested. This field is required.
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uint64
+      tags:
+        - team-member
   "/api/v1/teams/{teamId}/members/{memberUserId}":
     get:
       summary: Get details of a team member
@@ -6379,6 +6426,15 @@ components:
       properties:
         member:
           $ref: "#/components/schemas/UserProfile"
+    GetTeamMembersResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: "#/components/schemas/UserProfile"
+          description: A list of team member profile objects containing details about the
+            team members.
     GetTeamResponse:
       type: object
       properties:

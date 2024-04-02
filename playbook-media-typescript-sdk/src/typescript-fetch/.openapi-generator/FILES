@@ -108,6 +108,7 @@ models/GetPostsByTopicResponse.ts
 models/GetPostsResponse.ts
 models/GetPublicationResponse.ts
 models/GetTeamMemberResponse.ts
+models/GetTeamMembersResponse.ts
 models/GetTeamResponse.ts
 models/GetTopicsOfCommunitiesUserFollowsResponse.ts
 models/GetUserFeedResponse.ts

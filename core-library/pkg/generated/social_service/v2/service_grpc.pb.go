@@ -102,6 +102,7 @@ const (
 	SocialService_AddTeamMember_FullMethodName                     = "/social_service.v2.SocialService/AddTeamMember"
 	SocialService_GetTeamMember_FullMethodName                     = "/social_service.v2.SocialService/GetTeamMember"
 	SocialService_RemoveTeamMember_FullMethodName                  = "/social_service.v2.SocialService/RemoveTeamMember"
+	SocialService_GetTeamMembers_FullMethodName                    = "/social_service.v2.SocialService/GetTeamMembers"
 )
 
 // SocialServiceClient is the client API for SocialService service.
@@ -221,6 +222,7 @@ type SocialServiceClient interface {
 	GetTeamMember(ctx context.Context, in *GetTeamMemberRequest, opts ...grpc.CallOption) (*GetTeamMemberResponse, error)
 	// Remove a member from a Team
 	RemoveTeamMember(ctx context.Context, in *RemoveTeamMemberRequest, opts ...grpc.CallOption) (*RemoveTeamMemberResponse, error)
+	GetTeamMembers(ctx context.Context, in *GetTeamMembersRequest, opts ...grpc.CallOption) (*GetTeamMembersResponse, error)
 }
 
 type socialServiceClient struct {
@@ -978,6 +980,15 @@ func (c *socialServiceClient) RemoveTeamMember(ctx context.Context, in *RemoveTe
 	return out, nil
 }
 
+func (c *socialServiceClient) GetTeamMembers(ctx context.Context, in *GetTeamMembersRequest, opts ...grpc.CallOption) (*GetTeamMembersResponse, error) {
+	out := new(GetTeamMembersResponse)
+	err := c.cc.Invoke(ctx, SocialService_GetTeamMembers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // SocialServiceServer is the server API for SocialService service.
 // All implementations must embed UnimplementedSocialServiceServer
 // for forward compatibility
@@ -1095,6 +1106,7 @@ type SocialServiceServer interface {
 	GetTeamMember(context.Context, *GetTeamMemberRequest) (*GetTeamMemberResponse, error)
 	// Remove a member from a Team
 	RemoveTeamMember(context.Context, *RemoveTeamMemberRequest) (*RemoveTeamMemberResponse, error)
+	GetTeamMembers(context.Context, *GetTeamMembersRequest) (*GetTeamMembersResponse, error)
 	mustEmbedUnimplementedSocialServiceServer()
 }
 
@@ -1350,6 +1362,9 @@ func (UnimplementedSocialServiceServer) GetTeamMember(context.Context, *GetTeamM
 }
 func (UnimplementedSocialServiceServer) RemoveTeamMember(context.Context, *RemoveTeamMemberRequest) (*RemoveTeamMemberResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveTeamMember not implemented")
+}
+func (UnimplementedSocialServiceServer) GetTeamMembers(context.Context, *GetTeamMembersRequest) (*GetTeamMembersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTeamMembers not implemented")
 }
 func (UnimplementedSocialServiceServer) mustEmbedUnimplementedSocialServiceServer() {}
 
@@ -2858,6 +2873,24 @@ func _SocialService_RemoveTeamMember_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _SocialService_GetTeamMembers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTeamMembersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(SocialServiceServer).GetTeamMembers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: SocialService_GetTeamMembers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(SocialServiceServer).GetTeamMembers(ctx, req.(*GetTeamMembersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // SocialService_ServiceDesc is the grpc.ServiceDesc for SocialService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -3196,6 +3229,10 @@ var SocialService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RemoveTeamMember",
 			Handler:    _SocialService_RemoveTeamMember_Handler,
+		},
+		{
+			MethodName: "GetTeamMembers",
+			Handler:    _SocialService_GetTeamMembers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
