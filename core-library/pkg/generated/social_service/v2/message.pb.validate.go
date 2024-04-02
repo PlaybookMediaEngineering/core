@@ -1996,17 +1996,6 @@ func (m *TeamProfile) validate(all bool) error {
 
 	}
 
-	if len(m.GetPersonalFeedTimelineId()) < 1 {
-		err := TeamProfileValidationError{
-			field:  "PersonalFeedTimelineId",
-			reason: "value length must be at least 1 bytes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	if len(errors) > 0 {
 		return TeamProfileMultiError(errors)
 	}

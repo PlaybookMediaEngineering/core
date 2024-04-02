@@ -135,199 +135,14 @@
   "output_encoding": "json",
   "endpoints": [
     {
-      "endpoint": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/bookmark/{postId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/bookmark/{postId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/publish",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/publish",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/bookmark",
+      "endpoint": "/api/v1/users/team/{adminUserId}/{teamId}",
       "method": "DELETE",
       "output_encoding": "json",
       "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
+      "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/bookmark",
+          "url_pattern": "/api/v1/users/team/{adminUserId}/{teamId}",
           "encoding": "json",
           "method": "DELETE",
           "host": [
@@ -381,14 +196,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+      "endpoint": "/api/v1/users/{userId}/poll/{pollId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+          "url_pattern": "/api/v1/users/{userId}/poll/{pollId}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -442,199 +257,16 @@
       }
     },
     {
-      "endpoint": "/api/v1/health",
+      "endpoint": "/api/v1/users/{userId}/polls",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/health",
+          "url_pattern": "/api/v1/users/{userId}/polls",
           "encoding": "json",
           "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/note",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
-          "encoding": "json",
-          "method": "PUT",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -747,6 +379,250 @@
       }
     },
     {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/follow-requests/{followRecordId}/accept",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/follow-requests/{followRecordId}/accept",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/bookmarks/{userId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/bookmarks/{userId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
       "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}",
       "method": "DELETE",
       "output_encoding": "json",
@@ -871,14 +747,504 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/publication",
+      "endpoint": "/api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/user/{userId}/canny/email/{email}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/user/{userId}/canny/email/{email}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}/editor/{editorUserId}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/report",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/publication",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/report",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/topics",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "limit"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/topics",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/teams/{teamId}/members",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/teams/{teamId}/members",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/bookmark/{postId}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/bookmark/{postId}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1118,17 +1484,81 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post",
+      "endpoint": "/api/v1/users/{userId}/communities-followed",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "limit"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/communities-followed",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [
         "communityProfileId",
-        "accountType"
+        "accountType",
+        "postType"
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1182,7 +1612,7 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
@@ -1191,7 +1621,7 @@
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1245,14 +1675,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/teams/{teamId}/members",
+      "endpoint": "/api/v1/community-profiles/{userId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/teams/{teamId}/members",
+          "url_pattern": "/api/v1/community-profiles/{userId}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1306,14 +1736,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/teams/{teamId}/members/{memberUserId}",
+      "endpoint": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/teams/{teamId}/members/{memberUserId}",
+          "url_pattern": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1367,14 +1797,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
+      "endpoint": "/api/v1/users/team/{adminUserId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
+          "url_pattern": "/api/v1/users/team/{adminUserId}",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -1428,197 +1858,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+      "endpoint": "/api/v1/users/{userId}/follow/pending-requests",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/polls",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/polls",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/post/{postId}/type/{postType}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/post/{postId}/type/{postType}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/discover/limit/{limit}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/discover/limit/{limit}",
+          "url_pattern": "/api/v1/users/{userId}/follow/pending-requests",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1735,6 +1982,378 @@
       }
     },
     {
+      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/bookmark",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/bookmark",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/posts",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/posts",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
       "endpoint": "/api/v1/users/{userId}/publication/{publicationId}",
       "method": "GET",
       "output_encoding": "json",
@@ -1796,18 +2415,16 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/team/{adminOrMemberUserId}/{teamId}",
+      "endpoint": "/api/v1/posts/blog/tag/{tag}",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [
-        "includeMembers",
-        "includePublications",
-        "includeAuditLogs"
+        "postType"
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/team/{adminOrMemberUserId}/{teamId}",
+          "url_pattern": "/api/v1/posts/blog/tag/{tag}",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -1922,67 +2539,6 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/team/{adminUserId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/team/{adminUserId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
       "endpoint": "/api/v1/users/{userId}/poll",
       "method": "POST",
       "output_encoding": "json",
@@ -2044,16 +2600,78 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
+      "endpoint": "/api/v1/users/{userId}/post",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [
-        "postType"
+        "communityProfileId",
+        "accountType"
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
+          "url_pattern": "/api/v1/users/{userId}/post",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/note",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/note",
           "encoding": "json",
           "method": "POST",
           "host": [
@@ -2233,7 +2851,562 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/topics",
+      "endpoint": "/api/v1/post/{postId}/comment/{commentId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/post/{postId}/comment/{commentId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/user/{userId}/category/{category}/posts/{postType}/limit/{limit}/offset/{offset}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/discover/limit/{limit}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/discover/limit/{limit}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/ready",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/ready",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/publish",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/publish",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/timeline",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "feedType",
+        "accountType",
+        "nextPageToken"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/timeline",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/teams/{teamId}/members",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/teams/{teamId}/members",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/page-size/{pageSize}/page-number/{pageNumber}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/followers",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
@@ -2242,9 +3415,627 @@
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/topics",
+          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/followers",
           "encoding": "json",
           "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/quality",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/quality",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "postType"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/quality",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/team/{adminOrMemberUserId}/{teamId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "includeMembers",
+        "includePublications",
+        "includeAuditLogs"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/team/{adminOrMemberUserId}/{teamId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}/report",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}/report",
+          "encoding": "json",
+          "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+      "method": "POST",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
+          "encoding": "json",
+          "method": "POST",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -2357,14 +4148,262 @@
       }
     },
     {
-      "endpoint": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+      "endpoint": "/api/v1/community-profiles/{communityProfileId}/timeline",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [
+        "feedType",
+        "accountType",
+        "nextPageToken"
+      ],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/timeline",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/teams/{teamId}/members/{memberUserId}",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/social/community-profiles/{communityId}/requestor/{requestorProfileId}/profile-type/{requestorProfileType}",
+          "url_pattern": "/api/v1/teams/{teamId}/members/{memberUserId}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/health",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/health",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -2540,321 +4579,6 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/account-type/{accountType}/reaction/{reaction}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/quality",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/quality",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/timeline",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "feedType",
-        "accountType",
-        "nextPageToken"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/timeline",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/follow-requests/{followRecordId}/accept",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/follow-requests/{followRecordId}/accept",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}/post/{postId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
       "endpoint": "/api/v1/users/{userId}/post/draft",
       "method": "POST",
       "output_encoding": "json",
@@ -2865,252 +4589,6 @@
           "url_pattern": "/api/v1/users/{userId}/post/draft",
           "encoding": "json",
           "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/post/{postId}/comment/{commentId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/post/{postId}/comment/{commentId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/user/{userId}/canny/email/{email}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/user/{userId}/canny/email/{email}",
-          "encoding": "json",
-          "method": "GET",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -3223,7 +4701,7 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
+      "endpoint": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
@@ -3232,1117 +4710,9 @@
       ],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/account-type/{accountType}/reaction/{reaction}",
+          "url_pattern": "/api/v1/users/{userId}/post/{postId}/account-type/{accountType}/reaction/{reaction}",
           "encoding": "json",
           "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/type/{postType}/report",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/type/{postType}/report",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/community-profiles/{communityProfileId}/timeline",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "feedType",
-        "accountType",
-        "nextPageToken"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/timeline",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/community/{communityProfileId}/topic/{topicName}/posts",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/team/{adminUserId}/{teamId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/team/{adminUserId}/{teamId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/community-profiles/{userId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/community-profiles/{userId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/admin/{adminUserId}/publication/{publicationId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/bookmarks/{userId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/bookmarks/{userId}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/communities-followed",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/communities-followed",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/poll/{pollId}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/poll/{pollId}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "communityProfileId",
-        "accountType",
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/teams/{teamId}/members",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/teams/{teamId}/members",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/ready",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/ready",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}",
-      "method": "PUT",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/teams/{adminOrMemberUserId}/team/{teamId}",
-          "encoding": "json",
-          "method": "PUT",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/follow/pending-requests",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/follow/pending-requests",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
-          "encoding": "json",
-          "method": "GET",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -4457,75 +4827,16 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/reply/{replyId}/report",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
       "method": "GET",
       "output_encoding": "json",
       "timeout": "10000ms",
-      "input_query_strings": [],
+      "input_query_strings": [
+        "limit"
+      ],
       "backend": [
         {
-          "url_pattern": "/api/v1/community-profiles/{communityProfileId}/posts/blog",
+          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
           "encoding": "json",
           "method": "GET",
           "host": [
@@ -4579,16 +4890,199 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/report",
+      "endpoint": "/api/v1/post/{postId}/type/{postType}",
+      "method": "PUT",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/post/{postId}/type/{postType}",
+          "encoding": "json",
+          "method": "PUT",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/post/{postId}/comment/{commentId}/report",
+          "url_pattern": "/api/v1/users/editor/{editorUserId}/publication/{publicationId}",
           "encoding": "json",
           "method": "POST",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
+      "method": "DELETE",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
+          "encoding": "json",
+          "method": "DELETE",
+          "host": [
+            "http://social-service.platform.svc.cluster.local:9896"
+          ],
+          "disable_host_sanitize": false,
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "message"
+            },
+            "modifier/martian": {
+              "fifo.Group": {
+                "aggregateErrors": true,
+                "modifiers": [
+                  {
+                    "header.Append": {
+                      "name": "X-PLATFORM",
+                      "scope": [
+                        "request",
+                        "response"
+                      ],
+                      "value": "playbook-media"
+                    }
+                  }
+                ],
+                "scope": [
+                  "request",
+                  "response"
+                ]
+              }
+            },
+            "qos/circuit-breaker": {
+              "interval": 30,
+              "log_status_change": true,
+              "max_errors": 5,
+              "name": "playbook-media-circuit-breaker",
+              "timeout": 10
+            }
+          }
+        }
+      ],
+      "input_headers": [
+        "Content-Type"
+      ],
+      "extra_config": {
+        "qos/ratelimit/router": {
+          "@comment": "1 million requests every second",
+          "every": "1m",
+          "max_rate": 6000000
+        }
+      }
+    },
+    {
+      "endpoint": "/api/v1/users/{userId}/poll/{postId}",
+      "method": "GET",
+      "output_encoding": "json",
+      "timeout": "10000ms",
+      "input_query_strings": [],
+      "backend": [
+        {
+          "url_pattern": "/api/v1/users/{userId}/poll/{postId}",
+          "encoding": "json",
+          "method": "GET",
           "host": [
             "http://social-service.platform.svc.cluster.local:9896"
           ],
@@ -4762,508 +5256,14 @@
       }
     },
     {
-      "endpoint": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
+      "endpoint": "/api/v1/users/{userId}/publication",
       "method": "POST",
       "output_encoding": "json",
       "timeout": "10000ms",
       "input_query_strings": [],
       "backend": [
         {
-          "url_pattern": "/api/v1/users/{userId}/community/{communityProfileId}/topic",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/posts",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/posts",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/followers",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/followers",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/posts/blog/tag/{tag}",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "postType"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/posts/blog/tag/{tag}",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
-      "method": "GET",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [
-        "limit"
-      ],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/profile/{profileId}/account-type/{accountType}/following",
-          "encoding": "json",
-          "method": "GET",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
-      "method": "DELETE",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
-          "encoding": "json",
-          "method": "DELETE",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/publication/{publicationId}/bookmark",
-          "encoding": "json",
-          "method": "POST",
-          "host": [
-            "http://social-service.platform.svc.cluster.local:9896"
-          ],
-          "disable_host_sanitize": false,
-          "extra_config": {
-            "backend/http": {
-              "return_error_details": "message"
-            },
-            "modifier/martian": {
-              "fifo.Group": {
-                "aggregateErrors": true,
-                "modifiers": [
-                  {
-                    "header.Append": {
-                      "name": "X-PLATFORM",
-                      "scope": [
-                        "request",
-                        "response"
-                      ],
-                      "value": "playbook-media"
-                    }
-                  }
-                ],
-                "scope": [
-                  "request",
-                  "response"
-                ]
-              }
-            },
-            "qos/circuit-breaker": {
-              "interval": 30,
-              "log_status_change": true,
-              "max_errors": 5,
-              "name": "playbook-media-circuit-breaker",
-              "timeout": 10
-            }
-          }
-        }
-      ],
-      "input_headers": [
-        "Content-Type"
-      ],
-      "extra_config": {
-        "qos/ratelimit/router": {
-          "@comment": "1 million requests every second",
-          "every": "1m",
-          "max_rate": 6000000
-        }
-      }
-    },
-    {
-      "endpoint": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
-      "method": "POST",
-      "output_encoding": "json",
-      "timeout": "10000ms",
-      "input_query_strings": [],
-      "backend": [
-        {
-          "url_pattern": "/api/v1/users/{userId}/post/share/{parentPostId}/type/{parentPostType}",
+          "url_pattern": "/api/v1/users/{userId}/publication",
           "encoding": "json",
           "method": "POST",
           "host": [

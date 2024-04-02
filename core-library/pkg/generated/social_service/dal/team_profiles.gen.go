@@ -33,7 +33,6 @@ func newTeamProfileORM(db *gorm.DB, opts ...gen.DOOption) teamProfileORM {
 	_teamProfileORM.Description = field.NewString(tableName, "description")
 	_teamProfileORM.FocusAreas = field.NewField(tableName, "focus_areas")
 	_teamProfileORM.Id = field.NewUint64(tableName, "id")
-	_teamProfileORM.PersonalFeedTimelineId = field.NewString(tableName, "personal_feed_timeline_id")
 	_teamProfileORM.Tags = field.NewField(tableName, "tags")
 	_teamProfileORM.TeamName = field.NewString(tableName, "team_name")
 	_teamProfileORM.Admin = teamProfileORMHasOneAdmin{
@@ -119,15 +118,14 @@ func newTeamProfileORM(db *gorm.DB, opts ...gen.DOOption) teamProfileORM {
 type teamProfileORM struct {
 	teamProfileORMDo
 
-	ALL                    field.Asterisk
-	CreatedAt              field.String
-	Description            field.String
-	FocusAreas             field.Field
-	Id                     field.Uint64
-	PersonalFeedTimelineId field.String
-	Tags                   field.Field
-	TeamName               field.String
-	Admin                  teamProfileORMHasOneAdmin
+	ALL         field.Asterisk
+	CreatedAt   field.String
+	Description field.String
+	FocusAreas  field.Field
+	Id          field.Uint64
+	Tags        field.Field
+	TeamName    field.String
+	Admin       teamProfileORMHasOneAdmin
 
 	AuditLogs teamProfileORMHasManyAuditLogs
 
@@ -156,7 +154,6 @@ func (t *teamProfileORM) updateTableName(table string) *teamProfileORM {
 	t.Description = field.NewString(table, "description")
 	t.FocusAreas = field.NewField(table, "focus_areas")
 	t.Id = field.NewUint64(table, "id")
-	t.PersonalFeedTimelineId = field.NewString(table, "personal_feed_timeline_id")
 	t.Tags = field.NewField(table, "tags")
 	t.TeamName = field.NewString(table, "team_name")
 
@@ -175,12 +172,11 @@ func (t *teamProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, bool
 }
 
 func (t *teamProfileORM) fillFieldMap() {
-	t.fieldMap = make(map[string]field.Expr, 12)
+	t.fieldMap = make(map[string]field.Expr, 11)
 	t.fieldMap["created_at"] = t.CreatedAt
 	t.fieldMap["description"] = t.Description
 	t.fieldMap["focus_areas"] = t.FocusAreas
 	t.fieldMap["id"] = t.Id
-	t.fieldMap["personal_feed_timeline_id"] = t.PersonalFeedTimelineId
 	t.fieldMap["tags"] = t.Tags
 	t.fieldMap["team_name"] = t.TeamName
 
