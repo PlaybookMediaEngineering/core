@@ -17,12 +17,15 @@ import (
 
 var (
 	Q                     = new(Query)
+	AuditLogORM           *auditLogORM
 	BlockedORM            *blockedORM
 	BookmarkORM           *bookmarkORM
 	CommunityProfileORM   *communityProfileORM
 	FollowerORM           *followerORM
 	PublicationORM        *publicationORM
+	RoleORM               *roleORM
 	StripeSubscriptionORM *stripeSubscriptionORM
+	TeamProfileORM        *teamProfileORM
 	TopicORM              *topicORM
 	UserProfileORM        *userProfileORM
 	UserTagsORM           *userTagsORM
@@ -31,12 +34,15 @@ var (
 
 func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 	*Q = *Use(db, opts...)
+	AuditLogORM = &Q.AuditLogORM
 	BlockedORM = &Q.BlockedORM
 	BookmarkORM = &Q.BookmarkORM
 	CommunityProfileORM = &Q.CommunityProfileORM
 	FollowerORM = &Q.FollowerORM
 	PublicationORM = &Q.PublicationORM
+	RoleORM = &Q.RoleORM
 	StripeSubscriptionORM = &Q.StripeSubscriptionORM
+	TeamProfileORM = &Q.TeamProfileORM
 	TopicORM = &Q.TopicORM
 	UserProfileORM = &Q.UserProfileORM
 	UserTagsORM = &Q.UserTagsORM
@@ -46,12 +52,15 @@ func SetDefault(db *gorm.DB, opts ...gen.DOOption) {
 func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 	return &Query{
 		db:                    db,
+		AuditLogORM:           newAuditLogORM(db, opts...),
 		BlockedORM:            newBlockedORM(db, opts...),
 		BookmarkORM:           newBookmarkORM(db, opts...),
 		CommunityProfileORM:   newCommunityProfileORM(db, opts...),
 		FollowerORM:           newFollowerORM(db, opts...),
 		PublicationORM:        newPublicationORM(db, opts...),
+		RoleORM:               newRoleORM(db, opts...),
 		StripeSubscriptionORM: newStripeSubscriptionORM(db, opts...),
+		TeamProfileORM:        newTeamProfileORM(db, opts...),
 		TopicORM:              newTopicORM(db, opts...),
 		UserProfileORM:        newUserProfileORM(db, opts...),
 		UserTagsORM:           newUserTagsORM(db, opts...),
@@ -62,12 +71,15 @@ func Use(db *gorm.DB, opts ...gen.DOOption) *Query {
 type Query struct {
 	db *gorm.DB
 
+	AuditLogORM           auditLogORM
 	BlockedORM            blockedORM
 	BookmarkORM           bookmarkORM
 	CommunityProfileORM   communityProfileORM
 	FollowerORM           followerORM
 	PublicationORM        publicationORM
+	RoleORM               roleORM
 	StripeSubscriptionORM stripeSubscriptionORM
+	TeamProfileORM        teamProfileORM
 	TopicORM              topicORM
 	UserProfileORM        userProfileORM
 	UserTagsORM           userTagsORM
@@ -79,12 +91,15 @@ func (q *Query) Available() bool { return q.db != nil }
 func (q *Query) clone(db *gorm.DB) *Query {
 	return &Query{
 		db:                    db,
+		AuditLogORM:           q.AuditLogORM.clone(db),
 		BlockedORM:            q.BlockedORM.clone(db),
 		BookmarkORM:           q.BookmarkORM.clone(db),
 		CommunityProfileORM:   q.CommunityProfileORM.clone(db),
 		FollowerORM:           q.FollowerORM.clone(db),
 		PublicationORM:        q.PublicationORM.clone(db),
+		RoleORM:               q.RoleORM.clone(db),
 		StripeSubscriptionORM: q.StripeSubscriptionORM.clone(db),
+		TeamProfileORM:        q.TeamProfileORM.clone(db),
 		TopicORM:              q.TopicORM.clone(db),
 		UserProfileORM:        q.UserProfileORM.clone(db),
 		UserTagsORM:           q.UserTagsORM.clone(db),
@@ -103,12 +118,15 @@ func (q *Query) WriteDB() *Query {
 func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 	return &Query{
 		db:                    db,
+		AuditLogORM:           q.AuditLogORM.replaceDB(db),
 		BlockedORM:            q.BlockedORM.replaceDB(db),
 		BookmarkORM:           q.BookmarkORM.replaceDB(db),
 		CommunityProfileORM:   q.CommunityProfileORM.replaceDB(db),
 		FollowerORM:           q.FollowerORM.replaceDB(db),
 		PublicationORM:        q.PublicationORM.replaceDB(db),
+		RoleORM:               q.RoleORM.replaceDB(db),
 		StripeSubscriptionORM: q.StripeSubscriptionORM.replaceDB(db),
+		TeamProfileORM:        q.TeamProfileORM.replaceDB(db),
 		TopicORM:              q.TopicORM.replaceDB(db),
 		UserProfileORM:        q.UserProfileORM.replaceDB(db),
 		UserTagsORM:           q.UserTagsORM.replaceDB(db),
@@ -117,12 +135,15 @@ func (q *Query) ReplaceDB(db *gorm.DB) *Query {
 }
 
 type queryCtx struct {
+	AuditLogORM           IAuditLogORMDo
 	BlockedORM            IBlockedORMDo
 	BookmarkORM           IBookmarkORMDo
 	CommunityProfileORM   ICommunityProfileORMDo
 	FollowerORM           IFollowerORMDo
 	PublicationORM        IPublicationORMDo
+	RoleORM               IRoleORMDo
 	StripeSubscriptionORM IStripeSubscriptionORMDo
+	TeamProfileORM        ITeamProfileORMDo
 	TopicORM              ITopicORMDo
 	UserProfileORM        IUserProfileORMDo
 	UserTagsORM           IUserTagsORMDo
@@ -131,12 +152,15 @@ type queryCtx struct {
 
 func (q *Query) WithContext(ctx context.Context) *queryCtx {
 	return &queryCtx{
+		AuditLogORM:           q.AuditLogORM.WithContext(ctx),
 		BlockedORM:            q.BlockedORM.WithContext(ctx),
 		BookmarkORM:           q.BookmarkORM.WithContext(ctx),
 		CommunityProfileORM:   q.CommunityProfileORM.WithContext(ctx),
 		FollowerORM:           q.FollowerORM.WithContext(ctx),
 		PublicationORM:        q.PublicationORM.WithContext(ctx),
+		RoleORM:               q.RoleORM.WithContext(ctx),
 		StripeSubscriptionORM: q.StripeSubscriptionORM.WithContext(ctx),
+		TeamProfileORM:        q.TeamProfileORM.WithContext(ctx),
 		TopicORM:              q.TopicORM.WithContext(ctx),
 		UserProfileORM:        q.UserProfileORM.WithContext(ctx),
 		UserTagsORM:           q.UserTagsORM.WithContext(ctx),
