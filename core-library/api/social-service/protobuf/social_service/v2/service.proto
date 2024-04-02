@@ -1706,24 +1706,4 @@ service SocialService {
       }
     };
   }
-
-  rpc UpdateTeamMember(UpdateTeamMemberRequest) returns (UpdateTeamMemberResponse) {
-    option (google.api.http) = {
-      put: "/api/v1/teams/{team_id}/members/{member_user_id}"
-      body: "role"
-    };
-    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
-      summary: "Update a team member"
-      tags: ["team-member"]
-      operation_id: "UpdateTeamMember"
-      description: "This endpoint updates a team member."
-      responses: {
-        key: "200"
-        value: {
-          description: "A successful response with the updated team member details."
-          schema: {json_schema: {ref: ".social_service.v2.UpdateTeamMemberResponse"}}
-        }
-      }
-    };
-  }
 }

@@ -1922,31 +1922,3 @@ message RemoveTeamMemberResponse {
   // The updated team profile object containing details about the team.
   TeamProfile team = 1;
 }
-
-message UpdateTeamMemberRoleRequest {
-  // The user ID of the team administrator. This field is required.
-  string admin_user_id = 1 [
-    (validate.rules).string.min_len = 1,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // The unique identifier of the team to which the member belongs. This field is required.
-  uint64 team_id = 2 [
-    (validate.rules).uint64.gt = 0,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // The user ID of the member whose role is being updated. This field is required.
-  string member_user_id = 3 [
-    (validate.rules).string.min_len = 1,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // The new role assigned to the member. This field is required.
-  Role role = 4;
-}
-
-message UpdateTeamMemberRoleResponse {
-  // The updated team profile object containing details about the team.
-  TeamProfile team = 1;
-}
