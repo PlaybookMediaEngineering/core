@@ -9649,7 +9649,7 @@ type GetTeamResponse struct {
 	unknownFields protoimpl.UnknownFields
 
 	// The team profile object containing details about the team.
-	Team *Team `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	Team *TeamProfile `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
 }
 
 func (x *GetTeamResponse) Reset() {
@@ -9684,14 +9684,14 @@ func (*GetTeamResponse) Descriptor() ([]byte, []int) {
 	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{161}
 }
 
-func (x *GetTeamResponse) GetTeam() *Team {
+func (x *GetTeamResponse) GetTeam() *TeamProfile {
 	if x != nil {
 		return x.Team
 	}
 	return nil
 }
 
-type UpdateTeamRequest struct {
+type EditTeamRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -9700,17 +9700,12 @@ type UpdateTeamRequest struct {
 	AdminOrMemberUserId string `protobuf:"bytes,1,opt,name=admin_or_member_user_id,json=adminOrMemberUserId,proto3" json:"admin_or_member_user_id,omitempty"`
 	// The unique identifier of the team being updated. This field is required.
 	TeamId uint64 `protobuf:"varint,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
-	// The name of the team. This field is required.
-	TeamName string `protobuf:"bytes,3,opt,name=team_name,json=teamName,proto3" json:"team_name,omitempty"`
-	// A brief description of the team, outlining its purpose and goals. This field is required.
-	Description string `protobuf:"bytes,4,opt,name=description,proto3" json:"description,omitempty"`
-	// A list of tags associated with the team, helping in categorization or searching.
-	// At least three tags are required.
-	Tags []string `protobuf:"bytes,5,rep,name=tags,proto3" json:"tags,omitempty"`
+	// The team to update
+	Team *TeamProfile `protobuf:"bytes,3,opt,name=team,proto3" json:"team,omitempty"`
 }
 
-func (x *UpdateTeamRequest) Reset() {
-	*x = UpdateTeamRequest{}
+func (x *EditTeamRequest) Reset() {
+	*x = EditTeamRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_social_service_v2_request_response_proto_msgTypes[162]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -9718,13 +9713,13 @@ func (x *UpdateTeamRequest) Reset() {
 	}
 }
 
-func (x *UpdateTeamRequest) String() string {
+func (x *EditTeamRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateTeamRequest) ProtoMessage() {}
+func (*EditTeamRequest) ProtoMessage() {}
 
-func (x *UpdateTeamRequest) ProtoReflect() protoreflect.Message {
+func (x *EditTeamRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_social_service_v2_request_response_proto_msgTypes[162]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -9736,57 +9731,43 @@ func (x *UpdateTeamRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateTeamRequest.ProtoReflect.Descriptor instead.
-func (*UpdateTeamRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use EditTeamRequest.ProtoReflect.Descriptor instead.
+func (*EditTeamRequest) Descriptor() ([]byte, []int) {
 	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{162}
 }
 
-func (x *UpdateTeamRequest) GetAdminOrMemberUserId() string {
+func (x *EditTeamRequest) GetAdminOrMemberUserId() string {
 	if x != nil {
 		return x.AdminOrMemberUserId
 	}
 	return ""
 }
 
-func (x *UpdateTeamRequest) GetTeamId() uint64 {
+func (x *EditTeamRequest) GetTeamId() uint64 {
 	if x != nil {
 		return x.TeamId
 	}
 	return 0
 }
 
-func (x *UpdateTeamRequest) GetTeamName() string {
+func (x *EditTeamRequest) GetTeam() *TeamProfile {
 	if x != nil {
-		return x.TeamName
-	}
-	return ""
-}
-
-func (x *UpdateTeamRequest) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
-func (x *UpdateTeamRequest) GetTags() []string {
-	if x != nil {
-		return x.Tags
+		return x.Team
 	}
 	return nil
 }
 
-type UpdateTeamResponse struct {
+type EditTeamResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	// The updated team profile object containing details about the team.
-	Team *Team `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+	Team *TeamProfile `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
 }
 
-func (x *UpdateTeamResponse) Reset() {
-	*x = UpdateTeamResponse{}
+func (x *EditTeamResponse) Reset() {
+	*x = EditTeamResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_social_service_v2_request_response_proto_msgTypes[163]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -9794,13 +9775,13 @@ func (x *UpdateTeamResponse) Reset() {
 	}
 }
 
-func (x *UpdateTeamResponse) String() string {
+func (x *EditTeamResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*UpdateTeamResponse) ProtoMessage() {}
+func (*EditTeamResponse) ProtoMessage() {}
 
-func (x *UpdateTeamResponse) ProtoReflect() protoreflect.Message {
+func (x *EditTeamResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_social_service_v2_request_response_proto_msgTypes[163]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -9812,12 +9793,12 @@ func (x *UpdateTeamResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use UpdateTeamResponse.ProtoReflect.Descriptor instead.
-func (*UpdateTeamResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use EditTeamResponse.ProtoReflect.Descriptor instead.
+func (*EditTeamResponse) Descriptor() ([]byte, []int) {
 	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{163}
 }
 
-func (x *UpdateTeamResponse) GetTeam() *Team {
+func (x *EditTeamResponse) GetTeam() *TeamProfile {
 	if x != nil {
 		return x.Team
 	}
@@ -9927,6 +9908,348 @@ func (x *DeleteTeamResponse) GetSuccess() bool {
 		return x.Success
 	}
 	return false
+}
+
+type AddTeamMemberRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The user ID of the team administrator. This field is required.
+	AdminUserId string `protobuf:"bytes,1,opt,name=admin_user_id,json=adminUserId,proto3" json:"admin_user_id,omitempty"`
+	// The unique identifier of the team to which the member is being added. This field is required.
+	TeamId uint64 `protobuf:"varint,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	// The user ID of the member being added to the team. This field is required.
+	MemberUserId string `protobuf:"bytes,3,opt,name=member_user_id,json=memberUserId,proto3" json:"member_user_id,omitempty"`
+	// The role assigned to the member being added to the team. This field is required.
+	MemberPermissionType PermissionType `protobuf:"varint,5,opt,name=member_permission_type,json=memberPermissionType,proto3,enum=social_service.v2.PermissionType" json:"member_permission_type,omitempty"`
+}
+
+func (x *AddTeamMemberRequest) Reset() {
+	*x = AddTeamMemberRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[166]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddTeamMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTeamMemberRequest) ProtoMessage() {}
+
+func (x *AddTeamMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[166]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTeamMemberRequest.ProtoReflect.Descriptor instead.
+func (*AddTeamMemberRequest) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{166}
+}
+
+func (x *AddTeamMemberRequest) GetAdminUserId() string {
+	if x != nil {
+		return x.AdminUserId
+	}
+	return ""
+}
+
+func (x *AddTeamMemberRequest) GetTeamId() uint64 {
+	if x != nil {
+		return x.TeamId
+	}
+	return 0
+}
+
+func (x *AddTeamMemberRequest) GetMemberUserId() string {
+	if x != nil {
+		return x.MemberUserId
+	}
+	return ""
+}
+
+func (x *AddTeamMemberRequest) GetMemberPermissionType() PermissionType {
+	if x != nil {
+		return x.MemberPermissionType
+	}
+	return PermissionType_PERMISSION_TYPE_UNSPECIFIED
+}
+
+type AddTeamMemberResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The updated team profile object containing details about the team.
+	Team *TeamProfile `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+}
+
+func (x *AddTeamMemberResponse) Reset() {
+	*x = AddTeamMemberResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[167]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AddTeamMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddTeamMemberResponse) ProtoMessage() {}
+
+func (x *AddTeamMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[167]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddTeamMemberResponse.ProtoReflect.Descriptor instead.
+func (*AddTeamMemberResponse) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{167}
+}
+
+func (x *AddTeamMemberResponse) GetTeam() *TeamProfile {
+	if x != nil {
+		return x.Team
+	}
+	return nil
+}
+
+type GetTeamMemberRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The unique identifier of the team whose members are being requested. This field is required.
+	TeamId uint64 `protobuf:"varint,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	// The user ID of the member whose details are being requested. This field is required.
+	MemberUserId string `protobuf:"bytes,3,opt,name=member_user_id,json=memberUserId,proto3" json:"member_user_id,omitempty"`
+}
+
+func (x *GetTeamMemberRequest) Reset() {
+	*x = GetTeamMemberRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[168]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTeamMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTeamMemberRequest) ProtoMessage() {}
+
+func (x *GetTeamMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[168]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTeamMemberRequest.ProtoReflect.Descriptor instead.
+func (*GetTeamMemberRequest) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{168}
+}
+
+func (x *GetTeamMemberRequest) GetTeamId() uint64 {
+	if x != nil {
+		return x.TeamId
+	}
+	return 0
+}
+
+func (x *GetTeamMemberRequest) GetMemberUserId() string {
+	if x != nil {
+		return x.MemberUserId
+	}
+	return ""
+}
+
+type GetTeamMemberResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The team member profile object containing details about the team member.
+	Member *UserProfile `protobuf:"bytes,1,opt,name=member,proto3" json:"member,omitempty"`
+}
+
+func (x *GetTeamMemberResponse) Reset() {
+	*x = GetTeamMemberResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[169]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GetTeamMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetTeamMemberResponse) ProtoMessage() {}
+
+func (x *GetTeamMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[169]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetTeamMemberResponse.ProtoReflect.Descriptor instead.
+func (*GetTeamMemberResponse) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{169}
+}
+
+func (x *GetTeamMemberResponse) GetMember() *UserProfile {
+	if x != nil {
+		return x.Member
+	}
+	return nil
+}
+
+type RemoveTeamMemberRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The user ID of the team administrator. This field is required.
+	AdminUserId string `protobuf:"bytes,1,opt,name=admin_user_id,json=adminUserId,proto3" json:"admin_user_id,omitempty"`
+	// The unique identifier of the team from which the member is being removed. This field is required.
+	TeamId uint64 `protobuf:"varint,2,opt,name=team_id,json=teamId,proto3" json:"team_id,omitempty"`
+	// The user ID of the member being removed from the team. This field is required.
+	MemberUserId string `protobuf:"bytes,3,opt,name=member_user_id,json=memberUserId,proto3" json:"member_user_id,omitempty"`
+}
+
+func (x *RemoveTeamMemberRequest) Reset() {
+	*x = RemoveTeamMemberRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[170]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveTeamMemberRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTeamMemberRequest) ProtoMessage() {}
+
+func (x *RemoveTeamMemberRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[170]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTeamMemberRequest.ProtoReflect.Descriptor instead.
+func (*RemoveTeamMemberRequest) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{170}
+}
+
+func (x *RemoveTeamMemberRequest) GetAdminUserId() string {
+	if x != nil {
+		return x.AdminUserId
+	}
+	return ""
+}
+
+func (x *RemoveTeamMemberRequest) GetTeamId() uint64 {
+	if x != nil {
+		return x.TeamId
+	}
+	return 0
+}
+
+func (x *RemoveTeamMemberRequest) GetMemberUserId() string {
+	if x != nil {
+		return x.MemberUserId
+	}
+	return ""
+}
+
+type RemoveTeamMemberResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	// The updated team profile object containing details about the team.
+	Team *TeamProfile `protobuf:"bytes,1,opt,name=team,proto3" json:"team,omitempty"`
+}
+
+func (x *RemoveTeamMemberResponse) Reset() {
+	*x = RemoveTeamMemberResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_social_service_v2_request_response_proto_msgTypes[171]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RemoveTeamMemberResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemoveTeamMemberResponse) ProtoMessage() {}
+
+func (x *RemoveTeamMemberResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_social_service_v2_request_response_proto_msgTypes[171]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemoveTeamMemberResponse.ProtoReflect.Descriptor instead.
+func (*RemoveTeamMemberResponse) Descriptor() ([]byte, []int) {
+	return file_social_service_v2_request_response_proto_rawDescGZIP(), []int{171}
+}
+
+func (x *RemoveTeamMemberResponse) GetTeam() *TeamProfile {
+	if x != nil {
+		return x.Team
+	}
+	return nil
 }
 
 var File_social_service_v2_request_response_proto protoreflect.FileDescriptor
@@ -11292,57 +11615,102 @@ var file_social_service_v2_request_response_proto_rawDesc = []byte{
 	0x75, 0x62, 0x6c, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x12, 0x2c, 0x0a, 0x12, 0x69,
 	0x6e, 0x63, 0x6c, 0x75, 0x64, 0x65, 0x5f, 0x61, 0x75, 0x64, 0x69, 0x74, 0x5f, 0x6c, 0x6f, 0x67,
 	0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x10, 0x69, 0x6e, 0x63, 0x6c, 0x75, 0x64, 0x65,
-	0x41, 0x75, 0x64, 0x69, 0x74, 0x4c, 0x6f, 0x67, 0x73, 0x22, 0x3e, 0x0a, 0x0f, 0x47, 0x65, 0x74,
-	0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2b, 0x0a, 0x04,
-	0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6f, 0x63,
+	0x41, 0x75, 0x64, 0x69, 0x74, 0x4c, 0x6f, 0x67, 0x73, 0x22, 0x45, 0x0a, 0x0f, 0x47, 0x65, 0x74,
+	0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x32, 0x0a, 0x04,
+	0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6f, 0x63,
 	0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x54,
-	0x65, 0x61, 0x6d, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x22, 0xf2, 0x01, 0x0a, 0x11, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x40, 0x0a, 0x17, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6f, 0x72, 0x5f, 0x6d, 0x65, 0x6d, 0x62,
-	0x65, 0x72, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x13, 0x61, 0x64,
-	0x6d, 0x69, 0x6e, 0x4f, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49,
-	0x64, 0x12, 0x23, 0x0a, 0x07, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x04, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x32, 0x02, 0x20, 0x00, 0x52, 0x06,
-	0x74, 0x65, 0x61, 0x6d, 0x49, 0x64, 0x12, 0x27, 0x0a, 0x09, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42,
-	0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x08, 0x74, 0x65, 0x61, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x2c, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01,
-	0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1f, 0x0a,
-	0x04, 0x74, 0x61, 0x67, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x09, 0x42, 0x0b, 0xe0, 0x41, 0x02,
-	0xfa, 0x42, 0x05, 0x92, 0x01, 0x02, 0x08, 0x03, 0x52, 0x04, 0x74, 0x61, 0x67, 0x73, 0x22, 0x41,
-	0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2b, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x17, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x04, 0x74, 0x65, 0x61,
-	0x6d, 0x22, 0x68, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2e, 0x0a, 0x0d, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f,
-	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0,
-	0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x0b, 0x61, 0x64, 0x6d, 0x69, 0x6e,
+	0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d,
+	0x22, 0xac, 0x01, 0x0a, 0x0f, 0x45, 0x64, 0x69, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x40, 0x0a, 0x17, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x6f, 0x72,
+	0x5f, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10,
+	0x01, 0x52, 0x13, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x4f, 0x72, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72,
 	0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x07, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x69,
 	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x32,
-	0x02, 0x20, 0x00, 0x52, 0x06, 0x74, 0x65, 0x61, 0x6d, 0x49, 0x64, 0x22, 0x2e, 0x0a, 0x12, 0x44,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73, 0x73, 0x42, 0x88, 0x02, 0x0a, 0x15,
-	0x63, 0x6f, 0x6d, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x2e, 0x76, 0x32, 0x42, 0x14, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x78, 0x67,
-	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x50, 0x6c, 0x61, 0x79, 0x62, 0x6f,
-	0x6f, 0x6b, 0x4d, 0x65, 0x64, 0x69, 0x61, 0x45, 0x6e, 0x67, 0x69, 0x6e, 0x65, 0x65, 0x72, 0x69,
-	0x6e, 0x67, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2d, 0x6c, 0x69, 0x62,
-	0x72, 0x61, 0x72, 0x79, 0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74,
-	0x65, 0x64, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
-	0x65, 0x2f, 0x76, 0x32, 0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x2f, 0x76, 0x32, 0x3b, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65,
-	0x72, 0x76, 0x69, 0x63, 0x65, 0x76, 0x32, 0xa2, 0x02, 0x03, 0x53, 0x58, 0x58, 0xaa, 0x02, 0x10,
-	0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x56, 0x32,
-	0xca, 0x02, 0x10, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
-	0x5c, 0x56, 0x32, 0xe2, 0x02, 0x1c, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76,
-	0x69, 0x63, 0x65, 0x5c, 0x56, 0x32, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61,
-	0x74, 0x61, 0xea, 0x02, 0x11, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69,
-	0x63, 0x65, 0x3a, 0x3a, 0x56, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x02, 0x20, 0x00, 0x52, 0x06, 0x74, 0x65, 0x61, 0x6d, 0x49, 0x64, 0x12, 0x32, 0x0a, 0x04, 0x74,
+	0x65, 0x61, 0x6d, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6f, 0x63, 0x69,
+	0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x54, 0x65,
+	0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x22,
+	0x46, 0x0a, 0x10, 0x45, 0x64, 0x69, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x32, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x22, 0x68, 0x0a, 0x11, 0x44, 0x65, 0x6c, 0x65, 0x74,
+	0x65, 0x54, 0x65, 0x61, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2e, 0x0a, 0x0d,
+	0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01, 0x52,
+	0x0b, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x07,
+	0x74, 0x65, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x42, 0x0a, 0xe0,
+	0x41, 0x02, 0xfa, 0x42, 0x04, 0x32, 0x02, 0x20, 0x00, 0x52, 0x06, 0x74, 0x65, 0x61, 0x6d, 0x49,
+	0x64, 0x22, 0x2e, 0x0a, 0x12, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x54, 0x65, 0x61, 0x6d, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x07, 0x73, 0x75, 0x63, 0x63, 0x65, 0x73,
+	0x73, 0x22, 0x83, 0x02, 0x0a, 0x14, 0x41, 0x64, 0x64, 0x54, 0x65, 0x61, 0x6d, 0x4d, 0x65, 0x6d,
+	0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2e, 0x0a, 0x0d, 0x61, 0x64,
+	0x6d, 0x69, 0x6e, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x0b, 0x61,
+	0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x07, 0x74, 0x65,
+	0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x42, 0x0a, 0xe0, 0x41, 0x02,
+	0xfa, 0x42, 0x04, 0x32, 0x02, 0x20, 0x00, 0x52, 0x06, 0x74, 0x65, 0x61, 0x6d, 0x49, 0x64, 0x12,
+	0x30, 0x0a, 0x0e, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72,
+	0x02, 0x10, 0x01, 0x52, 0x0c, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65, 0x72, 0x49,
+	0x64, 0x12, 0x64, 0x0a, 0x16, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x5f, 0x70, 0x65, 0x72, 0x6d,
+	0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28,
+	0x0e, 0x32, 0x21, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73, 0x69, 0x6f, 0x6e,
+	0x54, 0x79, 0x70, 0x65, 0x42, 0x0b, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x05, 0x82, 0x01, 0x02, 0x20,
+	0x00, 0x52, 0x14, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x50, 0x65, 0x72, 0x6d, 0x69, 0x73, 0x73,
+	0x69, 0x6f, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x22, 0x4b, 0x0a, 0x15, 0x41, 0x64, 0x64, 0x54, 0x65,
+	0x61, 0x6d, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x32, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e,
+	0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e,
+	0x76, 0x32, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04,
+	0x74, 0x65, 0x61, 0x6d, 0x22, 0x6d, 0x0a, 0x14, 0x47, 0x65, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x4d,
+	0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x23, 0x0a, 0x07,
+	0x74, 0x65, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x42, 0x0a, 0xe0,
+	0x41, 0x02, 0xfa, 0x42, 0x04, 0x32, 0x02, 0x20, 0x00, 0x52, 0x06, 0x74, 0x65, 0x61, 0x6d, 0x49,
+	0x64, 0x12, 0x30, 0x0a, 0x0e, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x5f, 0x75, 0x73, 0x65, 0x72,
+	0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42,
+	0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x0c, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x55, 0x73, 0x65,
+	0x72, 0x49, 0x64, 0x22, 0x4f, 0x0a, 0x15, 0x47, 0x65, 0x74, 0x54, 0x65, 0x61, 0x6d, 0x4d, 0x65,
+	0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x06,
+	0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1e, 0x2e, 0x73,
+	0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76, 0x32,
+	0x2e, 0x55, 0x73, 0x65, 0x72, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x06, 0x6d, 0x65,
+	0x6d, 0x62, 0x65, 0x72, 0x22, 0xa0, 0x01, 0x0a, 0x17, 0x52, 0x65, 0x6d, 0x6f, 0x76, 0x65, 0x54,
+	0x65, 0x61, 0x6d, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x2e, 0x0a, 0x0d, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x5f, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x72,
+	0x02, 0x10, 0x01, 0x52, 0x0b, 0x61, 0x64, 0x6d, 0x69, 0x6e, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64,
+	0x12, 0x23, 0x0a, 0x07, 0x74, 0x65, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x04, 0x42, 0x0a, 0xe0, 0x41, 0x02, 0xfa, 0x42, 0x04, 0x32, 0x02, 0x20, 0x00, 0x52, 0x06, 0x74,
+	0x65, 0x61, 0x6d, 0x49, 0x64, 0x12, 0x30, 0x0a, 0x0e, 0x6d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x5f,
+	0x75, 0x73, 0x65, 0x72, 0x5f, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x42, 0x0a, 0xe0,
+	0x41, 0x02, 0xfa, 0x42, 0x04, 0x72, 0x02, 0x10, 0x01, 0x52, 0x0c, 0x6d, 0x65, 0x6d, 0x62, 0x65,
+	0x72, 0x55, 0x73, 0x65, 0x72, 0x49, 0x64, 0x22, 0x4e, 0x0a, 0x18, 0x52, 0x65, 0x6d, 0x6f, 0x76,
+	0x65, 0x54, 0x65, 0x61, 0x6d, 0x4d, 0x65, 0x6d, 0x62, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x32, 0x0a, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x0b, 0x32, 0x1e, 0x2e, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x2e, 0x76, 0x32, 0x2e, 0x54, 0x65, 0x61, 0x6d, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x52, 0x04, 0x74, 0x65, 0x61, 0x6d, 0x42, 0x88, 0x02, 0x0a, 0x15, 0x63, 0x6f, 0x6d, 0x2e,
+	0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x76,
+	0x32, 0x42, 0x14, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x78, 0x67, 0x69, 0x74, 0x68, 0x75,
+	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x50, 0x6c, 0x61, 0x79, 0x62, 0x6f, 0x6f, 0x6b, 0x4d, 0x65,
+	0x64, 0x69, 0x61, 0x45, 0x6e, 0x67, 0x69, 0x6e, 0x65, 0x65, 0x72, 0x69, 0x6e, 0x67, 0x2f, 0x63,
+	0x6f, 0x72, 0x65, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2d, 0x6c, 0x69, 0x62, 0x72, 0x61, 0x72, 0x79,
+	0x2f, 0x70, 0x6b, 0x67, 0x2f, 0x67, 0x65, 0x6e, 0x65, 0x72, 0x61, 0x74, 0x65, 0x64, 0x2f, 0x73,
+	0x6f, 0x63, 0x69, 0x61, 0x6c, 0x2d, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f, 0x76, 0x32,
+	0x2f, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2f,
+	0x76, 0x32, 0x3b, 0x73, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x5f, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x76, 0x32, 0xa2, 0x02, 0x03, 0x53, 0x58, 0x58, 0xaa, 0x02, 0x10, 0x53, 0x6f, 0x63, 0x69,
+	0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x2e, 0x56, 0x32, 0xca, 0x02, 0x10, 0x53,
+	0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5c, 0x56, 0x32, 0xe2,
+	0x02, 0x1c, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x5c,
+	0x56, 0x32, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02,
+	0x11, 0x53, 0x6f, 0x63, 0x69, 0x61, 0x6c, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x3a, 0x3a,
+	0x56, 0x32, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -11357,7 +11725,7 @@ func file_social_service_v2_request_response_proto_rawDescGZIP() []byte {
 	return file_social_service_v2_request_response_proto_rawDescData
 }
 
-var file_social_service_v2_request_response_proto_msgTypes = make([]protoimpl.MessageInfo, 166)
+var file_social_service_v2_request_response_proto_msgTypes = make([]protoimpl.MessageInfo, 172)
 var file_social_service_v2_request_response_proto_goTypes = []interface{}{
 	(*EmptyRequest)(nil),                              // 0: social_service.v2.EmptyRequest
 	(*HealthCheckRequest)(nil),                        // 1: social_service.v2.HealthCheckRequest
@@ -11521,181 +11889,192 @@ var file_social_service_v2_request_response_proto_goTypes = []interface{}{
 	(*CreateTeamResponse)(nil),                        // 159: social_service.v2.CreateTeamResponse
 	(*GetTeamRequest)(nil),                            // 160: social_service.v2.GetTeamRequest
 	(*GetTeamResponse)(nil),                           // 161: social_service.v2.GetTeamResponse
-	(*UpdateTeamRequest)(nil),                         // 162: social_service.v2.UpdateTeamRequest
-	(*UpdateTeamResponse)(nil),                        // 163: social_service.v2.UpdateTeamResponse
+	(*EditTeamRequest)(nil),                           // 162: social_service.v2.EditTeamRequest
+	(*EditTeamResponse)(nil),                          // 163: social_service.v2.EditTeamResponse
 	(*DeleteTeamRequest)(nil),                         // 164: social_service.v2.DeleteTeamRequest
 	(*DeleteTeamResponse)(nil),                        // 165: social_service.v2.DeleteTeamResponse
-	(AccountType)(0),                                  // 166: social_service.v2.AccountType
-	(*UserTags)(nil),                                  // 167: social_service.v2.UserTags
-	(VirtualProfileType)(0),                           // 168: social_service.v2.VirtualProfileType
-	(*CommunityProfile)(nil),                          // 169: social_service.v2.CommunityProfile
-	(*UserProfile)(nil),                               // 170: social_service.v2.UserProfile
-	(*Post)(nil),                                      // 171: social_service.v2.Post
-	(PostType)(0),                                     // 172: social_service.v2.PostType
-	(ReactionType)(0),                                 // 173: social_service.v2.ReactionType
-	(FeedType)(0),                                     // 174: social_service.v2.FeedType
-	(*Comment)(nil),                                   // 175: social_service.v2.Comment
-	(*Topic)(nil),                                     // 176: social_service.v2.Topic
-	(*SocialRelationshipMetadata)(nil),                // 177: social_service.v2.SocialRelationshipMetadata
-	(*BaseTimeline)(nil),                              // 178: social_service.v2.BaseTimeline
-	(*NotificationTimeline)(nil),                      // 179: social_service.v2.NotificationTimeline
-	(*SharedPost)(nil),                                // 180: social_service.v2.SharedPost
-	(*PollPost)(nil),                                  // 181: social_service.v2.PollPost
-	(*PendingFollowRequest)(nil),                      // 182: social_service.v2.PendingFollowRequest
-	(*Note)(nil),                                      // 183: social_service.v2.Note
-	(*Publication)(nil),                               // 184: social_service.v2.Publication
-	(*Bookmark)(nil),                                  // 185: social_service.v2.Bookmark
-	(Reaction)(0),                                     // 186: social_service.v2.Reaction
-	(*CommentReply)(nil),                              // 187: social_service.v2.CommentReply
-	(Category)(0),                                     // 188: social_service.v2.Category
-	(PermissionType)(0),                               // 189: social_service.v2.PermissionType
-	(*Team)(nil),                                      // 190: social_service.v2.Team
+	(*AddTeamMemberRequest)(nil),                      // 166: social_service.v2.AddTeamMemberRequest
+	(*AddTeamMemberResponse)(nil),                     // 167: social_service.v2.AddTeamMemberResponse
+	(*GetTeamMemberRequest)(nil),                      // 168: social_service.v2.GetTeamMemberRequest
+	(*GetTeamMemberResponse)(nil),                     // 169: social_service.v2.GetTeamMemberResponse
+	(*RemoveTeamMemberRequest)(nil),                   // 170: social_service.v2.RemoveTeamMemberRequest
+	(*RemoveTeamMemberResponse)(nil),                  // 171: social_service.v2.RemoveTeamMemberResponse
+	(AccountType)(0),                                  // 172: social_service.v2.AccountType
+	(*UserTags)(nil),                                  // 173: social_service.v2.UserTags
+	(VirtualProfileType)(0),                           // 174: social_service.v2.VirtualProfileType
+	(*CommunityProfile)(nil),                          // 175: social_service.v2.CommunityProfile
+	(*UserProfile)(nil),                               // 176: social_service.v2.UserProfile
+	(*Post)(nil),                                      // 177: social_service.v2.Post
+	(PostType)(0),                                     // 178: social_service.v2.PostType
+	(ReactionType)(0),                                 // 179: social_service.v2.ReactionType
+	(FeedType)(0),                                     // 180: social_service.v2.FeedType
+	(*Comment)(nil),                                   // 181: social_service.v2.Comment
+	(*Topic)(nil),                                     // 182: social_service.v2.Topic
+	(*SocialRelationshipMetadata)(nil),                // 183: social_service.v2.SocialRelationshipMetadata
+	(*BaseTimeline)(nil),                              // 184: social_service.v2.BaseTimeline
+	(*NotificationTimeline)(nil),                      // 185: social_service.v2.NotificationTimeline
+	(*SharedPost)(nil),                                // 186: social_service.v2.SharedPost
+	(*PollPost)(nil),                                  // 187: social_service.v2.PollPost
+	(*PendingFollowRequest)(nil),                      // 188: social_service.v2.PendingFollowRequest
+	(*Note)(nil),                                      // 189: social_service.v2.Note
+	(*Publication)(nil),                               // 190: social_service.v2.Publication
+	(*Bookmark)(nil),                                  // 191: social_service.v2.Bookmark
+	(Reaction)(0),                                     // 192: social_service.v2.Reaction
+	(*CommentReply)(nil),                              // 193: social_service.v2.CommentReply
+	(Category)(0),                                     // 194: social_service.v2.Category
+	(PermissionType)(0),                               // 195: social_service.v2.PermissionType
+	(*TeamProfile)(nil),                               // 196: social_service.v2.TeamProfile
 }
 var file_social_service_v2_request_response_proto_depIdxs = []int32{
-	166, // 0: social_service.v2.GetUserProfileRequest.requestor_profile_type:type_name -> social_service.v2.AccountType
-	166, // 1: social_service.v2.GetCommunityProfileRequest.requestor_profile_type:type_name -> social_service.v2.AccountType
-	167, // 2: social_service.v2.CreateUserProfileRequest.tags:type_name -> social_service.v2.UserTags
-	168, // 3: social_service.v2.CreateUserProfileRequest.user_type:type_name -> social_service.v2.VirtualProfileType
-	169, // 4: social_service.v2.CreateCommunityProfileRequest.profile:type_name -> social_service.v2.CommunityProfile
-	170, // 5: social_service.v2.EditUserProfileRequest.profile:type_name -> social_service.v2.UserProfile
-	169, // 6: social_service.v2.EditCommunityProfileRequest.profile:type_name -> social_service.v2.CommunityProfile
-	171, // 7: social_service.v2.CreatePostRequest.post:type_name -> social_service.v2.Post
-	166, // 8: social_service.v2.CreatePostRequest.account_type:type_name -> social_service.v2.AccountType
-	172, // 9: social_service.v2.DeletePostRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 10: social_service.v2.EditPostRequest.post:type_name -> social_service.v2.Post
-	172, // 11: social_service.v2.EditPostRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 12: social_service.v2.GetPostRequest.post_type:type_name -> social_service.v2.PostType
-	173, // 13: social_service.v2.ReactionRequest.type:type_name -> social_service.v2.ReactionType
-	172, // 14: social_service.v2.ReactionRequest.post_type:type_name -> social_service.v2.PostType
-	174, // 15: social_service.v2.GetUserFeedRequest.feed_type:type_name -> social_service.v2.FeedType
-	166, // 16: social_service.v2.GetUserFeedRequest.account_type:type_name -> social_service.v2.AccountType
-	174, // 17: social_service.v2.GetCommunityFeedRequest.feed_type:type_name -> social_service.v2.FeedType
-	166, // 18: social_service.v2.GetCommunityFeedRequest.account_type:type_name -> social_service.v2.AccountType
-	166, // 19: social_service.v2.CreateCommentRequest.account_type:type_name -> social_service.v2.AccountType
-	175, // 20: social_service.v2.CreateCommentRequest.comment:type_name -> social_service.v2.Comment
-	172, // 21: social_service.v2.CreateCommentRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 22: social_service.v2.DeleteCommentRequest.post_type:type_name -> social_service.v2.PostType
-	176, // 23: social_service.v2.CreateTopicRequest.topic:type_name -> social_service.v2.Topic
-	172, // 24: social_service.v2.AddPostQualityScoreRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 25: social_service.v2.AddCommentQualityScoreRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 26: social_service.v2.ReportPostRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 27: social_service.v2.ReportCommentRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 28: social_service.v2.GetBlogPostsByTagRequest.post_type:type_name -> social_service.v2.PostType
-	170, // 29: social_service.v2.GetUserProfileResponse.profile:type_name -> social_service.v2.UserProfile
-	177, // 30: social_service.v2.GetUserProfileResponse.metadata:type_name -> social_service.v2.SocialRelationshipMetadata
-	169, // 31: social_service.v2.GetCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
-	177, // 32: social_service.v2.GetCommunityProfileResponse.metadata:type_name -> social_service.v2.SocialRelationshipMetadata
-	169, // 33: social_service.v2.CreateCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
-	170, // 34: social_service.v2.EditUserProfileResponse.profile:type_name -> social_service.v2.UserProfile
-	169, // 35: social_service.v2.EditCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
-	171, // 36: social_service.v2.CreatePostResponse.post:type_name -> social_service.v2.Post
-	171, // 37: social_service.v2.GetPostResponse.post:type_name -> social_service.v2.Post
-	171, // 38: social_service.v2.ReportPostResponse.post:type_name -> social_service.v2.Post
-	178, // 39: social_service.v2.GetUserFeedResponse.base_timeline:type_name -> social_service.v2.BaseTimeline
-	179, // 40: social_service.v2.GetUserFeedResponse.notification_timeline:type_name -> social_service.v2.NotificationTimeline
-	178, // 41: social_service.v2.GetCommunityFeedResponse.base_timeline:type_name -> social_service.v2.BaseTimeline
-	179, // 42: social_service.v2.GetCommunityFeedResponse.notification_timeline:type_name -> social_service.v2.NotificationTimeline
-	171, // 43: social_service.v2.CreateCommentResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 44: social_service.v2.CreateCommentResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 45: social_service.v2.CreateCommentResponse.poll_post:type_name -> social_service.v2.PollPost
-	171, // 46: social_service.v2.GetPostsByTopicResponse.posts:type_name -> social_service.v2.Post
-	182, // 47: social_service.v2.GetPendingFollowsResponse.requests:type_name -> social_service.v2.PendingFollowRequest
-	169, // 48: social_service.v2.GetCommunitiesUserFollowsResponse.communities:type_name -> social_service.v2.CommunityProfile
-	176, // 49: social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse.topic:type_name -> social_service.v2.Topic
-	170, // 50: social_service.v2.GetUserProfilesResponse.profiles:type_name -> social_service.v2.UserProfile
-	169, // 51: social_service.v2.GetCommunityProfilesResponse.profiles:type_name -> social_service.v2.CommunityProfile
-	171, // 52: social_service.v2.AddPostQualityScoreResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 53: social_service.v2.AddPostQualityScoreResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 54: social_service.v2.AddPostQualityScoreResponse.poll_post:type_name -> social_service.v2.PollPost
-	171, // 55: social_service.v2.GetBlogPostsByTagResponse.posts:type_name -> social_service.v2.Post
-	175, // 56: social_service.v2.ReportCommentResponse.comment:type_name -> social_service.v2.Comment
-	171, // 57: social_service.v2.PostsPaginationResponse.posts:type_name -> social_service.v2.Post
-	169, // 58: social_service.v2.DiscoverProfilesResponse.community_profiles:type_name -> social_service.v2.CommunityProfile
-	170, // 59: social_service.v2.DiscoverProfilesResponse.user_profiles:type_name -> social_service.v2.UserProfile
-	176, // 60: social_service.v2.DiscoverProfilesResponse.topics:type_name -> social_service.v2.Topic
-	175, // 61: social_service.v2.AddCommentQualityScoreResponse.comment:type_name -> social_service.v2.Comment
-	171, // 62: social_service.v2.GetCommunityBlogPostsResponse.posts:type_name -> social_service.v2.Post
-	181, // 63: social_service.v2.CreatePollRequest.poll:type_name -> social_service.v2.PollPost
-	181, // 64: social_service.v2.GetPollResponse.poll:type_name -> social_service.v2.PollPost
-	181, // 65: social_service.v2.GetPollsResponse.polls:type_name -> social_service.v2.PollPost
-	171, // 66: social_service.v2.GetPostsResponse.posts:type_name -> social_service.v2.Post
-	181, // 67: social_service.v2.RespondToPollResponse.poll:type_name -> social_service.v2.PollPost
-	172, // 68: social_service.v2.CreateNoteRequest.post_type:type_name -> social_service.v2.PostType
-	183, // 69: social_service.v2.CreateNoteRequest.note:type_name -> social_service.v2.Note
-	171, // 70: social_service.v2.CreateNoteResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 71: social_service.v2.CreateNoteResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 72: social_service.v2.CreateNoteResponse.poll_post:type_name -> social_service.v2.PollPost
-	172, // 73: social_service.v2.DeleteNoteRequest.post_type:type_name -> social_service.v2.PostType
-	183, // 74: social_service.v2.EditNoteRequest.note:type_name -> social_service.v2.Note
-	172, // 75: social_service.v2.EditNoteRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 76: social_service.v2.EditNoteResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 77: social_service.v2.EditNoteResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 78: social_service.v2.EditNoteResponse.poll_post:type_name -> social_service.v2.PollPost
-	184, // 79: social_service.v2.CreatePublicationRequest.publication:type_name -> social_service.v2.Publication
-	184, // 80: social_service.v2.GetPublicationResponse.publication:type_name -> social_service.v2.Publication
-	184, // 81: social_service.v2.AddPublicationEditorResponse.publication:type_name -> social_service.v2.Publication
-	171, // 82: social_service.v2.AddPostToPublicationRequest.post:type_name -> social_service.v2.Post
-	184, // 83: social_service.v2.AddPostToPublicationResponse.publication:type_name -> social_service.v2.Publication
-	172, // 84: social_service.v2.DeletePostFromPublicationRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 85: social_service.v2.AddPostToThreadRequest.post:type_name -> social_service.v2.Post
-	172, // 86: social_service.v2.AddPostToThreadRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 87: social_service.v2.AddPostToThreadResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 88: social_service.v2.AddPostToThreadResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 89: social_service.v2.AddPostToThreadResponse.poll_post:type_name -> social_service.v2.PollPost
-	172, // 90: social_service.v2.RemovePostFromThreadRequest.post_type:type_name -> social_service.v2.PostType
-	172, // 91: social_service.v2.GetPostThreadRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 92: social_service.v2.GetPostThreadResponse.posts:type_name -> social_service.v2.Post
-	185, // 93: social_service.v2.BookmarkPostResponse.bookmark:type_name -> social_service.v2.Bookmark
-	172, // 94: social_service.v2.RemoveBookmarkedPostRequest.post_type:type_name -> social_service.v2.PostType
-	185, // 95: social_service.v2.RemoveBookmarkedPostResponse.bookmark:type_name -> social_service.v2.Bookmark
-	185, // 96: social_service.v2.BookmarkPublicationResponse.bookmark:type_name -> social_service.v2.Bookmark
-	185, // 97: social_service.v2.RemoveBookmarkedPublicationResponse.bookmark:type_name -> social_service.v2.Bookmark
-	170, // 98: social_service.v2.GetFollowersResponse.users:type_name -> social_service.v2.UserProfile
-	166, // 99: social_service.v2.GetAccountsFollowingRequest.account_type:type_name -> social_service.v2.AccountType
-	170, // 100: social_service.v2.GetAccountsFollowingResponse.users:type_name -> social_service.v2.UserProfile
-	169, // 101: social_service.v2.GetAccountsFollowingResponse.communities:type_name -> social_service.v2.CommunityProfile
-	166, // 102: social_service.v2.ReactToPostRequest.account_type:type_name -> social_service.v2.AccountType
-	186, // 103: social_service.v2.ReactToPostRequest.reaction:type_name -> social_service.v2.Reaction
-	172, // 104: social_service.v2.ReactToPostRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 105: social_service.v2.ReactToPostResponse.regular_post:type_name -> social_service.v2.Post
-	180, // 106: social_service.v2.ReactToPostResponse.shared_post:type_name -> social_service.v2.SharedPost
-	181, // 107: social_service.v2.ReactToPostResponse.poll_post:type_name -> social_service.v2.PollPost
-	166, // 108: social_service.v2.ReactToCommentRequest.account_type:type_name -> social_service.v2.AccountType
-	186, // 109: social_service.v2.ReactToCommentRequest.reaction:type_name -> social_service.v2.Reaction
-	172, // 110: social_service.v2.ReactToCommentRequest.post_type:type_name -> social_service.v2.PostType
-	175, // 111: social_service.v2.ReactToCommentResponse.comment:type_name -> social_service.v2.Comment
-	166, // 112: social_service.v2.ReactToCommentReplyRequest.account_type:type_name -> social_service.v2.AccountType
-	186, // 113: social_service.v2.ReactToCommentReplyRequest.reaction:type_name -> social_service.v2.Reaction
-	172, // 114: social_service.v2.ReactToCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
-	187, // 115: social_service.v2.ReactToCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
-	187, // 116: social_service.v2.CreateCommentReplyRequest.reply:type_name -> social_service.v2.CommentReply
-	172, // 117: social_service.v2.CreateCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
-	175, // 118: social_service.v2.CreateCommentReplyResponse.comment:type_name -> social_service.v2.Comment
-	172, // 119: social_service.v2.DeleteCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
-	175, // 120: social_service.v2.DeleteCommentReplyResponse.comment:type_name -> social_service.v2.Comment
-	187, // 121: social_service.v2.EditCommentReplyRequest.reply:type_name -> social_service.v2.CommentReply
-	172, // 122: social_service.v2.EditCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
-	187, // 123: social_service.v2.EditCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
-	172, // 124: social_service.v2.GetCommentRepliesRequest.post_type:type_name -> social_service.v2.PostType
-	187, // 125: social_service.v2.GetCommentRepliesResponse.replies:type_name -> social_service.v2.CommentReply
-	172, // 126: social_service.v2.ReportCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
-	187, // 127: social_service.v2.ReportCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
-	172, // 128: social_service.v2.SharePostRequest.parent_post_type:type_name -> social_service.v2.PostType
-	171, // 129: social_service.v2.GetBookmarkedPostsResponse.posts:type_name -> social_service.v2.Post
-	188, // 130: social_service.v2.GetPostsByCategoryRequest.category:type_name -> social_service.v2.Category
-	172, // 131: social_service.v2.GetPostsByCategoryRequest.post_type:type_name -> social_service.v2.PostType
-	171, // 132: social_service.v2.GetPostsByCategoryResponse.posts:type_name -> social_service.v2.Post
-	171, // 133: social_service.v2.PublishPostResponse.post:type_name -> social_service.v2.Post
-	171, // 134: social_service.v2.ReviewPostResponse.post:type_name -> social_service.v2.Post
-	171, // 135: social_service.v2.SetPostInDraftModeResponse.post:type_name -> social_service.v2.Post
-	189, // 136: social_service.v2.CreateTeamRequest.admin_permission_type:type_name -> social_service.v2.PermissionType
-	190, // 137: social_service.v2.GetTeamResponse.team:type_name -> social_service.v2.Team
-	190, // 138: social_service.v2.UpdateTeamResponse.team:type_name -> social_service.v2.Team
-	139, // [139:139] is the sub-list for method output_type
-	139, // [139:139] is the sub-list for method input_type
-	139, // [139:139] is the sub-list for extension type_name
-	139, // [139:139] is the sub-list for extension extendee
-	0,   // [0:139] is the sub-list for field type_name
+	172, // 0: social_service.v2.GetUserProfileRequest.requestor_profile_type:type_name -> social_service.v2.AccountType
+	172, // 1: social_service.v2.GetCommunityProfileRequest.requestor_profile_type:type_name -> social_service.v2.AccountType
+	173, // 2: social_service.v2.CreateUserProfileRequest.tags:type_name -> social_service.v2.UserTags
+	174, // 3: social_service.v2.CreateUserProfileRequest.user_type:type_name -> social_service.v2.VirtualProfileType
+	175, // 4: social_service.v2.CreateCommunityProfileRequest.profile:type_name -> social_service.v2.CommunityProfile
+	176, // 5: social_service.v2.EditUserProfileRequest.profile:type_name -> social_service.v2.UserProfile
+	175, // 6: social_service.v2.EditCommunityProfileRequest.profile:type_name -> social_service.v2.CommunityProfile
+	177, // 7: social_service.v2.CreatePostRequest.post:type_name -> social_service.v2.Post
+	172, // 8: social_service.v2.CreatePostRequest.account_type:type_name -> social_service.v2.AccountType
+	178, // 9: social_service.v2.DeletePostRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 10: social_service.v2.EditPostRequest.post:type_name -> social_service.v2.Post
+	178, // 11: social_service.v2.EditPostRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 12: social_service.v2.GetPostRequest.post_type:type_name -> social_service.v2.PostType
+	179, // 13: social_service.v2.ReactionRequest.type:type_name -> social_service.v2.ReactionType
+	178, // 14: social_service.v2.ReactionRequest.post_type:type_name -> social_service.v2.PostType
+	180, // 15: social_service.v2.GetUserFeedRequest.feed_type:type_name -> social_service.v2.FeedType
+	172, // 16: social_service.v2.GetUserFeedRequest.account_type:type_name -> social_service.v2.AccountType
+	180, // 17: social_service.v2.GetCommunityFeedRequest.feed_type:type_name -> social_service.v2.FeedType
+	172, // 18: social_service.v2.GetCommunityFeedRequest.account_type:type_name -> social_service.v2.AccountType
+	172, // 19: social_service.v2.CreateCommentRequest.account_type:type_name -> social_service.v2.AccountType
+	181, // 20: social_service.v2.CreateCommentRequest.comment:type_name -> social_service.v2.Comment
+	178, // 21: social_service.v2.CreateCommentRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 22: social_service.v2.DeleteCommentRequest.post_type:type_name -> social_service.v2.PostType
+	182, // 23: social_service.v2.CreateTopicRequest.topic:type_name -> social_service.v2.Topic
+	178, // 24: social_service.v2.AddPostQualityScoreRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 25: social_service.v2.AddCommentQualityScoreRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 26: social_service.v2.ReportPostRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 27: social_service.v2.ReportCommentRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 28: social_service.v2.GetBlogPostsByTagRequest.post_type:type_name -> social_service.v2.PostType
+	176, // 29: social_service.v2.GetUserProfileResponse.profile:type_name -> social_service.v2.UserProfile
+	183, // 30: social_service.v2.GetUserProfileResponse.metadata:type_name -> social_service.v2.SocialRelationshipMetadata
+	175, // 31: social_service.v2.GetCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
+	183, // 32: social_service.v2.GetCommunityProfileResponse.metadata:type_name -> social_service.v2.SocialRelationshipMetadata
+	175, // 33: social_service.v2.CreateCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
+	176, // 34: social_service.v2.EditUserProfileResponse.profile:type_name -> social_service.v2.UserProfile
+	175, // 35: social_service.v2.EditCommunityProfileResponse.profile:type_name -> social_service.v2.CommunityProfile
+	177, // 36: social_service.v2.CreatePostResponse.post:type_name -> social_service.v2.Post
+	177, // 37: social_service.v2.GetPostResponse.post:type_name -> social_service.v2.Post
+	177, // 38: social_service.v2.ReportPostResponse.post:type_name -> social_service.v2.Post
+	184, // 39: social_service.v2.GetUserFeedResponse.base_timeline:type_name -> social_service.v2.BaseTimeline
+	185, // 40: social_service.v2.GetUserFeedResponse.notification_timeline:type_name -> social_service.v2.NotificationTimeline
+	184, // 41: social_service.v2.GetCommunityFeedResponse.base_timeline:type_name -> social_service.v2.BaseTimeline
+	185, // 42: social_service.v2.GetCommunityFeedResponse.notification_timeline:type_name -> social_service.v2.NotificationTimeline
+	177, // 43: social_service.v2.CreateCommentResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 44: social_service.v2.CreateCommentResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 45: social_service.v2.CreateCommentResponse.poll_post:type_name -> social_service.v2.PollPost
+	177, // 46: social_service.v2.GetPostsByTopicResponse.posts:type_name -> social_service.v2.Post
+	188, // 47: social_service.v2.GetPendingFollowsResponse.requests:type_name -> social_service.v2.PendingFollowRequest
+	175, // 48: social_service.v2.GetCommunitiesUserFollowsResponse.communities:type_name -> social_service.v2.CommunityProfile
+	182, // 49: social_service.v2.GetTopicsOfCommunitiesUserFollowsResponse.topic:type_name -> social_service.v2.Topic
+	176, // 50: social_service.v2.GetUserProfilesResponse.profiles:type_name -> social_service.v2.UserProfile
+	175, // 51: social_service.v2.GetCommunityProfilesResponse.profiles:type_name -> social_service.v2.CommunityProfile
+	177, // 52: social_service.v2.AddPostQualityScoreResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 53: social_service.v2.AddPostQualityScoreResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 54: social_service.v2.AddPostQualityScoreResponse.poll_post:type_name -> social_service.v2.PollPost
+	177, // 55: social_service.v2.GetBlogPostsByTagResponse.posts:type_name -> social_service.v2.Post
+	181, // 56: social_service.v2.ReportCommentResponse.comment:type_name -> social_service.v2.Comment
+	177, // 57: social_service.v2.PostsPaginationResponse.posts:type_name -> social_service.v2.Post
+	175, // 58: social_service.v2.DiscoverProfilesResponse.community_profiles:type_name -> social_service.v2.CommunityProfile
+	176, // 59: social_service.v2.DiscoverProfilesResponse.user_profiles:type_name -> social_service.v2.UserProfile
+	182, // 60: social_service.v2.DiscoverProfilesResponse.topics:type_name -> social_service.v2.Topic
+	181, // 61: social_service.v2.AddCommentQualityScoreResponse.comment:type_name -> social_service.v2.Comment
+	177, // 62: social_service.v2.GetCommunityBlogPostsResponse.posts:type_name -> social_service.v2.Post
+	187, // 63: social_service.v2.CreatePollRequest.poll:type_name -> social_service.v2.PollPost
+	187, // 64: social_service.v2.GetPollResponse.poll:type_name -> social_service.v2.PollPost
+	187, // 65: social_service.v2.GetPollsResponse.polls:type_name -> social_service.v2.PollPost
+	177, // 66: social_service.v2.GetPostsResponse.posts:type_name -> social_service.v2.Post
+	187, // 67: social_service.v2.RespondToPollResponse.poll:type_name -> social_service.v2.PollPost
+	178, // 68: social_service.v2.CreateNoteRequest.post_type:type_name -> social_service.v2.PostType
+	189, // 69: social_service.v2.CreateNoteRequest.note:type_name -> social_service.v2.Note
+	177, // 70: social_service.v2.CreateNoteResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 71: social_service.v2.CreateNoteResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 72: social_service.v2.CreateNoteResponse.poll_post:type_name -> social_service.v2.PollPost
+	178, // 73: social_service.v2.DeleteNoteRequest.post_type:type_name -> social_service.v2.PostType
+	189, // 74: social_service.v2.EditNoteRequest.note:type_name -> social_service.v2.Note
+	178, // 75: social_service.v2.EditNoteRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 76: social_service.v2.EditNoteResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 77: social_service.v2.EditNoteResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 78: social_service.v2.EditNoteResponse.poll_post:type_name -> social_service.v2.PollPost
+	190, // 79: social_service.v2.CreatePublicationRequest.publication:type_name -> social_service.v2.Publication
+	190, // 80: social_service.v2.GetPublicationResponse.publication:type_name -> social_service.v2.Publication
+	190, // 81: social_service.v2.AddPublicationEditorResponse.publication:type_name -> social_service.v2.Publication
+	177, // 82: social_service.v2.AddPostToPublicationRequest.post:type_name -> social_service.v2.Post
+	190, // 83: social_service.v2.AddPostToPublicationResponse.publication:type_name -> social_service.v2.Publication
+	178, // 84: social_service.v2.DeletePostFromPublicationRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 85: social_service.v2.AddPostToThreadRequest.post:type_name -> social_service.v2.Post
+	178, // 86: social_service.v2.AddPostToThreadRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 87: social_service.v2.AddPostToThreadResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 88: social_service.v2.AddPostToThreadResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 89: social_service.v2.AddPostToThreadResponse.poll_post:type_name -> social_service.v2.PollPost
+	178, // 90: social_service.v2.RemovePostFromThreadRequest.post_type:type_name -> social_service.v2.PostType
+	178, // 91: social_service.v2.GetPostThreadRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 92: social_service.v2.GetPostThreadResponse.posts:type_name -> social_service.v2.Post
+	191, // 93: social_service.v2.BookmarkPostResponse.bookmark:type_name -> social_service.v2.Bookmark
+	178, // 94: social_service.v2.RemoveBookmarkedPostRequest.post_type:type_name -> social_service.v2.PostType
+	191, // 95: social_service.v2.RemoveBookmarkedPostResponse.bookmark:type_name -> social_service.v2.Bookmark
+	191, // 96: social_service.v2.BookmarkPublicationResponse.bookmark:type_name -> social_service.v2.Bookmark
+	191, // 97: social_service.v2.RemoveBookmarkedPublicationResponse.bookmark:type_name -> social_service.v2.Bookmark
+	176, // 98: social_service.v2.GetFollowersResponse.users:type_name -> social_service.v2.UserProfile
+	172, // 99: social_service.v2.GetAccountsFollowingRequest.account_type:type_name -> social_service.v2.AccountType
+	176, // 100: social_service.v2.GetAccountsFollowingResponse.users:type_name -> social_service.v2.UserProfile
+	175, // 101: social_service.v2.GetAccountsFollowingResponse.communities:type_name -> social_service.v2.CommunityProfile
+	172, // 102: social_service.v2.ReactToPostRequest.account_type:type_name -> social_service.v2.AccountType
+	192, // 103: social_service.v2.ReactToPostRequest.reaction:type_name -> social_service.v2.Reaction
+	178, // 104: social_service.v2.ReactToPostRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 105: social_service.v2.ReactToPostResponse.regular_post:type_name -> social_service.v2.Post
+	186, // 106: social_service.v2.ReactToPostResponse.shared_post:type_name -> social_service.v2.SharedPost
+	187, // 107: social_service.v2.ReactToPostResponse.poll_post:type_name -> social_service.v2.PollPost
+	172, // 108: social_service.v2.ReactToCommentRequest.account_type:type_name -> social_service.v2.AccountType
+	192, // 109: social_service.v2.ReactToCommentRequest.reaction:type_name -> social_service.v2.Reaction
+	178, // 110: social_service.v2.ReactToCommentRequest.post_type:type_name -> social_service.v2.PostType
+	181, // 111: social_service.v2.ReactToCommentResponse.comment:type_name -> social_service.v2.Comment
+	172, // 112: social_service.v2.ReactToCommentReplyRequest.account_type:type_name -> social_service.v2.AccountType
+	192, // 113: social_service.v2.ReactToCommentReplyRequest.reaction:type_name -> social_service.v2.Reaction
+	178, // 114: social_service.v2.ReactToCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
+	193, // 115: social_service.v2.ReactToCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
+	193, // 116: social_service.v2.CreateCommentReplyRequest.reply:type_name -> social_service.v2.CommentReply
+	178, // 117: social_service.v2.CreateCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
+	181, // 118: social_service.v2.CreateCommentReplyResponse.comment:type_name -> social_service.v2.Comment
+	178, // 119: social_service.v2.DeleteCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
+	181, // 120: social_service.v2.DeleteCommentReplyResponse.comment:type_name -> social_service.v2.Comment
+	193, // 121: social_service.v2.EditCommentReplyRequest.reply:type_name -> social_service.v2.CommentReply
+	178, // 122: social_service.v2.EditCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
+	193, // 123: social_service.v2.EditCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
+	178, // 124: social_service.v2.GetCommentRepliesRequest.post_type:type_name -> social_service.v2.PostType
+	193, // 125: social_service.v2.GetCommentRepliesResponse.replies:type_name -> social_service.v2.CommentReply
+	178, // 126: social_service.v2.ReportCommentReplyRequest.post_type:type_name -> social_service.v2.PostType
+	193, // 127: social_service.v2.ReportCommentReplyResponse.reply:type_name -> social_service.v2.CommentReply
+	178, // 128: social_service.v2.SharePostRequest.parent_post_type:type_name -> social_service.v2.PostType
+	177, // 129: social_service.v2.GetBookmarkedPostsResponse.posts:type_name -> social_service.v2.Post
+	194, // 130: social_service.v2.GetPostsByCategoryRequest.category:type_name -> social_service.v2.Category
+	178, // 131: social_service.v2.GetPostsByCategoryRequest.post_type:type_name -> social_service.v2.PostType
+	177, // 132: social_service.v2.GetPostsByCategoryResponse.posts:type_name -> social_service.v2.Post
+	177, // 133: social_service.v2.PublishPostResponse.post:type_name -> social_service.v2.Post
+	177, // 134: social_service.v2.ReviewPostResponse.post:type_name -> social_service.v2.Post
+	177, // 135: social_service.v2.SetPostInDraftModeResponse.post:type_name -> social_service.v2.Post
+	195, // 136: social_service.v2.CreateTeamRequest.admin_permission_type:type_name -> social_service.v2.PermissionType
+	196, // 137: social_service.v2.GetTeamResponse.team:type_name -> social_service.v2.TeamProfile
+	196, // 138: social_service.v2.EditTeamRequest.team:type_name -> social_service.v2.TeamProfile
+	196, // 139: social_service.v2.EditTeamResponse.team:type_name -> social_service.v2.TeamProfile
+	195, // 140: social_service.v2.AddTeamMemberRequest.member_permission_type:type_name -> social_service.v2.PermissionType
+	196, // 141: social_service.v2.AddTeamMemberResponse.team:type_name -> social_service.v2.TeamProfile
+	176, // 142: social_service.v2.GetTeamMemberResponse.member:type_name -> social_service.v2.UserProfile
+	196, // 143: social_service.v2.RemoveTeamMemberResponse.team:type_name -> social_service.v2.TeamProfile
+	144, // [144:144] is the sub-list for method output_type
+	144, // [144:144] is the sub-list for method input_type
+	144, // [144:144] is the sub-list for extension type_name
+	144, // [144:144] is the sub-list for extension extendee
+	0,   // [0:144] is the sub-list for field type_name
 }
 
 func init() { file_social_service_v2_request_response_proto_init() }
@@ -13652,7 +14031,7 @@ func file_social_service_v2_request_response_proto_init() {
 			}
 		}
 		file_social_service_v2_request_response_proto_msgTypes[162].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateTeamRequest); i {
+			switch v := v.(*EditTeamRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -13664,7 +14043,7 @@ func file_social_service_v2_request_response_proto_init() {
 			}
 		}
 		file_social_service_v2_request_response_proto_msgTypes[163].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*UpdateTeamResponse); i {
+			switch v := v.(*EditTeamResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -13689,6 +14068,78 @@ func file_social_service_v2_request_response_proto_init() {
 		}
 		file_social_service_v2_request_response_proto_msgTypes[165].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DeleteTeamResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[166].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddTeamMemberRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[167].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AddTeamMemberResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[168].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTeamMemberRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[169].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GetTeamMemberResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[170].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveTeamMemberRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_social_service_v2_request_response_proto_msgTypes[171].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RemoveTeamMemberResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -13744,7 +14195,7 @@ func file_social_service_v2_request_response_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_social_service_v2_request_response_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   166,
+			NumMessages:   172,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

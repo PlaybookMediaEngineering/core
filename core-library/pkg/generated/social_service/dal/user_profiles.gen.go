@@ -29,7 +29,7 @@ func newUserProfileORM(db *gorm.DB, opts ...gen.DOOption) userProfileORM {
 	tableName := _userProfileORM.userProfileORMDo.TableName()
 	_userProfileORM.ALL = field.NewAsterisk(tableName)
 	_userProfileORM.AdminPublicationId = field.NewUint64(tableName, "admin_publication_id")
-	_userProfileORM.AdminTeamId = field.NewUint64(tableName, "admin_team_id")
+	_userProfileORM.AdminTeamProfileId = field.NewUint64(tableName, "admin_team_profile_id")
 	_userProfileORM.AlgoliaId = field.NewString(tableName, "algolia_id")
 	_userProfileORM.BookmarkId = field.NewUint64(tableName, "bookmark_id")
 	_userProfileORM.EditorsPublicationId = field.NewUint64(tableName, "editors_publication_id")
@@ -37,7 +37,7 @@ func newUserProfileORM(db *gorm.DB, opts ...gen.DOOption) userProfileORM {
 	_userProfileORM.Following = field.NewInt64(tableName, "following")
 	_userProfileORM.FreeFeedTimelineId = field.NewString(tableName, "free_feed_timeline_id")
 	_userProfileORM.Id = field.NewUint64(tableName, "id")
-	_userProfileORM.MembersTeamId = field.NewUint64(tableName, "members_team_id")
+	_userProfileORM.MembersTeamProfileId = field.NewUint64(tableName, "members_team_profile_id")
 	_userProfileORM.Name = field.NewString(tableName, "name")
 	_userProfileORM.NewsFeedTimelineId = field.NewString(tableName, "news_feed_timeline_id")
 	_userProfileORM.NotificationFeedTimelineId = field.NewString(tableName, "notification_feed_timeline_id")
@@ -112,7 +112,7 @@ type userProfileORM struct {
 
 	ALL                        field.Asterisk
 	AdminPublicationId         field.Uint64
-	AdminTeamId                field.Uint64
+	AdminTeamProfileId         field.Uint64
 	AlgoliaId                  field.String
 	BookmarkId                 field.Uint64
 	EditorsPublicationId       field.Uint64
@@ -120,7 +120,7 @@ type userProfileORM struct {
 	Following                  field.Int64
 	FreeFeedTimelineId         field.String
 	Id                         field.Uint64
-	MembersTeamId              field.Uint64
+	MembersTeamProfileId       field.Uint64
 	Name                       field.String
 	NewsFeedTimelineId         field.String
 	NotificationFeedTimelineId field.String
@@ -150,7 +150,7 @@ func (u userProfileORM) As(alias string) *userProfileORM {
 func (u *userProfileORM) updateTableName(table string) *userProfileORM {
 	u.ALL = field.NewAsterisk(table)
 	u.AdminPublicationId = field.NewUint64(table, "admin_publication_id")
-	u.AdminTeamId = field.NewUint64(table, "admin_team_id")
+	u.AdminTeamProfileId = field.NewUint64(table, "admin_team_profile_id")
 	u.AlgoliaId = field.NewString(table, "algolia_id")
 	u.BookmarkId = field.NewUint64(table, "bookmark_id")
 	u.EditorsPublicationId = field.NewUint64(table, "editors_publication_id")
@@ -158,7 +158,7 @@ func (u *userProfileORM) updateTableName(table string) *userProfileORM {
 	u.Following = field.NewInt64(table, "following")
 	u.FreeFeedTimelineId = field.NewString(table, "free_feed_timeline_id")
 	u.Id = field.NewUint64(table, "id")
-	u.MembersTeamId = field.NewUint64(table, "members_team_id")
+	u.MembersTeamProfileId = field.NewUint64(table, "members_team_profile_id")
 	u.Name = field.NewString(table, "name")
 	u.NewsFeedTimelineId = field.NewString(table, "news_feed_timeline_id")
 	u.NotificationFeedTimelineId = field.NewString(table, "notification_feed_timeline_id")
@@ -186,7 +186,7 @@ func (u *userProfileORM) GetFieldByName(fieldName string) (field.OrderExpr, bool
 func (u *userProfileORM) fillFieldMap() {
 	u.fieldMap = make(map[string]field.Expr, 21)
 	u.fieldMap["admin_publication_id"] = u.AdminPublicationId
-	u.fieldMap["admin_team_id"] = u.AdminTeamId
+	u.fieldMap["admin_team_profile_id"] = u.AdminTeamProfileId
 	u.fieldMap["algolia_id"] = u.AlgoliaId
 	u.fieldMap["bookmark_id"] = u.BookmarkId
 	u.fieldMap["editors_publication_id"] = u.EditorsPublicationId
@@ -194,7 +194,7 @@ func (u *userProfileORM) fillFieldMap() {
 	u.fieldMap["following"] = u.Following
 	u.fieldMap["free_feed_timeline_id"] = u.FreeFeedTimelineId
 	u.fieldMap["id"] = u.Id
-	u.fieldMap["members_team_id"] = u.MembersTeamId
+	u.fieldMap["members_team_profile_id"] = u.MembersTeamProfileId
 	u.fieldMap["name"] = u.Name
 	u.fieldMap["news_feed_timeline_id"] = u.NewsFeedTimelineId
 	u.fieldMap["notification_feed_timeline_id"] = u.NotificationFeedTimelineId

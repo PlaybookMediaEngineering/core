@@ -1790,21 +1790,22 @@ var _ interface {
 	ErrorName() string
 } = StripeSubscriptionValidationError{}
 
-// Validate checks the field values on Team with the rules defined in the proto
-// definition for this message. If any rules are violated, the first error
-// encountered is returned, or nil if there are no violations.
-func (m *Team) Validate() error {
+// Validate checks the field values on TeamProfile with the rules defined in
+// the proto definition for this message. If any rules are violated, the first
+// error encountered is returned, or nil if there are no violations.
+func (m *TeamProfile) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on Team with the rules defined in the
-// proto definition for this message. If any rules are violated, the result is
-// a list of violation errors wrapped in TeamMultiError, or nil if none found.
-func (m *Team) ValidateAll() error {
+// ValidateAll checks the field values on TeamProfile with the rules defined in
+// the proto definition for this message. If any rules are violated, the
+// result is a list of violation errors wrapped in TeamProfileMultiError, or
+// nil if none found.
+func (m *TeamProfile) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *Team) validate(all bool) error {
+func (m *TeamProfile) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -1813,17 +1814,6 @@ func (m *Team) validate(all bool) error {
 
 	// no validation rules for Id
 
-	if len(m.GetPublications()) > 15 {
-		err := TeamValidationError{
-			field:  "Publications",
-			reason: "value must contain no more than 15 item(s)",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
 	for idx, item := range m.GetPublications() {
 		_, _ = idx, item
 
@@ -1831,7 +1821,7 @@ func (m *Team) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Publications[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1839,7 +1829,7 @@ func (m *Team) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Publications[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1848,7 +1838,7 @@ func (m *Team) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return TeamValidationError{
+				return TeamProfileValidationError{
 					field:  fmt.Sprintf("Publications[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1859,7 +1849,7 @@ func (m *Team) validate(all bool) error {
 	}
 
 	if m.GetAdmin() == nil {
-		err := TeamValidationError{
+		err := TeamProfileValidationError{
 			field:  "Admin",
 			reason: "value is required",
 		}
@@ -1873,7 +1863,7 @@ func (m *Team) validate(all bool) error {
 		switch v := interface{}(m.GetAdmin()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, TeamValidationError{
+				errors = append(errors, TeamProfileValidationError{
 					field:  "Admin",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1881,7 +1871,7 @@ func (m *Team) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, TeamValidationError{
+				errors = append(errors, TeamProfileValidationError{
 					field:  "Admin",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1890,23 +1880,12 @@ func (m *Team) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetAdmin()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return TeamValidationError{
+			return TeamProfileValidationError{
 				field:  "Admin",
 				reason: "embedded message failed validation",
 				cause:  err,
 			}
 		}
-	}
-
-	if len(m.GetTags()) < 3 {
-		err := TeamValidationError{
-			field:  "Tags",
-			reason: "value must contain at least 3 item(s)",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
 	}
 
 	for idx, item := range m.GetMembers() {
@@ -1916,7 +1895,7 @@ func (m *Team) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Members[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1924,7 +1903,7 @@ func (m *Team) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Members[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1933,7 +1912,7 @@ func (m *Team) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return TeamValidationError{
+				return TeamProfileValidationError{
 					field:  fmt.Sprintf("Members[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -1943,40 +1922,11 @@ func (m *Team) validate(all bool) error {
 
 	}
 
-	if len(m.GetFocusAreas()) < 3 {
-		err := TeamValidationError{
-			field:  "FocusAreas",
-			reason: "value must contain at least 3 item(s)",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
-
-	if utf8.RuneCountInString(m.GetDescription()) < 1 {
-		err := TeamValidationError{
-			field:  "Description",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for Description
 
 	// no validation rules for CreatedAt
 
-	if utf8.RuneCountInString(m.GetTeamName()) < 1 {
-		err := TeamValidationError{
-			field:  "TeamName",
-			reason: "value length must be at least 1 runes",
-		}
-		if !all {
-			return err
-		}
-		errors = append(errors, err)
-	}
+	// no validation rules for TeamName
 
 	for idx, item := range m.GetRoles() {
 		_, _ = idx, item
@@ -1985,7 +1935,7 @@ func (m *Team) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Roles[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -1993,7 +1943,7 @@ func (m *Team) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("Roles[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -2002,7 +1952,7 @@ func (m *Team) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return TeamValidationError{
+				return TeamProfileValidationError{
 					field:  fmt.Sprintf("Roles[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2019,7 +1969,7 @@ func (m *Team) validate(all bool) error {
 			switch v := interface{}(item).(type) {
 			case interface{ ValidateAll() error }:
 				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("AuditLogs[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -2027,7 +1977,7 @@ func (m *Team) validate(all bool) error {
 				}
 			case interface{ Validate() error }:
 				if err := v.Validate(); err != nil {
-					errors = append(errors, TeamValidationError{
+					errors = append(errors, TeamProfileValidationError{
 						field:  fmt.Sprintf("AuditLogs[%v]", idx),
 						reason: "embedded message failed validation",
 						cause:  err,
@@ -2036,7 +1986,7 @@ func (m *Team) validate(all bool) error {
 			}
 		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
 			if err := v.Validate(); err != nil {
-				return TeamValidationError{
+				return TeamProfileValidationError{
 					field:  fmt.Sprintf("AuditLogs[%v]", idx),
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -2047,18 +1997,18 @@ func (m *Team) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return TeamMultiError(errors)
+		return TeamProfileMultiError(errors)
 	}
 
 	return nil
 }
 
-// TeamMultiError is an error wrapping multiple validation errors returned by
-// Team.ValidateAll() if the designated constraints aren't met.
-type TeamMultiError []error
+// TeamProfileMultiError is an error wrapping multiple validation errors
+// returned by TeamProfile.ValidateAll() if the designated constraints aren't met.
+type TeamProfileMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m TeamMultiError) Error() string {
+func (m TeamProfileMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -2067,11 +2017,11 @@ func (m TeamMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m TeamMultiError) AllErrors() []error { return m }
+func (m TeamProfileMultiError) AllErrors() []error { return m }
 
-// TeamValidationError is the validation error returned by Team.Validate if the
-// designated constraints aren't met.
-type TeamValidationError struct {
+// TeamProfileValidationError is the validation error returned by
+// TeamProfile.Validate if the designated constraints aren't met.
+type TeamProfileValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -2079,22 +2029,22 @@ type TeamValidationError struct {
 }
 
 // Field function returns field value.
-func (e TeamValidationError) Field() string { return e.field }
+func (e TeamProfileValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e TeamValidationError) Reason() string { return e.reason }
+func (e TeamProfileValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e TeamValidationError) Cause() error { return e.cause }
+func (e TeamProfileValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e TeamValidationError) Key() bool { return e.key }
+func (e TeamProfileValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e TeamValidationError) ErrorName() string { return "TeamValidationError" }
+func (e TeamProfileValidationError) ErrorName() string { return "TeamProfileValidationError" }
 
 // Error satisfies the builtin error interface
-func (e TeamValidationError) Error() string {
+func (e TeamProfileValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -2106,14 +2056,14 @@ func (e TeamValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sTeam.%s: %s%s",
+		"invalid %sTeamProfile.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = TeamValidationError{}
+var _ error = TeamProfileValidationError{}
 
 var _ interface {
 	Field() string
@@ -2121,7 +2071,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = TeamValidationError{}
+} = TeamProfileValidationError{}
 
 // Validate checks the field values on Role with the rules defined in the proto
 // definition for this message. If any rules are violated, the first error

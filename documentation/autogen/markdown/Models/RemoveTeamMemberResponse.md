@@ -1,4 +1,4 @@
-# GetTeamResponse
+# RemoveTeamMemberResponse
 ## Properties
 
 | Name | Type | Description | Notes |

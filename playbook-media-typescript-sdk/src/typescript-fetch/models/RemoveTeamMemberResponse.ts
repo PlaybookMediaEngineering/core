@@ -23,31 +23,31 @@ import {
 /**
  * 
  * @export
- * @interface GetTeamResponse
+ * @interface RemoveTeamMemberResponse
  */
-export interface GetTeamResponse {
+export interface RemoveTeamMemberResponse {
     /**
      * 
      * @type {TeamProfile}
-     * @memberof GetTeamResponse
+     * @memberof RemoveTeamMemberResponse
      */
     team?: TeamProfile;
 }
 
 /**
- * Check if a given object implements the GetTeamResponse interface.
+ * Check if a given object implements the RemoveTeamMemberResponse interface.
  */
-export function instanceOfGetTeamResponse(value: object): boolean {
+export function instanceOfRemoveTeamMemberResponse(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function GetTeamResponseFromJSON(json: any): GetTeamResponse {
-    return GetTeamResponseFromJSONTyped(json, false);
+export function RemoveTeamMemberResponseFromJSON(json: any): RemoveTeamMemberResponse {
+    return RemoveTeamMemberResponseFromJSONTyped(json, false);
 }
 
-export function GetTeamResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetTeamResponse {
+export function RemoveTeamMemberResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): RemoveTeamMemberResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -57,7 +57,7 @@ export function GetTeamResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function GetTeamResponseToJSON(value?: GetTeamResponse | null): any {
+export function RemoveTeamMemberResponseToJSON(value?: RemoveTeamMemberResponse | null): any {
     if (value === undefined) {
         return undefined;
     }

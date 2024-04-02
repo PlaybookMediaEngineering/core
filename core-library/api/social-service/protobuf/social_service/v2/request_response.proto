@@ -1804,10 +1804,10 @@ message GetTeamRequest {
 
 message GetTeamResponse {
   // The team profile object containing details about the team.
-  Team team = 1;
+  TeamProfile team = 1;
 }
 
-message UpdateTeamRequest {
+message EditTeamRequest {
   // The user ID of the team administrator. This field is required.
   string admin_or_member_user_id = 1 [
     (validate.rules).string.min_len = 1,
@@ -1820,29 +1820,13 @@ message UpdateTeamRequest {
     (google.api.field_behavior) = REQUIRED
   ];
 
-  // The name of the team. This field is required.
-  string team_name = 3 [
-    (validate.rules).string.min_len = 1,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // A brief description of the team, outlining its purpose and goals. This field is required.
-  string description = 4 [
-    (validate.rules).string.min_len = 1,
-    (google.api.field_behavior) = REQUIRED
-  ];
-
-  // A list of tags associated with the team, helping in categorization or searching. 
-  // At least three tags are required.
-  repeated string tags = 5 [
-    (validate.rules).repeated = {min_items: 3},  
-    (google.api.field_behavior) = REQUIRED
-  ];
+  // The team to update
+  TeamProfile team = 3;
 }
 
-message UpdateTeamResponse {
+message EditTeamResponse {
   // The updated team profile object containing details about the team.
-  Team team = 1;
+  TeamProfile team = 1;
 }
 
 message DeleteTeamRequest {
@@ -1862,4 +1846,79 @@ message DeleteTeamRequest {
 message DeleteTeamResponse {
   // A boolean flag indicating if the team was successfully deleted.
   bool success = 1;
+}
+
+message AddTeamMemberRequest {
+  // The user ID of the team administrator. This field is required.
+  string admin_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The unique identifier of the team to which the member is being added. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The user ID of the member being added to the team. This field is required.
+  string member_user_id = 3 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The role assigned to the member being added to the team. This field is required.
+  PermissionType member_permission_type = 5 [
+    (google.api.field_behavior) = REQUIRED,
+    (validate.rules).enum = {not_in: [0]}
+  ];
+}
+
+message AddTeamMemberResponse {
+  // The updated team profile object containing details about the team.
+  TeamProfile team = 1;
+}
+
+message GetTeamMemberRequest {
+  // The unique identifier of the team whose members are being requested. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The user ID of the member whose details are being requested. This field is required.
+  string member_user_id = 3 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message GetTeamMemberResponse {
+  // The team member profile object containing details about the team member.
+  UserProfile member = 1;
+}
+
+message RemoveTeamMemberRequest {
+  // The user ID of the team administrator. This field is required.
+  string admin_user_id = 1 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The unique identifier of the team from which the member is being removed. This field is required.
+  uint64 team_id = 2 [
+    (validate.rules).uint64.gt = 0,
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // The user ID of the member being removed from the team. This field is required.
+  string member_user_id = 3 [
+    (validate.rules).string.min_len = 1,
+    (google.api.field_behavior) = REQUIRED
+  ];
+} 
+
+message RemoveTeamMemberResponse {
+  // The updated team profile object containing details about the team.
+  TeamProfile team = 1;
 }

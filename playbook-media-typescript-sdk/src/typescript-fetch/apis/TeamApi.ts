@@ -18,6 +18,7 @@ import type {
   CreateTeamBody,
   CreateTeamResponse,
   DeleteTeamResponse,
+  GetTeamResponse,
   InternalErrorMessageResponse,
   PathUnknownErrorMessageResponse,
   Status,
@@ -30,6 +31,8 @@ import {
     CreateTeamResponseToJSON,
     DeleteTeamResponseFromJSON,
     DeleteTeamResponseToJSON,
+    GetTeamResponseFromJSON,
+    GetTeamResponseToJSON,
     InternalErrorMessageResponseFromJSON,
     InternalErrorMessageResponseToJSON,
     PathUnknownErrorMessageResponseFromJSON,
@@ -48,6 +51,14 @@ export interface CreateTeamRequest {
 export interface DeleteTeamRequest {
     adminUserId: string;
     teamId: string;
+}
+
+export interface GetTeamRequest {
+    adminOrMemberUserId: string;
+    teamId: string;
+    includeMembers?: boolean;
+    includePublications?: boolean;
+    includeAuditLogs?: boolean;
 }
 
 /**
@@ -127,6 +138,54 @@ export class TeamApi extends runtime.BaseAPI {
      */
     async deleteTeam(requestParameters: DeleteTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteTeamResponse> {
         const response = await this.deleteTeamRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * This endpoint gets a specific team.
+     * Get a team
+     */
+    async getTeamRaw(requestParameters: GetTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTeamResponse>> {
+        if (requestParameters.adminOrMemberUserId === null || requestParameters.adminOrMemberUserId === undefined) {
+            throw new runtime.RequiredError('adminOrMemberUserId','Required parameter requestParameters.adminOrMemberUserId was null or undefined when calling getTeam.');
+        }
+
+        if (requestParameters.teamId === null || requestParameters.teamId === undefined) {
+            throw new runtime.RequiredError('teamId','Required parameter requestParameters.teamId was null or undefined when calling getTeam.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.includeMembers !== undefined) {
+            queryParameters['includeMembers'] = requestParameters.includeMembers;
+        }
+
+        if (requestParameters.includePublications !== undefined) {
+            queryParameters['includePublications'] = requestParameters.includePublications;
+        }
+
+        if (requestParameters.includeAuditLogs !== undefined) {
+            queryParameters['includeAuditLogs'] = requestParameters.includeAuditLogs;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/api/v1/users/team/{adminOrMemberUserId}/{teamId}`.replace(`{${"adminOrMemberUserId"}}`, encodeURIComponent(String(requestParameters.adminOrMemberUserId))).replace(`{${"teamId"}}`, encodeURIComponent(String(requestParameters.teamId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTeamResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * This endpoint gets a specific team.
+     * Get a team
+     */
+    async getTeam(requestParameters: GetTeamRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTeamResponse> {
+        const response = await this.getTeamRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

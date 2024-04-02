@@ -528,11 +528,17 @@ message StripeSubscription {
   bool is_trialing = 6;
 }
 
-message Team {
+message TeamProfile {
   option (gorm.opts) = {ormable: true};
   uint64 id = 1;
   // Publications managed by the team
-  repeated Publication publications = 2 [(validate.rules).repeated = {max_items: 15}];
+  repeated Publication publications = 2 [
+    (gorm.field).has_many = {
+      disable_association_autocreate: false
+      disable_association_autoupdate: false
+      preload: true
+    }
+  ];
   UserProfile admin = 3 [
     (validate.rules).message.required = true,  
     (gorm.field).has_one = {
@@ -541,7 +547,7 @@ message Team {
       preload: true
     }
   ];
-  repeated string tags = 6 [(validate.rules).repeated = {min_items: 3},  (google.api.field_behavior) = REQUIRED];
+  repeated string tags = 6;
   // Team members who can contribute to the team’s projects
   repeated UserProfile members = 7  [
     (gorm.field).has_many = {
@@ -550,14 +556,20 @@ message Team {
       preload: true
     }
   ];
-  repeated string focus_areas = 8 [(validate.rules).repeated = {min_items: 3}, (google.api.field_behavior) = REQUIRED];
-  string description = 9 [(validate.rules).string.min_len = 1];
+  repeated string focus_areas = 8;
+  string description = 9;
   string created_at = 10;
-  string team_name = 11 [(validate.rules).string.min_len = 1,  (google.api.field_behavior) = REQUIRED];
+  string team_name = 11;
   
   // Additional fields for team management
   // Detailed roles within the team
-  repeated Role roles = 12;
+  repeated Role roles = 12 [
+    (gorm.field).has_many = {
+      disable_association_autocreate: false
+      disable_association_autoupdate: false
+      preload: true
+    }
+  ];
   // Audit log for tracking changes made by team members
   repeated AuditLog audit_logs = 13 [
     (gorm.field).has_many = {
@@ -583,10 +595,10 @@ enum PermissionType {
 message Role {
  option (gorm.opts) = {ormable: true};
 
-  uint64 id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "1"}];
-  string name = 2 [(validate.rules).string.min_len = 1, (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "Editor"}];
+  uint64 id = 1;
+  string name = 2 [(validate.rules).string.min_len = 1];
   // A brief description of the role and its responsibilities
-  string description = 3 [(validate.rules).string.min_len = 1, (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "Can edit and publish content"}];
+  string description = 3 [(validate.rules).string.min_len = 1];
   // Granular permissions associated with the role
   repeated PermissionType permissions = 4;
   // Auth0 user ID of the member associated with this role
@@ -599,8 +611,8 @@ message Role {
     }
   ];
   // Timestamps for role creation and last update
-  string created_at = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "2024-01-01T12:00:00Z"}];
-  string updated_at = 7 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "2024-01-02T12:00:00Z"}];
+  string created_at = 6;
+  string updated_at = 7;
 }
 
 // Enum for defining possible outcomes of an action
@@ -625,21 +637,21 @@ enum ActionType {
 message AuditLog {
   option (gorm.opts) = {ormable: true};
 
-  uint64 id = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: ""}];
-  string action = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "CREATE"}];
-  string user_id = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "user_123"}];
-  string timestamp = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "2024-01-01T12:00:00Z"}];
-  string description = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "User created a new post"}];
+  uint64 id = 1;
+  string action = 2;
+  string user_id = 3;
+  string timestamp = 4;
+  string description = 5;
 
 
   // helps categorize the type of action (e.g., user operations, post operations, system tasks).
-  ActionType action_type = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "PostOperation"}];
+  ActionType action_type = 6;
 
   // logs the IP address from where the action was initiated, which is useful for security and auditing purposes.
-  string ip_address = 7 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "192.168.1.1"}];
+  string ip_address = 7;
   //  records whether the action was successful, failed, or resulted in an error, which is crucial for audit trails and understanding system behavior.
-  Outcome outcome = 8 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "SUCCESS"}];
+  Outcome outcome = 8;
   // give specific information about the entity that was affected by the action, making it easier to trace and understand the impact of each logged activity.
-  string affected_entity_type = 9 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "Post"}];
-  string affected_entity_id = 10 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {example: "post_456"}];
+  string affected_entity_type = 9;
+  string affected_entity_id = 10;
 }

@@ -1608,4 +1608,102 @@ service SocialService {
       }
     };
   }
+
+  rpc GetTeam(GetTeamRequest) returns (GetTeamResponse) {
+    option (google.api.http) = {get: "/api/v1/users/team/{admin_or_member_user_id}/{team_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get a team"
+      tags: ["team"]
+      operation_id: "GetTeam"
+      description: "This endpoint gets a specific team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response with the team details."
+           schema: {
+              json_schema: {ref: ".social_service.v2.GetTeamResponse"}
+           }
+        }
+      }
+    };
+  }
+
+  rpc EditTeam(EditTeamRequest) returns (EditTeamResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/users/teams/{admin_or_member_user_id}/team/{team_id}"
+      body: "team"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "update a user profile"
+      tags: ["user profile"]
+      operation_id: "EditTeam"
+      description:
+        "This endpoint enables a client to update a team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response."
+          schema: {
+            json_schema: {ref: ".social_service.v2.EditTeamResponse"}
+          }
+        }
+      }
+    };
+  }
+
+  rpc AddTeamMember(AddTeamMemberRequest) returns (AddTeamMemberResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/users/teams/{team_id}/members"
+      body: '*'
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Add a new team member"
+      tags: ["team-member"]
+      operation_id: "AddTeamMember"
+      description: "This endpoint adds a new member to a team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response with details of the newly added team member."
+          schema: {json_schema: {ref: ".social_service.v2.AddTeamMemberResponse"}}
+        }
+      }
+    };
+  }
+
+    // Get details of a specific TeamMember
+  rpc GetTeamMember(GetTeamMemberRequest) returns (GetTeamMemberResponse) {
+    option (google.api.http) = {get: "/api/v1/teams/{team_id}/members/{member_user_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Get details of a team member"
+      tags: ["team-member"]
+      operation_id: "GetTeamMember"
+      description: "This endpoint fetches details of a specific team member."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response with the team member details."
+          schema: {json_schema: {ref: ".social_service.v2.GetTeamMemberResponse"}}
+        }
+      }
+    };
+  }
+
+  // Remove a member from a Team
+  rpc RemoveTeamMember(RemoveTeamMemberRequest) returns (RemoveTeamMemberResponse) {
+    option (google.api.http) = {delete: "/api/v1/teams/{team_id}/members/{member_user_id}/admin/{admin_user_id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      summary: "Remove a team member"
+      tags: ["team-member"]
+      operation_id: "RemoveTeamMember"
+      description: "This endpoint removes a member from a team."
+      responses: {
+        key: "200"
+        value: {
+          description: "A successful response indicating the team member was removed."
+          schema: {json_schema: {ref: ".social_service.v2.RemoveTeamMemberResponse"}}
+        }
+      }
+    };
+  }
 }

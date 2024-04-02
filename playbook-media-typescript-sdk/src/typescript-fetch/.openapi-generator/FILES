@@ -17,6 +17,7 @@ apis/ReactionApi.ts
 apis/ServiceHealthApi.ts
 apis/ServiceReadynessApi.ts
 apis/TeamApi.ts
+apis/TeamMemberApi.ts
 apis/ThreadApi.ts
 apis/TopicApi.ts
 apis/UserProfileApi.ts
@@ -24,13 +25,17 @@ apis/index.ts
 index.ts
 models/AcceptFollowProfileResponse.ts
 models/AccountType.ts
+models/ActionType.ts
 models/Actor.ts
 models/AddCommentQualityScoreResponse.ts
 models/AddPostQualityScoreResponse.ts
 models/AddPostToPublicationResponse.ts
 models/AddPostToThreadResponse.ts
 models/AddPublicationEditorResponse.ts
+models/AddTeamMemberBody.ts
+models/AddTeamMemberResponse.ts
 models/Any.ts
+models/AuditLog.ts
 models/BaseTimeline.ts
 models/BlockUserProfileResponse.ts
 models/Bookmark.ts
@@ -74,6 +79,7 @@ models/EditCommunityProfileRequest.ts
 models/EditCommunityProfileResponse.ts
 models/EditNoteResponse.ts
 models/EditPostResponse.ts
+models/EditTeamResponse.ts
 models/EditUserProfileResponse.ts
 models/Entities.ts
 models/ErrorCode.ts
@@ -101,6 +107,8 @@ models/GetPostsByCategoryResponse.ts
 models/GetPostsByTopicResponse.ts
 models/GetPostsResponse.ts
 models/GetPublicationResponse.ts
+models/GetTeamMemberResponse.ts
+models/GetTeamResponse.ts
 models/GetTopicsOfCommunitiesUserFollowsResponse.ts
 models/GetUserFeedResponse.ts
 models/GetUserProfileResponse.ts
@@ -118,6 +126,7 @@ models/Note.ts
 models/NotificationActivity.ts
 models/NotificationFeedGroup.ts
 models/NotificationTimeline.ts
+models/Outcome.ts
 models/PathUnknownErrorMessageResponse.ts
 models/PendingFollowRequest.ts
 models/PermissionType.ts
@@ -138,6 +147,7 @@ models/ReadynessCheckResponse.ts
 models/RemoveBookmarkedPostResponse.ts
 models/RemoveBookmarkedPublicationResponse.ts
 models/RemovePostFromThreadResponse.ts
+models/RemoveTeamMemberResponse.ts
 models/ReportCommentBody.ts
 models/ReportCommentReplyBody.ts
 models/ReportCommentReplyResponse.ts
@@ -147,6 +157,7 @@ models/RespondToPollBody.ts
 models/RespondToPollResponse.ts
 models/ReviewPostBody.ts
 models/ReviewPostResponse.ts
+models/Role.ts
 models/Sentiment.ts
 models/SetPostInDraftModeBody.ts
 models/SetPostInDraftModeResponse.ts
@@ -155,6 +166,7 @@ models/SharedPost.ts
 models/SocialProfileMetadata.ts
 models/SocialRelationshipMetadata.ts
 models/Status.ts
+models/TeamProfile.ts
 models/Thread.ts
 models/ThreadParticipantType.ts
 models/Topic.ts

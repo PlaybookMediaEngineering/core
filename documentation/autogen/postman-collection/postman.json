@@ -461,6 +461,69 @@
                                 }
                             }
                             ]
+                        },
+	                        {
+    "name": "/api/v1/users/teams/:adminOrMemberUserId/team/:teamId",
+                "description": "This endpoint enables a client to update a team.",
+                 "item": [
+                            {
+                                "name": "update a user profile",
+                                "request": {
+                                    "method": "PUT",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"id\": \"<string>\",\n \"publications\": \"<string>\",\n \"admin\": \"<string>\",\n \"tags\": \"<string>\",\n \"members\": \"<string>\",\n \"focusAreas\": \"<string>\",\n \"description\": \"<string>\",\n \"createdAt\": \"<string>\",\n \"teamName\": \"<string>\",\n \"roles\": \"<string>\",\n \"auditLogs\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/teams/:adminOrMemberUserId/team/:teamId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "teams",
+                                            ":adminOrMemberUserId",
+                                            "team",
+                                            ":teamId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "adminOrMemberUserId",
+                                                "value": "",
+                                                "description": "The user ID of the team administrator. This field is required."
+                                            },
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team being updated. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint enables a client to update a team."
+                                }
+                            }
+                            ]
                         }
 	                    ]
 	        },
@@ -1038,6 +1101,189 @@
 	                    ]
 	        },
 	        {
+	            "name": "team-member",
+	            "item": [
+	                        {
+    "name": "/api/v1/teams/:teamId/members/:memberUserId",
+                "description": "This endpoint fetches details of a specific team member.",
+                 "item": [
+                            {
+                                "name": "Get details of a team member",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/teams/:teamId/members/:memberUserId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "teams",
+                                            ":teamId",
+                                            "members",
+                                            ":memberUserId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team whose members are being requested. This field is required."
+                                            },
+                                            {
+                                                "key": "memberUserId",
+                                                "value": "",
+                                                "description": "The user ID of the member whose details are being requested. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint fetches details of a specific team member."
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/api/v1/teams/:teamId/members/:memberUserId/admin/:adminUserId",
+                "description": "This endpoint removes a member from a team.",
+                 "item": [
+                            {
+                                "name": "Remove a team member",
+                                "request": {
+                                    "method": "DELETE",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/teams/:teamId/members/:memberUserId/admin/:adminUserId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "teams",
+                                            ":teamId",
+                                            "members",
+                                            ":memberUserId",
+                                            "admin",
+                                            ":adminUserId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team from which the member is being removed. This field is required."
+                                            },
+                                            {
+                                                "key": "memberUserId",
+                                                "value": "",
+                                                "description": "The user ID of the member being removed from the team. This field is required."
+                                            },
+                                            {
+                                                "key": "adminUserId",
+                                                "value": "",
+                                                "description": "The user ID of the team administrator. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint removes a member from a team."
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/api/v1/users/teams/:teamId/members",
+                "description": "This endpoint adds a new member to a team.",
+                 "item": [
+                            {
+                                "name": "Add a new team member",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"adminUserId\": \"<string>\",\n \"memberUserId\": \"<string>\",\n \"memberPermissionType\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/teams/:teamId/members",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "teams",
+                                            ":teamId",
+                                            "members"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team to which the member is being added. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "This endpoint adds a new member to a team."
+                                }
+                            }
+                            ]
+                        }
+	                    ]
+	        },
+	        {
 	            "name": "follow-profile",
 	            "item": [
 	                        {
@@ -1443,6 +1689,75 @@
 	        {
 	            "name": "team",
 	            "item": [
+	                        {
+    "name": "/api/v1/users/team/:adminOrMemberUserId/:teamId",
+                "description": "This endpoint gets a specific team.",
+                 "item": [
+                            {
+                                "name": "Get a team",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/api/v1/users/team/:adminOrMemberUserId/:teamId",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "api",
+                                            "v1",
+                                            "users",
+                                            "team",
+                                            ":adminOrMemberUserId",
+                                            ":teamId"
+                                        ],
+                                        "variable": [
+                                            {
+                                                "key": "adminOrMemberUserId",
+                                                "value": "",
+                                                "description": "The user ID of the member or admin requesting the team details. This field is required."
+                                            },
+                                            {
+                                                "key": "teamId",
+                                                "value": "",
+                                                "description": "The unique identifier of the team whose details are being requested. This field is required."
+                                            }
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "includeMembers",
+                                                "value": "true"
+                                            },
+                                            {
+                                                "key": "includePublications",
+                                                "value": "true"
+                                            },
+                                            {
+                                                "key": "includeAuditLogs",
+                                                "value": "true"
+                                            }
+                                        ]
+                                    },
+                                    "description": "This endpoint gets a specific team."
+                                }
+                            }
+                            ]
+                        },
 	                        {
     "name": "/api/v1/users/team/:adminUserId",
                 "description": "This endpoint enables a client to create a team",

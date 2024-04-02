@@ -1,4 +1,4 @@
-# GetTeamResponse
+# EditTeamResponse
 ## Properties
 
 | Name | Type | Description | Notes |

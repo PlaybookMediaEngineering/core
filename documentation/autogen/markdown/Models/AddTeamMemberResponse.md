@@ -1,4 +1,4 @@
-# GetTeamResponse
+# AddTeamMemberResponse
 ## Properties
 
 | Name | Type | Description | Notes |

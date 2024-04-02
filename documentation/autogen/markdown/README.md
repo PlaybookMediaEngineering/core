@@ -73,6 +73,10 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | *ServiceReadynessApi* | [**readynessCheck**](Apis/ServiceReadynessApi.md#readynesscheck) | **GET** /api/v1/ready | readyness check |
 | *TeamApi* | [**createTeam**](Apis/TeamApi.md#createteam) | **POST** /api/v1/users/team/{adminUserId} | Creates a team |
 *TeamApi* | [**deleteTeam**](Apis/TeamApi.md#deleteteam) | **DELETE** /api/v1/users/team/{adminUserId}/{teamId} | Delete a team |
+*TeamApi* | [**getTeam**](Apis/TeamApi.md#getteam) | **GET** /api/v1/users/team/{adminOrMemberUserId}/{teamId} | Get a team |
+| *TeamMemberApi* | [**addTeamMember**](Apis/TeamMemberApi.md#addteammember) | **POST** /api/v1/users/teams/{teamId}/members | Add a new team member |
+*TeamMemberApi* | [**getTeamMember**](Apis/TeamMemberApi.md#getteammember) | **GET** /api/v1/teams/{teamId}/members/{memberUserId} | Get details of a team member |
+*TeamMemberApi* | [**removeTeamMember**](Apis/TeamMemberApi.md#removeteammember) | **DELETE** /api/v1/teams/{teamId}/members/{memberUserId}/admin/{adminUserId} | Remove a team member |
 | *ThreadApi* | [**addPostToThread**](Apis/ThreadApi.md#addposttothread) | **POST** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType} | Adds A Post To A Thread |
 *ThreadApi* | [**getPostThread**](Apis/ThreadApi.md#getpostthread) | **GET** /api/v1/users/{userId}/post/thread/{postId} | Gets A Post's Thread |
 *ThreadApi* | [**removePostFromThread**](Apis/ThreadApi.md#removepostfromthread) | **DELETE** /api/v1/users/{userId}/post/thread/{parentPostId}/type/{postType}/target/{participantPostId} | Deletes A Post From A Thread |
@@ -81,6 +85,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 | *UserProfileApi* | [**createUserProfile**](Apis/UserProfileApi.md#createuserprofile) | **POST** /api/v1/users | creates a user profile |
 *UserProfileApi* | [**deleteUserProfile**](Apis/UserProfileApi.md#deleteuserprofile) | **DELETE** /api/v1/users/{userId} | deletes a user profile |
 *UserProfileApi* | [**discoverProfiles**](Apis/UserProfileApi.md#discoverprofiles) | **GET** /api/v1/users/{userId}/discover/limit/{limit} | Discover Profiles |
+*UserProfileApi* | [**editTeam**](Apis/UserProfileApi.md#editteam) | **PUT** /api/v1/users/teams/{adminOrMemberUserId}/team/{teamId} | update a user profile |
 *UserProfileApi* | [**editUserProfile**](Apis/UserProfileApi.md#edituserprofile) | **PUT** /api/v1/users/{userId} | update a user profile |
 *UserProfileApi* | [**getCannyUserSSOToken**](Apis/UserProfileApi.md#getcannyuserssotoken) | **GET** /api/v1/user/{userId}/canny/email/{email} | Retrieves user sso token for canny |
 *UserProfileApi* | [**getUserProfile**](Apis/UserProfileApi.md#getuserprofile) | **GET** /api/v1/users/{userId} | gets a user profile |
@@ -92,13 +97,17 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
 
  - [AcceptFollowProfileResponse](./Models/AcceptFollowProfileResponse.md)
  - [AccountType](./Models/AccountType.md)
+ - [ActionType](./Models/ActionType.md)
  - [Actor](./Models/Actor.md)
  - [AddCommentQualityScoreResponse](./Models/AddCommentQualityScoreResponse.md)
  - [AddPostQualityScoreResponse](./Models/AddPostQualityScoreResponse.md)
  - [AddPostToPublicationResponse](./Models/AddPostToPublicationResponse.md)
  - [AddPostToThreadResponse](./Models/AddPostToThreadResponse.md)
  - [AddPublicationEditorResponse](./Models/AddPublicationEditorResponse.md)
+ - [AddTeamMemberBody](./Models/AddTeamMemberBody.md)
+ - [AddTeamMemberResponse](./Models/AddTeamMemberResponse.md)
  - [Any](./Models/Any.md)
+ - [AuditLog](./Models/AuditLog.md)
  - [BaseTimeline](./Models/BaseTimeline.md)
  - [BlockUserProfileResponse](./Models/BlockUserProfileResponse.md)
  - [Bookmark](./Models/Bookmark.md)
@@ -142,6 +151,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [EditCommunityProfileResponse](./Models/EditCommunityProfileResponse.md)
  - [EditNoteResponse](./Models/EditNoteResponse.md)
  - [EditPostResponse](./Models/EditPostResponse.md)
+ - [EditTeamResponse](./Models/EditTeamResponse.md)
  - [EditUserProfileResponse](./Models/EditUserProfileResponse.md)
  - [Entities](./Models/Entities.md)
  - [ErrorCode](./Models/ErrorCode.md)
@@ -169,6 +179,8 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [GetPostsByTopicResponse](./Models/GetPostsByTopicResponse.md)
  - [GetPostsResponse](./Models/GetPostsResponse.md)
  - [GetPublicationResponse](./Models/GetPublicationResponse.md)
+ - [GetTeamMemberResponse](./Models/GetTeamMemberResponse.md)
+ - [GetTeamResponse](./Models/GetTeamResponse.md)
  - [GetTopicsOfCommunitiesUserFollowsResponse](./Models/GetTopicsOfCommunitiesUserFollowsResponse.md)
  - [GetUserFeedResponse](./Models/GetUserFeedResponse.md)
  - [GetUserProfileResponse](./Models/GetUserProfileResponse.md)
@@ -186,6 +198,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [NotificationActivity](./Models/NotificationActivity.md)
  - [NotificationFeedGroup](./Models/NotificationFeedGroup.md)
  - [NotificationTimeline](./Models/NotificationTimeline.md)
+ - [Outcome](./Models/Outcome.md)
  - [PathUnknownErrorMessageResponse](./Models/PathUnknownErrorMessageResponse.md)
  - [PendingFollowRequest](./Models/PendingFollowRequest.md)
  - [PermissionType](./Models/PermissionType.md)
@@ -206,6 +219,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [RemoveBookmarkedPostResponse](./Models/RemoveBookmarkedPostResponse.md)
  - [RemoveBookmarkedPublicationResponse](./Models/RemoveBookmarkedPublicationResponse.md)
  - [RemovePostFromThreadResponse](./Models/RemovePostFromThreadResponse.md)
+ - [RemoveTeamMemberResponse](./Models/RemoveTeamMemberResponse.md)
  - [ReportCommentBody](./Models/ReportCommentBody.md)
  - [ReportCommentReplyBody](./Models/ReportCommentReplyBody.md)
  - [ReportCommentReplyResponse](./Models/ReportCommentReplyResponse.md)
@@ -215,6 +229,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [RespondToPollResponse](./Models/RespondToPollResponse.md)
  - [ReviewPostBody](./Models/ReviewPostBody.md)
  - [ReviewPostResponse](./Models/ReviewPostResponse.md)
+ - [Role](./Models/Role.md)
  - [Sentiment](./Models/Sentiment.md)
  - [SetPostInDraftModeBody](./Models/SetPostInDraftModeBody.md)
  - [SetPostInDraftModeResponse](./Models/SetPostInDraftModeResponse.md)
@@ -223,6 +238,7 @@ All URIs are relative to *http://social-service.platform.svc.cluster.local:9896*
  - [SocialProfileMetadata](./Models/SocialProfileMetadata.md)
  - [SocialRelationshipMetadata](./Models/SocialRelationshipMetadata.md)
  - [Status](./Models/Status.md)
+ - [TeamProfile](./Models/TeamProfile.md)
  - [Thread](./Models/Thread.md)
  - [ThreadParticipantType](./Models/ThreadParticipantType.md)
  - [Topic](./Models/Topic.md)
